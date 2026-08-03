@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://btveiculos.com.br/sitemap.xml

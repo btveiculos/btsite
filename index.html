@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BT Veículos Jundiaí - Carros novos, seminovos e usados com garantia e procedência. Rua da Saúde, 108, Vila Vianelo, Jundiaí/SP.">
+  <meta name="keywords" content="carros jundiaí, veículos seminovos jundiaí, loja de carros, BT Veículos, comprar carro jundiaí, financiamento veículos">
+  <meta name="author" content="BT Veículos Jundiaí">
+  <meta property="og:title" content="BT Veículos Jundiaí | Qualidade e Procedência">
+  <meta property="og:description" content="Carros novos, seminovos e usados com garantia. Rua da Saúde, 108, Vila Vianelo, Jundiaí/SP.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="theme-color" content="#d4202c">
+  <title>BT Veículos Jundiaí | Qualidade e Procedência</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='72' height='72' rx='6' fill='none' stroke='%23d4202c' stroke-width='10'/><rect x='60' y='60' width='22' height='22' fill='%23070707'/><text x='44' y='56' font-family='Arial' font-size='28' font-weight='bold' font-style='italic' text-anchor='middle' fill='white'>BT</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="#inicio" class="logo">
+        <div class="logo-box">BT</div>
+        <div class="logo-text">
+          <span class="logo-name">VEÍCULOS</span>
+          <span class="logo-slogan">Qualidade e Procedência</span>
+        </div>
+      </a>
+      <nav class="nav-desktop">
+        <a href="#estoque">Estoque</a>
+        <a href="#financiamento">Financiamento</a>
+        <a href="#venda">Venda seu Carro</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <a href="#" class="header-cta" id="headerWhatsapp">
+        Falar com consultor
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+      </a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="#estoque">Estoque</a>
+      <a href="#financiamento">Financiamento</a>
+      <a href="#venda">Venda seu Carro</a>
+      <a href="#contato">Contato</a>
+      <a href="#" class="btn-primary" id="mobileWhatsapp">Falar com consultor</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Seu próximo veículo está aqui</p>
+      <h1 class="hero-title">Qualidade, procedência<br>e confiança que você merece.</h1>
+      <p class="hero-subtitle">Mais de <strong>8 veículos</strong> revisados e prontos para você em Jundiaí.</p>
+      
+      <div class="hero-carousel">
+        <button class="carousel-arrow left" id="prevBtn">&#10094;</button>
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Populated by JS -->
+        </div>
+        <button class="carousel-arrow right" id="nextBtn">&#10095;</button>
+      </div>
+
+      <div class="hero-info" id="heroInfo">
+        <p class="hero-car-name"></p>
+        <p class="hero-car-price"></p>
+      </div>
+
+      <div class="hero-ctas">
+        <a href="#estoque" class="btn-primary">Ver Estoque</a>
+        <a href="#" class="btn-outline" id="heroWhatsapp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+          Falar com consultor
+        </a>
+      </div>
+
+      <div class="hero-dots" id="heroDots"></div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section class="beneficios">
+    <div class="container">
+      <div class="beneficios-grid">
+        <div class="beneficio"><span>🛡️</span> Garantia em todos os veículos</div>
+        <div class="beneficio"><span>🔧</span> Carros revisados antes da venda</div>
+        <div class="beneficio"><span>💳</span> Financiamento facilitado</div>
+        <div class="beneficio"><span>✓</span> Qualidade e procedência</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTAQUES -->
+  <section class="destaques">
+    <div class="container">
+      <h2 class="section-title">Destaques do Estoque</h2>
+      <div class="destaques-grid" id="destaquesGrid"></div>
+    </div>
+  </section>
+
+  <!-- ESTOQUE -->
+  <section id="estoque" class="estoque">
+    <div class="container">
+      <h2 class="section-title">Estoque <span>BT Veículos</span></h2>
+      <p class="section-sub">Filtre por marca, ano, preço e encontre a melhor opção para você.</p>
+      <div class="filters">
+        <input type="text" id="searchInput" placeholder="Buscar por marca, modelo ou versão...">
+        <select id="filterMarca"><option value="">Todas marcas</option></select>
+        <select id="filterCambio"><option value="">Câmbio</option><option value="manual">Manual</option><option value="automático">Automático</option></select>
+        <select id="filterPreco"><option value="">Preço máx.</option><option value="70000">Até R$ 70 mil</option><option value="90000">Até R$ 90 mil</option><option value="110000">Até R$ 110 mil</option><option value="130000">Até R$ 130 mil</option><option value="150000">Até R$ 150 mil</option></select>
+        <select id="filterOrder"><option value="">Ordenar</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="km">Menor km</option><option value="ano">Mais novo</option></select>
+      </div>
+      <p class="results-count" id="resultsCount"></p>
+      <div class="estoque-grid" id="estoqueGrid"></div>
+      <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+        <button class="btn-outline" id="loadMoreBtn">Ver mais veículos</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINANCIAMENTO + VENDA LADO A LADO -->
+  <section id="financiamento" class="forms-section">
+    <div class="container">
+      <div class="forms-grid">
+        <div class="form-block">
+          <h2 class="form-block-title">Financie seu <span>veículo</span></h2>
+          <p class="form-block-sub">Parcelas que cabem no bolso. Preencha e receba uma simulação.</p>
+          <form class="form-card" id="formFinanciamento">
+            <input type="text" placeholder="Seu nome" required>
+            <input type="tel" placeholder="WhatsApp" required>
+            <input type="text" placeholder="Veículo de interesse">
+            <input type="text" placeholder="Entrada disponível (R$)">
+            <textarea placeholder="Mensagem (opcional)" rows="3"></textarea>
+            <button type="submit" class="btn-primary">Solicitar simulação</button>
+          </form>
+        </div>
+        <div class="form-block" id="venda">
+          <h2 class="form-block-title">Venda ou troque <span>seu carro</span></h2>
+          <p class="form-block-sub">Envie os dados e receba uma avaliação rápida.</p>
+          <form class="form-card" id="formVenda">
+            <input type="text" placeholder="Seu nome" required>
+            <input type="tel" placeholder="WhatsApp" required>
+            <div class="form-row">
+              <input type="text" placeholder="Marca" required>
+              <input type="text" placeholder="Modelo" required>
+            </div>
+            <div class="form-row">
+              <input type="text" placeholder="Ano">
+              <input type="text" placeholder="Quilometragem">
+            </div>
+            <textarea placeholder="Observações" rows="3"></textarea>
+            <button type="submit" class="btn-primary">Quero avaliar meu carro</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2 class="section-title">Perguntas <span>frequentes</span></h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Como funciona o financiamento?</summary>
+          <p>Trabalhamos com diversas instituições financeiras para encontrar as melhores taxas e condições para você. Basta preencher o formulário de simulação ou falar diretamente com nosso consultor pelo WhatsApp.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Os veículos possuem garantia?</summary>
+          <p>Sim! Todos os veículos da BT Veículos passam por revisão completa e possuem garantia. A duração varia de acordo com o veículo — consulte os detalhes com nosso consultor.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Posso trocar meu carro usado?</summary>
+          <p>Com certeza! Avaliamos seu veículo atual e descontamos o valor na compra de um novo. Preencha o formulário "Venda ou troque" ou fale conosco pelo WhatsApp.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Onde fica a BT Veículos?</summary>
+          <p>Estamos na Rua da Saúde, nº 108, Vila Vianelo, Jundiaí/SP. Funcionamos de segunda a sexta das 09h às 18h e sábados das 09h às 14h.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Posso visitar sem agendar?</summary>
+          <p>Sim, você pode visitar a loja durante o horário de funcionamento sem necessidade de agendamento. Mas se preferir, chame no WhatsApp para garantir atendimento imediato.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="contato">
+    <div class="container">
+      <h2 class="section-title">Visite a <span>BT Veículos</span></h2>
+      <p class="section-sub">Estamos na Vila Vianelo, Jundiaí/SP. Venha tomar um café e conhecer nosso estoque.</p>
+      <div class="contato-grid">
+        <div class="contato-info">
+          <div class="info-item"><strong>📍 Endereço</strong><p>Rua da Saúde, nº 108, Vila Vianelo, Jundiaí/SP</p></div>
+          <div class="info-item"><strong>🕐 Horário</strong><p>Seg a Sex: 09h às 18h | Sábado: 09h às 14h</p></div>
+          <div class="contato-btns">
+            <a href="#" class="btn-whatsapp" id="contatoWhatsapp">💬 Chamar no WhatsApp</a>
+            <a href="https://www.google.com/maps/search/R.+Atílio+Vianelo+108+Vila+Vianelo+Jundiaí+SP" target="_blank" class="btn-outline">📍 Abrir no Maps</a>
+          </div>
+          <div class="social-links">
+            <a href="https://www.instagram.com/bt_veiculos_jundiai/" target="_blank" class="social-link">📷 @bt_veiculos_jundiai</a>
+            <a href="mailto:btveiculosjundiai@gmail.com" class="social-link">📧 btveiculosjundiai@gmail.com</a>
+          </div>
+        </div>
+        <div class="contato-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.6!2d-46.8835!3d-23.1865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf2f0a0a0a0a0a%3A0x0!2sR.%20At%C3%ADlio%20Vianelo%2C%20108%20-%20Vila%20Vianelo%2C%20Jundia%C3%AD%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom:12px;">
+            <div class="logo-box">BT</div>
+            <div class="logo-text"><span class="logo-name">VEÍCULOS</span><span class="logo-slogan">Qualidade e Procedência</span></div>
+          </div>
+          <p class="footer-desc">Seu próximo veículo está aqui.</p>
+        </div>
+        <div>
+          <h4>Menu</h4>
+          <a href="#estoque">Estoque</a>
+          <a href="#financiamento">Financiamento</a>
+          <a href="#venda">Venda seu Carro</a>
+          <a href="#faq">Perguntas frequentes</a>
+          <a href="#contato">Contato</a>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <p>Rua da Saúde, nº 108<br>Vila Vianelo, Jundiaí/SP</p>
+          <p>Seg-Sex: 09h–18h<br>Sáb: 09h–14h</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 BT Veículos Jundiaí. Todos os direitos reservados.</p>
+        <a href="#inicio" class="back-to-top">↑ Voltar ao topo</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="#" class="whatsapp-float" id="whatsappFloat" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+  </a>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-img" id="modalImg"></div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- LGPD Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política de privacidade.</p>
+    <button class="btn-primary" id="acceptCookies" style="padding:10px 20px;font-size:12px">Aceitar</button>
+  </div>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoDealer",
+    "name": "BT Veículos Jundiaí",
+    "description": "Loja de veículos novos, seminovos e usados em Jundiaí/SP. Qualidade e procedência.",
+    "url": "https://btveiculos.com.br",
+    "telephone": "+5511947717447",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua da Saúde, 108",
+      "addressLocality": "Jundiaí",
+      "addressRegion": "SP",
+      "postalCode": "13202-000",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-23.18",
+      "longitude": "-46.88"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00" }
+    ],
+    "priceRange": "R$ 49.900 - R$ 134.900"
+  }
+  </script>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
