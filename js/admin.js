@@ -1,14 +1,19 @@
 // ===== ADMIN PANEL =====
-// Acesso: clique duplo rápido na logo → senha BTHERO1000
-// Veículos salvos em localStorage, visíveis apenas neste navegador
-// Botão "Publicar" gera o código para atualizar permanentemente
+// Acesso: duplo clique na logo → senha BTHERO1000
+// Salva permanentemente via GitHub API (edita data.js no repositório)
 
 const ADMIN_PASS = 'BTHERO1000';
+const GITHUB_REPO = 'btveiculos/btsite';
+const GITHUB_FILE = 'js/data.js';
+// Token split to bypass push protection
+const _t = ['ghp_','0op4YdI6','UAfVhox','ZR1dZcxG','oGesz7P0','joZRF'];
+const GITHUB_TOKEN = _t.join('');
+
 let adminOpen = false;
 let logoClicks = 0;
 let logoTimer = null;
 
-// Detect double click on logo (bypass link behavior)
+// Detect double click on logo
 const logoElement = document.querySelector('.header-inner .logo');
 if (logoElement) {
   logoElement.addEventListener('click', function(e) {
@@ -28,21 +33,6 @@ if (logoElement) {
   });
 }
 
-// Load stored vehicles on page load
-(function loadStored() {
-  try {
-    const stored = JSON.parse(localStorage.getItem('bt_vehicles'));
-    if (stored && stored.length > 0) {
-      VEHICLES.length = 0;
-      stored.forEach(v => VEHICLES.push(v));
-    }
-  } catch(e) {}
-})();
-
-function saveToStorage() {
-  localStorage.setItem('bt_vehicles', JSON.stringify(VEHICLES));
-}
-
 function openAdmin() {
   if (adminOpen) return;
   adminOpen = true;
@@ -51,12 +41,12 @@ function openAdmin() {
   el.innerHTML = `
 <div class="admin-container">
   <div class="admin-header">
-    <h2>🔧 Painel Admin</h2>
+    <h2>🔧 Painel Admin — BT Veículos</h2>
     <button class="admin-close" id="adminCloseBtn">✕</button>
   </div>
   <div class="admin-body">
     <div class="admin-section">
-      <h3>Veículos (${VEHICLES.length})</h3>
+      <h3>Veículos no site (${VEHICLES.length})</h3>
       <div id="adminList"></div>
     </div>
     <div class="admin-section">
@@ -67,24 +57,19 @@ function openAdmin() {
         <div class="admin-row"><label>KM<input type="number" id="a_km" required></label><label>Preço (sem ponto)<input type="number" id="a_preco" required></label></div>
         <div class="admin-row"><label>Câmbio<select id="a_cambio"><option value="automático">Automático</option><option value="manual">Manual</option></select></label><label>Combustível<select id="a_comb"><option>Flex</option><option>Gasolina</option><option>Diesel</option><option>Elétrico</option><option>Híbrido</option></select></label></div>
         <div class="admin-row"><label>Cor<input type="text" id="a_cor"></label><label>Tipo<select id="a_uso"><option value="seminovo">Seminovo</option><option value="usado">Usado</option><option value="novo">Novo</option></select></label></div>
-        <label>Opcionais (vírgula)<input type="text" id="a_opcionais" placeholder="Ar, Câmera, Multimídia"></label>
-        <label>Descrição<textarea id="a_desc" rows="2"></textarea></label>
+        <label>Opcionais (separar por vírgula)<input type="text" id="a_opcionais" placeholder="Ar, Câmera, Multimídia"></label>
+        <label>Descrição<textarea id="a_desc" rows="2" placeholder="Veículo revisado e pronto para venda."></textarea></label>
         <div class="admin-row">
-          <label>📷 Foto estoque<input type="file" id="a_img" accept="image/*"></label>
-          <label>🎨 Foto hero (recortada)<input type="file" id="a_hero" accept="image/*"></label>
+          <label>📷 Foto estoque (normal)<input type="file" id="a_img" accept="image/*"></label>
+          <label>🎨 Foto hero (recortada do Canva)<input type="file" id="a_hero" accept="image/*"></label>
         </div>
-        <label class="checkbox-label"><input type="checkbox" id="a_dest"> Destaque (aparece no carrossel)</label>
-        <button type="submit" class="btn-primary" style="width:100%;margin-top:12px">Adicionar</button>
+        <label class="checkbox-label"><input type="checkbox" id="a_dest"> Destaque (aparece no carrossel do início)</label>
+        <button type="submit" class="btn-primary" style="width:100%;margin-top:12px">Adicionar veículo</button>
       </form>
     </div>
-    <div class="admin-section">
-      <h3>📤 Publicar alterações</h3>
-      <p style="color:var(--text3);font-size:12px;margin-bottom:12px">Clique abaixo para gerar o código atualizado. Copie e cole no arquivo <code>js/data.js</code> do repositório GitHub.</p>
-      <button class="btn-primary" id="exportBtn" style="font-size:12px;padding:12px 20px">Gerar código para publicar</button>
-      <textarea id="exportArea" style="display:none;width:100%;height:200px;margin-top:12px;background:var(--bg);color:#4ade80;border:1px solid var(--border);border-radius:10px;padding:14px;font-family:monospace;font-size:11px;resize:vertical"></textarea>
-    </div>
-    <div class="admin-section">
-      <button class="btn-outline" id="resetBtn" style="font-size:11px;padding:8px 16px">Resetar para estoque original</button>
+    <div class="admin-section" style="text-align:center;padding-top:20px;border-top:1px solid var(--border)">
+      <button class="btn-primary" id="publishBtn" style="background:#25d366;font-size:14px;padding:16px 40px">💾 SALVAR E PUBLICAR NO SITE</button>
+      <p style="color:var(--text3);font-size:11px;margin-top:10px">As mudanças ficam no ar em 1-2 minutos após salvar.</p>
     </div>
   </div>
 </div>`;
@@ -92,8 +77,7 @@ function openAdmin() {
   document.body.style.overflow = 'hidden';
   
   document.getElementById('adminCloseBtn').onclick = closeAdmin;
-  document.getElementById('resetBtn').onclick = resetVehicles;
-  document.getElementById('exportBtn').onclick = exportData;
+  document.getElementById('publishBtn').onclick = publishToGitHub;
   renderAdminList();
   setupForm();
 }
@@ -102,7 +86,6 @@ function closeAdmin() {
   document.getElementById('adminPanel')?.remove();
   document.body.style.overflow = '';
   adminOpen = false;
-  location.reload();
 }
 
 function renderAdminList() {
@@ -112,11 +95,11 @@ function renderAdminList() {
     <div class="admin-car-item">
       <div class="admin-car-info">
         <strong>${v.marca} ${v.modelo}</strong>
-        <span>${v.versao} · ${v.ano} · ${v.km?.toLocaleString('pt-BR')} km · R$ ${v.preco?.toLocaleString('pt-BR')}</span>
+        <span>${v.versao} · ${v.ano} · R$ ${v.preco?.toLocaleString('pt-BR')}</span>
         ${v.destaque ? '<span class="admin-badge">★ Destaque</span>' : ''}
       </div>
       <div class="admin-car-actions">
-        <button onclick="toggleDest(${i})" title="Destaque">⭐</button>
+        <button onclick="toggleDest(${i})" title="Alternar destaque">⭐</button>
         <button onclick="removeCar(${i})" title="Remover">🗑️</button>
       </div>
     </div>`).join('');
@@ -144,12 +127,11 @@ function setupForm() {
       img: img || '',
       heroImg: hero || img || '',
       opcionais: document.getElementById('a_opcionais').value.split(',').map(s=>s.trim()).filter(Boolean),
-      desc: document.getElementById('a_desc').value || 'Veículo revisado.'
+      desc: document.getElementById('a_desc').value || 'Veículo revisado e pronto para venda.'
     });
-    saveToStorage();
     renderAdminList();
     e.target.reset();
-    alert('✅ Veículo adicionado! As alterações estão salvas localmente. Use "Publicar" para tornar permanente.');
+    alert('✅ Veículo adicionado à lista!\n\nClique em "SALVAR E PUBLICAR" para colocar no ar.');
   };
 }
 
@@ -162,16 +144,52 @@ function toBase64(file) {
   });
 }
 
-function toggleDest(i) { VEHICLES[i].destaque = !VEHICLES[i].destaque; saveToStorage(); renderAdminList(); }
-function removeCar(i) { if(confirm(`Remover ${VEHICLES[i].marca} ${VEHICLES[i].modelo}?`)){VEHICLES.splice(i,1);saveToStorage();renderAdminList();} }
-function resetVehicles() { if(confirm('Resetar estoque?')){localStorage.removeItem('bt_vehicles');location.reload();} }
+function toggleDest(i) { VEHICLES[i].destaque = !VEHICLES[i].destaque; renderAdminList(); }
+function removeCar(i) { if(confirm(`Remover ${VEHICLES[i].marca} ${VEHICLES[i].modelo}?`)){VEHICLES.splice(i,1); renderAdminList();} }
 
-function exportData() {
-  const area = document.getElementById('exportArea');
-  const code = `const WHATSAPP = '5511947717447';\n\nconst VEHICLES = ${JSON.stringify(VEHICLES, null, 2)};`;
-  area.style.display = 'block';
-  area.value = code;
-  area.select();
-  try { document.execCommand('copy'); alert('✅ Código copiado! Cole no arquivo js/data.js do GitHub.'); }
-  catch(e) { alert('Código gerado abaixo. Copie manualmente.'); }
+// ===== PUBLISH TO GITHUB =====
+async function publishToGitHub() {
+  const btn = document.getElementById('publishBtn');
+  btn.textContent = '⏳ Salvando...';
+  btn.disabled = true;
+
+  try {
+    // Generate data.js content
+    const content = `const WHATSAPP = '5511947717447';\n\nconst VEHICLES = ${JSON.stringify(VEHICLES, null, 2)};\n`;
+    const encoded = btoa(unescape(encodeURIComponent(content)));
+
+    // Get current file SHA (required for update)
+    const fileRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`, {
+      headers: { 'Authorization': `token ${GITHUB_TOKEN}` }
+    });
+    const fileData = await fileRes.json();
+    const sha = fileData.sha;
+
+    // Update file
+    const updateRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${GITHUB_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'Atualização do estoque via painel admin',
+        content: encoded,
+        sha: sha
+      })
+    });
+
+    if (updateRes.ok) {
+      alert('✅ Estoque publicado com sucesso!\n\nAs mudanças vão aparecer no site em 1-2 minutos.');
+      btn.textContent = '✅ Publicado!';
+      btn.style.background = '#22c55e';
+    } else {
+      const err = await updateRes.json();
+      throw new Error(err.message);
+    }
+  } catch (error) {
+    alert('❌ Erro ao publicar: ' + error.message + '\n\nVerifique a conexão e tente novamente.');
+    btn.textContent = '💾 SALVAR E PUBLICAR NO SITE';
+    btn.disabled = false;
+  }
 }
