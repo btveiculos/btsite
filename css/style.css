@@ -265,27 +265,90 @@ a{text-decoration:none;color:inherit}
 .empty-state p{color:var(--text2);font-size:15px;margin-bottom:16px}
 
 /* ═══ MOBILE REFINEMENTS ═══ */
-@media(max-width:480px){
-  .hero-title{font-size:22px}
-  .hero-ctas{flex-direction:column;width:100%;padding:0 20px}
-  .hero-ctas a{width:100%}
+
+/* Tablet */
+@media(max-width:768px){
+  .container{padding:0 16px}
+  .hero-content{padding:80px 16px 32px}
+  .hero-title{font-size:clamp(22px,6vw,36px)}
+  .hero-subtitle{font-size:12px}
+  .hero-tag{font-size:10px;letter-spacing:.2em}
+  .car-slide.center{width:80%;height:280px}
+  .car-slide.side{display:none}
+  .carousel-arrow{width:40px;height:40px;font-size:16px}
+  .carousel-arrow.left{left:8px}
+  .carousel-arrow.right{right:8px}
+  .hero-car-name{font-size:10px}
   .hero-car-price{font-size:28px!important}
-  .filters{flex-direction:column}
-  .filters input,.filters select{min-width:100%}
-  .estoque-grid{grid-template-columns:1fr}
-  .destaques-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .destaque-card .card-img{height:90px;padding:10px}
-  .destaque-card .card-body{padding:10px}
-  .destaque-card .card-body h3{font-size:12px}
-  .destaque-card .card-body .price{font-size:15px}
-  .dep-text{font-size:15px}
+  .hero-ctas{flex-direction:column;width:100%;gap:10px}
+  .hero-ctas a,.hero-ctas button{width:100%;padding:14px 20px}
+  .section-title{font-size:clamp(22px,6vw,32px)}
+  .section-sub{font-size:14px;margin-bottom:32px}
+  .beneficios-grid{gap:8px 20px}
+  .beneficio{font-size:12px;padding:8px 0}
+  .destaques{padding:48px 0}
+  .destaques-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .destaque-card .card-img{height:100px;padding:12px}
+  .destaque-card .card-body{padding:12px}
+  .destaque-card .card-body h3{font-size:13px}
+  .destaque-card .card-body p{font-size:10px}
+  .destaque-card .card-body .price{font-size:16px;margin-top:6px}
+  .estoque{padding:60px 0}
+  .filters{flex-direction:column;gap:8px}
+  .filters input,.filters select{min-width:100%;padding:14px 16px;font-size:14px}
+  .estoque-grid{grid-template-columns:1fr;gap:16px}
+  .vehicle-card .card-img{height:200px;padding:16px}
+  .vehicle-card .card-body{padding:16px}
+  .vehicle-card .price{font-size:22px}
+  .forms-section{padding:60px 0}
+  .forms-grid{grid-template-columns:1fr;gap:40px}
+  .form-block-title{font-size:22px;text-align:center}
+  .form-block-sub{text-align:center}
+  .form-card{padding:24px 20px}
+  .faq{padding:60px 0}
+  .faq-item summary{padding:16px 18px;font-size:14px}
+  .faq-item p{padding:0 18px 16px;font-size:13px}
+  .contato{padding:60px 0}
+  .contato-grid{grid-template-columns:1fr;gap:24px}
   .contato-btns{flex-direction:column}
-  .contato-btns a{width:100%}
-  .cta-inner{padding:24px 20px}
-  .modal-img{height:180px;padding:20px}
-  .modal-body{padding:20px}
+  .contato-btns a{width:100%;text-align:center}
+  .contato-map{min-height:250px}
+  .social-links{flex-direction:column;gap:8px}
+  .social-link{width:100%;justify-content:center}
+  .footer{padding:48px 0 0}
+  .footer-grid{grid-template-columns:1fr;gap:32px;padding-bottom:32px}
+  .modal-content{flex-direction:column!important;max-height:95vh!important;border-radius:14px}
+  .modal-img{height:200px!important;width:100%!important;border-radius:14px 14px 0 0!important;padding:20px!important}
+  .modal-body{width:100%!important;max-height:none!important;padding:24px!important}
   .modal-body h2{font-size:20px}
-  .modal-body .modal-price{font-size:26px}
+  .modal-body .modal-price{font-size:28px;margin:8px 0 16px}
+  .modal-body .modal-specs{grid-template-columns:1fr 1fr;gap:8px}
+  .whatsapp-float{width:50px;height:50px;bottom:16px;right:16px}
+  .whatsapp-float svg{width:24px;height:24px}
+}
+
+/* Small phones */
+@media(max-width:380px){
+  .hero-title{font-size:20px}
+  .hero-ctas a,.hero-ctas button{font-size:12px;padding:13px 16px}
+  .hero-car-price{font-size:24px!important}
+  .car-slide.center{height:220px}
+  .destaques-grid{grid-template-columns:1fr;gap:10px}
+  .destaque-card{display:flex;flex-direction:row;align-items:center}
+  .destaque-card .card-img{height:80px;width:100px;flex-shrink:0;border-radius:var(--radius) 0 0 var(--radius)}
+  .destaque-card .card-body{text-align:left;padding:12px}
+  .vehicle-card .card-img{height:160px}
+  .form-row{grid-template-columns:1fr!important}
+  .modal-body .modal-specs{grid-template-columns:1fr}
+  .admin-row{grid-template-columns:1fr!important}
+}
+
+/* Touch-specific — remove hover effects on mobile */
+@media(hover:none){
+  .vehicle-card:hover,.destaque-card:hover{transform:none;box-shadow:none}
+  .vehicle-card:active,.destaque-card:active{transform:scale(.98)}
+  .btn-primary:hover,.btn-outline:hover,.btn-whatsapp:hover{transform:none;box-shadow:none}
+  .btn-primary:active,.btn-outline:active,.btn-whatsapp:active{transform:scale(.96)}
 }
 
 /* ═══ SMOOTH LOADING ═══ */
