@@ -250,8 +250,31 @@ function openModal(v) {
   const imgDiv = document.getElementById('modalImg');
   const body = document.getElementById('modalBody');
   
-  imgDiv.innerHTML = '';
-  imgDiv.appendChild(carImg(v));
+  // Gallery with multiple photos
+  const photos = v.fotos && v.fotos.length > 0 ? v.fotos : [v.img];
+  let currentPhoto = 0;
+  
+  function renderPhoto() {
+    imgDiv.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = photos[currentPhoto];
+    img.alt = v.marca + ' ' + v.modelo;
+    img.onerror = function() { this.outerHTML = carSVG; };
+    imgDiv.appendChild(img);
+    
+    if (photos.length > 1) {
+      imgDiv.innerHTML += `
+        <button class="modal-nav modal-nav-left" onclick="modalPrevPhoto()">&#10094;</button>
+        <button class="modal-nav modal-nav-right" onclick="modalNextPhoto()">&#10095;</button>
+        <div class="modal-photo-counter">${currentPhoto+1} / ${photos.length}</div>
+      `;
+    }
+  }
+  
+  window.modalPrevPhoto = () => { currentPhoto = (currentPhoto - 1 + photos.length) % photos.length; renderPhoto(); };
+  window.modalNextPhoto = () => { currentPhoto = (currentPhoto + 1) % photos.length; renderPhoto(); };
+  
+  renderPhoto();
   
   body.innerHTML = `
     <h2>${v.marca} ${v.modelo}</h2>
@@ -265,7 +288,7 @@ function openModal(v) {
       <div class="spec"><small>Cor</small><strong>${v.cor}</strong></div>
       <div class="spec"><small>Uso</small><strong style="text-transform:capitalize">${v.uso}</strong></div>
     </div>
-    ${v.opcionais.length ? `<h4 style="font-size:12px;margin-bottom:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-weight:600">Opcionais e equipamentos</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>✓ ${o}</span>`).join('')}</div>` : ''}
+    ${v.opcionais && v.opcionais.length ? `<h4 style="font-size:12px;margin-bottom:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-weight:600">Opcionais e equipamentos</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>✓ ${o}</span>`).join('')}</div>` : ''}
     <div class="modal-desc">${v.desc}</div>
     <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" class="btn-whatsapp">💬 Tenho interesse neste veículo</a>
     <p style="text-align:center;color:var(--text3);font-size:11px;margin-top:10px">Você será direcionado ao WhatsApp da BT Veículos</p>
