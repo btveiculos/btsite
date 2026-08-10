@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://btveiculos.com.br/sitemap.xml
+Sitemap: https://btveiculosjundiai.com.br/sitemap.xml

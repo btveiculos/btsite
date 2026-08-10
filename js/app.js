@@ -122,6 +122,10 @@ document.getElementById('nextBtn').onclick = () => heroGo('n');
 renderHero();
 heroTimer = setInterval(() => heroGo('n'), 6000);
 
+// Update vehicle count
+const countEl = document.getElementById('vehicleCount');
+if (countEl) countEl.textContent = VEHICLES.length;
+
 // Keyboard support
 document.addEventListener('keydown', e => {
   if (document.getElementById('modal').classList.contains('open')) {
