@@ -23,6 +23,7 @@ const VEHICLES = [
       "Vidros elétricos"
     ],
     "desc": "Voyage 1.0 Flex completo. Econômico e espaçoso.",
+    "fotos": ["/carros/volkswagen-voyage-2022-1.jpg","/carros/volkswagen-voyage-2022-2.jpg","/carros/volkswagen-voyage-2022-3.jpg","/carros/volkswagen-voyage-2022-4.jpg","/carros/volkswagen-voyage-2022-5.jpg","/carros/volkswagen-voyage-2022-6.jpg","/carros/volkswagen-voyage-2022-7.jpg","/carros/volkswagen-voyage-2022-8.jpg","/carros/volkswagen-voyage-2022-9.jpg","/carros/volkswagen-voyage-2022-10.jpg"],
     "fotos": [
       "/carros/volkswagen-voyage-2022-1.jpg",
       "/carros/volkswagen-voyage-2022-2.jpg",
@@ -58,6 +59,7 @@ const VEHICLES = [
       "Vidros elétricos"
     ],
     "desc": "Fox 1.6 Run completo. Versátil e econômico.",
+    "fotos": ["/carros/volkswagen-fox-2016-1.jpg","/carros/volkswagen-fox-2016-2.jpg","/carros/volkswagen-fox-2016-3.jpg","/carros/volkswagen-fox-2016-4.jpg","/carros/volkswagen-fox-2016-5.jpg","/carros/volkswagen-fox-2016-6.jpg"],
     "fotos": [
       "/carros/volkswagen-fox-2016-1.jpg",
       "/carros/volkswagen-fox-2016-2.jpg",
@@ -134,6 +136,7 @@ const VEHICLES = [
       "Vidros elétricos"
     ],
     "desc": "Uno Sporting 1.4 completo. Esportivo e econômico.",
+    "fotos": ["/carros/fiat-uno-2012-1.jpg","/carros/fiat-uno-2012-2.jpg","/carros/fiat-uno-2012-3.jpg","/carros/fiat-uno-2012-4.jpg","/carros/fiat-uno-2012-5.jpg","/carros/fiat-uno-2012-6.jpg","/carros/fiat-uno-2012-7.jpg","/carros/fiat-uno-2012-8.jpg","/carros/fiat-uno-2012-9.jpg"],
     "fotos": [
       "/carros/fiat-uno-2012-1.jpg",
       "/carros/fiat-uno-2012-2.jpg",
@@ -160,7 +163,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 63900,
-    "img": "/carros/argo.jpg",
+    "img": "/carros/fiat-argo-2018-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -170,6 +173,7 @@ const VEHICLES = [
       "Direção elétrica"
     ],
     "desc": "Argo Drive 1.3 automático com banco de couro. Completo.",
+    "fotos": ["/carros/fiat-argo-2018-1.jpg","/carros/fiat-argo-2018-2.jpg","/carros/fiat-argo-2018-3.jpg","/carros/fiat-argo-2018-4.jpg","/carros/fiat-argo-2018-5.jpg","/carros/fiat-argo-2018-6.jpg","/carros/fiat-argo-2018-7.jpg","/carros/fiat-argo-2018-8.jpg","/carros/fiat-argo-2018-9.jpg","/carros/fiat-argo-2018-10.jpg","/carros/fiat-argo-2018-11.jpg"],
     "fotos": [
       "/carros/fiat-argo-2018-1.jpg",
       "/carros/fiat-argo-2018-2.jpg",
@@ -208,6 +212,7 @@ const VEHICLES = [
       "Sensor de estacionamento"
     ],
     "desc": "Cronos 1.0 Flex completo. Sedan compacto moderno.",
+    "fotos": ["/carros/fiat-cronos-2023-1.jpg","/carros/fiat-cronos-2023-2.jpg","/carros/fiat-cronos-2023-3.jpg","/carros/fiat-cronos-2023-4.jpg","/carros/fiat-cronos-2023-5.jpg","/carros/fiat-cronos-2023-6.jpg","/carros/fiat-cronos-2023-7.jpg","/carros/fiat-cronos-2023-8.jpg","/carros/fiat-cronos-2023-9.jpg","/carros/fiat-cronos-2023-10.jpg","/carros/fiat-cronos-2023-11.jpg"],
     "fotos": [
       "/carros/fiat-cronos-2023-1.jpg",
       "/carros/fiat-cronos-2023-2.jpg",
@@ -244,6 +249,7 @@ const VEHICLES = [
       "Vidros elétricos"
     ],
     "desc": "Fiesta Class 1.6 completo. Compacto e econômico.",
+    "fotos": ["/carros/ford-fiesta-2011-1.jpg","/carros/ford-fiesta-2011-2.jpg","/carros/ford-fiesta-2011-3.jpg","/carros/ford-fiesta-2011-4.jpg","/carros/ford-fiesta-2011-5.jpg","/carros/ford-fiesta-2011-6.jpg"],
     "fotos": [
       "/carros/ford-fiesta-2011-1.jpg",
       "/carros/ford-fiesta-2011-2.jpg",
@@ -292,7 +298,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Branco",
     "preco": 63850,
-    "img": "/carros/onix-lt-2022.jpg",
+    "img": "/carros/chevrolet-onix-2021-1.jpg",
     "heroImg": "/carros/onix-hero.png",
     "opcionais": [
       "Ar-condicionado",
@@ -301,6 +307,7 @@ const VEHICLES = [
       "Direção elétrica"
     ],
     "desc": "Onix Hatch LT 1.0. Moderno e econômico.",
+    "fotos": ["/carros/chevrolet-onix-2021-1.jpg","/carros/chevrolet-onix-2021-2.jpg","/carros/chevrolet-onix-2021-3.jpg","/carros/chevrolet-onix-2021-4.jpg","/carros/chevrolet-onix-2021-5.jpg","/carros/chevrolet-onix-2021-6.jpg","/carros/chevrolet-onix-2021-7.jpg","/carros/chevrolet-onix-2021-8.jpg","/carros/chevrolet-onix-2021-9.jpg"],
     "fotos": [
       "/carros/chevrolet-onix-2021-1.jpg",
       "/carros/chevrolet-onix-2021-2.jpg",
@@ -336,6 +343,7 @@ const VEHICLES = [
       "Direção elétrica"
     ],
     "desc": "Onix Sedan Plus LT completo. Espaçoso.",
+    "fotos": ["/carros/chevrolet-onix-sedan-2024-1.jpg","/carros/chevrolet-onix-sedan-2024-2.jpg","/carros/chevrolet-onix-sedan-2024-3.jpg","/carros/chevrolet-onix-sedan-2024-4.jpg","/carros/chevrolet-onix-sedan-2024-5.jpg","/carros/chevrolet-onix-sedan-2024-6.jpg","/carros/chevrolet-onix-sedan-2024-7.jpg","/carros/chevrolet-onix-sedan-2024-8.jpg","/carros/chevrolet-onix-sedan-2024-9.jpg","/carros/chevrolet-onix-sedan-2024-10.jpg"],
     "fotos": [
       "/carros/chevrolet-onix-sedan-2024-1.jpg",
       "/carros/chevrolet-onix-sedan-2024-2.jpg",
@@ -421,6 +429,7 @@ const VEHICLES = [
       "Central multimídia"
     ],
     "desc": "Kwid Zen 1.0 completo. Compacto e econômico.",
+    "fotos": ["/carros/renault-kwid-zen-2023-1.jpg","/carros/renault-kwid-zen-2023-2.jpg","/carros/renault-kwid-zen-2023-3.jpg","/carros/renault-kwid-zen-2023-4.jpg","/carros/renault-kwid-zen-2023-5.jpg","/carros/renault-kwid-zen-2023-6.jpg","/carros/renault-kwid-zen-2023-7.jpg","/carros/renault-kwid-zen-2023-8.jpg"],
     "fotos": [
       "/carros/renault-kwid-zen-2023-1.jpg",
       "/carros/renault-kwid-zen-2023-2.jpg",
@@ -496,7 +505,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Azul",
     "preco": 78900,
-    "img": "/carros/hb20s.jpg",
+    "img": "/carros/hyundai-hb20s-2025-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -505,7 +514,8 @@ const VEHICLES = [
       "Central multimídia",
       "Câmera de ré"
     ],
-    "desc": "HB20S Confort Sedan completo. Modelo 2025."
+    "desc": "HB20S Confort Sedan completo. Modelo 2025.",
+    "fotos": ["/carros/hyundai-hb20s-2025-1.jpg","/carros/hyundai-hb20s-2025-2.jpg","/carros/hyundai-hb20s-2025-3.jpg","/carros/hyundai-hb20s-2025-4.jpg","/carros/hyundai-hb20s-2025-5.jpg","/carros/hyundai-hb20s-2025-6.jpg","/carros/hyundai-hb20s-2025-7.jpg","/carros/hyundai-hb20s-2025-8.jpg","/carros/hyundai-hb20s-2025-9.jpg","/carros/hyundai-hb20s-2025-10.jpg"]
   },
   {
     "id": 18,
@@ -529,6 +539,7 @@ const VEHICLES = [
       "Vidros elétricos"
     ],
     "desc": "Tucson 2.0 mecânica. SUV espaçosa.",
+    "fotos": ["/carros/hyundai-tucson-2009-1.jpg","/carros/hyundai-tucson-2009-2.jpg","/carros/hyundai-tucson-2009-3.jpg","/carros/hyundai-tucson-2009-4.jpg","/carros/hyundai-tucson-2009-5.jpg","/carros/hyundai-tucson-2009-6.jpg","/carros/hyundai-tucson-2009-7.jpg","/carros/hyundai-tucson-2009-8.jpg","/carros/hyundai-tucson-2009-9.jpg","/carros/hyundai-tucson-2009-10.jpg"],
     "fotos": [
       "/carros/hyundai-tucson-2009-1.jpg",
       "/carros/hyundai-tucson-2009-2.jpg",
@@ -588,6 +599,7 @@ const VEHICLES = [
       "Vidros elétricos"
     ],
     "desc": "C3 Aircross GLX 1.6 completo. Versátil.",
+    "fotos": ["/carros/citroen-c3-aircross-2011-1.jpg","/carros/citroen-c3-aircross-2011-2.jpg","/carros/citroen-c3-aircross-2011-3.jpg","/carros/citroen-c3-aircross-2011-4.jpg","/carros/citroen-c3-aircross-2011-5.jpg","/carros/citroen-c3-aircross-2011-6.jpg","/carros/citroen-c3-aircross-2011-7.jpg","/carros/citroen-c3-aircross-2011-8.jpg","/carros/citroen-c3-aircross-2011-9.jpg","/carros/citroen-c3-aircross-2011-10.jpg","/carros/citroen-c3-aircross-2011-11.jpg"],
     "fotos": [
       "/carros/citroen-c3-aircross-2011-1.jpg",
       "/carros/citroen-c3-aircross-2011-2.jpg",
