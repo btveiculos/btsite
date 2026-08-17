@@ -483,8 +483,8 @@ const VEHICLES = [
     "cambio": "manual",
     "combustivel": "Flex",
     "cor": "Azul",
-    "preco": 78900,
-    "img": "/carros/hb20s.jpg",
+    "preco": 82900,
+    "img": "/carros/hyundai-hb20s-2025-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -493,7 +493,19 @@ const VEHICLES = [
       "Central multimídia",
       "Câmera de ré"
     ],
-    "desc": "HB20S Confort Sedan completo. Modelo 2025."
+    "desc": "HB20S Confort Sedan completo. Modelo 2025.",
+    "fotos": [
+      "/carros/hyundai-hb20s-2025-1.jpg",
+      "/carros/hyundai-hb20s-2025-2.jpg",
+      "/carros/hyundai-hb20s-2025-3.jpg",
+      "/carros/hyundai-hb20s-2025-4.jpg",
+      "/carros/hyundai-hb20s-2025-5.jpg",
+      "/carros/hyundai-hb20s-2025-6.jpg",
+      "/carros/hyundai-hb20s-2025-7.jpg",
+      "/carros/hyundai-hb20s-2025-8.jpg",
+      "/carros/hyundai-hb20s-2025-9.jpg",
+      "/carros/hyundai-hb20s-2025-10.jpg"
+    ]
   },
   {
     "id": 18,
