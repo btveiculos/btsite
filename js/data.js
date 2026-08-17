@@ -613,7 +613,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 49900,
-    "img": "/carros/mobi.jpg",
+    "img": "/carros/fiat-mobi-2019-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
