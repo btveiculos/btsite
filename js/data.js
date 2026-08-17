@@ -362,31 +362,6 @@ const VEHICLES = [
     "desc": "Classic LS 1.0 completo. Econômico e confiável."
   },
   {
-    "id": 13,
-    "destaque": false,
-    "marca": "Renault",
-    "modelo": "Captur",
-    "versao": "Intense 2.0 Automático Completo",
-    "ano": 2017,
-    "anoModelo": 2018,
-    "km": 156200,
-    "uso": "usado",
-    "cambio": "automático",
-    "combustivel": "Flex",
-    "cor": "Vermelho",
-    "preco": 75900,
-    "img": "/carros/captur.jpg",
-    "heroImg": "",
-    "opcionais": [
-      "Ar-condicionado digital",
-      "Câmera de ré",
-      "Central multimídia",
-      "Piloto automático",
-      "Rodas 17\""
-    ],
-    "desc": "Captur Intense 2.0 automática. SUV completo."
-  },
-  {
     "id": 14,
     "destaque": false,
     "marca": "Renault",
