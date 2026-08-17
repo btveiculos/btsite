@@ -106,7 +106,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Laranja",
     "preco": 43900,
-    "img": "/carros/fiat-uno-2012-9.jpg",
+    "img": "",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -114,9 +114,7 @@ const VEHICLES = [
       "Vidros elétricos"
     ],
     "desc": "Uno Sporting 1.4 completo. Esportivo e econômico.",
-    "fotos": [
-      "/carros/fiat-uno-2012-9.jpg"
-    ]
+    "fotos": []
   },
   {
     "id": 6,
