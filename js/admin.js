@@ -471,14 +471,30 @@ async function updateDataJS() {
 }
 
 function fileToBase64Raw(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = e.target.result;
-      // Try to compress via canvas
-      const img = new Image();
-      img.onload = () => {
-        try {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // Use createImageBitmap - supports HEIC/HEIF on modern browsers
+      const bitmap = await createImageBitmap(file);
+      const MAX = 1200;
+      let w = bitmap.width, h = bitmap.height;
+      if (w > MAX || h > MAX) {
+        if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
+        else { w = Math.round(w * MAX / h); h = MAX; }
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(bitmap, 0, 0, w, h);
+      bitmap.close();
+      const compressed = canvas.toDataURL('image/jpeg', 0.70);
+      resolve(compressed.split(',')[1]);
+    } catch(e) {
+      // Fallback for older browsers: try via img tag
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const img = new Image();
+        img.onload = () => {
           const MAX = 1200;
           let w = img.width, h = img.height;
           if (w > MAX || h > MAX) {
@@ -488,23 +504,15 @@ function fileToBase64Raw(file) {
           const canvas = document.createElement('canvas');
           canvas.width = w;
           canvas.height = h;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, w, h);
-          const compressed = canvas.toDataURL('image/jpeg', 0.65);
-          resolve(compressed.split(',')[1]);
-        } catch(canvasErr) {
-          // Fallback: use original file without compression
-          resolve(dataUrl.split(',')[1]);
-        }
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          resolve(canvas.toDataURL('image/jpeg', 0.70).split(',')[1]);
+        };
+        img.onerror = () => reject(new Error('Formato de imagem não suportado. Converta para JPG antes de enviar.'));
+        img.src = ev.target.result;
       };
-      img.onerror = () => {
-        // Image format not supported for canvas, use original
-        resolve(dataUrl.split(',')[1]);
-      };
-      img.src = dataUrl;
-    };
-    reader.onerror = () => reject(new Error('Não foi possível ler o arquivo'));
-    reader.readAsDataURL(file);
+      reader.onerror = () => reject(new Error('Erro ao ler arquivo'));
+      reader.readAsDataURL(file);
+    }
   });
 }
 
