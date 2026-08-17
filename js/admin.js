@@ -165,8 +165,11 @@ function editCar(i) {
             ${fi===0?'<span class="edit-photo-capa">CAPA</span>':''}
           </div>`).join('')}
       </div>
-      <label class="edit-add-photos-btn">➕ Adicionar fotos<input type="file" id="e_fotos" accept="image/*" multiple style="display:none"></label>
-      <label class="edit-add-photos-btn">🎨 Trocar hero<input type="file" id="e_hero" accept="image/*" style="display:none"></label>
+      <label class="edit-add-photos-btn" for="e_fotos">➕ Adicionar fotos<input type="file" id="e_fotos" accept="image/*" multiple style="position:absolute;opacity:0;width:0;height:0"></label>
+      <div class="edit-dropzone" id="editDropzone">
+        <span>📁 Arraste fotos aqui ou clique acima</span>
+      </div>
+      <label class="edit-add-photos-btn" for="e_hero">🎨 Trocar hero<input type="file" id="e_hero" accept="image/*" style="position:absolute;opacity:0;width:0;height:0"></label>
     </div>
   </div>
   <div class="edit-main">
@@ -192,7 +195,7 @@ function editCar(i) {
 
   document.getElementById('editCloseBtn').onclick = () => editDiv.remove();
 
-  // Drag and drop for photos
+  // Drag and drop for reordering photos
   const grid = document.getElementById('editPhotosGrid');
   if (grid) {
     let dragIdx = null;
@@ -216,6 +219,28 @@ function editCar(i) {
         }
       }
       dragIdx = null;
+    });
+  }
+
+  // Dropzone for dragging files from computer
+  const dropzone = document.getElementById('editDropzone');
+  const fileInput = document.getElementById('e_fotos');
+  if (dropzone && fileInput) {
+    dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+    dropzone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      if (e.dataTransfer.files.length > 0) {
+        fileInput.files = e.dataTransfer.files;
+        dropzone.querySelector('span').textContent = `✅ ${e.dataTransfer.files.length} foto(s) selecionada(s)`;
+      }
+    });
+    dropzone.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length > 0) {
+        dropzone.querySelector('span').textContent = `✅ ${fileInput.files.length} foto(s) selecionada(s)`;
+      }
     });
   }
 
