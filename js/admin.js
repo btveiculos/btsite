@@ -306,7 +306,8 @@ function editCar(i) {
       alert('✅ Veículo atualizado com sucesso!');
 
     } catch (error) {
-      alert('❌ Erro: ' + error.message);
+      const msg = error?.message || error?.toString() || 'Erro desconhecido';
+      alert('❌ Erro: ' + msg);
       btn.textContent = '💾 Salvar alterações';
       btn.disabled = false;
       progress.textContent = '❌ Erro ao salvar.';
@@ -498,7 +499,13 @@ function fileToBase64Raw(file) {
 }
 
 async function uploadFileToGitHubWithRetry(file, path, retries = 4) {
-  const base64 = await fileToBase64Raw(file);
+  if (!file) throw new Error(`Arquivo não encontrado para ${path}`);
+  let base64;
+  try {
+    base64 = await fileToBase64Raw(file);
+  } catch(convErr) {
+    throw new Error(`Erro ao processar imagem ${path}: ${convErr.message || convErr}`);
+  }
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
       // Check if file exists (to get SHA for update)
