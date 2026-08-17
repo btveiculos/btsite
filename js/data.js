@@ -327,7 +327,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Branco",
     "preco": 74900,
-    "img": "/carros/onix-sedan.jpg",
+    "img": "/carros/chevrolet-onix-sedan-2024-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -335,7 +335,19 @@ const VEHICLES = [
       "Câmera de ré",
       "Direção elétrica"
     ],
-    "desc": "Onix Sedan Plus LT completo. Espaçoso."
+    "desc": "Onix Sedan Plus LT completo. Espaçoso.",
+    "fotos": [
+      "/carros/chevrolet-onix-sedan-2024-1.jpg",
+      "/carros/chevrolet-onix-sedan-2024-2.jpg",
+      "/carros/chevrolet-onix-sedan-2024-3.jpg",
+      "/carros/chevrolet-onix-sedan-2024-4.jpg",
+      "/carros/chevrolet-onix-sedan-2024-5.jpg",
+      "/carros/chevrolet-onix-sedan-2024-6.jpg",
+      "/carros/chevrolet-onix-sedan-2024-7.jpg",
+      "/carros/chevrolet-onix-sedan-2024-8.jpg",
+      "/carros/chevrolet-onix-sedan-2024-9.jpg",
+      "/carros/chevrolet-onix-sedan-2024-10.jpg"
+    ]
   },
   {
     "id": 12,
@@ -360,6 +372,31 @@ const VEHICLES = [
       "Trava elétrica"
     ],
     "desc": "Classic LS 1.0 completo. Econômico e confiável."
+  },
+  {
+    "id": 13,
+    "destaque": false,
+    "marca": "Renault",
+    "modelo": "Captur",
+    "versao": "Intense 2.0 Automático Completo",
+    "ano": 2017,
+    "anoModelo": 2018,
+    "km": 156200,
+    "uso": "usado",
+    "cambio": "automático",
+    "combustivel": "Flex",
+    "cor": "Vermelho",
+    "preco": 75900,
+    "img": "/carros/captur.jpg",
+    "heroImg": "",
+    "opcionais": [
+      "Ar-condicionado digital",
+      "Câmera de ré",
+      "Central multimídia",
+      "Piloto automático",
+      "Rodas 17\""
+    ],
+    "desc": "Captur Intense 2.0 automática. SUV completo."
   },
   {
     "id": 14,
@@ -421,6 +458,31 @@ const VEHICLES = [
     "desc": "HB20 Sense 1.0 Flex completo. Design moderno."
   },
   {
+    "id": 16,
+    "destaque": false,
+    "marca": "Hyundai",
+    "modelo": "HB20",
+    "versao": "Confort 1.0 Flex 12V MEC. G Completo",
+    "ano": 2023,
+    "anoModelo": 2024,
+    "km": 119000,
+    "uso": "seminovo",
+    "cambio": "manual",
+    "combustivel": "Flex",
+    "cor": "Preto",
+    "preco": 78900,
+    "img": "/carros/hb20-confort.jpg",
+    "heroImg": "",
+    "opcionais": [
+      "Ar-condicionado",
+      "Direção elétrica",
+      "Vidros elétricos",
+      "Central multimídia",
+      "Câmera de ré"
+    ],
+    "desc": "HB20 Confort 1.0 completo. Modelo atualizado."
+  },
+  {
     "id": 17,
     "destaque": false,
     "marca": "Hyundai",
@@ -433,8 +495,8 @@ const VEHICLES = [
     "cambio": "manual",
     "combustivel": "Flex",
     "cor": "Azul",
-    "preco": 82900,
-    "img": "/carros/hyundai-hb20s-2025-1.jpg",
+    "preco": 78900,
+    "img": "/carros/hb20s.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -443,19 +505,7 @@ const VEHICLES = [
       "Central multimídia",
       "Câmera de ré"
     ],
-    "desc": "HB20S Confort Sedan completo. Modelo 2025.",
-    "fotos": [
-      "/carros/hyundai-hb20s-2025-1.jpg",
-      "/carros/hyundai-hb20s-2025-2.jpg",
-      "/carros/hyundai-hb20s-2025-3.jpg",
-      "/carros/hyundai-hb20s-2025-4.jpg",
-      "/carros/hyundai-hb20s-2025-5.jpg",
-      "/carros/hyundai-hb20s-2025-6.jpg",
-      "/carros/hyundai-hb20s-2025-7.jpg",
-      "/carros/hyundai-hb20s-2025-8.jpg",
-      "/carros/hyundai-hb20s-2025-9.jpg",
-      "/carros/hyundai-hb20s-2025-10.jpg"
-    ]
+    "desc": "HB20S Confort Sedan completo. Modelo 2025."
   },
   {
     "id": 18,
@@ -765,19 +815,9 @@ const VEHICLES = [
     "combustivel": "Gasolina",
     "cor": "Branca",
     "preco": 39900,
-    "img": "/carros/suzuki-gsx-r-750-2010-1.jpg",
+    "img": "/carros/gsxr750.jpg",
     "heroImg": "",
     "opcionais": [],
-    "desc": "GSX-R 750 SRAD. Moto esportiva em excelente estado.",
-    "fotos": [
-      "/carros/suzuki-gsx-r-750-2010-1.jpg",
-      "/carros/suzuki-gsx-r-750-2010-2.jpg",
-      "/carros/suzuki-gsx-r-750-2010-3.jpg",
-      "/carros/suzuki-gsx-r-750-2010-4.jpg",
-      "/carros/suzuki-gsx-r-750-2010-5.jpg",
-      "/carros/suzuki-gsx-r-750-2010-6.jpg",
-      "/carros/suzuki-gsx-r-750-2010-7.jpg",
-      "/carros/suzuki-gsx-r-750-2010-8.jpg"
-    ]
+    "desc": "GSX-R 750 SRAD. Moto esportiva em excelente estado."
   }
 ];
