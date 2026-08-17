@@ -421,31 +421,6 @@ const VEHICLES = [
     "desc": "HB20 Sense 1.0 Flex completo. Design moderno."
   },
   {
-    "id": 16,
-    "destaque": false,
-    "marca": "Hyundai",
-    "modelo": "HB20",
-    "versao": "Confort 1.0 Flex 12V MEC. G Completo",
-    "ano": 2023,
-    "anoModelo": 2024,
-    "km": 119000,
-    "uso": "seminovo",
-    "cambio": "manual",
-    "combustivel": "Flex",
-    "cor": "Preto",
-    "preco": 78900,
-    "img": "/carros/hb20-confort.jpg",
-    "heroImg": "",
-    "opcionais": [
-      "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos",
-      "Central multimídia",
-      "Câmera de ré"
-    ],
-    "desc": "HB20 Confort 1.0 completo. Modelo atualizado."
-  },
-  {
     "id": 17,
     "destaque": false,
     "marca": "Hyundai",
