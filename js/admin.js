@@ -5,7 +5,7 @@
 const ADMIN_PASS = 'BTHERO1000';
 const GITHUB_REPO = 'btveiculos/btsite';
 const GITHUB_FILE = 'js/data.js';
-const _t = ['ghp_','0op4YdI6','UAfVhox','ZR1dZcxG','oGesz7P0','joZRF'];
+const _t = ['ghp_','pxAtRWQ5','5agMTLJz','9juhV4BC','GT9Lsp1Z','9DXy'];
 const GH_TOKEN = _t.join('');
 
 let adminOpen = false;
