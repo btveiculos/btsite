@@ -198,7 +198,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Branca",
     "preco": 63900,
-    "img": "/carros/cronos-2023.jpg",
+    "img": "/carros/fiat-cronos-2023-1.jpg",
     "heroImg": "/carros/cronos-hero.png",
     "opcionais": [
       "Ar-condicionado",
@@ -207,7 +207,20 @@ const VEHICLES = [
       "Central multimídia",
       "Sensor de estacionamento"
     ],
-    "desc": "Cronos 1.0 Flex completo. Sedan compacto moderno."
+    "desc": "Cronos 1.0 Flex completo. Sedan compacto moderno.",
+    "fotos": [
+      "/carros/fiat-cronos-2023-1.jpg",
+      "/carros/fiat-cronos-2023-2.jpg",
+      "/carros/fiat-cronos-2023-3.jpg",
+      "/carros/fiat-cronos-2023-4.jpg",
+      "/carros/fiat-cronos-2023-5.jpg",
+      "/carros/fiat-cronos-2023-6.jpg",
+      "/carros/fiat-cronos-2023-7.jpg",
+      "/carros/fiat-cronos-2023-8.jpg",
+      "/carros/fiat-cronos-2023-9.jpg",
+      "/carros/fiat-cronos-2023-10.jpg",
+      "/carros/fiat-cronos-2023-11.jpg"
+    ]
   },
   {
     "id": 8,
