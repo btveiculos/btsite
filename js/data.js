@@ -1,4 +1,4 @@
-﻿const WHATSAPP = '5511947717447';
+const WHATSAPP = '5511947717447';
 
 const VEHICLES = [
   {
@@ -50,7 +50,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 57400,
-    "img": "/carros/volkswagen-fox-2016-1.jpg",
+    "img": "/carros/volkswagen-fox-2016-2.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -59,8 +59,8 @@ const VEHICLES = [
     ],
     "desc": "Fox 1.6 Run completo. VersÃ¡til e econÃ´mico.",
     "fotos": [
-      "/carros/volkswagen-fox-2016-1.jpg",
       "/carros/volkswagen-fox-2016-2.jpg",
+      "/carros/volkswagen-fox-2016-1.jpg",
       "/carros/volkswagen-fox-2016-3.jpg",
       "/carros/volkswagen-fox-2016-4.jpg",
       "/carros/volkswagen-fox-2016-5.jpg",
@@ -505,7 +505,7 @@ const VEHICLES = [
       "Central multimÃ­dia",
       "CÃ¢mera de rÃ©"
     ],
-    "desc": "HB20S Confort Sedan completo. Modelo 2025.",
+    "desc": "HB20S Confort Sedan completo. Modelo 2025."
   },
   {
     "id": 18,
