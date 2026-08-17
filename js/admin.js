@@ -190,7 +190,8 @@ function editCar(i) {
           if (!v.fotos) v.fotos = [];
           v.fotos.push('/' + path);
         }
-        if (!v.img || v.img === '') v.img = v.fotos[0];
+        // Sempre atualiza a capa para a primeira foto
+        v.img = v.fotos[0];
       }
 
       if (heroFile) {
