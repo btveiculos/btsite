@@ -523,14 +523,27 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 39900,
-    "img": "/carros/c3-aircross.jpg",
+    "img": "/carros/citroen-c3-aircross-2011-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
       "Vidros elétricos"
     ],
-    "desc": "C3 Aircross GLX 1.6 completo. Versátil."
+    "desc": "C3 Aircross GLX 1.6 completo. Versátil.",
+    "fotos": [
+      "/carros/citroen-c3-aircross-2011-1.jpg",
+      "/carros/citroen-c3-aircross-2011-2.jpg",
+      "/carros/citroen-c3-aircross-2011-3.jpg",
+      "/carros/citroen-c3-aircross-2011-4.jpg",
+      "/carros/citroen-c3-aircross-2011-5.jpg",
+      "/carros/citroen-c3-aircross-2011-6.jpg",
+      "/carros/citroen-c3-aircross-2011-7.jpg",
+      "/carros/citroen-c3-aircross-2011-8.jpg",
+      "/carros/citroen-c3-aircross-2011-9.jpg",
+      "/carros/citroen-c3-aircross-2011-10.jpg",
+      "/carros/citroen-c3-aircross-2011-11.jpg"
+    ]
   },
   {
     "id": 21,
