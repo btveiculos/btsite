@@ -186,7 +186,7 @@ function editCar(i) {
         for (let fi = 0; fi < newFotos.length; fi++) {
           progress.textContent = `Enviando foto ${fi+1} de ${newFotos.length}...`;
           const path = `carros/${slug}-${existingCount + fi + 1}.jpg`;
-          await uploadFileToGitHub(newFotos[fi], path);
+          await uploadFileToGitHubWithRetry(newFotos[fi], path);
           if (!v.fotos) v.fotos = [];
           v.fotos.push('/' + path);
         }
@@ -196,7 +196,7 @@ function editCar(i) {
       if (heroFile) {
         progress.textContent = 'Enviando foto hero...';
         const hPath = `carros/${slug}-hero.png`;
-        await uploadFileToGitHub(heroFile, hPath);
+        await uploadFileToGitHubWithRetry(heroFile, hPath);
         v.heroImg = '/' + hPath;
       }
 
@@ -258,7 +258,7 @@ function setupForm() {
       for (let i = 0; i < fotos.length; i++) {
         progress.textContent = `Enviando foto ${i+1} de ${fotos.length}...`;
         const path = `carros/${slug}-${i+1}.jpg`;
-        await uploadFileToGitHub(fotos[i], path);
+        await uploadFileToGitHubWithRetry(fotos[i], path);
         fotoPaths.push('/' + path);
       }
 
@@ -267,7 +267,7 @@ function setupForm() {
       if (heroFile) {
         progress.textContent = 'Enviando foto hero...';
         const hPath = `carros/${slug}-hero.png`;
-        await uploadFileToGitHub(heroFile, hPath);
+        await uploadFileToGitHubWithRetry(heroFile, hPath);
         heroPath = '/' + hPath;
       }
 
@@ -367,7 +367,7 @@ function fileToBase64Raw(file) {
     const reader = new FileReader();
     reader.onload = (e) => {
       img.onload = () => {
-        const MAX = 1600;
+        const MAX = 1200;
         let w = img.width, h = img.height;
         if (w > MAX || h > MAX) {
           if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
@@ -378,7 +378,7 @@ function fileToBase64Raw(file) {
         canvas.height = h;
         const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0, w, h);
-        const dataUrl = canvas.toDataURL('image/jpeg', 0.75);
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.65);
         resolve(dataUrl.split(',')[1]);
       };
       img.onerror = reject;
@@ -387,6 +387,20 @@ function fileToBase64Raw(file) {
     reader.onerror = reject;
     reader.readAsDataURL(file);
   });
+}
+
+async function uploadFileToGitHubWithRetry(file, path, retries = 2) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      await uploadFileToGitHub(file, path);
+      // Small delay to avoid GitHub API rate conflicts
+      await new Promise(r => setTimeout(r, 1500));
+      return;
+    } catch (e) {
+      if (attempt === retries) throw e;
+      await new Promise(r => setTimeout(r, 3000));
+    }
+  }
 }
 
 function toggleDest(i) {
