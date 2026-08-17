@@ -389,16 +389,41 @@ function fileToBase64Raw(file) {
   });
 }
 
-async function uploadFileToGitHubWithRetry(file, path, retries = 2) {
+async function uploadFileToGitHubWithRetry(file, path, retries = 4) {
+  const base64 = await fileToBase64Raw(file);
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
-      await uploadFileToGitHub(file, path);
-      // Small delay to avoid GitHub API rate conflicts
-      await new Promise(r => setTimeout(r, 1500));
+      // Check if file exists (to get SHA for update)
+      let sha = null;
+      try {
+        const check = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`, {
+          headers: { 'Authorization': `token ${GH_TOKEN}` }
+        });
+        if (check.ok) {
+          const data = await check.json();
+          sha = data.sha;
+        }
+      } catch(e) {}
+
+      const body = { message: `Upload ${path}`, content: base64 };
+      if (sha) body.sha = sha;
+
+      const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`, {
+        method: 'PUT',
+        headers: { 'Authorization': `token ${GH_TOKEN}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({message:'Erro desconhecido'}));
+        throw new Error(`${res.status}: ${err.message}`);
+      }
+      // Success - wait before next upload
+      await new Promise(r => setTimeout(r, 2000));
       return;
     } catch (e) {
-      if (attempt === retries) throw e;
-      await new Promise(r => setTimeout(r, 3000));
+      if (attempt === retries) throw new Error(`Falha no upload de ${path} após ${retries+1} tentativas: ${e.message}`);
+      await new Promise(r => setTimeout(r, 4000 * (attempt + 1)));
     }
   }
 }
