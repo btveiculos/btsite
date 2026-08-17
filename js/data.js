@@ -292,7 +292,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Branco",
     "preco": 63850,
-    "img": "/carros/chevrolet-onix-2021-1.jpg",
+    "img": "/carros/chevrolet-onix-2021-5.jpg",
     "heroImg": "/carros/onix-hero.png",
     "opcionais": [
       "Ar-condicionado",
@@ -302,11 +302,11 @@ const VEHICLES = [
     ],
     "desc": "Onix Hatch LT 1.0. Moderno e econÃ´mico.",
     "fotos": [
+      "/carros/chevrolet-onix-2021-5.jpg",
       "/carros/chevrolet-onix-2021-1.jpg",
       "/carros/chevrolet-onix-2021-2.jpg",
       "/carros/chevrolet-onix-2021-3.jpg",
       "/carros/chevrolet-onix-2021-4.jpg",
-      "/carros/chevrolet-onix-2021-5.jpg",
       "/carros/chevrolet-onix-2021-6.jpg",
       "/carros/chevrolet-onix-2021-7.jpg",
       "/carros/chevrolet-onix-2021-8.jpg",
