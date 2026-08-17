@@ -139,15 +139,41 @@ function renderAdminList() {
 
 function editCar(i) {
   const v = VEHICLES[i];
+  const fotos = v.fotos && v.fotos.length ? [...v.fotos] : (v.img ? [v.img] : []);
   const editDiv = document.createElement('div');
   editDiv.id = 'editModal';
   editDiv.innerHTML = `
-<div class="admin-container" style="max-width:600px">
-  <div class="admin-header">
-    <h2>✏️ Editar — ${v.marca} ${v.modelo}</h2>
-    <button class="admin-close" id="editCloseBtn">✕</button>
+<div class="edit-fullscreen">
+  <div class="edit-sidebar">
+    <div class="edit-sidebar-header">
+      <h2>${v.marca} ${v.modelo}</h2>
+      <p>${v.versao} · ${v.ano}</p>
+    </div>
+    <div class="edit-photos-panel">
+      <h3>📷 Fotos (${fotos.length})</h3>
+      <p class="edit-photos-hint">Arraste para reordenar. A 1ª foto é a capa.</p>
+      <div id="editPhotosGrid" class="edit-photos-grid">
+        ${fotos.map((f,fi) => `
+          <div class="edit-photo-item" data-index="${fi}" draggable="true">
+            <span class="edit-photo-num">${fi+1}</span>
+            <img src="${f}" alt="Foto ${fi+1}">
+            <div class="edit-photo-controls">
+              <button type="button" class="edit-photo-move" onclick="movePhoto(${i},${fi},-1)" title="Mover para cima">▲</button>
+              <button type="button" class="edit-photo-move" onclick="movePhoto(${i},${fi},1)" title="Mover para baixo">▼</button>
+              <button type="button" class="edit-photo-del" onclick="removePhoto(${i},${fi})" title="Remover">✕</button>
+            </div>
+            ${fi===0?'<span class="edit-photo-capa">CAPA</span>':''}
+          </div>`).join('')}
+      </div>
+      <label class="edit-add-photos-btn">➕ Adicionar fotos<input type="file" id="e_fotos" accept="image/*" multiple style="display:none"></label>
+      <label class="edit-add-photos-btn">🎨 Trocar hero<input type="file" id="e_hero" accept="image/*" style="display:none"></label>
+    </div>
   </div>
-  <div class="admin-body">
+  <div class="edit-main">
+    <div class="edit-main-header">
+      <h1>Editar veículo</h1>
+      <button type="button" class="edit-close-btn" id="editCloseBtn">✕ Fechar</button>
+    </div>
     <form id="editForm" class="admin-form">
       <div class="admin-row"><label>Marca<input type="text" id="e_marca" value="${v.marca}" required></label><label>Modelo<input type="text" id="e_modelo" value="${v.modelo}" required></label></div>
       <div class="admin-row"><label>Versão<input type="text" id="e_versao" value="${v.versao}" required></label><label>Ano/Modelo<input type="text" id="e_ano" value="${v.ano}/${v.anoModelo}" required></label></div>
@@ -155,28 +181,43 @@ function editCar(i) {
       <div class="admin-row"><label>Câmbio<select id="e_cambio"><option value="automático" ${v.cambio==='automático'?'selected':''}>Automático</option><option value="manual" ${v.cambio==='manual'?'selected':''}>Manual</option></select></label><label>Combustível<select id="e_comb"><option ${v.combustivel==='Flex'?'selected':''}>Flex</option><option ${v.combustivel==='Gasolina'?'selected':''}>Gasolina</option><option ${v.combustivel==='Diesel'?'selected':''}>Diesel</option><option ${v.combustivel==='Elétrico'?'selected':''}>Elétrico</option><option ${v.combustivel==='Híbrido'?'selected':''}>Híbrido</option></select></label></div>
       <div class="admin-row"><label>Cor<input type="text" id="e_cor" value="${v.cor || ''}"></label><label>Tipo<select id="e_uso"><option value="seminovo" ${v.uso==='seminovo'?'selected':''}>Seminovo</option><option value="usado" ${v.uso==='usado'?'selected':''}>Usado</option><option value="novo" ${v.uso==='novo'?'selected':''}>Novo</option></select></label></div>
       <label>Opcionais (separar por vírgula)<input type="text" id="e_opcionais" value="${(v.opcionais||[]).join(', ')}"></label>
-      <label>Descrição<textarea id="e_desc" rows="2">${v.desc || ''}</textarea></label>
-      <label class="checkbox-label"><input type="checkbox" id="e_dest" ${v.destaque?'checked':''}> Destaque</label>
-      <div class="edit-photos-section">
-        <h4 style="margin:12px 0 8px">📷 Fotos atuais</h4>
-        <div id="editPhotosGrid" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">
-          ${(v.fotos && v.fotos.length ? v.fotos : (v.img ? [v.img] : [])).map((f,fi) => `
-            <div class="edit-photo-thumb" style="position:relative;width:80px;height:60px;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
-              <img src="${f}" style="width:100%;height:100%;object-fit:cover">
-              <button type="button" onclick="removePhoto(${i},${fi})" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.7);color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;line-height:18px">✕</button>
-            </div>`).join('')}
-        </div>
-        <label>➕ Adicionar fotos<input type="file" id="e_fotos" accept="image/*" multiple></label>
-        <label>🎨 Trocar foto hero<input type="file" id="e_hero" accept="image/*"></label>
-      </div>
-      <div id="editProgress" style="display:none;color:var(--primary);font-size:12px;margin-top:8px"></div>
-      <button type="submit" class="btn-primary" style="width:100%;margin-top:12px" id="editSaveBtn">Salvar alterações</button>
+      <label>Descrição<textarea id="e_desc" rows="3">${v.desc || ''}</textarea></label>
+      <label class="checkbox-label"><input type="checkbox" id="e_dest" ${v.destaque?'checked':''}> Destaque (aparece no carrossel)</label>
+      <div id="editProgress" style="display:none;color:var(--primary);font-size:13px;margin-top:12px;padding:12px;background:rgba(212,32,44,.05);border-radius:10px"></div>
+      <button type="submit" class="btn-primary" style="width:100%;margin-top:20px;padding:18px" id="editSaveBtn">💾 Salvar alterações</button>
     </form>
   </div>
 </div>`;
   document.body.appendChild(editDiv);
 
   document.getElementById('editCloseBtn').onclick = () => editDiv.remove();
+
+  // Drag and drop for photos
+  const grid = document.getElementById('editPhotosGrid');
+  if (grid) {
+    let dragIdx = null;
+    grid.addEventListener('dragstart', e => {
+      const item = e.target.closest('.edit-photo-item');
+      if (item) dragIdx = +item.dataset.index;
+    });
+    grid.addEventListener('dragover', e => e.preventDefault());
+    grid.addEventListener('drop', e => {
+      e.preventDefault();
+      const item = e.target.closest('.edit-photo-item');
+      if (item && dragIdx !== null) {
+        const dropIdx = +item.dataset.index;
+        if (dragIdx !== dropIdx) {
+          const arr = v.fotos || [];
+          const moved = arr.splice(dragIdx, 1)[0];
+          arr.splice(dropIdx, 0, moved);
+          v.img = arr[0];
+          document.getElementById('editModal')?.remove();
+          editCar(i);
+        }
+      }
+      dragIdx = null;
+    });
+  }
 
   document.getElementById('editForm').onsubmit = async (e) => {
     e.preventDefault();
@@ -192,7 +233,6 @@ function editCar(i) {
       const ano = parseInt(anos[0]);
       const anoModelo = parseInt(anos[1] || anos[0]);
 
-      // Update basic fields
       v.marca = document.getElementById('e_marca').value;
       v.modelo = document.getElementById('e_modelo').value;
       v.versao = document.getElementById('e_versao').value;
@@ -208,34 +248,32 @@ function editCar(i) {
       v.desc = document.getElementById('e_desc').value;
       v.destaque = document.getElementById('e_dest').checked;
 
-      // Upload new photos if selected
       const newFotos = document.getElementById('e_fotos').files;
       const heroFile = document.getElementById('e_hero').files[0];
 
       const slug = (v.marca + '-' + v.modelo + '-' + v.ano)
-        .toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
+        .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
 
       if (newFotos.length > 0) {
         const existingCount = (v.fotos || []).length;
         for (let fi = 0; fi < newFotos.length; fi++) {
-          progress.textContent = `Enviando foto ${fi+1} de ${newFotos.length}...`;
+          progress.textContent = `📤 Enviando foto ${fi+1} de ${newFotos.length}...`;
           const path = `carros/${slug}-${existingCount + fi + 1}.jpg`;
           await uploadFileToGitHubWithRetry(newFotos[fi], path);
           if (!v.fotos) v.fotos = [];
           v.fotos.push('/' + path);
         }
-        // Sempre atualiza a capa para a primeira foto
         v.img = v.fotos[0];
       }
 
       if (heroFile) {
-        progress.textContent = 'Enviando foto hero...';
+        progress.textContent = '📤 Enviando foto hero...';
         const hPath = `carros/${slug}-hero.png`;
         await uploadFileToGitHubWithRetry(heroFile, hPath);
         v.heroImg = '/' + hPath;
       }
 
-      progress.textContent = 'Atualizando estoque...';
+      progress.textContent = '💾 Atualizando estoque...';
       await updateDataJS();
 
       renderAdminList();
@@ -244,11 +282,24 @@ function editCar(i) {
 
     } catch (error) {
       alert('❌ Erro: ' + error.message);
-      btn.textContent = 'Salvar alterações';
+      btn.textContent = '💾 Salvar alterações';
       btn.disabled = false;
       progress.textContent = '❌ Erro ao salvar.';
     }
   };
+}
+
+function movePhoto(carIndex, photoIndex, direction) {
+  const v = VEHICLES[carIndex];
+  if (!v.fotos || v.fotos.length < 2) return;
+  const newIndex = photoIndex + direction;
+  if (newIndex < 0 || newIndex >= v.fotos.length) return;
+  const temp = v.fotos[photoIndex];
+  v.fotos[photoIndex] = v.fotos[newIndex];
+  v.fotos[newIndex] = temp;
+  v.img = v.fotos[0];
+  document.getElementById('editModal')?.remove();
+  editCar(carIndex);
 }
 
 function removePhoto(carIndex, photoIndex) {
@@ -261,11 +312,8 @@ function removePhoto(carIndex, photoIndex) {
   } else {
     v.img = '';
   }
-  updateDataJS().then(() => {
-    // Re-open the edit modal to reflect changes
-    document.getElementById('editModal')?.remove();
-    editCar(carIndex);
-  }).catch(e => alert('❌ Erro: ' + e.message));
+  document.getElementById('editModal')?.remove();
+  editCar(carIndex);
 }
 
 function setupForm() {
