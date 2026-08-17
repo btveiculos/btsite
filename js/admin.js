@@ -363,11 +363,26 @@ async function updateDataJS() {
 
 function fileToBase64Raw(file) {
   return new Promise((resolve, reject) => {
+    const img = new Image();
     const reader = new FileReader();
-    reader.onload = () => {
-      // Remove the data:xxx;base64, prefix
-      const result = reader.result.split(',')[1];
-      resolve(result);
+    reader.onload = (e) => {
+      img.onload = () => {
+        const MAX = 1600;
+        let w = img.width, h = img.height;
+        if (w > MAX || h > MAX) {
+          if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
+          else { w = Math.round(w * MAX / h); h = MAX; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.75);
+        resolve(dataUrl.split(',')[1]);
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
     };
     reader.onerror = reject;
     reader.readAsDataURL(file);
