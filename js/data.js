@@ -149,7 +149,20 @@ const VEHICLES = [
       "Central multimídia",
       "Direção elétrica"
     ],
-    "desc": "Argo Drive 1.3 automático com banco de couro. Completo."
+    "desc": "Argo Drive 1.3 automático com banco de couro. Completo.",
+    "fotos": [
+      "/carros/fiat-argo-2018-1.jpg",
+      "/carros/fiat-argo-2018-2.jpg",
+      "/carros/fiat-argo-2018-3.jpg",
+      "/carros/fiat-argo-2018-4.jpg",
+      "/carros/fiat-argo-2018-5.jpg",
+      "/carros/fiat-argo-2018-6.jpg",
+      "/carros/fiat-argo-2018-7.jpg",
+      "/carros/fiat-argo-2018-8.jpg",
+      "/carros/fiat-argo-2018-9.jpg",
+      "/carros/fiat-argo-2018-10.jpg",
+      "/carros/fiat-argo-2018-11.jpg"
+    ]
   },
   {
     "id": 7,
