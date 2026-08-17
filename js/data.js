@@ -259,7 +259,19 @@ const VEHICLES = [
       "Câmera de ré",
       "Direção elétrica"
     ],
-    "desc": "Onix Sedan Plus LT completo. Espaçoso."
+    "desc": "Onix Sedan Plus LT completo. Espaçoso.",
+    "fotos": [
+      "/carros/chevrolet-onix-sedan-2024-1.jpg",
+      "/carros/chevrolet-onix-sedan-2024-2.jpg",
+      "/carros/chevrolet-onix-sedan-2024-3.jpg",
+      "/carros/chevrolet-onix-sedan-2024-4.jpg",
+      "/carros/chevrolet-onix-sedan-2024-5.jpg",
+      "/carros/chevrolet-onix-sedan-2024-6.jpg",
+      "/carros/chevrolet-onix-sedan-2024-7.jpg",
+      "/carros/chevrolet-onix-sedan-2024-8.jpg",
+      "/carros/chevrolet-onix-sedan-2024-9.jpg",
+      "/carros/chevrolet-onix-sedan-2024-10.jpg"
+    ]
   },
   {
     "id": 12,
