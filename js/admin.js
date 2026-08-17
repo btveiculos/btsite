@@ -38,19 +38,38 @@ function openAdmin() {
   const el = document.createElement('div');
   el.id = 'adminPanel';
   el.innerHTML = `
-<div class="admin-container">
-  <div class="admin-header">
-    <h2>🔧 Painel Admin — BT Veículos</h2>
-    <button class="admin-close" id="adminCloseBtn">✕</button>
-  </div>
-  <div class="admin-body">
-    <div class="admin-section">
-      <h3>Veículos no site (${VEHICLES.length})</h3>
-      <div id="adminList"></div>
+<div class="admin-fullscreen">
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar-logo">
+      <div class="admin-logo-box">BT</div>
+      <div>
+        <span class="admin-logo-name">Painel Admin</span>
+        <span class="admin-logo-sub">BT Veículos</span>
+      </div>
     </div>
-    <div class="admin-section">
-      <h3>➕ Adicionar veículo</h3>
-      <form id="adminForm" class="admin-form">
+    <nav class="admin-nav">
+      <button class="admin-nav-btn active" data-tab="estoque">🚗 Estoque (${VEHICLES.length})</button>
+      <button class="admin-nav-btn" data-tab="adicionar">➕ Adicionar</button>
+    </nav>
+    <div class="admin-sidebar-footer">
+      <button class="admin-nav-btn" id="resetBtn">🔄 Resetar</button>
+      <button class="admin-nav-btn admin-close-btn" id="adminCloseBtn">✕ Fechar</button>
+    </div>
+  </aside>
+  <main class="admin-main">
+    <div class="admin-tab active" id="tab-estoque">
+      <div class="admin-main-header">
+        <h1>Estoque</h1>
+        <p>${VEHICLES.length} veículos cadastrados</p>
+      </div>
+      <div class="admin-grid" id="adminList"></div>
+    </div>
+    <div class="admin-tab" id="tab-adicionar">
+      <div class="admin-main-header">
+        <h1>Adicionar veículo</h1>
+        <p>Preencha os dados e envie as fotos</p>
+      </div>
+      <form id="adminForm" class="admin-form admin-form-grid">
         <div class="admin-row"><label>Marca<input type="text" id="a_marca" required></label><label>Modelo<input type="text" id="a_modelo" required></label></div>
         <div class="admin-row"><label>Versão<input type="text" id="a_versao" required></label><label>Ano/Modelo<input type="text" id="a_ano" required placeholder="2023/2024"></label></div>
         <div class="admin-row"><label>KM<input type="number" id="a_km" required></label><label>Preço (sem ponto)<input type="number" id="a_preco" required></label></div>
@@ -58,20 +77,26 @@ function openAdmin() {
         <div class="admin-row"><label>Cor<input type="text" id="a_cor"></label><label>Tipo<select id="a_uso"><option value="seminovo">Seminovo</option><option value="usado">Usado</option><option value="novo">Novo</option></select></label></div>
         <label>Opcionais (separar por vírgula)<input type="text" id="a_opcionais" placeholder="Ar, Câmera, Multimídia"></label>
         <label>Descrição<textarea id="a_desc" rows="2" placeholder="Veículo revisado e pronto para venda."></textarea></label>
-        <label>📷 Fotos do estoque (pode selecionar várias)<input type="file" id="a_fotos" accept="image/*" multiple></label>
-        <label>🎨 Foto hero (recortada do Canva, fundo preto)<input type="file" id="a_hero" accept="image/*"></label>
+        <div class="admin-row"><label>📷 Fotos do estoque<input type="file" id="a_fotos" accept="image/*" multiple></label><label>🎨 Foto hero (fundo preto)<input type="file" id="a_hero" accept="image/*"></label></div>
         <label class="checkbox-label"><input type="checkbox" id="a_dest"> Destaque (aparece no carrossel)</label>
         <div id="uploadProgress" style="display:none;color:var(--primary);font-size:12px;margin-top:8px"></div>
-        <button type="submit" class="btn-primary" style="width:100%;margin-top:12px" id="addBtn">Adicionar e publicar</button>
+        <button type="submit" class="btn-primary" style="width:100%;margin-top:16px" id="addBtn">Adicionar e publicar</button>
       </form>
     </div>
-    <div class="admin-section" style="border-top:1px solid var(--border);padding-top:20px">
-      <button class="btn-outline" id="resetBtn" style="font-size:11px;padding:8px 16px">Resetar para estoque original</button>
-    </div>
-  </div>
+  </main>
 </div>`;
   document.body.appendChild(el);
   document.body.style.overflow = 'hidden';
+
+  // Tab navigation
+  el.querySelectorAll('.admin-nav-btn[data-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      el.querySelectorAll('.admin-nav-btn[data-tab]').forEach(b => b.classList.remove('active'));
+      el.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      el.querySelector(`#tab-${btn.dataset.tab}`).classList.add('active');
+    });
+  });
   
   document.getElementById('adminCloseBtn').onclick = closeAdmin;
   document.getElementById('resetBtn').onclick = resetVehicles;
@@ -89,16 +114,25 @@ function renderAdminList() {
   const el = document.getElementById('adminList');
   if (!el) return;
   el.innerHTML = VEHICLES.map((v,i) => `
-    <div class="admin-car-item">
-      <div class="admin-car-info">
-        <strong>${v.marca} ${v.modelo}</strong>
-        <span>${v.versao} · ${v.ano} · R$ ${v.preco?.toLocaleString('pt-BR')}${v.fotos?.length ? ' · '+v.fotos.length+' fotos' : ''}</span>
-        ${v.destaque ? '<span class="admin-badge">★ Destaque</span>' : ''}
+    <div class="admin-card">
+      <div class="admin-card-img">
+        ${v.img ? `<img src="${v.img}" alt="${v.marca} ${v.modelo}">` : `<div class="admin-card-placeholder">🚗</div>`}
+        ${v.destaque ? '<span class="admin-card-badge">★ Destaque</span>' : ''}
       </div>
-      <div class="admin-car-actions">
-        <button onclick="editCar(${i})" title="Editar">✏️</button>
-        <button onclick="toggleDest(${i})" title="Alternar destaque">⭐</button>
-        <button onclick="removeCar(${i})" title="Remover">🗑️</button>
+      <div class="admin-card-body">
+        <h3>${v.marca} ${v.modelo}</h3>
+        <p class="admin-card-versao">${v.versao}</p>
+        <div class="admin-card-meta">
+          <span>${v.ano}/${v.anoModelo}</span>
+          <span>${v.km?.toLocaleString('pt-BR')} km</span>
+          <span>${v.fotos?.length || 0} fotos</span>
+        </div>
+        <p class="admin-card-price">R$ ${v.preco?.toLocaleString('pt-BR')}</p>
+      </div>
+      <div class="admin-card-actions">
+        <button onclick="editCar(${i})" title="Editar">✏️ Editar</button>
+        <button onclick="toggleDest(${i})" title="Destaque">⭐</button>
+        <button onclick="removeCar(${i})" title="Remover" class="admin-btn-danger">🗑️</button>
       </div>
     </div>`).join('');
 }
