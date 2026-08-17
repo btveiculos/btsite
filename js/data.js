@@ -235,7 +235,18 @@ const VEHICLES = [
       "Câmera de ré",
       "Direção elétrica"
     ],
-    "desc": "Onix Hatch LT 1.0. Moderno e econômico."
+    "desc": "Onix Hatch LT 1.0. Moderno e econômico.",
+    "fotos": [
+      "/carros/chevrolet-onix-2021-1.jpg",
+      "/carros/chevrolet-onix-2021-2.jpg",
+      "/carros/chevrolet-onix-2021-3.jpg",
+      "/carros/chevrolet-onix-2021-4.jpg",
+      "/carros/chevrolet-onix-2021-5.jpg",
+      "/carros/chevrolet-onix-2021-6.jpg",
+      "/carros/chevrolet-onix-2021-7.jpg",
+      "/carros/chevrolet-onix-2021-8.jpg",
+      "/carros/chevrolet-onix-2021-9.jpg"
+    ]
   },
   {
     "id": 11,
@@ -259,19 +270,7 @@ const VEHICLES = [
       "Câmera de ré",
       "Direção elétrica"
     ],
-    "desc": "Onix Sedan Plus LT completo. Espaçoso.",
-    "fotos": [
-      "/carros/chevrolet-onix-sedan-2024-1.jpg",
-      "/carros/chevrolet-onix-sedan-2024-2.jpg",
-      "/carros/chevrolet-onix-sedan-2024-3.jpg",
-      "/carros/chevrolet-onix-sedan-2024-4.jpg",
-      "/carros/chevrolet-onix-sedan-2024-5.jpg",
-      "/carros/chevrolet-onix-sedan-2024-6.jpg",
-      "/carros/chevrolet-onix-sedan-2024-7.jpg",
-      "/carros/chevrolet-onix-sedan-2024-8.jpg",
-      "/carros/chevrolet-onix-sedan-2024-9.jpg",
-      "/carros/chevrolet-onix-sedan-2024-10.jpg"
-    ]
+    "desc": "Onix Sedan Plus LT completo. Espaçoso."
   },
   {
     "id": 12,
