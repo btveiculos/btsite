@@ -1,4 +1,4 @@
-const WHATSAPP = '5511947717447';
+﻿const WHATSAPP = '5511947717447';
 
 const VEHICLES = [
   {
@@ -19,11 +19,10 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos"
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos"
     ],
-    "desc": "Voyage 1.0 Flex completo. Econômico e espaçoso.",
-    "fotos": ["/carros/volkswagen-voyage-2022-1.jpg","/carros/volkswagen-voyage-2022-2.jpg","/carros/volkswagen-voyage-2022-3.jpg","/carros/volkswagen-voyage-2022-4.jpg","/carros/volkswagen-voyage-2022-5.jpg","/carros/volkswagen-voyage-2022-6.jpg","/carros/volkswagen-voyage-2022-7.jpg","/carros/volkswagen-voyage-2022-8.jpg","/carros/volkswagen-voyage-2022-9.jpg","/carros/volkswagen-voyage-2022-10.jpg"],
+    "desc": "Voyage 1.0 Flex completo. EconÃ´mico e espaÃ§oso.",
     "fotos": [
       "/carros/volkswagen-voyage-2022-1.jpg",
       "/carros/volkswagen-voyage-2022-2.jpg",
@@ -55,11 +54,10 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos"
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos"
     ],
-    "desc": "Fox 1.6 Run completo. Versátil e econômico.",
-    "fotos": ["/carros/volkswagen-fox-2016-1.jpg","/carros/volkswagen-fox-2016-2.jpg","/carros/volkswagen-fox-2016-3.jpg","/carros/volkswagen-fox-2016-4.jpg","/carros/volkswagen-fox-2016-5.jpg","/carros/volkswagen-fox-2016-6.jpg"],
+    "desc": "Fox 1.6 Run completo. VersÃ¡til e econÃ´mico.",
     "fotos": [
       "/carros/volkswagen-fox-2016-1.jpg",
       "/carros/volkswagen-fox-2016-2.jpg",
@@ -74,7 +72,7 @@ const VEHICLES = [
     "destaque": true,
     "marca": "Volkswagen",
     "modelo": "Kombi",
-    "versao": "Furgão 1.4 80CV",
+    "versao": "FurgÃ£o 1.4 80CV",
     "ano": 2009,
     "anoModelo": 2009,
     "km": 174000,
@@ -86,9 +84,9 @@ const VEHICLES = [
     "img": "/carros/kombi-furgao-2009.jpg",
     "heroImg": "/carros/kombi-hero.png",
     "opcionais": [
-      "Direção hidráulica"
+      "DireÃ§Ã£o hidrÃ¡ulica"
     ],
-    "desc": "Kombi Furgão 1.4 Flex. Ideal para trabalho e entregas. Revisada."
+    "desc": "Kombi FurgÃ£o 1.4 Flex. Ideal para trabalho e entregas. Revisada."
   },
   {
     "id": 4,
@@ -109,8 +107,8 @@ const VEHICLES = [
     "opcionais": [
       "Ar-condicionado",
       "Bancos em couro",
-      "Direção elétrica",
-      "Vidros elétricos"
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos"
     ],
     "desc": "Linea HLX 1.8 completo com banco de couro."
   },
@@ -132,11 +130,10 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos"
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos"
     ],
-    "desc": "Uno Sporting 1.4 completo. Esportivo e econômico.",
-    "fotos": ["/carros/fiat-uno-2012-1.jpg","/carros/fiat-uno-2012-2.jpg","/carros/fiat-uno-2012-3.jpg","/carros/fiat-uno-2012-4.jpg","/carros/fiat-uno-2012-5.jpg","/carros/fiat-uno-2012-6.jpg","/carros/fiat-uno-2012-7.jpg","/carros/fiat-uno-2012-8.jpg","/carros/fiat-uno-2012-9.jpg"],
+    "desc": "Uno Sporting 1.4 completo. Esportivo e econÃ´mico.",
     "fotos": [
       "/carros/fiat-uno-2012-1.jpg",
       "/carros/fiat-uno-2012-2.jpg",
@@ -154,12 +151,12 @@ const VEHICLES = [
     "destaque": false,
     "marca": "Fiat",
     "modelo": "Argo",
-    "versao": "1.3 Fire Flex Drive GSR Banco de Couro Completo Automático",
+    "versao": "1.3 Fire Flex Drive GSR Banco de Couro Completo AutomÃ¡tico",
     "ano": 2018,
     "anoModelo": 2018,
     "km": 136000,
     "uso": "usado",
-    "cambio": "automático",
+    "cambio": "automÃ¡tico",
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 63900,
@@ -168,12 +165,11 @@ const VEHICLES = [
     "opcionais": [
       "Ar-condicionado",
       "Bancos em couro",
-      "Câmera de ré",
-      "Central multimídia",
-      "Direção elétrica"
+      "CÃ¢mera de rÃ©",
+      "Central multimÃ­dia",
+      "DireÃ§Ã£o elÃ©trica"
     ],
-    "desc": "Argo Drive 1.3 automático com banco de couro. Completo.",
-    "fotos": ["/carros/fiat-argo-2018-1.jpg","/carros/fiat-argo-2018-2.jpg","/carros/fiat-argo-2018-3.jpg","/carros/fiat-argo-2018-4.jpg","/carros/fiat-argo-2018-5.jpg","/carros/fiat-argo-2018-6.jpg","/carros/fiat-argo-2018-7.jpg","/carros/fiat-argo-2018-8.jpg","/carros/fiat-argo-2018-9.jpg","/carros/fiat-argo-2018-10.jpg","/carros/fiat-argo-2018-11.jpg"],
+    "desc": "Argo Drive 1.3 automÃ¡tico com banco de couro. Completo.",
     "fotos": [
       "/carros/fiat-argo-2018-1.jpg",
       "/carros/fiat-argo-2018-2.jpg",
@@ -206,13 +202,12 @@ const VEHICLES = [
     "heroImg": "/carros/cronos-hero.png",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos",
-      "Central multimídia",
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos",
+      "Central multimÃ­dia",
       "Sensor de estacionamento"
     ],
     "desc": "Cronos 1.0 Flex completo. Sedan compacto moderno.",
-    "fotos": ["/carros/fiat-cronos-2023-1.jpg","/carros/fiat-cronos-2023-2.jpg","/carros/fiat-cronos-2023-3.jpg","/carros/fiat-cronos-2023-4.jpg","/carros/fiat-cronos-2023-5.jpg","/carros/fiat-cronos-2023-6.jpg","/carros/fiat-cronos-2023-7.jpg","/carros/fiat-cronos-2023-8.jpg","/carros/fiat-cronos-2023-9.jpg","/carros/fiat-cronos-2023-10.jpg","/carros/fiat-cronos-2023-11.jpg"],
     "fotos": [
       "/carros/fiat-cronos-2023-1.jpg",
       "/carros/fiat-cronos-2023-2.jpg",
@@ -245,11 +240,10 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos"
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos"
     ],
-    "desc": "Fiesta Class 1.6 completo. Compacto e econômico.",
-    "fotos": ["/carros/ford-fiesta-2011-1.jpg","/carros/ford-fiesta-2011-2.jpg","/carros/ford-fiesta-2011-3.jpg","/carros/ford-fiesta-2011-4.jpg","/carros/ford-fiesta-2011-5.jpg","/carros/ford-fiesta-2011-6.jpg"],
+    "desc": "Fiesta Class 1.6 completo. Compacto e econÃ´mico.",
     "fotos": [
       "/carros/ford-fiesta-2011-1.jpg",
       "/carros/ford-fiesta-2011-2.jpg",
@@ -264,12 +258,12 @@ const VEHICLES = [
     "destaque": true,
     "marca": "Nissan",
     "modelo": "Kicks",
-    "versao": "1.6 Sense 16V Automático Completo",
+    "versao": "1.6 Sense 16V AutomÃ¡tico Completo",
     "ano": 2024,
     "anoModelo": 2024,
     "km": 93800,
     "uso": "seminovo",
-    "cambio": "automático",
+    "cambio": "automÃ¡tico",
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 99800,
@@ -277,12 +271,12 @@ const VEHICLES = [
     "heroImg": "/carros/kicks-hero.png",
     "opcionais": [
       "Ar-condicionado digital",
-      "Direção elétrica",
-      "Câmera de ré",
-      "Central multimídia",
-      "Piloto automático"
+      "DireÃ§Ã£o elÃ©trica",
+      "CÃ¢mera de rÃ©",
+      "Central multimÃ­dia",
+      "Piloto automÃ¡tico"
     ],
-    "desc": "Kicks Sense 1.6 Flex automático completo. SUV moderno."
+    "desc": "Kicks Sense 1.6 Flex automÃ¡tico completo. SUV moderno."
   },
   {
     "id": 10,
@@ -303,11 +297,10 @@ const VEHICLES = [
     "opcionais": [
       "Ar-condicionado",
       "MyLink",
-      "Câmera de ré",
-      "Direção elétrica"
+      "CÃ¢mera de rÃ©",
+      "DireÃ§Ã£o elÃ©trica"
     ],
-    "desc": "Onix Hatch LT 1.0. Moderno e econômico.",
-    "fotos": ["/carros/chevrolet-onix-2021-1.jpg","/carros/chevrolet-onix-2021-2.jpg","/carros/chevrolet-onix-2021-3.jpg","/carros/chevrolet-onix-2021-4.jpg","/carros/chevrolet-onix-2021-5.jpg","/carros/chevrolet-onix-2021-6.jpg","/carros/chevrolet-onix-2021-7.jpg","/carros/chevrolet-onix-2021-8.jpg","/carros/chevrolet-onix-2021-9.jpg"],
+    "desc": "Onix Hatch LT 1.0. Moderno e econÃ´mico.",
     "fotos": [
       "/carros/chevrolet-onix-2021-1.jpg",
       "/carros/chevrolet-onix-2021-2.jpg",
@@ -339,11 +332,10 @@ const VEHICLES = [
     "opcionais": [
       "Ar-condicionado",
       "MyLink",
-      "Câmera de ré",
-      "Direção elétrica"
+      "CÃ¢mera de rÃ©",
+      "DireÃ§Ã£o elÃ©trica"
     ],
-    "desc": "Onix Sedan Plus LT completo. Espaçoso.",
-    "fotos": ["/carros/chevrolet-onix-sedan-2024-1.jpg","/carros/chevrolet-onix-sedan-2024-2.jpg","/carros/chevrolet-onix-sedan-2024-3.jpg","/carros/chevrolet-onix-sedan-2024-4.jpg","/carros/chevrolet-onix-sedan-2024-5.jpg","/carros/chevrolet-onix-sedan-2024-6.jpg","/carros/chevrolet-onix-sedan-2024-7.jpg","/carros/chevrolet-onix-sedan-2024-8.jpg","/carros/chevrolet-onix-sedan-2024-9.jpg","/carros/chevrolet-onix-sedan-2024-10.jpg"],
+    "desc": "Onix Sedan Plus LT completo. EspaÃ§oso.",
     "fotos": [
       "/carros/chevrolet-onix-sedan-2024-1.jpg",
       "/carros/chevrolet-onix-sedan-2024-2.jpg",
@@ -375,23 +367,23 @@ const VEHICLES = [
     "heroImg": "/carros/classic-hero.png",
     "opcionais": [
       "Ar-condicionado",
-      "Direção hidráulica",
-      "Vidros elétricos",
-      "Trava elétrica"
+      "DireÃ§Ã£o hidrÃ¡ulica",
+      "Vidros elÃ©tricos",
+      "Trava elÃ©trica"
     ],
-    "desc": "Classic LS 1.0 completo. Econômico e confiável."
+    "desc": "Classic LS 1.0 completo. EconÃ´mico e confiÃ¡vel."
   },
   {
     "id": 13,
     "destaque": false,
     "marca": "Renault",
     "modelo": "Captur",
-    "versao": "Intense 2.0 Automático Completo",
+    "versao": "Intense 2.0 AutomÃ¡tico Completo",
     "ano": 2017,
     "anoModelo": 2018,
     "km": 156200,
     "uso": "usado",
-    "cambio": "automático",
+    "cambio": "automÃ¡tico",
     "combustivel": "Flex",
     "cor": "Vermelho",
     "preco": 75900,
@@ -399,19 +391,19 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado digital",
-      "Câmera de ré",
-      "Central multimídia",
-      "Piloto automático",
+      "CÃ¢mera de rÃ©",
+      "Central multimÃ­dia",
+      "Piloto automÃ¡tico",
       "Rodas 17\""
     ],
-    "desc": "Captur Intense 2.0 automática. SUV completo."
+    "desc": "Captur Intense 2.0 automÃ¡tica. SUV completo."
   },
   {
     "id": 14,
     "destaque": false,
     "marca": "Renault",
     "modelo": "Kwid Zen",
-    "versao": "1.0 Flex 12V 5 Pts Mecânico Completo",
+    "versao": "1.0 Flex 12V 5 Pts MecÃ¢nico Completo",
     "ano": 2023,
     "anoModelo": 2024,
     "km": 64000,
@@ -424,12 +416,11 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos",
-      "Central multimídia"
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos",
+      "Central multimÃ­dia"
     ],
-    "desc": "Kwid Zen 1.0 completo. Compacto e econômico.",
-    "fotos": ["/carros/renault-kwid-zen-2023-1.jpg","/carros/renault-kwid-zen-2023-2.jpg","/carros/renault-kwid-zen-2023-3.jpg","/carros/renault-kwid-zen-2023-4.jpg","/carros/renault-kwid-zen-2023-5.jpg","/carros/renault-kwid-zen-2023-6.jpg","/carros/renault-kwid-zen-2023-7.jpg","/carros/renault-kwid-zen-2023-8.jpg"],
+    "desc": "Kwid Zen 1.0 completo. Compacto e econÃ´mico.",
     "fotos": [
       "/carros/renault-kwid-zen-2023-1.jpg",
       "/carros/renault-kwid-zen-2023-2.jpg",
@@ -459,9 +450,9 @@ const VEHICLES = [
     "heroImg": "/carros/hb20-hero.png",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos",
-      "Central multimídia",
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos",
+      "Central multimÃ­dia",
       "Alarme"
     ],
     "desc": "HB20 Sense 1.0 Flex completo. Design moderno."
@@ -484,10 +475,10 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos",
-      "Central multimídia",
-      "Câmera de ré"
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos",
+      "Central multimÃ­dia",
+      "CÃ¢mera de rÃ©"
     ],
     "desc": "HB20 Confort 1.0 completo. Modelo atualizado."
   },
@@ -509,20 +500,19 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos",
-      "Central multimídia",
-      "Câmera de ré"
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos",
+      "Central multimÃ­dia",
+      "CÃ¢mera de rÃ©"
     ],
     "desc": "HB20S Confort Sedan completo. Modelo 2025.",
-    "fotos": ["/carros/hyundai-hb20s-2025-1.jpg","/carros/hyundai-hb20s-2025-2.jpg","/carros/hyundai-hb20s-2025-3.jpg","/carros/hyundai-hb20s-2025-4.jpg","/carros/hyundai-hb20s-2025-5.jpg","/carros/hyundai-hb20s-2025-6.jpg","/carros/hyundai-hb20s-2025-7.jpg","/carros/hyundai-hb20s-2025-8.jpg","/carros/hyundai-hb20s-2025-9.jpg","/carros/hyundai-hb20s-2025-10.jpg"]
   },
   {
     "id": 18,
     "destaque": false,
     "marca": "Hyundai",
     "modelo": "Tucson",
-    "versao": "2.0 16V Mecânica",
+    "versao": "2.0 16V MecÃ¢nica",
     "ano": 2009,
     "anoModelo": 2010,
     "km": 269710,
@@ -535,11 +525,10 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção hidráulica",
-      "Vidros elétricos"
+      "DireÃ§Ã£o hidrÃ¡ulica",
+      "Vidros elÃ©tricos"
     ],
-    "desc": "Tucson 2.0 mecânica. SUV espaçosa.",
-    "fotos": ["/carros/hyundai-tucson-2009-1.jpg","/carros/hyundai-tucson-2009-2.jpg","/carros/hyundai-tucson-2009-3.jpg","/carros/hyundai-tucson-2009-4.jpg","/carros/hyundai-tucson-2009-5.jpg","/carros/hyundai-tucson-2009-6.jpg","/carros/hyundai-tucson-2009-7.jpg","/carros/hyundai-tucson-2009-8.jpg","/carros/hyundai-tucson-2009-9.jpg","/carros/hyundai-tucson-2009-10.jpg"],
+    "desc": "Tucson 2.0 mecÃ¢nica. SUV espaÃ§osa.",
     "fotos": [
       "/carros/hyundai-tucson-2009-1.jpg",
       "/carros/hyundai-tucson-2009-2.jpg",
@@ -556,7 +545,7 @@ const VEHICLES = [
   {
     "id": 19,
     "destaque": false,
-    "marca": "Citroën",
+    "marca": "CitroÃ«n",
     "modelo": "C3",
     "versao": "Live Pack 1.0 MT Flex 5p Completo",
     "ano": 2024,
@@ -571,16 +560,16 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos",
-      "Central multimídia"
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos",
+      "Central multimÃ­dia"
     ],
     "desc": "C3 Live Pack 1.0 completo. Design moderno."
   },
   {
     "id": 20,
     "destaque": false,
-    "marca": "Citroën",
+    "marca": "CitroÃ«n",
     "modelo": "C3 Aircross",
     "versao": "GLX 1.6 16V Completo",
     "ano": 2011,
@@ -595,11 +584,10 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos"
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos"
     ],
-    "desc": "C3 Aircross GLX 1.6 completo. Versátil.",
-    "fotos": ["/carros/citroen-c3-aircross-2011-1.jpg","/carros/citroen-c3-aircross-2011-2.jpg","/carros/citroen-c3-aircross-2011-3.jpg","/carros/citroen-c3-aircross-2011-4.jpg","/carros/citroen-c3-aircross-2011-5.jpg","/carros/citroen-c3-aircross-2011-6.jpg","/carros/citroen-c3-aircross-2011-7.jpg","/carros/citroen-c3-aircross-2011-8.jpg","/carros/citroen-c3-aircross-2011-9.jpg","/carros/citroen-c3-aircross-2011-10.jpg","/carros/citroen-c3-aircross-2011-11.jpg"],
+    "desc": "C3 Aircross GLX 1.6 completo. VersÃ¡til.",
     "fotos": [
       "/carros/citroen-c3-aircross-2011-1.jpg",
       "/carros/citroen-c3-aircross-2011-2.jpg",
@@ -624,7 +612,7 @@ const VEHICLES = [
     "anoModelo": 2010,
     "km": 80500,
     "uso": "usado",
-    "cambio": "automático",
+    "cambio": "automÃ¡tico",
     "combustivel": "Gasolina",
     "cor": "Cinza",
     "preco": 59900,
@@ -632,12 +620,12 @@ const VEHICLES = [
     "heroImg": "/carros/bmw-hero.png",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
+      "DireÃ§Ã£o elÃ©trica",
       "Teto solar",
       "Bancos em couro",
       "Rodas 18\""
     ],
-    "desc": "BMW 118i 2.0 16V automática completa. Esportiva."
+    "desc": "BMW 118i 2.0 16V automÃ¡tica completa. Esportiva."
   },
   {
     "id": 22,
@@ -649,7 +637,7 @@ const VEHICLES = [
     "anoModelo": 2015,
     "km": 85500,
     "uso": "usado",
-    "cambio": "automático",
+    "cambio": "automÃ¡tico",
     "combustivel": "Flex",
     "cor": "Cinza",
     "preco": 89900,
@@ -657,12 +645,12 @@ const VEHICLES = [
     "heroImg": "/carros/corolla-hero.png",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
+      "DireÃ§Ã£o elÃ©trica",
       "Bancos em couro",
-      "Câmera de ré",
-      "Central multimídia"
+      "CÃ¢mera de rÃ©",
+      "Central multimÃ­dia"
     ],
-    "desc": "Corolla XEi 2.0 Flex automático completo. Revisado."
+    "desc": "Corolla XEi 2.0 Flex automÃ¡tico completo. Revisado."
   },
   {
     "id": 23,
@@ -683,7 +671,7 @@ const VEHICLES = [
     "opcionais": [
       "Ar-condicionado",
       "MyLink",
-      "Câmera de ré",
+      "CÃ¢mera de rÃ©",
       "Wi-Fi"
     ],
     "desc": "Onix Plus LT 1.0 completo. Sedan moderno."
@@ -691,7 +679,7 @@ const VEHICLES = [
   {
     "id": 24,
     "destaque": false,
-    "marca": "Citroën",
+    "marca": "CitroÃ«n",
     "modelo": "C3",
     "versao": "Live Pack 1.0 MT Flex 5p Completo",
     "ano": 2024,
@@ -706,10 +694,10 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Central multimídia"
+      "DireÃ§Ã£o elÃ©trica",
+      "Central multimÃ­dia"
     ],
-    "desc": "C3 Live Pack completo. Econômico."
+    "desc": "C3 Live Pack completo. EconÃ´mico."
   },
   {
     "id": 25,
@@ -729,8 +717,8 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Central multimídia"
+      "DireÃ§Ã£o elÃ©trica",
+      "Central multimÃ­dia"
     ],
     "desc": "Cronos 1.0 completo. Revisado."
   },
@@ -752,10 +740,10 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos"
+      "DireÃ§Ã£o elÃ©trica",
+      "Vidros elÃ©tricos"
     ],
-    "desc": "Mobi Like 1.0 completo. Compacto e econômico.",
+    "desc": "Mobi Like 1.0 completo. Compacto e econÃ´mico.",
     "fotos": [
       "/carros/fiat-mobi-2019-1.jpg",
       "/carros/fiat-mobi-2019-2.jpg",
@@ -785,10 +773,10 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Central multimídia"
+      "DireÃ§Ã£o elÃ©trica",
+      "Central multimÃ­dia"
     ],
-    "desc": "Logan Zen 1.0 completo. Sedan espaçoso."
+    "desc": "Logan Zen 1.0 completo. Sedan espaÃ§oso."
   },
   {
     "id": 28,
@@ -808,8 +796,8 @@ const VEHICLES = [
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
-      "Direção elétrica",
-      "Central multimídia"
+      "DireÃ§Ã£o elÃ©trica",
+      "Central multimÃ­dia"
     ],
     "desc": "Kwid Zen 1.0 completo. Baixa km."
   },
