@@ -15,7 +15,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Preto",
     "preco": 59900,
-    "img": "/carros/volkswagen-voyage-2022-1.jpg",
+    "img": "/carros/volkswagen-voyage-2022-5.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -24,11 +24,11 @@ const VEHICLES = [
     ],
     "desc": "Voyage 1.0 Flex completo. Econômico e espaçoso.",
     "fotos": [
+      "/carros/volkswagen-voyage-2022-5.jpg",
       "/carros/volkswagen-voyage-2022-1.jpg",
       "/carros/volkswagen-voyage-2022-2.jpg",
       "/carros/volkswagen-voyage-2022-3.jpg",
       "/carros/volkswagen-voyage-2022-4.jpg",
-      "/carros/volkswagen-voyage-2022-5.jpg",
       "/carros/volkswagen-voyage-2022-6.jpg",
       "/carros/volkswagen-voyage-2022-7.jpg",
       "/carros/volkswagen-voyage-2022-8.jpg",
