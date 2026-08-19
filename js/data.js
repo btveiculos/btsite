@@ -554,7 +554,7 @@ const VEHICLES = [
   },
   {
     "id": 20,
-    "destaque": false,
+    "destaque": true,
     "marca": "Citroën",
     "modelo": "C3 Aircross",
     "versao": "GLX 1.6 16V Completo",
