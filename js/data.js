@@ -93,7 +93,7 @@ const VEHICLES = [
   },
   {
     "id": 5,
-    "destaque": false,
+    "destaque": true,
     "marca": "Fiat",
     "modelo": "Uno",
     "versao": "Sporting 1.4 Evo Fire Completo",
