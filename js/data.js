@@ -127,7 +127,7 @@ const VEHICLES = [
   },
   {
     "id": 6,
-    "destaque": false,
+    "destaque": true,
     "marca": "Fiat",
     "modelo": "Argo",
     "versao": "1.3 Fire Flex Drive GSR Banco de Couro Completo Automático",
