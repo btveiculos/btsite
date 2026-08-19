@@ -545,7 +545,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Cinza",
     "preco": 72500,
-    "img": "/carros/c3.jpg",
+    "img": "/carros/citroen-c3-2024-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -553,7 +553,25 @@ const VEHICLES = [
       "Vidros elétricos",
       "Central multimídia"
     ],
-    "desc": "C3 Live Pack 1.0 completo. Design moderno."
+    "desc": "C3 Live Pack 1.0 completo. Design moderno.",
+    "fotos": [
+      "/carros/citroen-c3-2024-1.jpg",
+      "/carros/citroen-c3-2024-2.jpg",
+      "/carros/citroen-c3-2024-3.jpg",
+      "/carros/citroen-c3-2024-4.jpg",
+      "/carros/citroen-c3-2024-5.jpg",
+      "/carros/citroen-c3-2024-6.jpg",
+      "/carros/citroen-c3-2024-7.jpg",
+      "/carros/citroen-c3-2024-8.jpg",
+      "/carros/citroen-c3-2024-9.jpg",
+      "/carros/citroen-c3-2024-10.jpg",
+      "/carros/citroen-c3-2024-11.jpg",
+      "/carros/citroen-c3-2024-12.jpg",
+      "/carros/citroen-c3-2024-13.jpg",
+      "/carros/citroen-c3-2024-14.jpg",
+      "/carros/citroen-c3-2024-15.jpg",
+      "/carros/citroen-c3-2024-16.jpg"
+    ]
   },
   {
     "id": 20,
