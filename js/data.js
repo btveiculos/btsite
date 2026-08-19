@@ -236,7 +236,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Preto",
     "preco": 44900,
-    "img": "/carros/ford-fiesta-2011-5.jpg",
+    "img": "/carros/ford-fiesta-2011-2.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -245,9 +245,9 @@ const VEHICLES = [
     ],
     "desc": "Fiesta Class 1.6 completo. Compacto e econômico.",
     "fotos": [
+      "/carros/ford-fiesta-2011-2.jpg",
       "/carros/ford-fiesta-2011-5.jpg",
       "/carros/ford-fiesta-2011-1.jpg",
-      "/carros/ford-fiesta-2011-2.jpg",
       "/carros/ford-fiesta-2011-3.jpg",
       "/carros/ford-fiesta-2011-4.jpg",
       "/carros/ford-fiesta-2011-6.jpg"
