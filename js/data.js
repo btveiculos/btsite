@@ -282,7 +282,7 @@ const VEHICLES = [
     "id": 10,
     "destaque": false,
     "marca": "Chevrolet",
-    "modelo": "Onix",
+    "modelo": "Onix Hatch",
     "versao": "Hatch Lt 1.0 12V MT6",
     "ano": 2021,
     "anoModelo": 2022,
