@@ -3,7 +3,7 @@ const WHATSAPP = '5511947717447';
 const VEHICLES = [
   {
     "id": 1,
-    "destaque": true,
+    "destaque": false,
     "marca": "Volkswagen",
     "modelo": "Voyage",
     "versao": "1.0 Flex 12V 4P G Completo",
