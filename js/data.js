@@ -68,27 +68,6 @@ const VEHICLES = [
     ]
   },
   {
-    "id": 3,
-    "destaque": true,
-    "marca": "Volkswagen",
-    "modelo": "Kombi",
-    "versao": "Furgão 1.4 80CV",
-    "ano": 2009,
-    "anoModelo": 2009,
-    "km": 174000,
-    "uso": "usado",
-    "cambio": "manual",
-    "combustivel": "Flex",
-    "cor": "Branco",
-    "preco": 39900,
-    "img": "/carros/kombi-furgao-2009.jpg",
-    "heroImg": "/carros/kombi-hero.png",
-    "opcionais": [
-      "Direção hidráulica"
-    ],
-    "desc": "Kombi Furgão 1.4 Flex. Ideal para trabalho e entregas. Revisada."
-  },
-  {
     "id": 4,
     "destaque": false,
     "marca": "Fiat",
