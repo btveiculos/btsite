@@ -778,14 +778,25 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 57900,
-    "img": "/carros/kwid-prata.jpg",
+    "img": "/carros/renault-kwid-2023-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
       "Central multimídia"
     ],
-    "desc": "Kwid Zen 1.0 completo. Baixa km."
+    "desc": "Kwid Zen 1.0 completo. Baixa km.",
+    "fotos": [
+      "/carros/renault-kwid-2023-1.jpg",
+      "/carros/renault-kwid-2023-2.jpg",
+      "/carros/renault-kwid-2023-3.jpg",
+      "/carros/renault-kwid-2023-4.jpg",
+      "/carros/renault-kwid-2023-5.jpg",
+      "/carros/renault-kwid-2023-6.jpg",
+      "/carros/renault-kwid-2023-7.jpg",
+      "/carros/renault-kwid-2023-8.jpg",
+      "/carros/renault-kwid-2023-9.jpg"
+    ]
   },
   {
     "id": 29,
