@@ -422,7 +422,7 @@ const VEHICLES = [
     "cambio": "manual",
     "combustivel": "Flex",
     "cor": "Preto",
-    "preco": 78900,
+    "preco": 62900,
     "img": "/carros/hb20-sense-2023.jpg",
     "heroImg": "/carros/hb20-hero.png",
     "opcionais": [
