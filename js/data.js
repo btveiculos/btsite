@@ -3,7 +3,7 @@ const WHATSAPP = '5511947717447';
 const VEHICLES = [
   {
     "id": 1,
-    "destaque": true,
+    "destaque": false,
     "marca": "Volkswagen",
     "modelo": "Voyage",
     "versao": "1.0 Flex 12V 4P G Completo",
@@ -93,7 +93,7 @@ const VEHICLES = [
   },
   {
     "id": 5,
-    "destaque": true,
+    "destaque": false,
     "marca": "Fiat",
     "modelo": "Uno",
     "versao": "Sporting 1.4 Evo Fire Completo",
@@ -440,7 +440,7 @@ const VEHICLES = [
   },
   {
     "id": 17,
-    "destaque": false,
+    "destaque": true,
     "marca": "Hyundai",
     "modelo": "HB20S",
     "versao": "Confort Sedan 1.0 Flex 12V MEC. G Completo",
@@ -512,7 +512,7 @@ const VEHICLES = [
   },
   {
     "id": 19,
-    "destaque": true,
+    "destaque": false,
     "marca": "Citroën",
     "modelo": "C3",
     "versao": "Live Pack 1.0 MT Flex 5p Completo",
@@ -554,7 +554,7 @@ const VEHICLES = [
   },
   {
     "id": 20,
-    "destaque": true,
+    "destaque": false,
     "marca": "Citroën",
     "modelo": "C3 Aircross",
     "versao": "GLX 1.6 16V Completo",
