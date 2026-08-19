@@ -510,7 +510,7 @@ const VEHICLES = [
     "combustivel": "Gasolina",
     "cor": "Prata",
     "preco": 46900,
-    "img": "/carros/hyundai-tucson-2009-1.jpg",
+    "img": "/carros/hyundai-tucson-2009-2.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -519,8 +519,8 @@ const VEHICLES = [
     ],
     "desc": "Tucson 2.0 mecânica. SUV espaçosa.",
     "fotos": [
-      "/carros/hyundai-tucson-2009-1.jpg",
       "/carros/hyundai-tucson-2009-2.jpg",
+      "/carros/hyundai-tucson-2009-1.jpg",
       "/carros/hyundai-tucson-2009-3.jpg",
       "/carros/hyundai-tucson-2009-4.jpg",
       "/carros/hyundai-tucson-2009-5.jpg",
