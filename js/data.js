@@ -512,7 +512,7 @@ const VEHICLES = [
   },
   {
     "id": 19,
-    "destaque": false,
+    "destaque": true,
     "marca": "Citroën",
     "modelo": "C3",
     "versao": "Live Pack 1.0 MT Flex 5p Completo",
