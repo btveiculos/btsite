@@ -678,7 +678,7 @@ const VEHICLES = [
     "cambio": "manual",
     "combustivel": "Flex",
     "cor": "Preto",
-    "preco": 72500,
+    "preco": 72900,
     "img": "/carros/c3-preto.jpg",
     "heroImg": "",
     "opcionais": [
