@@ -447,7 +447,7 @@ const VEHICLES = [
     "cambio": "manual",
     "combustivel": "Flex",
     "cor": "Preto",
-    "preco": 78900,
+    "preco": 67900,
     "img": "/carros/hb20-confort.jpg",
     "heroImg": "",
     "opcionais": [
