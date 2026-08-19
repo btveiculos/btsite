@@ -453,21 +453,42 @@ async function uploadFileToGitHub(file, path) {
   }
 }
 
-async function updateDataJS() {
+async function updateDataJS(retries = 4) {
   const content = `const WHATSAPP = '5511947717447';\n\nconst VEHICLES = ${JSON.stringify(VEHICLES, null, 2)};\n`;
   const encoded = btoa(unescape(encodeURIComponent(content)));
 
-  const fileRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`, {
-    headers: { 'Authorization': `token ${GH_TOKEN}` }
-  });
-  const fileData = await fileRes.json();
+  let lastErr = 'erro desconhecido';
 
-  const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`, {
-    method: 'PUT',
-    headers: { 'Authorization': `token ${GH_TOKEN}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message: 'Atualização estoque via painel', content: encoded, sha: fileData.sha })
-  });
-  if (!res.ok) throw new Error('Falha ao atualizar data.js');
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      // Sempre relê o SHA atual antes de gravar (evita conflito 409 e sha undefined)
+      const fileRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}?t=${Date.now()}`, {
+        headers: { 'Authorization': `token ${GH_TOKEN}`, 'Cache-Control': 'no-cache' }
+      });
+      if (!fileRes.ok) throw new Error(`leitura falhou (${fileRes.status})`);
+
+      const fileData = await fileRes.json();
+      if (!fileData.sha) throw new Error('SHA do data.js não encontrado');
+
+      const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`, {
+        method: 'PUT',
+        headers: { 'Authorization': `token ${GH_TOKEN}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: 'Atualização estoque via painel', content: encoded, sha: fileData.sha })
+      });
+
+      if (res.ok) return;
+
+      const err = await res.json().catch(() => ({ message: '' }));
+      throw new Error(`${res.status}: ${err.message || 'falha ao gravar'}`);
+
+    } catch (e) {
+      lastErr = e?.message || String(e);
+      if (attempt === retries) break;
+      await new Promise(r => setTimeout(r, 3000 * (attempt + 1)));
+    }
+  }
+
+  throw new Error(`Não foi possível salvar o estoque após ${retries + 1} tentativas (${lastErr}). Nada foi alterado no site.`);
 }
 
 function fileToBase64Raw(file) {
@@ -561,17 +582,36 @@ async function uploadFileToGitHubWithRetry(file, path, retries = 4) {
   }
 }
 
-function toggleDest(i) {
+async function toggleDest(i) {
   VEHICLES[i].destaque = !VEHICLES[i].destaque;
   renderAdminList();
-  updateDataJS().then(() => alert('✅ Destaque atualizado!')).catch(e => alert('❌ Erro: '+e.message));
+  try {
+    await updateDataJS();
+  } catch (e) {
+    // Desfaz para a tela não mentir
+    VEHICLES[i].destaque = !VEHICLES[i].destaque;
+    renderAdminList();
+    alert('❌ ' + (e?.message || 'Erro ao atualizar destaque'));
+  }
 }
 
-function removeCar(i) {
-  if (!confirm(`Remover ${VEHICLES[i].marca} ${VEHICLES[i].modelo}?`)) return;
-  VEHICLES.splice(i, 1);
+async function removeCar(i) {
+  const v = VEHICLES[i];
+  if (!confirm(`Remover ${v.marca} ${v.modelo}?`)) return;
+
+  // Guarda para poder desfazer se a gravação falhar
+  const backup = VEHICLES.splice(i, 1)[0];
   renderAdminList();
-  updateDataJS().then(() => alert('✅ Veículo removido!')).catch(e => alert('❌ Erro: '+e.message));
+
+  try {
+    await updateDataJS();
+    alert(`✅ ${backup.marca} ${backup.modelo} removido! O site atualiza em 1-2 minutos.`);
+  } catch (e) {
+    // Falhou: devolve o veículo para a lista, senão a tela mente
+    VEHICLES.splice(i, 0, backup);
+    renderAdminList();
+    alert('❌ ' + (e?.message || 'Erro ao remover') + '\n\nO veículo NÃO foi removido. Tente novamente.');
+  }
 }
 
 function resetVehicles() {
