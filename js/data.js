@@ -668,7 +668,8 @@ const VEHICLES = [
     ],
     "desc": "Onix Plus LT 1.0 completo. Sedan moderno.",
     "fotos": [
-      "/carros/chevrolet-onix-plus-2024-1787341755161-1.jpg"
+      "/carros/chevrolet-onix-plus-2024-1787341755161-1.jpg",
+      "/carros/chevrolet-onix-plus-2024-1787341817106-1.jpg"
     ]
   },
   {
