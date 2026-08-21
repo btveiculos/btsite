@@ -461,9 +461,11 @@ async function updateDataJS(retries = 4) {
 
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
-      // Sempre relê o SHA atual antes de gravar (evita conflito 409 e sha undefined)
+      // Sempre relê o SHA atual antes de gravar (evita conflito 409 e sha undefined).
+      // O ?t= já evita cache. NÃO usar header Cache-Control aqui: o GitHub não o
+      // permite no CORS e o browser bloqueia a chamada com "Failed to fetch".
       const fileRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}?t=${Date.now()}`, {
-        headers: { 'Authorization': `token ${GH_TOKEN}`, 'Cache-Control': 'no-cache' }
+        headers: { 'Authorization': `token ${GH_TOKEN}` }
       });
       if (!fileRes.ok) throw new Error(`leitura falhou (${fileRes.status})`);
 
