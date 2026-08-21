@@ -708,14 +708,17 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Branco",
     "preco": 61900,
-    "img": "",
+    "img": "/carros/fiat-cronos-2022-1787341608852-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
       "Central multimídia"
     ],
-    "desc": "Cronos 1.0 completo. Revisado."
+    "desc": "Cronos 1.0 completo. Revisado.",
+    "fotos": [
+      "/carros/fiat-cronos-2022-1787341608852-1.jpg"
+    ]
   },
   {
     "id": 26,
