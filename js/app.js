@@ -185,12 +185,23 @@ featured.forEach(v => {
 });
 
 // ===== ESTOQUE =====
+// A listagem completa foi movida para estoque.html. Aqui a landing page só
+// mostra o total e um botão. Todo o bloco abaixo é opcional: se os elementos
+// da grade não existirem, ele simplesmente não roda.
+const estoqueTotalEl = document.getElementById('estoqueTotal');
+if (estoqueTotalEl) estoqueTotalEl.textContent = VEHICLES.length;
+
 const estoqueGrid = document.getElementById('estoqueGrid');
 const filterMarca = document.getElementById('filterMarca');
-const marcas = [...new Set(VEHICLES.map(v => v.marca))].sort();
-marcas.forEach(m => { const o = document.createElement('option'); o.value = m; o.textContent = m; filterMarca.appendChild(o); });
+const hasEstoqueUI = !!(estoqueGrid && filterMarca && document.getElementById('searchInput'));
+
+if (hasEstoqueUI) {
+  const marcas = [...new Set(VEHICLES.map(v => v.marca))].sort();
+  marcas.forEach(m => { const o = document.createElement('option'); o.value = m; o.textContent = m; filterMarca.appendChild(o); });
+}
 
 function renderEstoque() {
+  if (!hasEstoqueUI) return;
   const search = document.getElementById('searchInput').value.toLowerCase();
   const marca = filterMarca.value;
   const cambio = document.getElementById('filterCambio').value;
@@ -214,6 +225,7 @@ function renderEstoque() {
 }
 
 function renderCards() {
+  if (!hasEstoqueUI) return;
   const list = window._filteredList || [];
   const count = window._showCount || 6;
   const visible = list.slice(0, count);
@@ -256,12 +268,8 @@ function renderCards() {
   document.getElementById('loadMoreWrap').style.display = count < list.length ? 'block' : 'none';
 }
 
-document.getElementById('loadMoreBtn').onclick = () => {
-  window._showCount += 6;
-  renderCards();
-};
-
 function clearFilters() {
+  if (!hasEstoqueUI) return;
   document.getElementById('searchInput').value = '';
   filterMarca.value = '';
   document.getElementById('filterCambio').value = '';
@@ -270,12 +278,18 @@ function clearFilters() {
   renderEstoque();
 }
 
-document.getElementById('searchInput').addEventListener('input', renderEstoque);
-filterMarca.addEventListener('change', renderEstoque);
-document.getElementById('filterCambio').addEventListener('change', renderEstoque);
-document.getElementById('filterPreco').addEventListener('change', renderEstoque);
-document.getElementById('filterOrder').addEventListener('change', renderEstoque);
-renderEstoque();
+if (hasEstoqueUI) {
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  if (loadMoreBtn) loadMoreBtn.onclick = () => { window._showCount += 6; renderCards(); };
+
+  document.getElementById('searchInput').addEventListener('input', renderEstoque);
+  filterMarca.addEventListener('change', renderEstoque);
+  ['filterCambio', 'filterPreco', 'filterOrder'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('change', renderEstoque);
+  });
+  renderEstoque();
+}
 
 // ===== MODAL =====
 function openModal(v) {

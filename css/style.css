@@ -427,6 +427,53 @@ body{animation:bodyFadeIn .4s ease}
    layout, então o SVG interno herda as regras de svg já existentes nos cards. */
 .car-img-placeholder{display:contents}
 
+/* Bloco na landing page que leva para o estoque em tela cheia */
+.estoque-cta-box{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;padding:40px 48px;background:linear-gradient(135deg,var(--bg3) 0%,rgba(212,32,44,.06) 100%);border:1px solid rgba(212,32,44,.12);border-radius:20px;max-width:720px;margin:0 auto}
+.estoque-cta-num{display:flex;flex-direction:column;align-items:center;line-height:1}
+.estoque-cta-num strong{font-family:var(--heading);font-size:clamp(38px,6vw,56px);font-weight:900;color:var(--primary)}
+.estoque-cta-num span{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-top:6px}
+.estoque-cta-btn{padding:18px 40px;font-size:14px}
+@media(max-width:600px){
+  .estoque-cta-box{padding:28px 20px;gap:20px;flex-direction:column}
+  .estoque-cta-btn{width:100%}
+}
+
+/* ═══ PÁGINA DE ESTOQUE (TELA CHEIA) ═══ */
+.estoque-page{background:var(--bg)}
+.estoque-full{padding-top:68px;min-height:100vh}
+.estoque-full-head{padding:48px 0 28px;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);border-bottom:1px solid var(--border)}
+.estoque-full-title{font-size:clamp(28px,5vw,46px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;text-align:center}
+.estoque-full-title span{color:var(--primary)}
+.estoque-full-sub{text-align:center;color:var(--text2);font-size:14px;margin-top:8px}
+.estoque-full-sub strong{color:var(--text)}
+.nav-desktop a.nav-active{color:#fff;background:rgba(212,32,44,.12)}
+
+/* Barra de filtros fixa no topo ao rolar */
+.estoque-filters-bar{position:sticky;top:68px;z-index:80;background:rgba(7,7,7,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:16px 0}
+.estoque-filters-bar .filters{margin-bottom:0;gap:8px}
+.estoque-filters-bar .filters input{min-width:220px}
+.estoque-filters-bar .filters select{min-width:130px;padding:11px 14px}
+.estoque-clear-btn{padding:11px 22px;font-size:11px}
+
+/* Grid mais denso: mostra o estoque inteiro sem paginação */
+.estoque-full .estoque-grid{grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px;padding-bottom:60px}
+.estoque-full .results-count{margin:24px 0 20px}
+/* A página lista tudo de uma vez, então a animação em cascata é desligada
+   para os cards não aparecerem fora de ordem em estoques grandes. */
+.estoque-full .vehicle-card{opacity:1;transform:none;animation:none}
+
+@media(max-width:960px){
+  .estoque-filters-bar{top:0;position:sticky}
+  .estoque-full{padding-top:68px}
+}
+@media(max-width:768px){
+  .estoque-full-head{padding:32px 0 20px}
+  .estoque-filters-bar{padding:12px 0}
+  .estoque-filters-bar .filters{flex-direction:column;gap:8px}
+  .estoque-filters-bar .filters input,.estoque-filters-bar .filters select,.estoque-clear-btn{min-width:100%;width:100%}
+  .estoque-full .estoque-grid{grid-template-columns:1fr;gap:16px}
+}
+
 /* ═══ ADMIN PANEL ═══ */
 #adminPanel{position:fixed;inset:0;z-index:9999;overflow:hidden}
 .admin-fullscreen{display:flex;width:100%;height:100vh;background:var(--bg)}

@@ -31,7 +31,7 @@
         </div>
       </a>
       <nav class="nav-desktop">
-        <a href="#estoque">Estoque</a>
+        <a href="estoque.html">Estoque</a>
         <a href="#financiamento">Financiamento</a>
         <a href="#venda">Venda seu Carro</a>
         <a href="#contato">Contato</a>
@@ -45,7 +45,7 @@
       </button>
     </div>
     <div class="nav-mobile" id="mobileMenu">
-      <a href="#estoque">Estoque</a>
+      <a href="estoque.html">Estoque</a>
       <a href="#financiamento">Financiamento</a>
       <a href="#venda">Venda seu Carro</a>
       <a href="#contato">Contato</a>
@@ -75,7 +75,7 @@
       </div>
 
       <div class="hero-ctas">
-        <a href="#estoque" class="btn-primary">Ver Estoque</a>
+        <a href="estoque.html" class="btn-primary">Ver Estoque</a>
         <a href="#" class="btn-outline" id="heroWhatsapp">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
           Falar com consultor
@@ -106,22 +106,17 @@
     </div>
   </section>
 
-  <!-- ESTOQUE -->
-  <section id="estoque" class="estoque">
+  <!-- ESTOQUE: agora em página própria, em tela cheia -->
+  <section id="estoque" class="estoque estoque-cta">
     <div class="container">
       <h2 class="section-title">Estoque <span>BT Veículos</span></h2>
-      <p class="section-sub">Filtre por marca, ano, preço e encontre a melhor opção para você.</p>
-      <div class="filters">
-        <input type="text" id="searchInput" placeholder="Buscar por marca, modelo ou versão...">
-        <select id="filterMarca"><option value="">Todas marcas</option></select>
-        <select id="filterCambio"><option value="">Câmbio</option><option value="manual">Manual</option><option value="automático">Automático</option></select>
-        <select id="filterPreco"><option value="">Preço máx.</option><option value="70000">Até R$ 70 mil</option><option value="90000">Até R$ 90 mil</option><option value="110000">Até R$ 110 mil</option><option value="130000">Até R$ 130 mil</option><option value="150000">Até R$ 150 mil</option></select>
-        <select id="filterOrder"><option value="">Ordenar</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="km">Menor km</option><option value="ano">Mais novo</option></select>
-      </div>
-      <p class="results-count" id="resultsCount"></p>
-      <div class="estoque-grid" id="estoqueGrid"></div>
-      <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
-        <button class="btn-outline" id="loadMoreBtn">Ver mais veículos</button>
+      <p class="section-sub">Veja todos os veículos em tela cheia, com filtros por marca, tipo, câmbio, combustível e preço.</p>
+      <div class="estoque-cta-box">
+        <div class="estoque-cta-num">
+          <strong id="estoqueTotal">0</strong>
+          <span>veículos disponíveis</span>
+        </div>
+        <a href="estoque.html" class="btn-primary estoque-cta-btn">Ver estoque completo →</a>
       </div>
     </div>
   </section>
@@ -231,7 +226,7 @@
         </div>
         <div>
           <h4>Menu</h4>
-          <a href="#estoque">Estoque</a>
+          <a href="estoque.html">Estoque</a>
           <a href="#financiamento">Financiamento</a>
           <a href="#venda">Venda seu Carro</a>
           <a href="#faq">Perguntas frequentes</a>

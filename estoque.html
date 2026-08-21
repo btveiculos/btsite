@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Estoque completo da BT Veículos Jundiaí. Carros novos, seminovos e usados com garantia e procedência. Rua da Saúde, 108, Vila Vianelo, Jundiaí/SP.">
+  <meta name="keywords" content="estoque carros jundiaí, veículos seminovos jundiaí, comprar carro jundiaí, BT Veículos estoque">
+  <meta property="og:title" content="Estoque Completo | BT Veículos Jundiaí">
+  <meta property="og:description" content="Veja todos os veículos disponíveis na BT Veículos Jundiaí.">
+  <meta property="og:url" content="https://btveiculosjundiai.com.br/estoque.html">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="theme-color" content="#d4202c">
+  <title>Estoque Completo | BT Veículos Jundiaí</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='72' height='72' rx='6' fill='none' stroke='%23d4202c' stroke-width='10'/><rect x='60' y='60' width='22' height='22' fill='%23070707'/><text x='44' y='56' font-family='Arial' font-size='28' font-weight='bold' font-style='italic' text-anchor='middle' fill='white'>BT</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="estoque-page">
+
+  <!-- HEADER -->
+  <header id="header" class="scrolled">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-box">BT</div>
+        <div class="logo-text">
+          <span class="logo-name">VEÍCULOS</span>
+          <span class="logo-slogan">Qualidade e Procedência</span>
+        </div>
+      </a>
+      <nav class="nav-desktop">
+        <a href="index.html">Início</a>
+        <a href="estoque.html" class="nav-active">Estoque</a>
+        <a href="index.html#financiamento">Financiamento</a>
+        <a href="index.html#venda">Venda seu Carro</a>
+        <a href="index.html#contato">Contato</a>
+      </nav>
+      <a href="#" class="header-cta" id="headerWhatsapp">
+        Falar com consultor
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+      </a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="index.html">Início</a>
+      <a href="estoque.html">Estoque</a>
+      <a href="index.html#financiamento">Financiamento</a>
+      <a href="index.html#venda">Venda seu Carro</a>
+      <a href="index.html#contato">Contato</a>
+      <a href="#" class="btn-primary" id="mobileWhatsapp">Falar com consultor</a>
+    </div>
+  </header>
+
+  <!-- ESTOQUE FULLSCREEN -->
+  <main class="estoque-full">
+    <div class="estoque-full-head">
+      <div class="container">
+        <h1 class="estoque-full-title">Estoque <span>completo</span></h1>
+        <p class="estoque-full-sub">
+          <strong id="totalCount">0</strong> veículos disponíveis · revisados e prontos para você
+        </p>
+      </div>
+    </div>
+
+    <!-- Barra de filtros fixa -->
+    <div class="estoque-filters-bar">
+      <div class="container">
+        <div class="filters">
+          <input type="text" id="searchInput" placeholder="Buscar por marca, modelo ou versão...">
+          <select id="filterMarca"><option value="">Todas marcas</option></select>
+          <select id="filterUso"><option value="">Todos os tipos</option><option value="novo">Novo</option><option value="seminovo">Seminovo</option><option value="usado">Usado</option></select>
+          <select id="filterCambio"><option value="">Câmbio</option><option value="manual">Manual</option><option value="automático">Automático</option></select>
+          <select id="filterCombustivel"><option value="">Combustível</option></select>
+          <select id="filterPreco"><option value="">Preço máx.</option><option value="50000">Até R$ 50 mil</option><option value="70000">Até R$ 70 mil</option><option value="90000">Até R$ 90 mil</option><option value="110000">Até R$ 110 mil</option><option value="150000">Até R$ 150 mil</option></select>
+          <select id="filterOrder"><option value="">Ordenar por</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="km">Menor km</option><option value="ano">Mais novo</option></select>
+          <button class="btn-outline estoque-clear-btn" id="clearFiltersBtn">Limpar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="results-count" id="resultsCount"></div>
+      <div class="estoque-grid" id="estoqueGrid"></div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> BT Veículos Jundiaí · Rua da Saúde, 108 · Vila Vianelo, Jundiaí/SP</p>
+        <a href="#" class="back-to-top" id="backToTop">Voltar ao topo ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a href="#" class="whatsapp-float" id="whatsappFloat" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+  </a>
+
+  <!-- Modal de detalhes -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-img" id="modalImg"></div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    // Cache-busting para o estoque nunca ficar desatualizado.
+    // Ordem obrigatória: data.js -> estoque.js -> admin.js
+    (function () {
+      var v = Date.now();
+      var files = ['js/data.js', 'js/estoque.js', 'js/admin.js'];
+
+      function load(i) {
+        if (i >= files.length) return;
+        var s = document.createElement('script');
+        s.src = files[i] + '?v=' + v;
+        s.onload = function () { load(i + 1); };
+        s.onerror = function () { load(i + 1); };
+        document.body.appendChild(s);
+      }
+
+      load(0);
+    })();
+  </script>
+</body>
+</html>
