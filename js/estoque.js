@@ -121,24 +121,24 @@ function render(list) {
     card.className = 'vehicle-card';
     card.innerHTML = `
       <div class="card-img">
-        ${v.destaque ? '<span class="tag-destaque">★ Destaque</span>' : ''}
+        ${v.destaque ? '<span class="tag-destaque"><svg class="ico ico-fill" width="11" height="11"><use href="#i-star"/></svg>Destaque</span>' : ''}
         <span class="badge badge-${v.uso}">${v.uso}</span>
-        ${nFotos > 1 ? `<span class="gallery-counter">📷 ${nFotos}</span>` : ''}
+        ${nFotos > 1 ? `<span class="gallery-counter"><svg class="ico" width="13" height="13"><use href="#i-camera"/></svg>${nFotos}</span>` : ''}
       </div>
       <div class="card-body">
         <div class="marca">${v.marca}</div>
         <h3>${v.modelo}</h3>
         <div class="versao">${v.versao}</div>
         <div class="specs">
-          <span>📅 ${v.ano}/${v.anoModelo}</span>
-          <span>🛣️ ${Number(v.km || 0).toLocaleString('pt-BR')} km</span>
-          <span>⚙️ ${v.cambio}</span>
-          <span>⛽ ${v.combustivel}</span>
+          <span><svg class="ico" width="14" height="14"><use href="#i-cal"/></svg>${v.ano}/${v.anoModelo}</span>
+          <span><svg class="ico" width="14" height="14"><use href="#i-gauge"/></svg>${Number(v.km || 0).toLocaleString('pt-BR')} km</span>
+          <span><svg class="ico" width="14" height="14"><use href="#i-gear"/></svg>${v.cambio}</span>
+          <span><svg class="ico" width="14" height="14"><use href="#i-fuel"/></svg>${v.combustivel}</span>
         </div>
         <div class="price">${fmt(v.preco)}</div>
         <div class="card-actions">
           <button class="btn-detail">Ver detalhes</button>
-          <button class="btn-wpp">💬 WhatsApp</button>
+          <button class="btn-wpp" aria-label="WhatsApp"><svg class="ico ico-fill" width="16" height="16"><use href="#i-whats"/></svg>WhatsApp</button>
         </div>
       </div>`;
 
@@ -182,8 +182,8 @@ function openModal(v) {
     modalImg.appendChild(makeImg(photos[current], `${v.marca} ${v.modelo}`, false));
     if (photos.length > 1) {
       modalImg.innerHTML += `
-        <button class="modal-nav modal-nav-left" id="mPrev">&#10094;</button>
-        <button class="modal-nav modal-nav-right" id="mNext">&#10095;</button>
+        <button class="modal-nav modal-nav-left" id="mPrev" aria-label="Foto anterior"><svg class="ico" width="17" height="17"><use href="#i-chev-l"/></svg></button>
+        <button class="modal-nav modal-nav-right" id="mNext" aria-label="Próxima foto"><svg class="ico" width="17" height="17"><use href="#i-chev-r"/></svg></button>
         <div class="modal-photo-counter">${current + 1} / ${photos.length}</div>`;
       const p = document.getElementById('mPrev');
       const n = document.getElementById('mNext');
@@ -205,9 +205,9 @@ function openModal(v) {
       <div class="spec"><small>Cor</small><strong>${v.cor || 'N/I'}</strong></div>
       <div class="spec"><small>Uso</small><strong style="text-transform:capitalize">${v.uso}</strong></div>
     </div>
-    ${v.opcionais && v.opcionais.length ? `<h4 style="font-size:12px;margin-bottom:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-weight:600">Opcionais e equipamentos</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>✓ ${o}</span>`).join('')}</div>` : ''}
+    ${v.opcionais && v.opcionais.length ? `<h4 class="modal-subtitle">Opcionais e equipamentos</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>${o}</span>`).join('')}</div>` : ''}
     <div class="modal-desc">${v.desc || ''}</div>
-    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" class="btn-whatsapp">💬 Tenho interesse neste veículo</a>
+    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" class="btn-whatsapp"><svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>Tenho interesse neste veículo</a>
     <p style="text-align:center;color:var(--text3);font-size:11px;margin-top:10px">Você será direcionado ao WhatsApp da BT Veículos</p>`;
 
   modal.classList.add('open');

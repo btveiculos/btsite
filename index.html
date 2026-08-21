@@ -20,6 +20,37 @@
 </head>
 <body>
 
+  <!-- SPRITE DE ÍCONES
+       Definido uma vez no topo do body. Os cards gerados por JS referenciam
+       estes símbolos por id, sem duplicar path nem piscar ícone faltando.
+       Traço 1.6 uniforme = peso visual consistente em todo o site. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.2 2.9 7.6 7 9 4.1-1.4 7-4.8 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a3.5 3.5 0 0 0 4.6 4.6l-8 8a2.4 2.4 0 0 1-3.4-3.4l8-8Z"/><path d="M6.6 17.4h.01"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 10h19M6 14.5h3"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8.5 3.5v3M15.5 3.5v3"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 18a9 9 0 1 1 16 0"/><path d="m12 13 4-3.5"/><circle cx="12" cy="13.5" r="1.4"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.8M12 17.7v2.8M3.5 12h2.8M17.7 12h2.8M5.9 5.9l2 2M16.1 16.1l2 2M18.1 5.9l-2 2M7.9 16.1l-2 2"/></symbol>
+    <symbol id="i-fuel" viewBox="0 0 24 24"><path d="M6 20V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v14"/><path d="M4.5 20h11M8 8.5h4"/><path d="M14 9h2.5a2 2 0 0 1 2 2v4.8a1.75 1.75 0 0 0 3.5 0V10l-2.5-3"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3.5 8.5h3L8 6.5h8l1.5 2h3A1.5 1.5 0 0 1 22 10v7a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 17v-7a1.5 1.5 0 0 1 1.5-1.5Z"/><circle cx="12" cy="13" r="3"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.8"/><path d="M16.8 7.2h.01"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4.5 12h14"/><path d="m13 6.5 5.5 5.5L13 17.5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 4 2.5 5.1 5.5.8-4 3.9.9 5.6-4.9-2.6-4.9 2.6.9-5.6-4-3.9 5.5-.8L12 4Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
+    <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6"/></symbol>
+    <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9.5 6 6 6-6 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M17.5 6.5l-11 11"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M17 4l3 3-2.5 2.5-3-3"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-3l2-5h12l2 5v3"/><path d="M3 16h18"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M13 3H5.5A2.5 2.5 0 0 0 3 5.5V13l8 8 10-10-8-8Z"/><path d="M7.4 7.4h.01"/></symbol>
+    <symbol id="i-whats" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></symbol>
+  </svg>
+
   <!-- HEADER -->
   <header id="header">
     <div class="header-inner">
@@ -37,8 +68,8 @@
         <a href="#contato">Contato</a>
       </nav>
       <a href="#" class="header-cta" id="headerWhatsapp">
+        <svg class="ico ico-fill" width="15" height="15"><use href="#i-whats"/></svg>
         Falar com consultor
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
       </a>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -57,43 +88,69 @@
   <section id="inicio" class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <p class="hero-tag">Seu próximo veículo está aqui</p>
-      <h1 class="hero-title">Qualidade, procedência<br>e confiança que você merece.</h1>
-      <p class="hero-subtitle">Mais de <strong id="vehicleCount">30</strong> veículos revisados e prontos para você em Jundiaí.</p>
-      
+      <div class="hero-head">
+        <p class="hero-tag"><span class="hero-tag-line"></span>Revenda em Jundiaí desde 2019</p>
+        <h1 class="hero-title">Qualidade, procedência<br>e <em>confiança</em> que você merece.</h1>
+        <p class="hero-subtitle"><strong id="vehicleCount">30</strong> veículos revisados, prontos para sair hoje.</p>
+      </div>
+
       <div class="hero-carousel">
-        <button class="carousel-arrow left" id="prevBtn">&#10094;</button>
+        <button class="carousel-arrow left" id="prevBtn" aria-label="Anterior">
+          <svg class="ico" width="20" height="20"><use href="#i-chev-l"/></svg>
+        </button>
         <div class="carousel-track" id="carouselTrack">
-          <!-- Populated by JS -->
+          <!-- Preenchido por JS -->
         </div>
-        <button class="carousel-arrow right" id="nextBtn">&#10095;</button>
+        <button class="carousel-arrow right" id="nextBtn" aria-label="Próximo">
+          <svg class="ico" width="20" height="20"><use href="#i-chev-r"/></svg>
+        </button>
       </div>
 
-      <div class="hero-info" id="heroInfo">
-        <p class="hero-car-name"></p>
-        <p class="hero-car-price"></p>
-      </div>
+      <div class="hero-foot">
+        <div class="hero-info" id="heroInfo">
+          <p class="hero-car-name"></p>
+          <p class="hero-car-price"></p>
+        </div>
 
-      <div class="hero-ctas">
-        <a href="estoque.html" class="btn-primary">Ver Estoque</a>
-        <a href="#" class="btn-outline" id="heroWhatsapp">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
-          Falar com consultor
-        </a>
-      </div>
+        <div class="hero-ctas">
+          <a href="estoque.html" class="btn-primary">
+            Ver estoque
+            <svg class="ico" width="16" height="16"><use href="#i-arrow"/></svg>
+          </a>
+          <a href="#" class="btn-outline" id="heroWhatsapp">
+            <svg class="ico ico-fill" width="15" height="15"><use href="#i-whats"/></svg>
+            Falar com consultor
+          </a>
+        </div>
 
-      <div class="hero-dots" id="heroDots"></div>
+        <div class="hero-dots" id="heroDots"></div>
+      </div>
     </div>
+    <a href="#estoque" class="hero-scroll" aria-label="Rolar para o conteúdo">
+      <span class="hero-scroll-line"></span>
+    </a>
   </section>
 
   <!-- BENEFÍCIOS -->
   <section class="beneficios">
     <div class="container">
       <div class="beneficios-grid">
-        <div class="beneficio"><span>🛡️</span> Garantia em todos os veículos</div>
-        <div class="beneficio"><span>🔧</span> Carros revisados antes da venda</div>
-        <div class="beneficio"><span>💳</span> Financiamento facilitado</div>
-        <div class="beneficio"><span>✓</span> Qualidade e procedência</div>
+        <div class="beneficio">
+          <svg class="ico" width="20" height="20"><use href="#i-shield"/></svg>
+          <div><strong>Garantia real</strong><span>Em todos os veículos</span></div>
+        </div>
+        <div class="beneficio">
+          <svg class="ico" width="20" height="20"><use href="#i-wrench"/></svg>
+          <div><strong>Revisão completa</strong><span>Antes de ir à vitrine</span></div>
+        </div>
+        <div class="beneficio">
+          <svg class="ico" width="20" height="20"><use href="#i-card"/></svg>
+          <div><strong>Financiamento</strong><span>Aprovação facilitada</span></div>
+        </div>
+        <div class="beneficio">
+          <svg class="ico" width="20" height="20"><use href="#i-badge"/></svg>
+          <div><strong>Procedência</strong><span>Histórico verificado</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -101,22 +158,43 @@
   <!-- DESTAQUES -->
   <section class="destaques">
     <div class="container">
-      <h2 class="section-title">Destaques do Estoque</h2>
+      <div class="section-head">
+        <div>
+          <span class="section-label">01 — Selecionados</span>
+          <h2 class="section-title">Destaques da <span>semana</span></h2>
+        </div>
+        <a href="estoque.html" class="section-link">
+          Ver todos
+          <svg class="ico" width="15" height="15"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
       <div class="destaques-grid" id="destaquesGrid"></div>
     </div>
   </section>
 
-  <!-- ESTOQUE: agora em página própria, em tela cheia -->
+  <!-- ESTOQUE: página própria em tela cheia -->
   <section id="estoque" class="estoque estoque-cta">
     <div class="container">
-      <h2 class="section-title">Estoque <span>BT Veículos</span></h2>
-      <p class="section-sub">Veja todos os veículos em tela cheia, com filtros por marca, tipo, câmbio, combustível e preço.</p>
       <div class="estoque-cta-box">
-        <div class="estoque-cta-num">
-          <strong id="estoqueTotal">0</strong>
-          <span>veículos disponíveis</span>
+        <div class="estoque-cta-left">
+          <span class="section-label">02 — Estoque</span>
+          <h2 class="estoque-cta-title">Todo o estoque<br>em <span>uma tela</span></h2>
+          <p class="estoque-cta-desc">Filtre por marca, tipo, câmbio, combustível e preço. Sem paginação, sem rodeios.</p>
+          <a href="estoque.html" class="btn-primary estoque-cta-btn">
+            Ver estoque completo
+            <svg class="ico" width="16" height="16"><use href="#i-arrow"/></svg>
+          </a>
         </div>
-        <a href="estoque.html" class="btn-primary estoque-cta-btn">Ver estoque completo →</a>
+        <div class="estoque-cta-stats">
+          <div class="estoque-stat">
+            <strong id="estoqueTotal">0</strong>
+            <span>veículos<br>disponíveis</span>
+          </div>
+          <div class="estoque-stat">
+            <strong id="estoqueMarcas">0</strong>
+            <span>marcas<br>diferentes</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -126,6 +204,7 @@
     <div class="container">
       <div class="forms-grid">
         <div class="form-block">
+          <span class="section-label">03 — Financiamento</span>
           <h2 class="form-block-title">Financie seu <span>veículo</span></h2>
           <p class="form-block-sub">Parcelas que cabem no bolso. Preencha e receba uma simulação.</p>
           <form class="form-card" id="formFinanciamento">
@@ -138,6 +217,7 @@
           </form>
         </div>
         <div class="form-block" id="venda">
+          <span class="section-label">04 — Avaliação</span>
           <h2 class="form-block-title">Venda ou troque <span>seu carro</span></h2>
           <p class="form-block-sub">Envie os dados e receba uma avaliação rápida.</p>
           <form class="form-card" id="formVenda">
@@ -162,7 +242,12 @@
   <!-- FAQ -->
   <section class="faq" id="faq">
     <div class="container">
-      <h2 class="section-title">Perguntas <span>frequentes</span></h2>
+      <div class="section-head section-head-center">
+        <div>
+          <span class="section-label">05 — Dúvidas</span>
+          <h2 class="section-title">Perguntas <span>frequentes</span></h2>
+        </div>
+      </div>
       <div class="faq-list">
         <details class="faq-item">
           <summary>Como funciona o financiamento?</summary>
@@ -191,19 +276,48 @@
   <!-- CONTATO -->
   <section id="contato" class="contato">
     <div class="container">
-      <h2 class="section-title">Visite a <span>BT Veículos</span></h2>
-      <p class="section-sub">Estamos na Vila Vianelo, Jundiaí/SP. Venha tomar um café e conhecer nosso estoque.</p>
+      <div class="section-head section-head-center">
+        <div>
+          <span class="section-label">06 — Visite a loja</span>
+          <h2 class="section-title">Estamos em <span>Jundiaí</span></h2>
+          <p class="section-sub">Vila Vianelo. Venha tomar um café e conhecer o estoque de perto.</p>
+        </div>
+      </div>
       <div class="contato-grid">
         <div class="contato-info">
-          <div class="info-item"><strong>📍 Endereço</strong><p>Rua da Saúde, nº 108, Vila Vianelo, Jundiaí/SP</p></div>
-          <div class="info-item"><strong>🕐 Horário</strong><p>Seg a Sex: 09h às 18h | Sábado: 09h às 14h</p></div>
+          <div class="info-item">
+            <div class="info-item-head">
+              <svg class="ico" width="18" height="18"><use href="#i-pin"/></svg>
+              <strong>Endereço</strong>
+            </div>
+            <p>Rua da Saúde, nº 108<br>Vila Vianelo, Jundiaí/SP</p>
+          </div>
+          <div class="info-item">
+            <div class="info-item-head">
+              <svg class="ico" width="18" height="18"><use href="#i-clock"/></svg>
+              <strong>Horário</strong>
+            </div>
+            <p>Segunda a sexta: 09h às 18h<br>Sábado: 09h às 14h</p>
+          </div>
           <div class="contato-btns">
-            <a href="#" class="btn-whatsapp" id="contatoWhatsapp">💬 Chamar no WhatsApp</a>
-            <a href="https://www.google.com/maps/search/R.+Atílio+Vianelo+108+Vila+Vianelo+Jundiaí+SP" target="_blank" class="btn-outline">📍 Abrir no Maps</a>
+            <a href="#" class="btn-whatsapp" id="contatoWhatsapp">
+              <svg class="ico ico-fill" width="16" height="16"><use href="#i-whats"/></svg>
+              Chamar no WhatsApp
+            </a>
+            <a href="https://www.google.com/maps/search/R.+Atílio+Vianelo+108+Vila+Vianelo+Jundiaí+SP" target="_blank" class="btn-outline">
+              <svg class="ico" width="16" height="16"><use href="#i-pin"/></svg>
+              Abrir no Maps
+            </a>
           </div>
           <div class="social-links">
-            <a href="https://www.instagram.com/bt_veiculos_jundiai/" target="_blank" class="social-link">📷 @bt_veiculos_jundiai</a>
-            <a href="mailto:btveiculosjundiai@gmail.com" class="social-link">📧 btveiculosjundiai@gmail.com</a>
+            <a href="https://www.instagram.com/bt_veiculos_jundiai/" target="_blank" class="social-link">
+              <svg class="ico" width="16" height="16"><use href="#i-instagram"/></svg>
+              @bt_veiculos_jundiai
+            </a>
+            <a href="mailto:btveiculosjundiai@gmail.com" class="social-link">
+              <svg class="ico" width="16" height="16"><use href="#i-mail"/></svg>
+              btveiculosjundiai@gmail.com
+            </a>
           </div>
         </div>
         <div class="contato-map">
@@ -239,21 +353,26 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 BT Veículos Jundiaí. Todos os direitos reservados.</p>
-        <a href="#inicio" class="back-to-top">↑ Voltar ao topo</a>
+        <p>&copy; <span id="footerYear">2026</span> BT Veículos Jundiaí. Todos os direitos reservados.</p>
+        <a href="#inicio" class="back-to-top">
+          Voltar ao topo
+          <svg class="ico ico-up" width="14" height="14"><use href="#i-arrow"/></svg>
+        </a>
       </div>
     </div>
   </footer>
 
-  <!-- WhatsApp Float -->
-  <a href="#" class="whatsapp-float" id="whatsappFloat" aria-label="WhatsApp">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+  <!-- WhatsApp flutuante -->
+  <a href="#" class="whatsapp-float" id="whatsappFloat" aria-label="Falar no WhatsApp">
+    <svg class="ico ico-fill" width="26" height="26"><use href="#i-whats"/></svg>
   </a>
 
   <!-- Modal -->
   <div class="modal-overlay" id="modal">
     <div class="modal-content">
-      <button class="modal-close" id="modalClose">&times;</button>
+      <button class="modal-close" id="modalClose" aria-label="Fechar">
+        <svg class="ico" width="18" height="18"><use href="#i-close"/></svg>
+      </button>
       <div class="modal-img" id="modalImg"></div>
       <div class="modal-body" id="modalBody"></div>
     </div>

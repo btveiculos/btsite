@@ -175,121 +175,43 @@ if (heroCarouselEl) {
 
 // ===== DESTAQUES =====
 const destGrid = document.getElementById('destaquesGrid');
-featured.forEach(v => {
-  const card = document.createElement('div');
-  card.className = 'destaque-card';
-  card.innerHTML = `<div class="card-img"></div><div class="card-body"><h3>${v.marca} ${v.modelo}</h3><p>${v.ano} | ${v.combustivel} | ${v.cambio}</p><div class="price">${fmt(v.preco)}</div></div>`;
-  card.querySelector('.card-img').appendChild(carImg(v));
-  card.onclick = () => openModal(v);
-  destGrid.appendChild(card);
-});
-
-// ===== ESTOQUE =====
-// A listagem completa foi movida para estoque.html. Aqui a landing page só
-// mostra o total e um botão. Todo o bloco abaixo é opcional: se os elementos
-// da grade não existirem, ele simplesmente não roda.
-const estoqueTotalEl = document.getElementById('estoqueTotal');
-if (estoqueTotalEl) estoqueTotalEl.textContent = VEHICLES.length;
-
-const estoqueGrid = document.getElementById('estoqueGrid');
-const filterMarca = document.getElementById('filterMarca');
-const hasEstoqueUI = !!(estoqueGrid && filterMarca && document.getElementById('searchInput'));
-
-if (hasEstoqueUI) {
-  const marcas = [...new Set(VEHICLES.map(v => v.marca))].sort();
-  marcas.forEach(m => { const o = document.createElement('option'); o.value = m; o.textContent = m; filterMarca.appendChild(o); });
-}
-
-function renderEstoque() {
-  if (!hasEstoqueUI) return;
-  const search = document.getElementById('searchInput').value.toLowerCase();
-  const marca = filterMarca.value;
-  const cambio = document.getElementById('filterCambio').value;
-  const preco = document.getElementById('filterPreco').value;
-  const order = document.getElementById('filterOrder').value;
-
-  let list = [...VEHICLES];
-  if (search) list = list.filter(v => `${v.marca} ${v.modelo} ${v.versao}`.toLowerCase().includes(search));
-  if (marca) list = list.filter(v => v.marca === marca);
-  if (cambio) list = list.filter(v => v.cambio === cambio);
-  if (preco) list = list.filter(v => v.preco <= parseInt(preco));
-  if (order === 'menor') list.sort((a,b) => a.preco - b.preco);
-  if (order === 'maior') list.sort((a,b) => b.preco - a.preco);
-  if (order === 'km') list.sort((a,b) => a.km - b.km);
-  if (order === 'ano') list.sort((a,b) => b.ano - a.ano);
-
-  document.getElementById('resultsCount').innerHTML = `<strong>${list.length}</strong> ${list.length === 1 ? 'veículo encontrado' : 'veículos encontrados'}`;
-  window._filteredList = list;
-  window._showCount = 6;
-  renderCards();
-}
-
-function renderCards() {
-  if (!hasEstoqueUI) return;
-  const list = window._filteredList || [];
-  const count = window._showCount || 6;
-  const visible = list.slice(0, count);
-
-  estoqueGrid.innerHTML = '';
-  if (list.length === 0) {
-    estoqueGrid.innerHTML = `<div class="empty-state"><p>Nenhum veículo encontrado com esses filtros.</p><button class="btn-outline" onclick="clearFilters()">Limpar filtros</button></div>`;
-    document.getElementById('loadMoreWrap').style.display = 'none';
-    return;
-  }
-
-  visible.forEach(v => {
+if (destGrid) {
+  featured.forEach(v => {
+    const nFotos = (v.fotos && v.fotos.length) ? v.fotos.length : (v.img ? 1 : 0);
     const card = document.createElement('div');
-    card.className = 'vehicle-card';
-    const destaqueTag = v.destaque ? '<span class="tag-destaque">★ Destaque</span>' : '';
+    card.className = 'destaque-card';
     card.innerHTML = `
-      <div class="card-img">${destaqueTag}<span class="badge badge-${v.uso}">${v.uso}</span></div>
+      <div class="card-img">
+        <span class="badge badge-${v.uso}">${v.uso}</span>
+        ${nFotos > 1 ? `<span class="gallery-counter"><svg class="ico" width="13" height="13"><use href="#i-camera"/></svg>${nFotos}</span>` : ''}
+      </div>
       <div class="card-body">
         <div class="marca">${v.marca}</div>
         <h3>${v.modelo}</h3>
-        <div class="versao">${v.versao}</div>
-        <div class="specs">
-          <span>📅 ${v.ano}/${v.anoModelo}</span>
-          <span>🛣️ ${v.km.toLocaleString('pt-BR')} km</span>
-          <span>⚙️ ${v.cambio}</span>
-          <span>⛽ ${v.combustivel}</span>
-        </div>
-        <div class="price">${fmt(v.preco)}</div>
-        <div class="card-actions">
-          <button class="btn-detail">Ver detalhes</button>
-          <button class="btn-wpp">💬 WhatsApp</button>
+        <p class="destaque-versao">${v.versao}</p>
+        <div class="destaque-foot">
+          <div class="price">${fmt(v.preco)}</div>
+          <span class="destaque-meta">${v.ano} · ${v.cambio}</span>
         </div>
       </div>`;
     card.querySelector('.card-img').prepend(carImg(v));
-    card.querySelector('.btn-detail').onclick = () => openModal(v);
-    card.querySelector('.btn-wpp').onclick = () => window.open(wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} que vi no site da BT Veículos.`), '_blank');
-    estoqueGrid.appendChild(card);
+    card.onclick = () => openModal(v);
+    destGrid.appendChild(card);
   });
-
-  document.getElementById('loadMoreWrap').style.display = count < list.length ? 'block' : 'none';
 }
 
-function clearFilters() {
-  if (!hasEstoqueUI) return;
-  document.getElementById('searchInput').value = '';
-  filterMarca.value = '';
-  document.getElementById('filterCambio').value = '';
-  document.getElementById('filterPreco').value = '';
-  document.getElementById('filterOrder').value = '';
-  renderEstoque();
-}
+// Estatísticas da chamada do estoque (calculadas do estoque real)
+const marcasEl = document.getElementById('estoqueMarcas');
+if (marcasEl) marcasEl.textContent = new Set(VEHICLES.map(v => v.marca).filter(Boolean)).size;
 
-if (hasEstoqueUI) {
-  const loadMoreBtn = document.getElementById('loadMoreBtn');
-  if (loadMoreBtn) loadMoreBtn.onclick = () => { window._showCount += 6; renderCards(); };
+const footerYearEl = document.getElementById('footerYear');
+if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
 
-  document.getElementById('searchInput').addEventListener('input', renderEstoque);
-  filterMarca.addEventListener('change', renderEstoque);
-  ['filterCambio', 'filterPreco', 'filterOrder'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('change', renderEstoque);
-  });
-  renderEstoque();
-}
+// ===== ESTOQUE (resumo) =====
+// A listagem completa vive em estoque.html / js/estoque.js. Aqui a landing
+// page apenas exibe os totais que alimentam a chamada para aquela pagina.
+const estoqueTotalEl = document.getElementById('estoqueTotal');
+if (estoqueTotalEl) estoqueTotalEl.textContent = VEHICLES.length;
 
 // ===== MODAL =====
 function openModal(v) {
@@ -309,8 +231,8 @@ function openModal(v) {
     
     if (photos.length > 1) {
       imgDiv.innerHTML += `
-        <button class="modal-nav modal-nav-left" onclick="modalPrevPhoto()">&#10094;</button>
-        <button class="modal-nav modal-nav-right" onclick="modalNextPhoto()">&#10095;</button>
+        <button class="modal-nav modal-nav-left" onclick="modalPrevPhoto()" aria-label="Foto anterior"><svg class="ico" width="17" height="17"><use href="#i-chev-l"/></svg></button>
+        <button class="modal-nav modal-nav-right" onclick="modalNextPhoto()" aria-label="Próxima foto"><svg class="ico" width="17" height="17"><use href="#i-chev-r"/></svg></button>
         <div class="modal-photo-counter">${currentPhoto+1} / ${photos.length}</div>
       `;
     }
@@ -333,9 +255,9 @@ function openModal(v) {
       <div class="spec"><small>Cor</small><strong>${v.cor}</strong></div>
       <div class="spec"><small>Uso</small><strong style="text-transform:capitalize">${v.uso}</strong></div>
     </div>
-    ${v.opcionais && v.opcionais.length ? `<h4 style="font-size:12px;margin-bottom:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-weight:600">Opcionais e equipamentos</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>✓ ${o}</span>`).join('')}</div>` : ''}
+    ${v.opcionais && v.opcionais.length ? `<h4 class="modal-subtitle">Opcionais e equipamentos</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>${o}</span>`).join('')}</div>` : ''}
     <div class="modal-desc">${v.desc}</div>
-    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" class="btn-whatsapp">💬 Tenho interesse neste veículo</a>
+    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" class="btn-whatsapp"><svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>Tenho interesse neste veículo</a>
     <p style="text-align:center;color:var(--text3);font-size:11px;margin-top:10px">Você será direcionado ao WhatsApp da BT Veículos</p>
   `;
   

@@ -19,6 +19,34 @@
 </head>
 <body class="estoque-page">
 
+  <!-- SPRITE DE ÍCONES        Definido uma vez no topo do body. Os cards gerados por JS referenciam        estes símbolos por id, sem duplicar path nem piscar ícone faltando.        Traço 1.6 uniforme = peso visual consistente em todo o site. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.2 2.9 7.6 7 9 4.1-1.4 7-4.8 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a3.5 3.5 0 0 0 4.6 4.6l-8 8a2.4 2.4 0 0 1-3.4-3.4l8-8Z"/><path d="M6.6 17.4h.01"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 10h19M6 14.5h3"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8.5 3.5v3M15.5 3.5v3"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 18a9 9 0 1 1 16 0"/><path d="m12 13 4-3.5"/><circle cx="12" cy="13.5" r="1.4"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.8M12 17.7v2.8M3.5 12h2.8M17.7 12h2.8M5.9 5.9l2 2M16.1 16.1l2 2M18.1 5.9l-2 2M7.9 16.1l-2 2"/></symbol>
+    <symbol id="i-fuel" viewBox="0 0 24 24"><path d="M6 20V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v14"/><path d="M4.5 20h11M8 8.5h4"/><path d="M14 9h2.5a2 2 0 0 1 2 2v4.8a1.75 1.75 0 0 0 3.5 0V10l-2.5-3"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3.5 8.5h3L8 6.5h8l1.5 2h3A1.5 1.5 0 0 1 22 10v7a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 17v-7a1.5 1.5 0 0 1 1.5-1.5Z"/><circle cx="12" cy="13" r="3"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.8"/><path d="M16.8 7.2h.01"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4.5 12h14"/><path d="m13 6.5 5.5 5.5L13 17.5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 4 2.5 5.1 5.5.8-4 3.9.9 5.6-4.9-2.6-4.9 2.6.9-5.6-4-3.9 5.5-.8L12 4Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
+    <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6"/></symbol>
+    <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9.5 6 6 6-6 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M17.5 6.5l-11 11"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M17 4l3 3-2.5 2.5-3-3"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-3l2-5h12l2 5v3"/><path d="M3 16h18"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M13 3H5.5A2.5 2.5 0 0 0 3 5.5V13l8 8 10-10-8-8Z"/><path d="M7.4 7.4h.01"/></symbol>
+    <symbol id="i-whats" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></symbol>
+  </svg>
+
   <!-- HEADER -->
   <header id="header" class="scrolled">
     <div class="header-inner">
@@ -37,8 +65,8 @@
         <a href="index.html#contato">Contato</a>
       </nav>
       <a href="#" class="header-cta" id="headerWhatsapp">
+        <svg class="ico ico-fill" width="15" height="15"><use href="#i-whats"/></svg>
         Falar com consultor
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
       </a>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -58,9 +86,14 @@
   <main class="estoque-full">
     <div class="estoque-full-head">
       <div class="container">
+        <nav class="breadcrumb">
+          <a href="index.html">Início</a>
+          <svg class="ico" width="13" height="13"><use href="#i-chev-r"/></svg>
+          <span>Estoque</span>
+        </nav>
         <h1 class="estoque-full-title">Estoque <span>completo</span></h1>
         <p class="estoque-full-sub">
-          <strong id="totalCount">0</strong> veículos disponíveis · revisados e prontos para você
+          <strong id="totalCount">0</strong> veículos revisados e prontos para sair hoje
         </p>
       </div>
     </div>
@@ -69,7 +102,10 @@
     <div class="estoque-filters-bar">
       <div class="container">
         <div class="filters">
-          <input type="text" id="searchInput" placeholder="Buscar por marca, modelo ou versão...">
+          <div class="search-wrap">
+            <svg class="ico search-ico" width="17" height="17"><use href="#i-search"/></svg>
+            <input type="text" id="searchInput" placeholder="Buscar por marca, modelo ou versão...">
+          </div>
           <select id="filterMarca"><option value="">Todas marcas</option></select>
           <select id="filterUso"><option value="">Todos os tipos</option><option value="novo">Novo</option><option value="seminovo">Seminovo</option><option value="usado">Usado</option></select>
           <select id="filterCambio"><option value="">Câmbio</option><option value="manual">Manual</option><option value="automático">Automático</option></select>
@@ -92,20 +128,25 @@
     <div class="container">
       <div class="footer-bottom">
         <p>© <span id="year"></span> BT Veículos Jundiaí · Rua da Saúde, 108 · Vila Vianelo, Jundiaí/SP</p>
-        <a href="#" class="back-to-top" id="backToTop">Voltar ao topo ↑</a>
+        <a href="#" class="back-to-top" id="backToTop">
+          Voltar ao topo
+          <svg class="ico ico-up" width="14" height="14"><use href="#i-arrow"/></svg>
+        </a>
       </div>
     </div>
   </footer>
 
   <!-- WhatsApp flutuante -->
-  <a href="#" class="whatsapp-float" id="whatsappFloat" aria-label="WhatsApp">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.476A11.929 11.929 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.198 0-4.247-.6-6.011-1.642l-.43-.257-2.745.877.87-2.668-.28-.447A9.704 9.704 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+  <a href="#" class="whatsapp-float" id="whatsappFloat" aria-label="Falar no WhatsApp">
+    <svg class="ico ico-fill" width="26" height="26"><use href="#i-whats"/></svg>
   </a>
 
   <!-- Modal de detalhes -->
   <div class="modal-overlay" id="modal">
     <div class="modal-content">
-      <button class="modal-close" id="modalClose">&times;</button>
+      <button class="modal-close" id="modalClose" aria-label="Fechar">
+        <svg class="ico" width="18" height="18"><use href="#i-close"/></svg>
+      </button>
       <div class="modal-img" id="modalImg"></div>
       <div class="modal-body" id="modalBody"></div>
     </div>
