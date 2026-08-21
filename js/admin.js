@@ -280,10 +280,12 @@ function editCar(i) {
         .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
 
       if (newFotos.length > 0) {
-        const existingCount = (v.fotos || []).length;
+        // Sufixo único (timestamp) para nunca sobrescrever foto existente.
+        // Numerar por posição corrompia fotos quando alguma era removida antes.
+        const stamp = Date.now();
         for (let fi = 0; fi < newFotos.length; fi++) {
           progress.textContent = `📤 Enviando foto ${fi+1} de ${newFotos.length}...`;
-          const path = `carros/${slug}-${existingCount + fi + 1}.jpg`;
+          const path = `carros/${slug}-${stamp}-${fi + 1}.jpg`;
           await uploadFileToGitHubWithRetry(newFotos[fi], path);
           if (!v.fotos) v.fotos = [];
           v.fotos.push('/' + path);
@@ -364,9 +366,11 @@ function setupForm() {
 
       // Upload photos
       const fotoPaths = [];
+      // Sufixo único: evita sobrescrever fotos de um veículo com slug igual
+      const stamp = Date.now();
       for (let i = 0; i < fotos.length; i++) {
         progress.textContent = `Enviando foto ${i+1} de ${fotos.length}...`;
-        const path = `carros/${slug}-${i+1}.jpg`;
+        const path = `carros/${slug}-${stamp}-${i + 1}.jpg`;
         await uploadFileToGitHubWithRetry(fotos[i], path);
         fotoPaths.push('/' + path);
       }

@@ -3,21 +3,30 @@ const fmt = p => 'R$ ' + p.toLocaleString('pt-BR');
 const wpp = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 const carSVG = `<svg viewBox="0 0 430 155" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="215" cy="148" rx="175" ry="7" fill="black" opacity=".3"/><path d="M45 118C45 118 52 88 75 78 95 70 125 60 162 54 190 50 225 48 255 48 285 48 315 52 338 60 355 66 367 76 374 90 380 102 382 114 382 118L45 118Z" fill="#222"/><path d="M158 56C175 52 205 50 240 50 272 50 300 52 320 58 337 63 348 70 352 80L352 88C352 90 350 92 347 92L152 92C149 92 147 90 147 88L147 74C147 66 151 60 158 56Z" fill="rgba(0,0,0,.5)"/><circle cx="108" cy="124" r="22" fill="#0d0d0d" stroke="#222" stroke-width="2"/><circle cx="108" cy="124" r="13" fill="#181818"/><circle cx="318" cy="124" r="22" fill="#0d0d0d" stroke="#222" stroke-width="2"/><circle cx="318" cy="124" r="13" fill="#181818"/></svg>`;
 
-function carImg(v) {
+// Cria um elemento de imagem seguro. Se não houver caminho válido, devolve
+// direto o SVG placeholder. Sem essa checagem, src='' faz o browser requisitar
+// a própria página e a imagem quebra sem disparar onerror.
+function makeImg(src, alt, lazy) {
+  if (!src || typeof src !== 'string' || !src.trim()) {
+    const ph = document.createElement('div');
+    ph.className = 'car-img-placeholder';
+    ph.innerHTML = carSVG;
+    return ph;
+  }
   const img = document.createElement('img');
-  img.src = v.img;
-  img.alt = v.marca + ' ' + v.modelo;
-  img.loading = 'lazy';
+  img.src = src;
+  img.alt = alt;
+  if (lazy) img.loading = 'lazy';
   img.onerror = function() { this.outerHTML = carSVG; };
   return img;
 }
 
+function carImg(v) {
+  return makeImg(v.img, v.marca + ' ' + v.modelo, true);
+}
+
 function carHeroImg(v) {
-  const img = document.createElement('img');
-  img.src = v.heroImg || v.img;
-  img.alt = v.marca + ' ' + v.modelo;
-  img.onerror = function() { this.outerHTML = carSVG; };
-  return img;
+  return makeImg(v.heroImg || v.img, v.marca + ' ' + v.modelo, false);
 }
 
 // ===== HEADER =====
@@ -47,6 +56,11 @@ const infoEl = document.getElementById('heroInfo');
 const dotsEl = document.getElementById('heroDots');
 
 function renderHero() {
+  // Sem veículos em destaque não há carrossel para montar. Sem esta guarda,
+  // featured[heroIdx] vira undefined e o erro derruba TODO o app.js
+  // (estoque, filtros, modal e formulários param de funcionar).
+  if (!featured.length) return;
+
   const prev = featured[(heroIdx - 1 + featured.length) % featured.length];
   const cur = featured[heroIdx];
   const next = featured[(heroIdx + 1) % featured.length];
@@ -83,7 +97,7 @@ function renderHero() {
 }
 
 function heroGo(dir) {
-  if (heroAnim) return;
+  if (heroAnim || !featured.length) return;
   heroAnim = true;
   track.classList.add('animating');
   infoEl.classList.add('animating');
@@ -98,7 +112,7 @@ function heroGo(dir) {
 }
 
 function heroGoTo(i) {
-  if (heroAnim || i === heroIdx) return;
+  if (heroAnim || !featured.length || i === heroIdx) return;
   heroAnim = true;
   track.classList.add('animating');
   infoEl.classList.add('animating');
@@ -114,13 +128,25 @@ function heroGoTo(i) {
 
 function resetHeroTimer() {
   clearInterval(heroTimer);
-  heroTimer = setInterval(() => heroGo('n'), 6000);
+  if (featured.length > 1) heroTimer = setInterval(() => heroGo('n'), 6000);
 }
 
 document.getElementById('prevBtn').onclick = () => heroGo('p');
 document.getElementById('nextBtn').onclick = () => heroGo('n');
 renderHero();
-heroTimer = setInterval(() => heroGo('n'), 6000);
+
+// Autoplay e setas só fazem sentido com mais de um destaque.
+// Sem destaque nenhum, esconde o carrossel em vez de mostrar área vazia.
+if (featured.length > 1) {
+  heroTimer = setInterval(() => heroGo('n'), 6000);
+}
+if (!featured.length) {
+  const carousel = document.querySelector('.hero-carousel');
+  if (carousel) carousel.style.display = 'none';
+  if (infoEl) infoEl.style.display = 'none';
+  const destaquesSection = document.querySelector('section.destaques');
+  if (destaquesSection) destaquesSection.style.display = 'none';
+}
 
 // Update vehicle count
 const countEl = document.getElementById('vehicleCount');
@@ -138,11 +164,14 @@ document.addEventListener('keydown', e => {
 
 // Touch
 let touchX = 0;
-document.querySelector('.hero-carousel').addEventListener('touchstart', e => touchX = e.touches[0].clientX, { passive: true });
-document.querySelector('.hero-carousel').addEventListener('touchend', e => {
-  const diff = touchX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) heroGo(diff > 0 ? 'n' : 'p');
-});
+const heroCarouselEl = document.querySelector('.hero-carousel');
+if (heroCarouselEl) {
+  heroCarouselEl.addEventListener('touchstart', e => touchX = e.touches[0].clientX, { passive: true });
+  heroCarouselEl.addEventListener('touchend', e => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) heroGo(diff > 0 ? 'n' : 'p');
+  });
+}
 
 // ===== DESTAQUES =====
 const destGrid = document.getElementById('destaquesGrid');
@@ -254,17 +283,15 @@ function openModal(v) {
   const imgDiv = document.getElementById('modalImg');
   const body = document.getElementById('modalBody');
   
-  // Gallery with multiple photos
-  const photos = v.fotos && v.fotos.length > 0 ? v.fotos : [v.img];
+  // Galeria: usa só caminhos válidos. Se o veículo não tiver nenhuma foto,
+  // a lista fica vazia e o placeholder é exibido sem setas nem contador.
+  const photos = ((v.fotos && v.fotos.length > 0) ? v.fotos : [v.img])
+    .filter(p => p && typeof p === 'string' && p.trim());
   let currentPhoto = 0;
   
   function renderPhoto() {
     imgDiv.innerHTML = '';
-    const img = document.createElement('img');
-    img.src = photos[currentPhoto];
-    img.alt = v.marca + ' ' + v.modelo;
-    img.onerror = function() { this.outerHTML = carSVG; };
-    imgDiv.appendChild(img);
+    imgDiv.appendChild(makeImg(photos[currentPhoto], v.marca + ' ' + v.modelo, false));
     
     if (photos.length > 1) {
       imgDiv.innerHTML += `
@@ -415,9 +442,13 @@ document.getElementById('acceptCookies').onclick = () => {
 };
 
 // ===== PRELOAD HERO IMAGES =====
+// Prefetch da imagem que o hero realmente usa (heroImg quando existe).
+// Sem a checagem, href='' faria o browser prefetchar a própria página.
 featured.forEach(v => {
+  const src = v.heroImg || v.img;
+  if (!src || !String(src).trim()) return;
   const link = document.createElement('link');
   link.rel = 'prefetch';
-  link.href = v.img;
+  link.href = src;
   document.head.appendChild(link);
 });

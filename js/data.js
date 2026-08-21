@@ -81,7 +81,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 39900,
-    "img": "/carros/linea.jpg",
+    "img": "/carros/fiat-linea-2010-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -89,7 +89,11 @@ const VEHICLES = [
       "Direção elétrica",
       "Vidros elétricos"
     ],
-    "desc": "Linea HLX 1.8 completo com banco de couro."
+    "desc": "Linea HLX 1.8 completo com banco de couro.",
+    "fotos": [
+      "/carros/fiat-linea-2010-1.jpg",
+      "/carros/fiat-linea-2010-2.jpg"
+    ]
   },
   {
     "id": 5,
@@ -427,7 +431,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Preto",
     "preco": 67900,
-    "img": "/carros/hb20-confort.jpg",
+    "img": "",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -584,8 +588,7 @@ const VEHICLES = [
       "/carros/citroen-c3-aircross-2011-7.jpg",
       "/carros/citroen-c3-aircross-2011-8.jpg",
       "/carros/citroen-c3-aircross-2011-9.jpg",
-      "/carros/citroen-c3-aircross-2011-10.jpg",
-      "/carros/citroen-c3-aircross-2011-11.jpg"
+      "/carros/citroen-c3-aircross-2011-10.jpg"
     ]
   },
   {
@@ -652,7 +655,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Preto",
     "preco": 72500,
-    "img": "/carros/onix-plus.jpg",
+    "img": "",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -676,7 +679,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Preto",
     "preco": 72900,
-    "img": "/carros/c3-preto.jpg",
+    "img": "",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -699,7 +702,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Branco",
     "preco": 61900,
-    "img": "/carros/cronos-branco.jpg",
+    "img": "",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -738,7 +741,11 @@ const VEHICLES = [
       "/carros/fiat-mobi-2019-5.jpg",
       "/carros/fiat-mobi-2019-6.jpg",
       "/carros/fiat-mobi-2019-7.jpg",
-      "/carros/fiat-mobi-2019-8.jpg"
+      "/carros/fiat-mobi-2019-8.jpg",
+      "/carros/fiat-mobi-2019-9.jpg",
+      "/carros/fiat-mobi-2019-10.jpg",
+      "/carros/fiat-mobi-2019-11.jpg",
+      "/carros/fiat-mobi-2019-12.jpg"
     ]
   },
   {
@@ -755,7 +762,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 49900,
-    "img": "/carros/logan.jpg",
+    "img": "",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -778,14 +785,25 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 57900,
-    "img": "/carros/kwid-prata.jpg",
+    "img": "/carros/renault-kwid-2023-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
       "Central multimídia"
     ],
-    "desc": "Kwid Zen 1.0 completo. Baixa km."
+    "desc": "Kwid Zen 1.0 completo. Baixa km.",
+    "fotos": [
+      "/carros/renault-kwid-2023-1.jpg",
+      "/carros/renault-kwid-2023-2.jpg",
+      "/carros/renault-kwid-2023-3.jpg",
+      "/carros/renault-kwid-2023-4.jpg",
+      "/carros/renault-kwid-2023-5.jpg",
+      "/carros/renault-kwid-2023-6.jpg",
+      "/carros/renault-kwid-2023-7.jpg",
+      "/carros/renault-kwid-2023-8.jpg",
+      "/carros/renault-kwid-2023-9.jpg"
+    ]
   },
   {
     "id": 29,
