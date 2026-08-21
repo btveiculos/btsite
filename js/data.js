@@ -771,14 +771,17 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 49900,
-    "img": "",
+    "img": "/carros/renault-logan-2020-1787341621545-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
       "Central multimídia"
     ],
-    "desc": "Logan Zen 1.0 completo. Sedan espaçoso."
+    "desc": "Logan Zen 1.0 completo. Sedan espaçoso.",
+    "fotos": [
+      "/carros/renault-logan-2020-1787341621545-1.jpg"
+    ]
   },
   {
     "id": 28,
