@@ -431,7 +431,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Preto",
     "preco": 67900,
-    "img": "",
+    "img": "/carros/hyundai-hb20-2023-1787341578122-1.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -440,7 +440,10 @@ const VEHICLES = [
       "Central multimídia",
       "Câmera de ré"
     ],
-    "desc": "HB20 Confort 1.0 completo. Modelo atualizado."
+    "desc": "HB20 Confort 1.0 completo. Modelo atualizado.",
+    "fotos": [
+      "/carros/hyundai-hb20-2023-1787341578122-1.jpg"
+    ]
   },
   {
     "id": 17,
