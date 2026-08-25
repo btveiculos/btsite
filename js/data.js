@@ -250,7 +250,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 99800,
-    "img": "/carros/kicks-sense-2024.jpg",
+    "img": "/carros/nissan-kicks-2024-1787665888830-1.jpg",
     "heroImg": "/carros/kicks-hero.png",
     "opcionais": [
       "Ar-condicionado digital",
@@ -259,7 +259,14 @@ const VEHICLES = [
       "Central multimídia",
       "Piloto automático"
     ],
-    "desc": "Kicks Sense 1.6 Flex automático completo. SUV moderno."
+    "desc": "Kicks Sense 1.6 Flex automático completo. SUV moderno.",
+    "fotos": [
+      "/carros/nissan-kicks-2024-1787665888830-1.jpg",
+      "/carros/nissan-kicks-2024-1787665888830-2.jpg",
+      "/carros/nissan-kicks-2024-1787665888830-3.jpg",
+      "/carros/nissan-kicks-2024-1787665888830-4.jpg",
+      "/carros/nissan-kicks-2024-1787665888830-5.jpg"
+    ]
   },
   {
     "id": 10,
