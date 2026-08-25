@@ -640,7 +640,7 @@ const VEHICLES = [
     "combustivel": "Gasolina",
     "cor": "Cinza",
     "preco": 59900,
-    "img": "/carros/bmw-118i-2009-1787665961697-1.jpg",
+    "img": "/carros/bmw-118i-2009-1787665961697-10.jpg",
     "heroImg": "/carros/bmw-hero.png",
     "opcionais": [
       "Ar-condicionado",
@@ -651,6 +651,7 @@ const VEHICLES = [
     ],
     "desc": "BMW 118i 2.0 16V automática completa. Esportiva.",
     "fotos": [
+      "/carros/bmw-118i-2009-1787665961697-10.jpg",
       "/carros/bmw-118i-2009-1787665961697-1.jpg",
       "/carros/bmw-118i-2009-1787665961697-2.jpg",
       "/carros/bmw-118i-2009-1787665961697-3.jpg",
@@ -659,8 +660,7 @@ const VEHICLES = [
       "/carros/bmw-118i-2009-1787665961697-6.jpg",
       "/carros/bmw-118i-2009-1787665961697-7.jpg",
       "/carros/bmw-118i-2009-1787665961697-8.jpg",
-      "/carros/bmw-118i-2009-1787665961697-9.jpg",
-      "/carros/bmw-118i-2009-1787665961697-10.jpg"
+      "/carros/bmw-118i-2009-1787665961697-9.jpg"
     ]
   },
   {
