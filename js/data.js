@@ -903,5 +903,35 @@ const VEHICLES = [
       "/carros/suzuki-gsx-r-750-2010-7.jpg",
       "/carros/suzuki-gsx-r-750-2010-8.jpg"
     ]
+  },
+  {
+    "id": 1787764216421,
+    "destaque": false,
+    "marca": "VOLKSWAGEN",
+    "modelo": "POLO",
+    "versao": "TRACK 1.0 COMPLETO",
+    "ano": 2024,
+    "anoModelo": 2025,
+    "km": 71200,
+    "preco": 76900,
+    "cambio": "manual",
+    "combustivel": "Flex",
+    "cor": "CINZA",
+    "uso": "seminovo",
+    "img": "/carros/volkswagen-polo-2024-1787764180611-1.jpg",
+    "heroImg": "/carros/volkswagen-polo-2024-1787764180611-1.jpg",
+    "fotos": [
+      "/carros/volkswagen-polo-2024-1787764180611-1.jpg",
+      "/carros/volkswagen-polo-2024-1787764180611-2.jpg",
+      "/carros/volkswagen-polo-2024-1787764180611-3.jpg",
+      "/carros/volkswagen-polo-2024-1787764180611-4.jpg",
+      "/carros/volkswagen-polo-2024-1787764180611-5.jpg",
+      "/carros/volkswagen-polo-2024-1787764180611-6.jpg",
+      "/carros/volkswagen-polo-2024-1787764180611-7.jpg",
+      "/carros/volkswagen-polo-2024-1787764180611-8.jpg",
+      "/carros/volkswagen-polo-2024-1787764180611-9.jpg"
+    ],
+    "opcionais": [],
+    "desc": "Veículo revisado e pronto para venda."
   }
 ];
