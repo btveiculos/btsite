@@ -918,9 +918,10 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "CINZA",
     "uso": "seminovo",
-    "img": "/carros/volkswagen-polo-2024-1787764180611-7.jpg",
+    "img": "/carros/volkswagen-polo-2024-1787764180611-8.jpg",
     "heroImg": "/carros/volkswagen-polo-2024-1787764180611-1.jpg",
     "fotos": [
+      "/carros/volkswagen-polo-2024-1787764180611-8.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-7.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-1.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-2.jpg",
@@ -928,7 +929,6 @@ const VEHICLES = [
       "/carros/volkswagen-polo-2024-1787764180611-4.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-5.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-6.jpg",
-      "/carros/volkswagen-polo-2024-1787764180611-8.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-9.jpg"
     ],
     "opcionais": [],
