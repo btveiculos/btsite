@@ -931,7 +931,12 @@ const VEHICLES = [
       "/carros/volkswagen-polo-2024-1787764180611-6.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-9.jpg"
     ],
-    "opcionais": [],
+    "opcionais": [
+      "Vidro",
+      "Trava",
+      "Ar",
+      "Alarme e Multimídia"
+    ],
     "desc": "Veículo revisado e pronto para venda."
   }
 ];
