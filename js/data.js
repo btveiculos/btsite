@@ -741,7 +741,7 @@ const VEHICLES = [
     "cor": "Preto",
     "preco": 72900,
     "img": "/carros/citroen-c3-2024-1787925161796-3.jpg",
-    "heroImg": "",
+    "heroImg": "/carros/citroen-c3-2024-hero.png",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
