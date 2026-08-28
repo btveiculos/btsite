@@ -740,7 +740,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Preto",
     "preco": 72900,
-    "img": "/carros/citroen-c3-2024-1787925161796-1.jpg",
+    "img": "/carros/citroen-c3-2024-1787925161796-3.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -749,9 +749,9 @@ const VEHICLES = [
     ],
     "desc": "C3 Live Pack completo. Econômico.",
     "fotos": [
+      "/carros/citroen-c3-2024-1787925161796-3.jpg",
       "/carros/citroen-c3-2024-1787925161796-1.jpg",
       "/carros/citroen-c3-2024-1787925161796-2.jpg",
-      "/carros/citroen-c3-2024-1787925161796-3.jpg",
       "/carros/citroen-c3-2024-1787925161796-4.jpg",
       "/carros/citroen-c3-2024-1787925161796-5.jpg",
       "/carros/citroen-c3-2024-1787925161796-6.jpg",
