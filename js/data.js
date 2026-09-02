@@ -712,7 +712,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Preto",
     "preco": 72500,
-    "img": "/carros/chevrolet-onix-plus-2024-1788382878311-1.jpg",
+    "img": "/carros/chevrolet-onix-plus-2024-1788382878311-9.jpg",
     "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
@@ -722,6 +722,7 @@ const VEHICLES = [
     ],
     "desc": "Onix Plus LT 1.0 completo. Sedan moderno.",
     "fotos": [
+      "/carros/chevrolet-onix-plus-2024-1788382878311-9.jpg",
       "/carros/chevrolet-onix-plus-2024-1788382878311-1.jpg",
       "/carros/chevrolet-onix-plus-2024-1787341755161-1.jpg",
       "/carros/chevrolet-onix-plus-2024-1787341817106-1.jpg",
@@ -731,8 +732,7 @@ const VEHICLES = [
       "/carros/chevrolet-onix-plus-2024-1788382878311-5.jpg",
       "/carros/chevrolet-onix-plus-2024-1788382878311-6.jpg",
       "/carros/chevrolet-onix-plus-2024-1788382878311-7.jpg",
-      "/carros/chevrolet-onix-plus-2024-1788382878311-8.jpg",
-      "/carros/chevrolet-onix-plus-2024-1788382878311-9.jpg"
+      "/carros/chevrolet-onix-plus-2024-1788382878311-8.jpg"
     ]
   },
   {
