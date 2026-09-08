@@ -963,7 +963,7 @@ const VEHICLES = [
     "id": 1788895615098,
     "destaque": false,
     "marca": "BMW",
-    "modelo": "C400 X ",
+    "modelo": "C400 X SPORT",
     "versao": "SPORT",
     "ano": 2024,
     "anoModelo": 2024,
