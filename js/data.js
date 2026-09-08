@@ -142,7 +142,7 @@ const VEHICLES = [
     "cambio": "automático",
     "combustivel": "Flex",
     "cor": "Prata",
-    "preco": 63900,
+    "preco": 59900,
     "img": "/carros/fiat-argo-2018-1.jpg",
     "heroImg": "",
     "opcionais": [
