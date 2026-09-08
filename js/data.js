@@ -973,9 +973,10 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "BRANCA",
     "uso": "seminovo",
-    "img": "/carros/bmw-c400-x-2024-1788895555975-1.jpg",
+    "img": "/carros/bmw-c400-x-2024-1788895555975-11.jpg",
     "heroImg": "/carros/bmw-c400-x-2024-hero.png",
     "fotos": [
+      "/carros/bmw-c400-x-2024-1788895555975-11.jpg",
       "/carros/bmw-c400-x-2024-1788895555975-1.jpg",
       "/carros/bmw-c400-x-2024-1788895555975-2.jpg",
       "/carros/bmw-c400-x-2024-1788895555975-3.jpg",
@@ -986,7 +987,6 @@ const VEHICLES = [
       "/carros/bmw-c400-x-2024-1788895555975-8.jpg",
       "/carros/bmw-c400-x-2024-1788895555975-9.jpg",
       "/carros/bmw-c400-x-2024-1788895555975-10.jpg",
-      "/carros/bmw-c400-x-2024-1788895555975-11.jpg",
       "/carros/bmw-c400-x-2024-1788895555975-12.jpg",
       "/carros/bmw-c400-x-2024-1788895555975-13.jpg"
     ],
