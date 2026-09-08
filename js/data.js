@@ -958,5 +958,43 @@ const VEHICLES = [
       "Alarme e Multimídia"
     ],
     "desc": "Veículo revisado e pronto para venda."
+  },
+  {
+    "id": 1788895615098,
+    "destaque": false,
+    "marca": "BMW",
+    "modelo": "C400 X ",
+    "versao": "SPORT",
+    "ano": 2024,
+    "anoModelo": 2024,
+    "km": 2208,
+    "preco": 49900,
+    "cambio": "automático",
+    "combustivel": "Flex",
+    "cor": "BRANCA",
+    "uso": "seminovo",
+    "img": "/carros/bmw-c400-x-2024-1788895555975-1.jpg",
+    "heroImg": "/carros/bmw-c400-x-2024-hero.png",
+    "fotos": [
+      "/carros/bmw-c400-x-2024-1788895555975-1.jpg",
+      "/carros/bmw-c400-x-2024-1788895555975-2.jpg",
+      "/carros/bmw-c400-x-2024-1788895555975-3.jpg",
+      "/carros/bmw-c400-x-2024-1788895555975-4.jpg",
+      "/carros/bmw-c400-x-2024-1788895555975-5.jpg",
+      "/carros/bmw-c400-x-2024-1788895555975-6.jpg",
+      "/carros/bmw-c400-x-2024-1788895555975-7.jpg",
+      "/carros/bmw-c400-x-2024-1788895555975-8.jpg",
+      "/carros/bmw-c400-x-2024-1788895555975-9.jpg",
+      "/carros/bmw-c400-x-2024-1788895555975-10.jpg",
+      "/carros/bmw-c400-x-2024-1788895555975-11.jpg",
+      "/carros/bmw-c400-x-2024-1788895555975-12.jpg",
+      "/carros/bmw-c400-x-2024-1788895555975-13.jpg"
+    ],
+    "opcionais": [
+      "CAIXA BAGAGEIRO BMW",
+      "MULTIMÍDIA APPLE/CARPLAY",
+      "ESPELHAMENTO DA TELA DO CELULAR"
+    ],
+    "desc": "PNEUS NOVOS, APENAS 2.208 KM RODADOS, PINTURA SEM DETALHES, MECÂNICA , FREIOS E FLUIDOS EM DIA. MUITO BEM CUIDADA. "
   }
 ];
