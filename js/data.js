@@ -527,7 +527,7 @@ const VEHICLES = [
     "cambio": "manual",
     "combustivel": "Gasolina",
     "cor": "Prata",
-    "preco": 46900,
+    "preco": 39900,
     "img": "/carros/hyundai-tucson-2009-2.jpg",
     "heroImg": "",
     "opcionais": [
