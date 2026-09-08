@@ -355,7 +355,7 @@ const VEHICLES = [
     "cambio": "manual",
     "combustivel": "Flex",
     "cor": "Branco",
-    "preco": 43900,
+    "preco": 39900,
     "img": "/carros/chevrolet-classic-2014-1787666498340-4.jpg",
     "heroImg": "/carros/classic-hero.png",
     "opcionais": [
