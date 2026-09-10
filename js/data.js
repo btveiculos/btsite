@@ -996,5 +996,44 @@ const VEHICLES = [
       "ESPELHAMENTO DA TELA DO CELULAR"
     ],
     "desc": "PNEUS NOVOS, APENAS 2.208 KM RODADOS, PINTURA SEM DETALHES, MECÂNICA , FREIOS E FLUIDOS EM DIA. MUITO BEM CUIDADA. "
+  },
+  {
+    "id": 1789063195671,
+    "destaque": false,
+    "marca": "CHEVROLET",
+    "modelo": "ONIX  LT 1.0",
+    "versao": "ONIX LT 1.0",
+    "ano": 2017,
+    "anoModelo": 2018,
+    "km": 74700,
+    "preco": 59900,
+    "cambio": "manual",
+    "combustivel": "Flex",
+    "cor": "BRANCO",
+    "uso": "seminovo",
+    "img": "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-1.jpg",
+    "heroImg": "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-1.jpg",
+    "fotos": [
+      "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-1.jpg",
+      "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-2.jpg",
+      "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-3.jpg",
+      "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-4.jpg",
+      "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-5.jpg",
+      "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-6.jpg",
+      "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-7.jpg",
+      "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-8.jpg",
+      "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-9.jpg",
+      "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-10.jpg"
+    ],
+    "opcionais": [
+      "Ar Condicionado",
+      "Câmera de Ré",
+      "Pneus Novos",
+      "Vidro Elétrico",
+      "Trava Elétrica",
+      "Som",
+      "Bluetooth e Multimídia"
+    ],
+    "desc": "Veículos Revisado e Pronto para Rodar."
   }
 ];
