@@ -1011,9 +1011,10 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "BRANCO",
     "uso": "seminovo",
-    "img": "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-1.jpg",
+    "img": "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-9.jpg",
     "heroImg": "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-1.jpg",
     "fotos": [
+      "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-9.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-1.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-2.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-3.jpg",
@@ -1022,7 +1023,6 @@ const VEHICLES = [
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-6.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-7.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-8.jpg",
-      "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-9.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-10.jpg"
     ],
     "opcionais": [
