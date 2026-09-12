@@ -203,41 +203,6 @@ const VEHICLES = [
     ]
   },
   {
-    "id": 9,
-    "destaque": true,
-    "marca": "Nissan",
-    "modelo": "Kicks",
-    "versao": "1.6 Sense 16V Automático Completo",
-    "ano": 2024,
-    "anoModelo": 2024,
-    "km": 93800,
-    "uso": "seminovo",
-    "cambio": "automático",
-    "combustivel": "Flex",
-    "cor": "Prata",
-    "preco": 99800,
-    "img": "/carros/nissan-kicks-2024-1787665888830-5.jpg",
-    "heroImg": "/carros/kicks-hero.png",
-    "opcionais": [
-      "Ar-condicionado digital",
-      "Direção elétrica",
-      "Câmera de ré",
-      "Central multimídia",
-      "Piloto automático"
-    ],
-    "desc": "Kicks Sense 1.6 Flex automático completo. SUV moderno.",
-    "fotos": [
-      "/carros/nissan-kicks-2024-1787665888830-5.jpg",
-      "/carros/nissan-kicks-2024-1787665888830-1.jpg",
-      "/carros/nissan-kicks-2024-1787665888830-2.jpg",
-      "/carros/nissan-kicks-2024-1787665888830-3.jpg",
-      "/carros/nissan-kicks-2024-1787665888830-4.jpg",
-      "/carros/nissan-kicks-2024-1787687602473-1.jpg",
-      "/carros/nissan-kicks-2024-1787687602473-2.jpg",
-      "/carros/nissan-kicks-2024-1787687602473-3.jpg"
-    ]
-  },
-  {
     "id": 10,
     "destaque": false,
     "marca": "Chevrolet",
