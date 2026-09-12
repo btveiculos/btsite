@@ -834,7 +834,7 @@ const VEHICLES = [
     "versao": "SRAD",
     "ano": 2010,
     "anoModelo": 2011,
-    "km": 0,
+    "km": 47111,
     "uso": "usado",
     "cambio": "manual",
     "combustivel": "Gasolina",
