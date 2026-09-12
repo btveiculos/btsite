@@ -96,40 +96,6 @@ const VEHICLES = [
     ]
   },
   {
-    "id": 5,
-    "destaque": false,
-    "marca": "Fiat",
-    "modelo": "Uno",
-    "versao": "Sporting 1.4 Evo Fire Completo",
-    "ano": 2012,
-    "anoModelo": 2013,
-    "km": 275126,
-    "uso": "usado",
-    "cambio": "manual",
-    "combustivel": "Flex",
-    "cor": "Laranja",
-    "preco": 43900,
-    "img": "/carros/fiat-uno-2012-1.jpg",
-    "heroImg": "",
-    "opcionais": [
-      "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos"
-    ],
-    "desc": "Uno Sporting 1.4 completo. Esportivo e econômico.",
-    "fotos": [
-      "/carros/fiat-uno-2012-1.jpg",
-      "/carros/fiat-uno-2012-2.jpg",
-      "/carros/fiat-uno-2012-3.jpg",
-      "/carros/fiat-uno-2012-4.jpg",
-      "/carros/fiat-uno-2012-5.jpg",
-      "/carros/fiat-uno-2012-6.jpg",
-      "/carros/fiat-uno-2012-7.jpg",
-      "/carros/fiat-uno-2012-8.jpg",
-      "/carros/fiat-uno-2012-9.jpg"
-    ]
-  },
-  {
     "id": 6,
     "destaque": false,
     "marca": "Fiat",
