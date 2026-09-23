@@ -176,8 +176,14 @@ function openModal(v) {
   const photos = ((v.fotos && v.fotos.length > 0) ? v.fotos : [v.img])
     .filter(p => p && typeof p === 'string' && p.trim());
   let current = 0;
+  // AbortController para limpar event listeners de touch ao trocar de foto
+  let touchAbort = new AbortController();
 
   function renderPhoto() {
+    // Cancela listeners de touch da renderização anterior
+    touchAbort.abort();
+    touchAbort = new AbortController();
+
     modalImg.innerHTML = '';
     modalImg.appendChild(makeImg(photos[current], `${v.marca} ${v.modelo}`, false));
     if (photos.length > 1) {
@@ -190,6 +196,19 @@ function openModal(v) {
       if (p) p.onclick = () => { current = (current - 1 + photos.length) % photos.length; renderPhoto(); };
       if (n) n.onclick = () => { current = (current + 1) % photos.length; renderPhoto(); };
     }
+
+    // Swipe de fotos no modal (mobile) — signal garante remoção ao re-render
+    let mTouchX = 0;
+    modalImg.addEventListener('touchstart', e => { mTouchX = e.touches[0].clientX; }, { passive: true, signal: touchAbort.signal });
+    modalImg.addEventListener('touchend', e => {
+      const diff = mTouchX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40 && photos.length > 1) {
+        current = diff > 0
+          ? (current + 1) % photos.length
+          : (current - 1 + photos.length) % photos.length;
+        renderPhoto();
+      }
+    }, { signal: touchAbort.signal });
   }
   renderPhoto();
 

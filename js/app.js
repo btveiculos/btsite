@@ -162,14 +162,27 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') heroGo('n');
 });
 
-// Touch
-let touchX = 0;
+// Touch swipe no carrossel — threshold menor (40px) para dedo curto
+let touchX = 0, touchY = 0, touchMoving = false;
 const heroCarouselEl = document.querySelector('.hero-carousel');
 if (heroCarouselEl) {
-  heroCarouselEl.addEventListener('touchstart', e => touchX = e.touches[0].clientX, { passive: true });
+  heroCarouselEl.addEventListener('touchstart', e => {
+    touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+    touchMoving = false;
+  }, { passive: true });
+
+  heroCarouselEl.addEventListener('touchmove', e => {
+    // Se o movimento vertical for dominante, não interfere no scroll da página
+    const dx = Math.abs(e.touches[0].clientX - touchX);
+    const dy = Math.abs(e.touches[0].clientY - touchY);
+    if (dx > dy && dx > 8) touchMoving = true;
+  }, { passive: true });
+
   heroCarouselEl.addEventListener('touchend', e => {
     const diff = touchX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) heroGo(diff > 0 ? 'n' : 'p');
+    if (touchMoving && Math.abs(diff) > 40) heroGo(diff > 0 ? 'n' : 'p');
+    touchMoving = false;
   });
 }
 
@@ -224,18 +237,39 @@ function openModal(v) {
   const photos = ((v.fotos && v.fotos.length > 0) ? v.fotos : [v.img])
     .filter(p => p && typeof p === 'string' && p.trim());
   let currentPhoto = 0;
+  // AbortController para remover event listeners de touch ao trocar de foto
+  let touchAbort = new AbortController();
   
   function renderPhoto() {
+    // Cancela listeners de touch da foto anterior antes de recriar
+    touchAbort.abort();
+    touchAbort = new AbortController();
+
     imgDiv.innerHTML = '';
     imgDiv.appendChild(makeImg(photos[currentPhoto], v.marca + ' ' + v.modelo, false));
     
     if (photos.length > 1) {
       imgDiv.innerHTML += `
-        <button class="modal-nav modal-nav-left" onclick="modalPrevPhoto()" aria-label="Foto anterior"><svg class="ico" width="17" height="17"><use href="#i-chev-l"/></svg></button>
-        <button class="modal-nav modal-nav-right" onclick="modalNextPhoto()" aria-label="Próxima foto"><svg class="ico" width="17" height="17"><use href="#i-chev-r"/></svg></button>
+        <button class="modal-nav modal-nav-left" id="mNavPrev" aria-label="Foto anterior"><svg class="ico" width="17" height="17"><use href="#i-chev-l"/></svg></button>
+        <button class="modal-nav modal-nav-right" id="mNavNext" aria-label="Próxima foto"><svg class="ico" width="17" height="17"><use href="#i-chev-r"/></svg></button>
         <div class="modal-photo-counter">${currentPhoto+1} / ${photos.length}</div>
       `;
+      document.getElementById('mNavPrev').onclick = () => { currentPhoto = (currentPhoto - 1 + photos.length) % photos.length; renderPhoto(); };
+      document.getElementById('mNavNext').onclick = () => { currentPhoto = (currentPhoto + 1) % photos.length; renderPhoto(); };
     }
+
+    // Swipe de fotos no modal (mobile) — signal garante remoção ao re-render
+    let mTouchX = 0;
+    imgDiv.addEventListener('touchstart', e => { mTouchX = e.touches[0].clientX; }, { passive: true, signal: touchAbort.signal });
+    imgDiv.addEventListener('touchend', e => {
+      const diff = mTouchX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40 && photos.length > 1) {
+        currentPhoto = diff > 0
+          ? (currentPhoto + 1) % photos.length
+          : (currentPhoto - 1 + photos.length) % photos.length;
+        renderPhoto();
+      }
+    }, { signal: touchAbort.signal });
   }
   
   window.modalPrevPhoto = () => { currentPhoto = (currentPhoto - 1 + photos.length) % photos.length; renderPhoto(); };

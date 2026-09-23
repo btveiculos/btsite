@@ -15,7 +15,9 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;line-height:1.6;font-feature-settings:'kern' 1,'liga' 1,'cv11' 1}
+body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.6;font-feature-settings:'kern' 1,'liga' 1,'cv11' 1}
+/* overflow-x no html em vez do body: não quebra position:sticky em iOS/Safari */
+html{overflow-x:hidden}
 h1,h2,h3,h4{font-family:var(--heading);line-height:1.1;letter-spacing:-.02em}
 .container{max-width:1180px;margin:0 auto;padding:0 28px}
 img{max-width:100%;display:block}
@@ -106,6 +108,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
 /* ═══ HERO ═══ */
 .hero{position:relative;height:100dvh;min-height:680px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+/* Fallback para browsers sem suporte a dvh */
+@supports not (height: 100dvh){
+  .hero{height:100vh}
+}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 120% 100% at 50% 58%,#211f1f 0%,#0b0a0a 58%,#080808 100%)}
 /* Refletor de teto do showroom */
 .hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:70%;height:80%;background:radial-gradient(ellipse 100% 65% at 50% 0%,rgba(255,255,255,.06) 0%,rgba(255,255,255,.015) 40%,transparent 62%);z-index:1;pointer-events:none}
@@ -650,8 +656,9 @@ body{animation:bodyFadeIn .4s ease}
 .estoque-full .vehicle-card{opacity:1;transform:none;animation:none}
 
 @media(max-width:960px){
-  .estoque-filters-bar{top:0;position:sticky}
-  .estoque-full{padding-top:68px}
+  /* Header em estoque.html é sempre fixo (70px) — a barra sticky fica abaixo dele */
+  .estoque-filters-bar{top:70px;position:sticky}
+  .estoque-full{padding-top:70px}
 }
 @media(max-width:768px){
   .estoque-full-head{padding:32px 0 20px}
@@ -769,3 +776,550 @@ body{animation:bodyFadeIn .4s ease}
 .modal-nav-left{left:12px}
 .modal-nav-right{right:12px}
 .modal-photo-counter{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;backdrop-filter:blur(4px)}
+
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE FIXES — revisão completa
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 1. HERO: altura mínima segura para não cortar conteúdo ── */
+@media(max-width:768px){
+  .hero{
+    min-height:560px; /* fallback para browsers sem svh */
+    min-height:100svh;
+    height:auto;
+    /* overflow:visible para o conteúdo não ser cortado em landscape */
+    overflow:visible;
+  }
+  .hero-content{
+    padding:78px 16px 28px;
+    gap:0;
+    justify-content:flex-start;
+    /* reseta o height:100% que herda do desktop — com pai height:auto, 100% não resolve */
+    height:auto;
+  }
+  .hero-head{
+    margin-bottom:10px;
+  }
+  .hero-tag{
+    font-size:9.5px;
+    letter-spacing:.18em;
+    margin-bottom:10px;
+  }
+  .hero-title{
+    font-size:clamp(24px,7vw,36px);
+    letter-spacing:-.03em;
+  }
+  .hero-subtitle{
+    font-size:13px;
+    margin-top:10px;
+  }
+}
+
+/* ── 1b. HERO em landscape mobile: carrossel menor para tudo caber ── */
+@media(max-width:768px) and (orientation:landscape){
+  .hero{
+    min-height:auto;
+    overflow:visible;
+  }
+  .hero-content{
+    padding:72px 16px 20px;
+  }
+  .hero-carousel{
+    height:160px !important;
+  }
+  .carousel-track{
+    max-height:160px !important;
+    padding-bottom:8px;
+  }
+  .car-slide.center{
+    height:150px !important;
+  }
+  .hero-ctas{
+    flex-direction:row !important;
+    flex-wrap:wrap;
+  }
+  .hero-ctas a{
+    flex:1;
+    min-width:140px;
+  }
+}
+
+/* ── 2. CARROSSEL HERO no mobile ── */
+@media(max-width:768px){
+  .hero-carousel{
+    margin:8px 0;
+    min-height:0;
+    flex:0 0 auto;
+    height:220px;
+  }
+  .carousel-track{
+    max-height:220px;
+    padding-bottom:16px;
+  }
+  /* Slides laterais SEMPRE ocultos no mobile */
+  .car-slide.side{
+    display:none !important;
+  }
+  .car-slide.center{
+    width:100% !important;
+    max-width:100% !important;
+    height:204px !important;
+  }
+  .car-slide.center img{
+    max-height:100%;
+    object-fit:contain;
+  }
+  /* Setas: maiores e mais fáceis de tocar */
+  .carousel-arrow{
+    width:44px;
+    height:44px;
+    background:rgba(0,0,0,.72);
+  }
+  .carousel-arrow.left{left:2px}
+  .carousel-arrow.right{right:2px}
+  /* Info do carro abaixo do carrossel */
+  .hero-car-price{
+    font-size:clamp(24px,7vw,36px) !important;
+    margin-top:4px;
+  }
+  .hero-car-name{
+    font-size:10px;
+  }
+  /* Dots mais fáceis de tocar */
+  .hero-dots .dot{
+    width:9px;
+    height:9px;
+    padding:6px;
+    margin:-6px;
+  }
+  .hero-dots .dot.active{
+    width:26px;
+    padding:6px 0;
+    margin:-6px 0;
+  }
+  .hero-ctas{
+    flex-direction:column;
+    width:100%;
+    gap:9px;
+    margin-top:16px;
+  }
+  .hero-ctas a{
+    width:100%;
+    padding:15px 20px;
+    font-size:13px;
+  }
+  .hero-dots{
+    margin-top:14px;
+  }
+}
+
+/* ── 2b. Telas muito pequenas (≤380px): carrossel ligeiramente maior que no breakpoint acima ── */
+@media(max-width:380px){
+  .hero-carousel{
+    height:200px;
+  }
+  .carousel-track{
+    max-height:200px;
+  }
+  /* Mantém 200px — não deve cair abaixo do breakpoint pai de 768px (204px) */
+  .car-slide.center{
+    height:190px !important;
+  }
+}
+
+/* ── 3. NAV MOBILE ── */
+@media(max-width:960px){
+  /* Botão primário dentro do menu mobile */
+  .nav-mobile .btn-primary{
+    margin-top:8px;
+    width:100%;
+    text-align:center;
+    justify-content:center;
+    padding:15px 20px;
+    font-size:13px;
+    border-radius:var(--radius-sm);
+  }
+  /* Ícone hambúrguer com área de toque adequada */
+  .mobile-toggle{
+    padding:12px 8px;
+    gap:5.5px;
+  }
+  .mobile-toggle span{
+    width:24px;
+    height:2.2px;
+  }
+  .nav-mobile a{
+    font-size:16px;
+    padding:16px 18px;
+  }
+}
+
+/* ── 4. CARDS DE VEÍCULO no mobile ── */
+@media(max-width:768px){
+  .vehicle-card .card-img{
+    height:200px;
+  }
+  /* Specs: 2 colunas mas com texto legível */
+  .vehicle-card .specs{
+    grid-template-columns:1fr 1fr;
+    gap:9px 10px;
+  }
+  .vehicle-card .specs span{
+    font-size:12px;
+  }
+  /* Botões de ação maiores para dedos */
+  .vehicle-card .card-actions button{
+    padding:14px 10px;
+    font-size:12px;
+    min-height:48px;
+  }
+  .vehicle-card .card-actions .btn-wpp{
+    padding:14px 14px;
+    flex:0 0 auto;
+  }
+  .vehicle-card .price{
+    font-size:22px;
+  }
+}
+
+/* ── 5. FILTROS DA PÁGINA DE ESTOQUE no mobile ── */
+@media(max-width:768px){
+  /* O header em estoque.html está sempre "scrolled" (fixo, 70px).
+     A barra sticky precisa começar abaixo dele, não em top:0. */
+  .estoque-filters-bar{
+    top:70px;
+    overflow:visible;
+  }
+  .estoque-filters-bar .filters{
+    flex-direction:column;
+    gap:7px;
+    align-items:stretch;
+  }
+  .search-wrap,
+  .estoque-filters-bar .filters select,
+  .estoque-filters-bar .filters input,
+  .estoque-clear-btn{
+    width:100% !important;
+    min-width:0 !important;
+    box-sizing:border-box;
+  }
+  .estoque-filters-bar .filters select{
+    padding:13px 14px;
+    font-size:14px;
+  }
+  .estoque-filters-bar{
+    padding:10px 0;
+  }
+  /* Grid do estoque em coluna única */
+  .estoque-full .estoque-grid{
+    grid-template-columns:1fr;
+  }
+  /* Padding-top para compensar o header fixo na página de estoque */
+  .estoque-full{
+    padding-top:70px;
+  }
+}
+
+/* Evita que o input em iOS faça zoom (font-size mínimo 16px) */
+@media(max-width:768px){
+  .filters input,
+  .filters select,
+  .form-card input,
+  .form-card textarea,
+  .form-card select{
+    font-size:16px !important;
+  }
+}
+
+/* ── 6. MODAL no mobile ── */
+@media(max-width:768px){
+  .modal-overlay{
+    padding:0;
+    align-items:flex-end; /* modal aparece como bottom sheet */
+  }
+  .modal-content{
+    border-radius:var(--radius-lg) var(--radius-lg) 0 0 !important;
+    max-height:93dvh !important;
+    width:100% !important;
+    max-width:100% !important;
+    flex-direction:column !important;
+  }
+  .modal-img{
+    height:240px !important;
+    width:100% !important;
+    border-radius:var(--radius-lg) var(--radius-lg) 0 0 !important;
+    flex-shrink:0;
+  }
+  .modal-img img{
+    border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .modal-body{
+    width:100% !important;
+    max-height:none !important;
+    padding:22px 18px 32px !important;
+    overflow-y:auto;
+  }
+  .modal-body h2{
+    font-size:20px;
+    padding-right:36px; /* espaço para o botão fechar */
+  }
+  .modal-body .modal-price{
+    font-size:28px;
+    margin:8px 0 16px;
+  }
+  .modal-body .modal-specs{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+  .modal-close{
+    top:12px;
+    right:12px;
+    width:38px;
+    height:38px;
+    z-index:10;
+    /* Fundo mais escuro para contrastar com a imagem */
+    background:rgba(0,0,0,.75);
+  }
+  /* Botões de navegação da galeria maiores */
+  .modal-nav{
+    width:40px;
+    height:40px;
+  }
+  .modal-nav-left{left:8px}
+  .modal-nav-right{right:8px}
+  .modal-body .btn-whatsapp{
+    font-size:14px;
+    padding:16px;
+  }
+  /* Opcionais: scroll horizontal se muitos */
+  .modal-body .modal-opcionais{
+    max-height:120px;
+    overflow-y:auto;
+  }
+}
+
+/* ── 7. COOKIE BANNER não sobrepõe o botão de WhatsApp ── */
+@media(max-width:768px){
+  .cookie-banner{
+    /* sobe acima do botão flutuante (56px) + margem */
+    bottom:84px;
+    padding:14px 16px;
+    gap:12px;
+    border-radius:var(--radius) var(--radius) 0 0;
+    border-top:1px solid var(--border);
+    border-left:none;
+    border-right:none;
+  }
+  .cookie-banner p{
+    font-size:12px;
+    text-align:center;
+  }
+  .cookie-banner .btn-primary{
+    width:100%;
+    padding:12px;
+  }
+  /* WhatsApp float: posição fixa para não sobrepor */
+  .whatsapp-float{
+    bottom:20px;
+    right:16px;
+    width:54px;
+    height:54px;
+  }
+}
+
+/* ── 8. SOCIAL LINKS no mobile ── */
+@media(max-width:768px){
+  .social-links{
+    flex-direction:column;
+    gap:8px;
+    margin-top:14px;
+  }
+  .social-link{
+    width:100%;
+    justify-content:center;
+    padding:13px 16px;
+    font-size:14px;
+  }
+}
+
+/* ── 9. SEÇÃO DE FORMULÁRIOS ── */
+@media(max-width:768px){
+  .form-card{
+    padding:20px 16px;
+    gap:10px;
+  }
+  .form-card input,
+  .form-card textarea,
+  .form-card select{
+    padding:14px 14px;
+  }
+  .form-card .btn-primary{
+    padding:16px;
+    font-size:13px;
+  }
+}
+
+/* ── 10. DESTAQUES GRID — evita card minúsculo em telas estreitas ── */
+@media(max-width:500px){
+  .destaques-grid{
+    grid-template-columns:1fr !important; /* uma coluna em telas pequenas */
+  }
+  .destaque-card{
+    display:flex !important; /* volta ao flex row para aproveitar espaço */
+    flex-direction:row !important;
+    align-items:stretch;
+  }
+  .destaque-card .card-img{
+    width:130px !important;
+    height:auto !important;
+    flex-shrink:0;
+    border-radius:var(--radius) 0 0 var(--radius);
+  }
+  .destaque-card .card-img img{
+    object-fit:cover;
+    height:100%;
+  }
+  .destaque-card .card-body{
+    flex:1;
+    min-width:0;
+    padding:14px 13px;
+    text-align:left;
+  }
+  .destaque-card .card-body h3{
+    font-size:15px;
+  }
+  .destaque-card .destaque-versao{
+    -webkit-line-clamp:2;
+    font-size:11px;
+    min-height:0;
+  }
+  .destaque-card .price{
+    font-size:17px;
+  }
+}
+
+/* ── 11. CTA DO ESTOQUE no mobile ── */
+@media(max-width:520px){
+  .estoque-cta-box{
+    padding:32px 20px;
+    gap:24px;
+  }
+  .estoque-cta-stats{
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:space-around;
+  }
+  .estoque-cta-btn{
+    width:100%;
+    justify-content:center;
+    padding:16px;
+    font-size:13px;
+  }
+}
+
+/* ── 12. CONTATO MAP no mobile ── */
+@media(max-width:768px){
+  .contato-map{
+    min-height:260px;
+    border-radius:var(--radius);
+  }
+  .contato-map iframe{
+    min-height:260px;
+  }
+  .contato-btns{
+    flex-direction:column;
+    gap:9px;
+  }
+  .contato-btns a{
+    width:100%;
+    text-align:center;
+    justify-content:center;
+    padding:15px 16px;
+    font-size:13px;
+    min-width:0;
+  }
+}
+
+/* ── 13. FOOTER BOTTOM no mobile ── */
+@media(max-width:600px){
+  .footer-bottom{
+    flex-direction:column;
+    gap:10px;
+    text-align:center;
+    padding:20px 0;
+  }
+  .footer-bottom p{
+    font-size:11.5px;
+  }
+}
+
+/* ── 14. GERAL: tap targets mínimos de 44px para todos os botões interativos ── */
+@media(max-width:768px){
+  .btn-primary,
+  .btn-outline,
+  .btn-whatsapp{
+    min-height:48px;
+  }
+  /* FAQ items mais fáceis de tocar */
+  .faq-item summary{
+    padding:20px 8px;
+    font-size:15px;
+    min-height:56px;
+    align-items:center;
+  }
+}
+
+/* ── 15. Previne texto transbordar em qualquer card ── */
+@media(max-width:768px){
+  .vehicle-card .card-body h3,
+  .destaque-card .card-body h3,
+  .vehicle-card .card-body .versao,
+  .destaque-card .destaque-versao{
+    word-break:break-word;
+    overflow-wrap:break-word;
+  }
+}
+
+/* ── 16. BENEFÍCIOS: 1 coluna em telas muito pequenas ── */
+@media(max-width:400px){
+  .beneficios-grid{
+    grid-template-columns:1fr !important;
+  }
+  .beneficio{
+    border-left:none !important;
+    border-top:1px solid var(--border) !important;
+  }
+  .beneficio:first-child{
+    border-top:none !important;
+  }
+}
+
+/* ── 17. Animação de entrada dos cards: desligada em preferência de redução ── */
+@media(prefers-reduced-motion:reduce){
+  .vehicle-card{
+    animation:none !important;
+    opacity:1 !important;
+    transform:none !important;
+  }
+  body{animation:none}
+  .hero-scroll-line{animation:none}
+}
+
+/* ── 18. ESTOQUE PAGE: header scrolled fica visível mesmo sem scroll ── */
+.estoque-page #header{
+  background:rgba(8,8,8,.82) !important;
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+  border-bottom:1px solid var(--border);
+}
+
+/* ── 19. Números do hero mais legíveis em mobile escuro ── */
+@media(max-width:768px){
+  .hero-car-name{
+    color:var(--text2);
+  }
+  .hero-info{
+    padding:0 8px;
+  }
+}
