@@ -1323,3 +1323,17 @@ body{animation:bodyFadeIn .4s ease}
     padding:0 8px;
   }
 }
+
+/* ── ESTOQUE mobile: barra de filtros compacta e sem grudar na tela ──
+   Empilhada e sticky ocupava mais da metade da tela e escondia os carros. */
+@media(max-width:768px){
+  .estoque-filters-bar{position:static}
+  .estoque-filters-bar .filters{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+  .estoque-filters-bar .search-wrap,
+  .estoque-filters-bar .estoque-clear-btn{grid-column:1 / -1}
+  .estoque-filters-bar .filters select{padding:11px 12px;font-size:14px}
+}

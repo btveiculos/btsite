@@ -858,16 +858,16 @@ const VEHICLES = [
   {
     "id": 1787764216421,
     "destaque": false,
-    "marca": "VOLKSWAGEN",
-    "modelo": "POLO",
-    "versao": "TRACK 1.0 COMPLETO",
+    "marca": "Volkswagen",
+    "modelo": "Polo",
+    "versao": "Track 1.0 Completo",
     "ano": 2024,
     "anoModelo": 2025,
     "km": 71200,
     "preco": 76900,
     "cambio": "manual",
     "combustivel": "Flex",
-    "cor": "CINZA",
+    "cor": "Cinza",
     "uso": "seminovo",
     "img": "/carros/volkswagen-polo-2024-1787764180611-8.jpg",
     "heroImg": "/carros/volkswagen-polo-2024-1787764180611-1.jpg",
@@ -883,26 +883,27 @@ const VEHICLES = [
       "/carros/volkswagen-polo-2024-1787764180611-9.jpg"
     ],
     "opcionais": [
-      "Vidro",
-      "Trava",
-      "Ar",
-      "Alarme e Multimídia"
+      "Vidro elétrico",
+      "Trava elétrica",
+      "Ar-condicionado",
+      "Alarme",
+      "Multimídia"
     ],
     "desc": "Veículo revisado e pronto para venda."
   },
   {
     "id": 1789063195671,
     "destaque": false,
-    "marca": "CHEVROLET",
-    "modelo": "ONIX  LT 1.0",
-    "versao": "ONIX LT 1.0",
+    "marca": "Chevrolet",
+    "modelo": "Onix",
+    "versao": "LT 1.0",
     "ano": 2017,
     "anoModelo": 2018,
     "km": 74700,
     "preco": 59900,
     "cambio": "manual",
     "combustivel": "Flex",
-    "cor": "BRANCO",
+    "cor": "Branco",
     "uso": "seminovo",
     "img": "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-9.jpg",
     "heroImg": "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-1.jpg",
@@ -919,14 +920,14 @@ const VEHICLES = [
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-10.jpg"
     ],
     "opcionais": [
-      "Ar Condicionado",
-      "Câmera de Ré",
+      "Ar-condicionado",
+      "Câmera de ré",
       "Pneus Novos",
-      "Vidro Elétrico",
-      "Trava Elétrica",
+      "Vidro elétrico",
+      "Trava elétrica",
       "Som",
-      "Bluetooth e Multimídia"
+      "Bluetooth e multimídia"
     ],
-    "desc": "Veículos Revisado e Pronto para Rodar."
+    "desc": "Veículo revisado e pronto para rodar."
   }
 ];
