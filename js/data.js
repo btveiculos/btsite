@@ -184,7 +184,7 @@ const VEHICLES = [
     "cambio": "manual",
     "combustivel": "Flex",
     "cor": "Preto",
-    "preco": 44900,
+    "preco": 39900,
     "img": "/carros/ford-fiesta-2011-2.jpg",
     "heroImg": "",
     "opcionais": [
