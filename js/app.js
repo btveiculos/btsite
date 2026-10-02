@@ -34,11 +34,15 @@ window.addEventListener('scroll', () => {
   document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 
-document.getElementById('mobileToggle').onclick = () => {
-  document.getElementById('mobileMenu').classList.toggle('open');
-};
-document.querySelectorAll('.nav-mobile a').forEach(a => {
-  a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+const mobileMenuEl = document.getElementById('mobileMenu');
+const mobileToggleEl = document.getElementById('mobileToggle');
+const closeMobileMenu = () => mobileMenuEl.classList.remove('open');
+mobileToggleEl.onclick = () => mobileMenuEl.classList.toggle('open');
+document.querySelectorAll('.nav-mobile a').forEach(a => a.addEventListener('click', closeMobileMenu));
+// O header é fixo: sem isto o menu aberto fica parado em cima do conteúdo ao rolar
+window.addEventListener('scroll', closeMobileMenu, { passive: true });
+document.addEventListener('click', e => {
+  if (!mobileMenuEl.contains(e.target) && !mobileToggleEl.contains(e.target)) closeMobileMenu();
 });
 
 // ===== WHATSAPP =====

@@ -31,7 +31,14 @@ const STOCK = (typeof VEHICLES !== 'undefined' && Array.isArray(VEHICLES)) ? VEH
 const mobileToggle = document.getElementById('mobileToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 if (mobileToggle && mobileMenu) {
+  const closeMobileMenu = () => mobileMenu.classList.remove('open');
   mobileToggle.onclick = () => mobileMenu.classList.toggle('open');
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+  // O header é fixo: sem isto o menu aberto fica parado em cima dos carros ao rolar
+  window.addEventListener('scroll', closeMobileMenu, { passive: true });
+  document.addEventListener('click', e => {
+    if (!mobileMenu.contains(e.target) && !mobileToggle.contains(e.target)) closeMobileMenu();
+  });
 }
 
 const wppMsg = 'Olá, gostaria de mais informações sobre os veículos da BT Veículos.';
