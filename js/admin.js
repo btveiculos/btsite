@@ -458,7 +458,7 @@ async function uploadFileToGitHub(file, path) {
 }
 
 async function updateDataJS(retries = 4) {
-  const content = `const WHATSAPP = '5511947717447';\n\nconst VEHICLES = ${JSON.stringify(VEHICLES, null, 2)};\n`;
+  const content = `const WHATSAPP = '5511993662724';\n\nconst VEHICLES = ${JSON.stringify(VEHICLES, null, 2)};\n`;
   const encoded = btoa(unescape(encodeURIComponent(content)));
 
   let lastErr = 'erro desconhecido';
