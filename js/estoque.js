@@ -3,9 +3,13 @@
 // (carrossel, formulários, depoimentos) e quebraria aqui.
 
 const fmt = p => 'R$ ' + Number(p || 0).toLocaleString('pt-BR');
+const km = n => Number(n || 0).toLocaleString('pt-BR') + ' km';
+// 5511993662724 -> (11) 99366-2724
+const fmtPhone = n => String(n).replace(/^55/, '').replace(/^(\d{2})(\d{4,5})(\d{4})$/, '($1) $2-$3');
+const cap = s => { s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); };
 const wpp = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 
-const carSVG = `<svg viewBox="0 0 430 155" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="215" cy="148" rx="175" ry="7" fill="black" opacity=".3"/><path d="M45 118C45 118 52 88 75 78 95 70 125 60 162 54 190 50 225 48 255 48 285 48 315 52 338 60 355 66 367 76 374 90 380 102 382 114 382 118L45 118Z" fill="#222"/><path d="M158 56C175 52 205 50 240 50 272 50 300 52 320 58 337 63 348 70 352 80L352 88C352 90 350 92 347 92L152 92C149 92 147 90 147 88L147 74C147 66 151 60 158 56Z" fill="rgba(0,0,0,.5)"/><circle cx="108" cy="124" r="22" fill="#0d0d0d" stroke="#222" stroke-width="2"/><circle cx="108" cy="124" r="13" fill="#181818"/><circle cx="318" cy="124" r="22" fill="#0d0d0d" stroke="#222" stroke-width="2"/><circle cx="318" cy="124" r="13" fill="#181818"/></svg>`;
+const carSVG = `<svg viewBox="0 0 430 155" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M45 118C45 118 52 88 75 78 95 70 125 60 162 54 190 50 225 48 255 48 285 48 315 52 338 60 355 66 367 76 374 90 380 102 382 114 382 118L45 118Z" fill="#b9b9b4"/><circle cx="108" cy="124" r="22" fill="#8f8f8a"/><circle cx="318" cy="124" r="22" fill="#8f8f8a"/></svg>`;
 
 // Imagem segura: sem caminho válido devolve o placeholder direto.
 // src='' faria o browser requisitar a própria página sem disparar onerror.
@@ -41,11 +45,13 @@ if (mobileToggle && mobileMenu) {
   });
 }
 
-const wppMsg = 'Olá, gostaria de mais informações sobre os veículos da BT Veículos.';
+const wppMsg = 'Olá! Vi o site da BT Veículos e gostaria de mais informações.';
 ['headerWhatsapp', 'mobileWhatsapp', 'whatsappFloat'].forEach(id => {
   const el = document.getElementById(id);
   if (el) el.onclick = e => { e.preventDefault(); window.open(wpp(wppMsg), '_blank'); };
 });
+
+document.querySelectorAll('[data-whats]').forEach(el => { el.textContent = fmtPhone(WHATSAPP); });
 
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -114,7 +120,7 @@ function render(list) {
 
   if (!list.length) {
     grid.innerHTML = `<div class="empty-state">
-      <p>${STOCK.length ? 'Nenhum veículo encontrado com esses filtros.' : 'Estoque sendo atualizado. Fale com um consultor.'}</p>
+      <p>${STOCK.length ? 'Nenhum veículo encontrado com esses filtros.' : 'Estoque sendo atualizado. Chame no WhatsApp para saber o que está disponível.'}</p>
       ${STOCK.length ? '<button class="btn-outline" id="emptyClearBtn">Limpar filtros</button>' : ''}
     </div>`;
     const b = document.getElementById('emptyClearBtn');
@@ -124,11 +130,11 @@ function render(list) {
 
   list.forEach(v => {
     const nFotos = (v.fotos && v.fotos.length) ? v.fotos.length : (v.img ? 1 : 0);
-    const card = document.createElement('div');
+    const card = document.createElement('article');
     card.className = 'vehicle-card';
     card.innerHTML = `
       <div class="card-img">
-        ${v.destaque ? '<span class="tag-destaque"><svg class="ico ico-fill" width="11" height="11"><use href="#i-star"/></svg>Destaque</span>' : ''}
+        ${v.destaque ? '<span class="tag-destaque">Destaque</span>' : ''}
         <span class="badge badge-${v.uso}">${v.uso}</span>
         ${nFotos > 1 ? `<span class="gallery-counter"><svg class="ico" width="13" height="13"><use href="#i-camera"/></svg>${nFotos}</span>` : ''}
       </div>
@@ -137,19 +143,22 @@ function render(list) {
         <h3>${v.modelo}</h3>
         <div class="versao">${v.versao}</div>
         <div class="specs">
-          <span><svg class="ico" width="14" height="14"><use href="#i-cal"/></svg>${v.ano}/${v.anoModelo}</span>
-          <span><svg class="ico" width="14" height="14"><use href="#i-gauge"/></svg>${Number(v.km || 0).toLocaleString('pt-BR')} km</span>
-          <span><svg class="ico" width="14" height="14"><use href="#i-gear"/></svg>${v.cambio}</span>
-          <span><svg class="ico" width="14" height="14"><use href="#i-fuel"/></svg>${v.combustivel}</span>
+          <span><svg class="ico"><use href="#i-cal"/></svg>${v.ano}/${v.anoModelo}</span>
+          <span><svg class="ico"><use href="#i-gauge"/></svg>${km(v.km)}</span>
+          <span><svg class="ico"><use href="#i-gear"/></svg>${cap(v.cambio)}</span>
+          <span><svg class="ico"><use href="#i-fuel"/></svg>${v.combustivel}</span>
         </div>
         <div class="price">${fmt(v.preco)}</div>
         <div class="card-actions">
-          <button class="btn-detail">Ver detalhes</button>
-          <button class="btn-wpp" aria-label="WhatsApp"><svg class="ico ico-fill" width="16" height="16"><use href="#i-whats"/></svg>WhatsApp</button>
+          <button type="button" class="btn-detail">Ver detalhes</button>
+          <button type="button" class="btn-wpp" aria-label="Chamar no WhatsApp sobre este veículo"><svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>WhatsApp</button>
         </div>
       </div>`;
 
-    card.querySelector('.card-img').prepend(makeImg(v.img, `${v.marca} ${v.modelo}`, true));
+    const imgBox = card.querySelector('.card-img');
+    imgBox.prepend(makeImg(v.img, `${v.marca} ${v.modelo}`, true));
+    imgBox.style.cursor = 'pointer';
+    imgBox.onclick = () => openModal(v);
     card.querySelector('.btn-detail').onclick = () => openModal(v);
     card.querySelector('.btn-wpp').onclick = () =>
       window.open(wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} que vi no site da BT Veículos.`), '_blank');
@@ -194,14 +203,12 @@ function openModal(v) {
     modalImg.innerHTML = '';
     modalImg.appendChild(makeImg(photos[current], `${v.marca} ${v.modelo}`, false));
     if (photos.length > 1) {
-      modalImg.innerHTML += `
-        <button class="modal-nav modal-nav-left" id="mPrev" aria-label="Foto anterior"><svg class="ico" width="17" height="17"><use href="#i-chev-l"/></svg></button>
-        <button class="modal-nav modal-nav-right" id="mNext" aria-label="Próxima foto"><svg class="ico" width="17" height="17"><use href="#i-chev-r"/></svg></button>
-        <div class="modal-photo-counter">${current + 1} / ${photos.length}</div>`;
-      const p = document.getElementById('mPrev');
-      const n = document.getElementById('mNext');
-      if (p) p.onclick = () => { current = (current - 1 + photos.length) % photos.length; renderPhoto(); };
-      if (n) n.onclick = () => { current = (current + 1) % photos.length; renderPhoto(); };
+      modalImg.insertAdjacentHTML('beforeend', `
+        <button class="modal-nav modal-nav-left" id="mPrev" aria-label="Foto anterior"><svg class="ico"><use href="#i-chev-l"/></svg></button>
+        <button class="modal-nav modal-nav-right" id="mNext" aria-label="Próxima foto"><svg class="ico"><use href="#i-chev-r"/></svg></button>
+        <div class="modal-photo-counter">${current + 1} / ${photos.length}</div>`);
+      document.getElementById('mPrev').onclick = () => { current = (current - 1 + photos.length) % photos.length; renderPhoto(); };
+      document.getElementById('mNext').onclick = () => { current = (current + 1) % photos.length; renderPhoto(); };
     }
 
     // Swipe de fotos no modal (mobile) — signal garante remoção ao re-render
@@ -221,20 +228,19 @@ function openModal(v) {
 
   modalBody.innerHTML = `
     <h2>${v.marca} ${v.modelo}</h2>
-    <p style="color:var(--text2);margin-bottom:4px">${v.versao}</p>
+    <p style="color:var(--text2);margin-top:4px">${v.versao}</p>
     <div class="modal-price">${fmt(v.preco)}</div>
     <div class="modal-specs">
       <div class="spec"><small>Ano</small><strong>${v.ano}/${v.anoModelo}</strong></div>
-      <div class="spec"><small>Km</small><strong>${Number(v.km || 0).toLocaleString('pt-BR')} km</strong></div>
-      <div class="spec"><small>Câmbio</small><strong>${v.cambio}</strong></div>
+      <div class="spec"><small>Km</small><strong>${km(v.km)}</strong></div>
+      <div class="spec"><small>Câmbio</small><strong>${cap(v.cambio)}</strong></div>
       <div class="spec"><small>Combustível</small><strong>${v.combustivel}</strong></div>
-      <div class="spec"><small>Cor</small><strong>${v.cor || 'N/I'}</strong></div>
-      <div class="spec"><small>Uso</small><strong style="text-transform:capitalize">${v.uso}</strong></div>
+      <div class="spec"><small>Cor</small><strong>${v.cor || 'Não informada'}</strong></div>
+      <div class="spec"><small>Tipo</small><strong>${cap(v.uso)}</strong></div>
     </div>
-    ${v.opcionais && v.opcionais.length ? `<h4 class="modal-subtitle">Opcionais e equipamentos</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>${o}</span>`).join('')}</div>` : ''}
+    ${v.opcionais && v.opcionais.length ? `<h4 class="modal-subtitle">Opcionais</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>${o}</span>`).join('')}</div>` : ''}
     <div class="modal-desc">${v.desc || ''}</div>
-    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" class="btn-whatsapp"><svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>Tenho interesse neste veículo</a>
-    <p style="text-align:center;color:var(--text3);font-size:11px;margin-top:10px">Você será direcionado ao WhatsApp da BT Veículos</p>`;
+    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" rel="noopener" class="btn-whatsapp"><svg class="ico ico-fill" width="18" height="18"><use href="#i-whats"/></svg>Tenho interesse neste veículo</a>`;
 
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';

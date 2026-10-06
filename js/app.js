@@ -1,11 +1,17 @@
-// ===== UTILITIES =====
-const fmt = p => 'R$ ' + p.toLocaleString('pt-BR');
-const wpp = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
-const carSVG = `<svg viewBox="0 0 430 155" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="215" cy="148" rx="175" ry="7" fill="black" opacity=".3"/><path d="M45 118C45 118 52 88 75 78 95 70 125 60 162 54 190 50 225 48 255 48 285 48 315 52 338 60 355 66 367 76 374 90 380 102 382 114 382 118L45 118Z" fill="#222"/><path d="M158 56C175 52 205 50 240 50 272 50 300 52 320 58 337 63 348 70 352 80L352 88C352 90 350 92 347 92L152 92C149 92 147 90 147 88L147 74C147 66 151 60 158 56Z" fill="rgba(0,0,0,.5)"/><circle cx="108" cy="124" r="22" fill="#0d0d0d" stroke="#222" stroke-width="2"/><circle cx="108" cy="124" r="13" fill="#181818"/><circle cx="318" cy="124" r="22" fill="#0d0d0d" stroke="#222" stroke-width="2"/><circle cx="318" cy="124" r="13" fill="#181818"/></svg>`;
+// ===== PÁGINA INICIAL =====
+const STOCK = (typeof VEHICLES !== 'undefined' && Array.isArray(VEHICLES)) ? VEHICLES : [];
 
-// Cria um elemento de imagem seguro. Se não houver caminho válido, devolve
-// direto o SVG placeholder. Sem essa checagem, src='' faz o browser requisitar
-// a própria página e a imagem quebra sem disparar onerror.
+const fmt = p => 'R$ ' + Number(p || 0).toLocaleString('pt-BR');
+const km = n => Number(n || 0).toLocaleString('pt-BR') + ' km';
+const cap = s => { s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); };
+const wpp = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+// 5511993662724 -> (11) 99366-2724
+const fmtPhone = n => String(n).replace(/^55/, '').replace(/^(\d{2})(\d{4,5})(\d{4})$/, '($1) $2-$3');
+
+const carSVG = `<svg viewBox="0 0 430 155" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M45 118C45 118 52 88 75 78 95 70 125 60 162 54 190 50 225 48 255 48 285 48 315 52 338 60 355 66 367 76 374 90 380 102 382 114 382 118L45 118Z" fill="#b9b9b4"/><circle cx="108" cy="124" r="22" fill="#8f8f8a"/><circle cx="318" cy="124" r="22" fill="#8f8f8a"/></svg>`;
+
+// Imagem segura: sem caminho válido devolve o placeholder direto.
+// src='' faria o browser requisitar a própria página sem disparar onerror.
 function makeImg(src, alt, lazy) {
   if (!src || typeof src !== 'string' || !src.trim()) {
     const ph = document.createElement('div');
@@ -15,25 +21,13 @@ function makeImg(src, alt, lazy) {
   }
   const img = document.createElement('img');
   img.src = src;
-  img.alt = alt;
+  img.alt = alt || '';
   if (lazy) img.loading = 'lazy';
-  img.onerror = function() { this.outerHTML = carSVG; };
+  img.onerror = function () { this.outerHTML = carSVG; };
   return img;
 }
 
-function carImg(v) {
-  return makeImg(v.img, v.marca + ' ' + v.modelo, true);
-}
-
-function carHeroImg(v) {
-  return makeImg(v.heroImg || v.img, v.marca + ' ' + v.modelo, false);
-}
-
-// ===== HEADER =====
-window.addEventListener('scroll', () => {
-  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
-
+// ===== CABEÇALHO =====
 const mobileMenuEl = document.getElementById('mobileMenu');
 const mobileToggleEl = document.getElementById('mobileToggle');
 const closeMobileMenu = () => mobileMenuEl.classList.remove('open');
@@ -46,383 +40,210 @@ document.addEventListener('click', e => {
 });
 
 // ===== WHATSAPP =====
-const wppMsg = 'Olá, gostaria de mais informações sobre os veículos da BT Veículos.';
-['headerWhatsapp','mobileWhatsapp','heroWhatsapp','contatoWhatsapp','whatsappFloat'].forEach(id => {
+const wppMsg = 'Olá! Vi o site da BT Veículos e gostaria de mais informações.';
+['headerWhatsapp', 'mobileWhatsapp', 'heroWhatsapp', 'contatoWhatsapp', 'whatsappFloat'].forEach(id => {
   const el = document.getElementById(id);
   if (el) el.onclick = e => { e.preventDefault(); window.open(wpp(wppMsg), '_blank'); };
 });
+document.querySelectorAll('[data-whats]').forEach(el => { el.textContent = fmtPhone(WHATSAPP); });
 
-// ===== HERO CAROUSEL =====
-const featured = VEHICLES.filter(v => v.destaque);
-let heroIdx = 0, heroAnim = false, heroTimer;
-const track = document.getElementById('carouselTrack');
-const infoEl = document.getElementById('heroInfo');
-const dotsEl = document.getElementById('heroDots');
-
-function renderHero() {
-  // Sem veículos em destaque não há carrossel para montar. Sem esta guarda,
-  // featured[heroIdx] vira undefined e o erro derruba TODO o app.js
-  // (estoque, filtros, modal e formulários param de funcionar).
-  if (!featured.length) return;
-
-  const prev = featured[(heroIdx - 1 + featured.length) % featured.length];
-  const cur = featured[heroIdx];
-  const next = featured[(heroIdx + 1) % featured.length];
-
-  track.innerHTML = '';
-  const left = document.createElement('div');
-  left.className = 'car-slide side';
-  left.appendChild(carHeroImg(prev));
-  left.innerHTML += '<div class="car-platform"></div>';
-  left.onclick = () => heroGo('p');
-  
-  const center = document.createElement('div');
-  center.className = 'car-slide center';
-  center.appendChild(carHeroImg(cur));
-  center.innerHTML += '<div class="car-platform"></div>';
-  
-  const right = document.createElement('div');
-  right.className = 'car-slide side';
-  right.appendChild(carHeroImg(next));
-  right.innerHTML += '<div class="car-platform"></div>';
-  right.onclick = () => heroGo('n');
-  
-  track.append(left, center, right);
-  infoEl.querySelector('.hero-car-name').textContent = `${cur.marca} ${cur.modelo} · ${cur.versao} · ${cur.ano}`;
-  infoEl.querySelector('.hero-car-price').textContent = fmt(cur.preco);
-
-  dotsEl.innerHTML = '';
-  featured.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'dot' + (i === heroIdx ? ' active' : '');
-    dot.onclick = () => heroGoTo(i);
-    dotsEl.appendChild(dot);
-  });
-}
-
-function heroGo(dir) {
-  if (heroAnim || !featured.length) return;
-  heroAnim = true;
-  track.classList.add('animating');
-  infoEl.classList.add('animating');
-  setTimeout(() => {
-    heroIdx = dir === 'n' ? (heroIdx + 1) % featured.length : (heroIdx - 1 + featured.length) % featured.length;
-    renderHero();
-    track.classList.remove('animating');
-    infoEl.classList.remove('animating');
-    heroAnim = false;
-  }, 400);
-  resetHeroTimer();
-}
-
-function heroGoTo(i) {
-  if (heroAnim || !featured.length || i === heroIdx) return;
-  heroAnim = true;
-  track.classList.add('animating');
-  infoEl.classList.add('animating');
-  setTimeout(() => {
-    heroIdx = i;
-    renderHero();
-    track.classList.remove('animating');
-    infoEl.classList.remove('animating');
-    heroAnim = false;
-  }, 400);
-  resetHeroTimer();
-}
-
-function resetHeroTimer() {
-  clearInterval(heroTimer);
-  if (featured.length > 1) heroTimer = setInterval(() => heroGo('n'), 6000);
-}
-
-document.getElementById('prevBtn').onclick = () => heroGo('p');
-document.getElementById('nextBtn').onclick = () => heroGo('n');
-renderHero();
-
-// Autoplay e setas só fazem sentido com mais de um destaque.
-// Sem destaque nenhum, esconde o carrossel em vez de mostrar área vazia.
-if (featured.length > 1) {
-  heroTimer = setInterval(() => heroGo('n'), 6000);
-}
-if (!featured.length) {
-  const carousel = document.querySelector('.hero-carousel');
-  if (carousel) carousel.style.display = 'none';
-  if (infoEl) infoEl.style.display = 'none';
-  const destaquesSection = document.querySelector('section.destaques');
-  if (destaquesSection) destaquesSection.style.display = 'none';
-}
-
-// Update vehicle count
-const countEl = document.getElementById('vehicleCount');
-if (countEl) countEl.textContent = VEHICLES.length;
-
-// Keyboard support
-document.addEventListener('keydown', e => {
-  if (document.getElementById('modal').classList.contains('open')) {
-    if (e.key === 'Escape') { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
-    return;
-  }
-  if (e.key === 'ArrowLeft') heroGo('p');
-  if (e.key === 'ArrowRight') heroGo('n');
-});
-
-// Touch swipe no carrossel — threshold menor (40px) para dedo curto
-let touchX = 0, touchY = 0, touchMoving = false;
-const heroCarouselEl = document.querySelector('.hero-carousel');
-if (heroCarouselEl) {
-  heroCarouselEl.addEventListener('touchstart', e => {
-    touchX = e.touches[0].clientX;
-    touchY = e.touches[0].clientY;
-    touchMoving = false;
-  }, { passive: true });
-
-  heroCarouselEl.addEventListener('touchmove', e => {
-    // Se o movimento vertical for dominante, não interfere no scroll da página
-    const dx = Math.abs(e.touches[0].clientX - touchX);
-    const dy = Math.abs(e.touches[0].clientY - touchY);
-    if (dx > dy && dx > 8) touchMoving = true;
-  }, { passive: true });
-
-  heroCarouselEl.addEventListener('touchend', e => {
-    const diff = touchX - e.changedTouches[0].clientX;
-    if (touchMoving && Math.abs(diff) > 40) heroGo(diff > 0 ? 'n' : 'p');
-    touchMoving = false;
-  });
-}
-
-// ===== DESTAQUES =====
-const destGrid = document.getElementById('destaquesGrid');
-if (destGrid) {
-  featured.forEach(v => {
-    const nFotos = (v.fotos && v.fotos.length) ? v.fotos.length : (v.img ? 1 : 0);
-    const card = document.createElement('div');
-    card.className = 'destaque-card';
-    card.innerHTML = `
-      <div class="card-img">
-        <span class="badge badge-${v.uso}">${v.uso}</span>
-        ${nFotos > 1 ? `<span class="gallery-counter"><svg class="ico" width="13" height="13"><use href="#i-camera"/></svg>${nFotos}</span>` : ''}
-      </div>
-      <div class="card-body">
-        <div class="marca">${v.marca}</div>
-        <h3>${v.modelo}</h3>
-        <p class="destaque-versao">${v.versao}</p>
-        <div class="destaque-foot">
-          <div class="price">${fmt(v.preco)}</div>
-          <span class="destaque-meta">${v.ano} · ${v.cambio}</span>
-        </div>
-      </div>`;
-    card.querySelector('.card-img').prepend(carImg(v));
-    card.onclick = () => openModal(v);
-    destGrid.appendChild(card);
-  });
-}
-
-// Estatísticas da chamada do estoque (calculadas do estoque real)
-const marcasEl = document.getElementById('estoqueMarcas');
-if (marcasEl) marcasEl.textContent = new Set(VEHICLES.map(v => v.marca).filter(Boolean)).size;
-
+document.querySelectorAll('.js-count').forEach(el => { el.textContent = STOCK.length || ''; });
 const footerYearEl = document.getElementById('footerYear');
 if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
 
-// ===== ESTOQUE (resumo) =====
-// A listagem completa vive em estoque.html / js/estoque.js. Aqui a landing
-// page apenas exibe os totais que alimentam a chamada para aquela pagina.
-const estoqueTotalEl = document.getElementById('estoqueTotal');
-if (estoqueTotalEl) estoqueTotalEl.textContent = VEHICLES.length;
+// ===== DESTAQUE DO TOPO =====
+// Os veículos marcados como destaque no painel; sem nenhum, os primeiros do estoque.
+const featured = STOCK.filter(v => v.destaque).length ? STOCK.filter(v => v.destaque) : STOCK.slice(0, 5);
+const heroSlide = document.getElementById('heroSlide');
+const heroDots = document.getElementById('heroDots');
+let heroIdx = 0, heroTimer = null;
 
-// ===== MODAL =====
+function renderHero() {
+  const v = featured[heroIdx];
+  const old = heroSlide.querySelector('img, svg, .car-img-placeholder');
+  if (old) old.remove();
+  // Sempre a foto real do carro (v.img): o enquadramento fica igual em todos
+  heroSlide.prepend(makeImg(v.img || (v.fotos && v.fotos[0]), `${v.marca} ${v.modelo}`, false));
+  document.getElementById('heroLabel').textContent = v.marca;
+  document.getElementById('heroName').textContent = v.modelo;
+  document.getElementById('heroMeta').textContent = `${v.ano}/${v.anoModelo} · ${km(v.km)} · ${cap(v.cambio)}`;
+  document.getElementById('heroPrice').textContent = fmt(v.preco);
+  heroDots.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === heroIdx));
+}
+
+function heroGo(step) {
+  heroIdx = (heroIdx + step + featured.length) % featured.length;
+  renderHero();
+  clearInterval(heroTimer);
+  if (featured.length > 1) heroTimer = setInterval(() => heroGo(1), 6000);
+}
+
+if (featured.length) {
+  featured.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'dot';
+    dot.setAttribute('aria-label', `Destaque ${i + 1}`);
+    dot.onclick = () => heroGo(i - heroIdx);
+    heroDots.appendChild(dot);
+  });
+  heroSlide.onclick = () => openModal(featured[heroIdx]);
+  document.getElementById('prevBtn').onclick = () => heroGo(-1);
+  document.getElementById('nextBtn').onclick = () => heroGo(1);
+  if (featured.length < 2) document.querySelector('.hero-nav').style.display = 'none';
+  heroGo(0);
+
+  let tx = 0;
+  heroSlide.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  heroSlide.addEventListener('touchend', e => {
+    const diff = tx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) heroGo(diff > 0 ? 1 : -1);
+  });
+} else {
+  document.getElementById('heroFeature').style.display = 'none';
+}
+
+// ===== DESTAQUES DO ESTOQUE =====
+function vehicleCard(v) {
+  const nFotos = (v.fotos && v.fotos.length) ? v.fotos.length : (v.img ? 1 : 0);
+  const card = document.createElement('article');
+  card.className = 'vehicle-card';
+  card.innerHTML = `
+    <div class="card-img">
+      <span class="badge badge-${v.uso}">${v.uso}</span>
+      ${nFotos > 1 ? `<span class="gallery-counter"><svg class="ico" width="13" height="13"><use href="#i-camera"/></svg>${nFotos}</span>` : ''}
+    </div>
+    <div class="card-body">
+      <div class="marca">${v.marca}</div>
+      <h3>${v.modelo}</h3>
+      <div class="versao">${v.versao}</div>
+      <div class="specs">
+        <span><svg class="ico"><use href="#i-cal"/></svg>${v.ano}/${v.anoModelo}</span>
+        <span><svg class="ico"><use href="#i-gauge"/></svg>${km(v.km)}</span>
+        <span><svg class="ico"><use href="#i-gear"/></svg>${cap(v.cambio)}</span>
+        <span><svg class="ico"><use href="#i-fuel"/></svg>${v.combustivel}</span>
+      </div>
+      <div class="price">${fmt(v.preco)}</div>
+      <div class="card-actions">
+        <button type="button" class="btn-detail">Ver detalhes</button>
+        <button type="button" class="btn-wpp" aria-label="Chamar no WhatsApp sobre este veículo"><svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>WhatsApp</button>
+      </div>
+    </div>`;
+  const imgBox = card.querySelector('.card-img');
+  imgBox.prepend(makeImg(v.img, `${v.marca} ${v.modelo}`, true));
+  imgBox.style.cursor = 'pointer';
+  imgBox.onclick = () => openModal(v);
+  card.querySelector('.btn-detail').onclick = () => openModal(v);
+  card.querySelector('.btn-wpp').onclick = () =>
+    window.open(wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} que vi no site da BT Veículos.`), '_blank');
+  return card;
+}
+
+const homeGrid = document.getElementById('homeGrid');
+if (homeGrid) {
+  // Destaques primeiro; completa com o restante do estoque até fechar 8 cards
+  const marked = STOCK.filter(v => v.destaque);
+  // Do restante, primeiro os que já têm galeria de fotos
+  const nf = v => (v.fotos ? v.fotos.length : 0);
+  const rest = STOCK.filter(v => !v.destaque).sort((a, b) => (nf(b) > 2) - (nf(a) > 2));
+  marked.concat(rest).slice(0, 8).forEach(v => homeGrid.appendChild(vehicleCard(v)));
+  if (!STOCK.length) homeGrid.innerHTML = '<div class="empty-state"><p>Estoque sendo atualizado. Chame no WhatsApp para saber o que está disponível.</p></div>';
+}
+
+// ===== DETALHES DO VEÍCULO =====
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modalImg');
+const modalBody = document.getElementById('modalBody');
+
 function openModal(v) {
-  const modal = document.getElementById('modal');
-  const imgDiv = document.getElementById('modalImg');
-  const body = document.getElementById('modalBody');
-  
-  // Galeria: usa só caminhos válidos. Se o veículo não tiver nenhuma foto,
-  // a lista fica vazia e o placeholder é exibido sem setas nem contador.
+  // Só caminhos válidos: sem foto a galeria fica vazia e mostra o placeholder
   const photos = ((v.fotos && v.fotos.length > 0) ? v.fotos : [v.img])
     .filter(p => p && typeof p === 'string' && p.trim());
-  let currentPhoto = 0;
-  // AbortController para remover event listeners de touch ao trocar de foto
+  let current = 0;
   let touchAbort = new AbortController();
-  
+
   function renderPhoto() {
-    // Cancela listeners de touch da foto anterior antes de recriar
+    // Cancela os listeners de toque da foto anterior antes de recriar
     touchAbort.abort();
     touchAbort = new AbortController();
 
-    imgDiv.innerHTML = '';
-    imgDiv.appendChild(makeImg(photos[currentPhoto], v.marca + ' ' + v.modelo, false));
-    
+    modalImg.innerHTML = '';
+    modalImg.appendChild(makeImg(photos[current], `${v.marca} ${v.modelo}`, false));
     if (photos.length > 1) {
-      imgDiv.innerHTML += `
-        <button class="modal-nav modal-nav-left" id="mNavPrev" aria-label="Foto anterior"><svg class="ico" width="17" height="17"><use href="#i-chev-l"/></svg></button>
-        <button class="modal-nav modal-nav-right" id="mNavNext" aria-label="Próxima foto"><svg class="ico" width="17" height="17"><use href="#i-chev-r"/></svg></button>
-        <div class="modal-photo-counter">${currentPhoto+1} / ${photos.length}</div>
-      `;
-      document.getElementById('mNavPrev').onclick = () => { currentPhoto = (currentPhoto - 1 + photos.length) % photos.length; renderPhoto(); };
-      document.getElementById('mNavNext').onclick = () => { currentPhoto = (currentPhoto + 1) % photos.length; renderPhoto(); };
+      modalImg.insertAdjacentHTML('beforeend', `
+        <button class="modal-nav modal-nav-left" id="mPrev" aria-label="Foto anterior"><svg class="ico"><use href="#i-chev-l"/></svg></button>
+        <button class="modal-nav modal-nav-right" id="mNext" aria-label="Próxima foto"><svg class="ico"><use href="#i-chev-r"/></svg></button>
+        <div class="modal-photo-counter">${current + 1} / ${photos.length}</div>`);
+      document.getElementById('mPrev').onclick = () => { current = (current - 1 + photos.length) % photos.length; renderPhoto(); };
+      document.getElementById('mNext').onclick = () => { current = (current + 1) % photos.length; renderPhoto(); };
     }
 
-    // Swipe de fotos no modal (mobile) — signal garante remoção ao re-render
     let mTouchX = 0;
-    imgDiv.addEventListener('touchstart', e => { mTouchX = e.touches[0].clientX; }, { passive: true, signal: touchAbort.signal });
-    imgDiv.addEventListener('touchend', e => {
+    modalImg.addEventListener('touchstart', e => { mTouchX = e.touches[0].clientX; }, { passive: true, signal: touchAbort.signal });
+    modalImg.addEventListener('touchend', e => {
       const diff = mTouchX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 40 && photos.length > 1) {
-        currentPhoto = diff > 0
-          ? (currentPhoto + 1) % photos.length
-          : (currentPhoto - 1 + photos.length) % photos.length;
+        current = diff > 0 ? (current + 1) % photos.length : (current - 1 + photos.length) % photos.length;
         renderPhoto();
       }
     }, { signal: touchAbort.signal });
   }
-  
-  window.modalPrevPhoto = () => { currentPhoto = (currentPhoto - 1 + photos.length) % photos.length; renderPhoto(); };
-  window.modalNextPhoto = () => { currentPhoto = (currentPhoto + 1) % photos.length; renderPhoto(); };
-  
   renderPhoto();
-  
-  body.innerHTML = `
+
+  modalBody.innerHTML = `
     <h2>${v.marca} ${v.modelo}</h2>
-    <p style="color:var(--text2);margin-bottom:4px">${v.versao}</p>
+    <p style="color:var(--text2);margin-top:4px">${v.versao}</p>
     <div class="modal-price">${fmt(v.preco)}</div>
     <div class="modal-specs">
       <div class="spec"><small>Ano</small><strong>${v.ano}/${v.anoModelo}</strong></div>
-      <div class="spec"><small>Km</small><strong>${v.km.toLocaleString('pt-BR')} km</strong></div>
-      <div class="spec"><small>Câmbio</small><strong>${v.cambio}</strong></div>
+      <div class="spec"><small>Km</small><strong>${km(v.km)}</strong></div>
+      <div class="spec"><small>Câmbio</small><strong>${cap(v.cambio)}</strong></div>
       <div class="spec"><small>Combustível</small><strong>${v.combustivel}</strong></div>
-      <div class="spec"><small>Cor</small><strong>${v.cor}</strong></div>
-      <div class="spec"><small>Uso</small><strong style="text-transform:capitalize">${v.uso}</strong></div>
+      <div class="spec"><small>Cor</small><strong>${v.cor || 'Não informada'}</strong></div>
+      <div class="spec"><small>Tipo</small><strong>${cap(v.uso)}</strong></div>
     </div>
-    ${v.opcionais && v.opcionais.length ? `<h4 class="modal-subtitle">Opcionais e equipamentos</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>${o}</span>`).join('')}</div>` : ''}
-    <div class="modal-desc">${v.desc}</div>
-    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" class="btn-whatsapp"><svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>Tenho interesse neste veículo</a>
-    <p style="text-align:center;color:var(--text3);font-size:11px;margin-top:10px">Você será direcionado ao WhatsApp da BT Veículos</p>
-  `;
-  
+    ${v.opcionais && v.opcionais.length ? `<h4 class="modal-subtitle">Opcionais</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>${o}</span>`).join('')}</div>` : ''}
+    <div class="modal-desc">${v.desc || ''}</div>
+    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" rel="noopener" class="btn-whatsapp"><svg class="ico ico-fill" width="18" height="18"><use href="#i-whats"/></svg>Tenho interesse neste veículo</a>`;
+
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
-document.getElementById('modalClose').onclick = () => {
-  document.getElementById('modal').classList.remove('open');
+function closeModal() {
+  modal.classList.remove('open');
   document.body.style.overflow = '';
-};
-document.getElementById('modal').onclick = e => {
-  if (e.target === e.currentTarget) { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
-};
+}
+document.getElementById('modalClose').onclick = closeModal;
+modal.onclick = e => { if (e.target === modal) closeModal(); };
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// ===== FORMS =====
+// ===== FORMULÁRIOS (abrem o WhatsApp com a mensagem pronta) =====
+function sendForm(form, msg) {
+  window.open(wpp(msg), '_blank');
+  form.classList.add('submitted');
+  setTimeout(() => { form.classList.remove('submitted'); form.reset(); }, 2500);
+}
 document.getElementById('formFinanciamento').onsubmit = e => {
   e.preventDefault();
   const f = e.target;
-  const msg = `*Simulação de Financiamento - BT Veículos*\n\nNome: ${f[0].value}\nWhatsApp: ${f[1].value}\nVeículo de interesse: ${f[2].value}\nEntrada disponível: ${f[3].value}\nMensagem: ${f[4].value}`;
-  window.open(wpp(msg), '_blank');
-  f.classList.add('submitted');
-  setTimeout(() => { f.classList.remove('submitted'); f.reset(); }, 2000);
+  sendForm(f, `*Simulação de financiamento*\n\nNome: ${f[0].value}\nWhatsApp: ${f[1].value}\nVeículo de interesse: ${f[2].value}\nEntrada disponível: ${f[3].value}\nMensagem: ${f[4].value}`);
 };
-
 document.getElementById('formVenda').onsubmit = e => {
   e.preventDefault();
   const f = e.target;
-  const msg = `*Avaliação de Veículo - BT Veículos*\n\nNome: ${f[0].value}\nWhatsApp: ${f[1].value}\nMarca: ${f[2].value}\nModelo: ${f[3].value}\nAno: ${f[4].value}\nQuilometragem: ${f[5].value}\nObservações: ${f[6].value}`;
-  window.open(wpp(msg), '_blank');
-  f.classList.add('submitted');
-  setTimeout(() => { f.classList.remove('submitted'); f.reset(); }, 2000);
+  sendForm(f, `*Avaliação de veículo para troca*\n\nNome: ${f[0].value}\nWhatsApp: ${f[1].value}\nMarca: ${f[2].value}\nModelo: ${f[3].value}\nAno: ${f[4].value}\nQuilometragem: ${f[5].value}\nObservações: ${f[6].value}`);
 };
 
-// ===== SCROLL REVEAL =====
-const revealElements = document.querySelectorAll('.section-title, .section-sub, .form-block, .destaque-card, .vehicle-card, .contato-info, .contato-map, .cta-inner, .depoimento-card');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-revealElements.forEach((el, i) => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = `opacity .5s ease ${(i % 6) * .06}s, transform .5s ease ${(i % 6) * .06}s`;
-  revealObserver.observe(el);
-});
-
-// ===== SMOOTH SCROLL =====
+// ===== ROLAGEM ATÉ AS SEÇÕES (desconta o cabeçalho fixo) =====
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const href = a.getAttribute('href');
     if (href === '#') return;
     const target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      const offset = 80;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
+    if (!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.pageYOffset - document.getElementById('header').offsetHeight;
+    window.scrollTo({ top, behavior: 'smooth' });
   });
-});
-
-// ===== LAZY LOAD IMAGES =====
-if ('IntersectionObserver' in window) {
-  const imgObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        if (img.dataset.src) {
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-        }
-        imgObserver.unobserve(img);
-      }
-    });
-  });
-  document.querySelectorAll('img[data-src]').forEach(img => imgObserver.observe(img));
-}
-
-// ===== ANIMATED COUNTERS =====
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const target = parseInt(el.dataset.target);
-      let current = 0;
-      const duration = 2000;
-      const step = target / (duration / 16);
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) {
-          current = target;
-          clearInterval(timer);
-        }
-        el.textContent = Math.floor(current);
-      }, 16);
-      counterObserver.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.numero-value[data-target]').forEach(el => counterObserver.observe(el));
-
-// ===== COOKIE BANNER =====
-const cookieBanner = document.getElementById('cookieBanner');
-if (!localStorage.getItem('bt_cookies_accepted')) {
-  setTimeout(() => cookieBanner.classList.add('show'), 2000);
-}
-document.getElementById('acceptCookies').onclick = () => {
-  localStorage.setItem('bt_cookies_accepted', 'true');
-  cookieBanner.classList.remove('show');
-};
-
-// ===== PRELOAD HERO IMAGES =====
-// Prefetch da imagem que o hero realmente usa (heroImg quando existe).
-// Sem a checagem, href='' faria o browser prefetchar a própria página.
-featured.forEach(v => {
-  const src = v.heroImg || v.img;
-  if (!src || !String(src).trim()) return;
-  const link = document.createElement('link');
-  link.rel = 'prefetch';
-  link.href = src;
-  document.head.appendChild(link);
 });
