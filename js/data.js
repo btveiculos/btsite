@@ -342,45 +342,6 @@ const VEHICLES = [
     ]
   },
   {
-    "id": 15,
-    "destaque": false,
-    "marca": "Hyundai",
-    "modelo": "HB20",
-    "versao": "Sense 1.0 Flex 12V MEC. G Completo",
-    "ano": 2022,
-    "anoModelo": 2023,
-    "km": 88500,
-    "uso": "seminovo",
-    "cambio": "manual",
-    "combustivel": "Flex",
-    "cor": "Preto",
-    "preco": 62900,
-    "img": "/carros/hyundai-hb20-2022-1787669774718-1.jpg",
-    "heroImg": "/carros/hb20-hero.png",
-    "opcionais": [
-      "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos",
-      "Central multimídia",
-      "Alarme"
-    ],
-    "desc": "HB20 Sense 1.0 Flex completo. Design moderno.",
-    "fotos": [
-      "/carros/hyundai-hb20-2022-1787669774718-1.jpg",
-      "/carros/hyundai-hb20-2022-1787669774718-2.jpg",
-      "/carros/hyundai-hb20-2022-1787669774718-3.jpg",
-      "/carros/hyundai-hb20-2022-1787669774718-4.jpg",
-      "/carros/hyundai-hb20-2022-1787669774718-5.jpg",
-      "/carros/hyundai-hb20-2022-1787669774718-6.jpg",
-      "/carros/hyundai-hb20-2022-1787669774718-7.jpg",
-      "/carros/hyundai-hb20-2022-1787669774718-8.jpg",
-      "/carros/hyundai-hb20-2022-1787669774718-9.jpg",
-      "/carros/hyundai-hb20-2022-1787669774718-10.jpg",
-      "/carros/hyundai-hb20-2022-1787669774718-11.jpg",
-      "/carros/hyundai-hb20-2022-1787669774718-12.jpg"
-    ]
-  },
-  {
     "id": 16,
     "destaque": false,
     "marca": "Hyundai",
