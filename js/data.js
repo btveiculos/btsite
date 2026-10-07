@@ -558,43 +558,6 @@ const VEHICLES = [
     ]
   },
   {
-    "id": 21,
-    "destaque": true,
-    "marca": "BMW",
-    "modelo": "118i",
-    "versao": "2.0 16V Completa",
-    "ano": 2009,
-    "anoModelo": 2010,
-    "km": 80500,
-    "uso": "usado",
-    "cambio": "automático",
-    "combustivel": "Gasolina",
-    "cor": "Cinza",
-    "preco": 59900,
-    "img": "/carros/bmw-118i-2009-1787665961697-10.jpg",
-    "heroImg": "/carros/bmw-hero.png",
-    "opcionais": [
-      "Ar-condicionado",
-      "Direção elétrica",
-      "Teto solar",
-      "Bancos em couro",
-      "Rodas 18"
-    ],
-    "desc": "BMW 118i 2.0 16V automática completa. Esportiva.",
-    "fotos": [
-      "/carros/bmw-118i-2009-1787665961697-10.jpg",
-      "/carros/bmw-118i-2009-1787665961697-1.jpg",
-      "/carros/bmw-118i-2009-1787665961697-2.jpg",
-      "/carros/bmw-118i-2009-1787665961697-3.jpg",
-      "/carros/bmw-118i-2009-1787665961697-4.jpg",
-      "/carros/bmw-118i-2009-1787665961697-5.jpg",
-      "/carros/bmw-118i-2009-1787665961697-6.jpg",
-      "/carros/bmw-118i-2009-1787665961697-7.jpg",
-      "/carros/bmw-118i-2009-1787665961697-8.jpg",
-      "/carros/bmw-118i-2009-1787665961697-9.jpg"
-    ]
-  },
-  {
     "id": 22,
     "destaque": true,
     "marca": "Toyota",
