@@ -16,13 +16,14 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#0c0c0d">
+  <meta name="theme-color" content="#08090b">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='72' height='72' rx='6' fill='none' stroke='%23d4202c' stroke-width='10'/><rect x='60' y='60' width='22' height='22' fill='%23070707'/><text x='44' y='56' font-family='Arial' font-size='28' font-weight='bold' font-style='italic' text-anchor='middle' fill='white'>BT</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,800;1,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css?v=20261006b">
-  <link rel="stylesheet" href="css/admin.css?v=20261006b">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,800;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="css/site.css?v=20261016">
+  <link rel="stylesheet" href="css/admin.css?v=20261016">
 </head>
 <body>
 
@@ -91,102 +92,72 @@
 
   <main>
   <section id="inicio" class="hero">
-    <div class="hero-inner">
-      <div>
-        <p class="hero-eyebrow"><svg class="ico"><use href="#i-pin"/></svg>Vila Vianelo · Jundiaí/SP</p>
-        <h1 class="hero-title">Seu próximo veículo está aqui.</h1>
-        <p class="hero-text">Seminovos e usados revisados e com procedência. Aceitamos seu carro na troca e cuidamos do financiamento.</p>
-        <div class="hero-ctas">
-          <a href="estoque.html" class="btn-primary">
-            <span>Ver os <span class="js-count">nossos</span> veículos</span>
-            <svg class="ico" width="17" height="17"><use href="#i-arrow"/></svg>
-          </a>
-          <a href="#" class="btn-outline" id="heroWhatsapp">
-            <svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>
-            Chamar no WhatsApp
-          </a>
-        </div>
-        <div class="hero-facts">
-          <span><svg class="ico"><use href="#i-clock"/></svg>Seg. a sex. 9h–18h · Sáb. 9h–14h</span>
-          <span><svg class="ico"><use href="#i-pin"/></svg>Rua da Saúde, 108</span>
-        </div>
+    <div class="hero-bg" id="heroBg" role="img" aria-label="Showroom da BT Veículos"></div>
+    <div class="hero-shade"></div>
+    <div class="hero-content">
+      <span class="kick">Seminovos e usados · Vila Vianelo, Jundiaí</span>
+      <h1 class="hero-title">
+        <span class="ln"><i>Seu próximo</i></span>
+        <span class="ln"><i>veículo está</i></span>
+        <span class="ln"><i><em>aqui.</em></i></span>
+      </h1>
+      <p class="hero-sub">Seminovos e usados revisados e com procedência. Aceitamos seu usado na troca e cuidamos do financiamento.</p>
+      <div class="hero-ctas">
+        <a href="estoque.html" class="btn-primary">Ver estoque</a>
+        <a href="#" class="btn-outline" id="heroWhatsapp">
+          <svg class="ico ico-fill" width="16" height="16"><use href="#i-whats"/></svg>
+          Chamar no WhatsApp
+        </a>
       </div>
-
-      <div class="hero-feature" id="heroFeature">
-        <button type="button" class="hero-slide" id="heroSlide" aria-label="Ver detalhes do veículo em destaque">
-          <span class="hero-caption">
-            <span>
-              <span class="hero-car-label" id="heroLabel"></span>
-              <span class="hero-car-name" id="heroName" style="display:block"></span>
-              <span class="hero-car-meta" id="heroMeta" style="display:block"></span>
-            </span>
-            <span class="hero-car-price" id="heroPrice"></span>
-          </span>
-        </button>
-        <div class="hero-nav">
-          <div class="hero-dots" id="heroDots"></div>
-          <div class="hero-arrows">
-            <button type="button" class="carousel-arrow" id="prevBtn" aria-label="Veículo anterior"><svg class="ico"><use href="#i-chev-l"/></svg></button>
-            <button type="button" class="carousel-arrow" id="nextBtn" aria-label="Próximo veículo"><svg class="ico"><use href="#i-chev-r"/></svg></button>
-          </div>
-        </div>
-      </div>
+    </div>
+    <div class="hero-dados" id="heroDados">
+      <div><b class="js-count">—</b><small>Veículos no estoque</small></div>
+      <div><b id="dadoMarcas">—</b><small>Marcas</small></div>
+      <div><b id="dadoMenor">—</b><small>A partir de</small></div>
     </div>
   </section>
 
-  <section class="trust" aria-label="Como trabalhamos">
-    <div class="container">
-      <div class="trust-grid">
-        <div class="trust-item">
-          <svg class="ico"><use href="#i-shield"/></svg>
-          <div><strong>Garantia</strong><span>Todos os veículos saem com garantia.</span></div>
-        </div>
-        <div class="trust-item">
-          <svg class="ico"><use href="#i-wrench"/></svg>
-          <div><strong>Revisados</strong><span>Revisão completa antes de ir para a loja.</span></div>
-        </div>
-        <div class="trust-item">
-          <svg class="ico"><use href="#i-badge"/></svg>
-          <div><strong>Procedência</strong><span>Histórico e documentação conferidos.</span></div>
-        </div>
-        <div class="trust-item">
-          <svg class="ico"><use href="#i-card"/></svg>
-          <div><strong>Financiamento e troca</strong><span>Simulamos as parcelas e avaliamos seu usado.</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="faixa" aria-hidden="true"><div class="faixa-track" id="faixaTrack"><span>Garantia em todos os veículos</span><span>Revisão completa</span><span>Procedência verificada</span><span>Financiamento</span><span>Aceitamos seu usado na troca</span><span>Rua da Saúde, 108</span></div></div>
 
   <section id="estoque" class="section">
     <div class="container">
       <div class="section-head">
-        <h2 class="section-title">Destaques do estoque</h2>
-        <a href="estoque.html" class="section-link">
-          <span>Ver todos os <span class="js-count"></span> veículos</span>
-          <svg class="ico" width="16" height="16"><use href="#i-arrow"/></svg>
-        </a>
+        <div>
+          <span class="kick rv">Selecionados</span>
+          <h2 class="section-title rv d1">Em <em>destaque</em></h2>
+        </div>
+        <a href="estoque.html" class="btn-outline rv"><span>Ver os <span class="js-count"></span> veículos</span></a>
       </div>
-      <div class="estoque-grid" id="homeGrid"></div>
-      <div class="section-foot">
-        <a href="estoque.html" class="btn-outline">
-          Ver estoque completo
-          <svg class="ico" width="17" height="17"><use href="#i-arrow"/></svg>
-        </a>
+      <div class="grade" id="destaquesGrid"></div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="duo">
+        <div class="duo-foto rv"><div id="duoFoto"></div></div>
+        <div class="duo-texto">
+          <span class="kick rv">Antes da vitrine</span>
+          <h2 class="section-title rv d1">Tudo <em>revisado.</em></h2>
+          <p class="rv d1">Cada carro passa por revisão completa e tem a documentação conferida antes de ir para a vitrine. Todos saem da loja com garantia.</p>
+          <ul class="lista rv d2" id="listaPrecos"></ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="financiamento" class="section section-alt">
+  <section id="financiamento" class="section">
     <div class="container">
       <div class="section-head">
         <div>
-          <h2 class="section-title">Financiamento e troca</h2>
-          <p class="section-sub">Preencha os dados e a mensagem abre pronta no WhatsApp da loja. Um consultor responde com as condições.</p>
+          <span class="kick rv">Financiamento e troca</span>
+          <h2 class="section-title rv d1">Do jeito que <em>cabe.</em></h2>
+          <p class="section-sub rv d1">Preencha os dados e a mensagem abre pronta no WhatsApp da loja. Um consultor responde com as condições.</p>
         </div>
       </div>
       <div class="forms-grid">
-        <div class="form-block">
-          <h3 class="form-block-title">Simule o financiamento</h3>
+        <div class="form-block rv">
+          <h3>Simule o financiamento</h3>
           <p class="form-block-sub">Diga qual carro interessa e quanto pretende dar de entrada.</p>
           <form class="form-card" id="formFinanciamento">
             <input type="text" placeholder="Seu nome" aria-label="Seu nome" autocomplete="name" required>
@@ -197,8 +168,8 @@
             <button type="submit" class="btn-primary">Enviar pelo WhatsApp</button>
           </form>
         </div>
-        <div class="form-block" id="venda">
-          <h3 class="form-block-title">Avalie seu carro na troca</h3>
+        <div class="form-block rv d1" id="venda">
+          <h3>Avalie seu carro na troca</h3>
           <p class="form-block-sub">O valor do seu usado entra como parte do pagamento.</p>
           <form class="form-card" id="formVenda">
             <input type="text" placeholder="Seu nome" aria-label="Seu nome" autocomplete="name" required>
@@ -219,73 +190,65 @@
     </div>
   </section>
 
-  <section id="faq" class="section">
+  <section id="faq" class="section section-alt">
     <div class="container">
       <div class="faq-wrap">
         <div>
-          <h2 class="section-title">Perguntas frequentes</h2>
-          <p class="section-sub">Não achou a resposta? Chame no WhatsApp.</p>
+          <span class="kick rv">Dúvidas</span>
+          <h2 class="section-title rv d1">Perguntas <em>frequentes</em></h2>
+          <p class="section-sub rv d1">Não achou a resposta? Chame no WhatsApp.</p>
         </div>
-        <div class="faq-list">
-        <details class="faq-item">
-          <summary>Como funciona o financiamento?</summary>
-          <p>Simulamos com as financeiras parceiras e mostramos as opções de entrada e de parcelas. Para simular, preencha o formulário acima ou chame no WhatsApp.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Os veículos têm garantia?</summary>
-          <p>Sim. Todos passam por revisão antes da venda e saem com garantia. O prazo varia de acordo com o veículo; confirme com o consultor na negociação.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Posso dar meu carro na troca?</summary>
-          <p>Pode. Avaliamos o seu carro e o valor entra como parte do pagamento. Envie os dados pelo formulário de avaliação ou traga o carro até a loja.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Preciso agendar a visita?</summary>
-          <p>Não. É só vir no horário de funcionamento. Se quiser ver um carro específico, avise antes pelo WhatsApp.</p>
-        </details>
+        <div class="faq-list rv d1">
+          <details class="faq-item">
+            <summary>Como funciona o financiamento?</summary>
+            <p>Simulamos com as financeiras parceiras e mostramos as opções de entrada e de parcelas. Para simular, preencha o formulário acima ou chame no WhatsApp.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Os veículos têm garantia?</summary>
+            <p>Sim. Todos passam por revisão antes da venda e saem com garantia. O prazo varia de acordo com o veículo; confirme com o consultor na negociação.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Posso dar meu carro na troca?</summary>
+            <p>Pode. Avaliamos o seu carro e o valor entra como parte do pagamento. Envie os dados pelo formulário de avaliação ou traga o carro até a loja.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Preciso agendar a visita?</summary>
+            <p>Não. É só vir no horário de funcionamento. Se quiser ver um carro específico, avise antes pelo WhatsApp.</p>
+          </details>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contato" class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Visite a loja</h2>
-          <p class="section-sub">Estamos na Vila Vianelo, em Jundiaí.</p>
-        </div>
-      </div>
-      <div class="contato-grid">
-        <img class="contato-foto" src="img/fachada.jpg" width="1020" height="765" loading="lazy" alt="Fachada da BT Veículos na Rua da Saúde, 108, em Jundiaí">
-        <div class="contato-map">
-          <iframe title="Mapa: BT Veículos, Rua da Saúde, 108, Jundiaí" src="https://www.google.com/maps?q=Rua+da+Sa%C3%BAde%2C+108+-+Vila+Vianelo%2C+Jundia%C3%AD+-+SP&amp;z=17&amp;output=embed" allowfullscreen loading="lazy"></iframe>
-        </div>
-      </div>
-      <div class="info-list">
-        <div class="info-item">
-          <svg class="ico"><use href="#i-pin"/></svg>
-          <div><strong>Endereço</strong><p>Rua da Saúde, 108<br>Vila Vianelo, Jundiaí/SP</p></div>
-        </div>
-        <div class="info-item">
-          <svg class="ico"><use href="#i-clock"/></svg>
-          <div><strong>Horário</strong><p>Segunda a sexta, das 9h às 18h<br>Sábado, das 9h às 14h</p></div>
-        </div>
-        <div class="info-item">
-          <svg class="ico ico-fill"><use href="#i-whats"/></svg>
-          <div><strong>WhatsApp</strong><p data-whats></p></div>
-        </div>
-      </div>
-      <div class="contato-foot">
-        <div class="contato-btns">
+  <section id="contato">
+    <div class="final">
+      <div class="container">
+        <span class="kick rv">Rua da Saúde, 108 · Vila Vianelo</span>
+        <h2 class="rv d1">Venha ver <em>de perto.</em></h2>
+        <div class="final-ctas rv d2">
           <a href="#" class="btn-whatsapp" id="contatoWhatsapp">
             <svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>
             Chamar no WhatsApp
           </a>
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Rua+da+Sa%C3%BAde%2C+108+-+Vila+Vianelo%2C+Jundia%C3%AD+-+SP" target="_blank" rel="noopener" class="btn-outline">
-            <svg class="ico" width="17" height="17"><use href="#i-pin"/></svg>
+            <svg class="ico" width="16" height="16"><use href="#i-pin"/></svg>
             Abrir no Maps
           </a>
+        </div>
+      </div>
+    </div>
+    <div class="contato">
+      <div class="container">
+        <div class="contato-grid">
+          <img class="contato-foto rv" src="img/fachada.jpg" width="1020" height="765" loading="lazy" alt="Fachada da BT Veículos na Rua da Saúde, 108, em Jundiaí">
+          <div class="contato-map rv d1">
+            <iframe title="Mapa: BT Veículos, Rua da Saúde, 108, Jundiaí" src="https://www.google.com/maps?q=Rua+da+Sa%C3%BAde%2C+108+-+Vila+Vianelo%2C+Jundia%C3%AD+-+SP&amp;z=17&amp;output=embed" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="info-list">
+          <div class="info-item"><strong>Endereço</strong><p>Rua da Saúde, 108<br>Vila Vianelo, Jundiaí/SP</p></div>
+          <div class="info-item"><strong>Horário</strong><p>Segunda a sexta, das 9h às 18h<br>Sábado, das 9h às 14h</p></div>
+          <div class="info-item"><strong>WhatsApp</strong><p data-whats></p></div>
         </div>
         <div class="social-links">
           <a href="https://www.instagram.com/bt_veiculos_jundiai/" target="_blank" rel="noopener" class="social-link">

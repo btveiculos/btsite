@@ -8,7 +8,7 @@ const wpp = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 // 5511993662724 -> (11) 99366-2724
 const fmtPhone = n => String(n).replace(/^55/, '').replace(/^(\d{2})(\d{4,5})(\d{4})$/, '($1) $2-$3');
 
-const carSVG = `<svg viewBox="0 0 430 155" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M45 118C45 118 52 88 75 78 95 70 125 60 162 54 190 50 225 48 255 48 285 48 315 52 338 60 355 66 367 76 374 90 380 102 382 114 382 118L45 118Z" fill="#b9b9b4"/><circle cx="108" cy="124" r="22" fill="#8f8f8a"/><circle cx="318" cy="124" r="22" fill="#8f8f8a"/></svg>`;
+const carSVG = `<svg viewBox="0 0 430 155" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M45 118C45 118 52 88 75 78 95 70 125 60 162 54 190 50 225 48 255 48 285 48 315 52 338 60 355 66 367 76 374 90 380 102 382 114 382 118L45 118Z" fill="#3a3f46"/><circle cx="108" cy="124" r="22" fill="#2a2e34"/><circle cx="318" cy="124" r="22" fill="#2a2e34"/></svg>`;
 
 // Imagem segura: sem caminho válido devolve o placeholder direto.
 // src='' faria o browser requisitar a própria página sem disparar onerror.
@@ -51,103 +51,86 @@ document.querySelectorAll('.js-count').forEach(el => { el.textContent = STOCK.le
 const footerYearEl = document.getElementById('footerYear');
 if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
 
-// ===== DESTAQUE DO TOPO =====
-// Os veículos marcados como destaque no painel; sem nenhum, os primeiros do estoque.
-const featured = STOCK.filter(v => v.destaque).length ? STOCK.filter(v => v.destaque) : STOCK.slice(0, 5);
-const heroSlide = document.getElementById('heroSlide');
-const heroDots = document.getElementById('heroDots');
-let heroIdx = 0, heroTimer = null;
-
-function renderHero() {
-  const v = featured[heroIdx];
-  const old = heroSlide.querySelector('img, svg, .car-img-placeholder');
-  if (old) old.remove();
-  // Sempre a foto real do carro (v.img): o enquadramento fica igual em todos
-  heroSlide.prepend(makeImg(v.img || (v.fotos && v.fotos[0]), `${v.marca} ${v.modelo}`, false));
-  document.getElementById('heroLabel').textContent = v.marca;
-  document.getElementById('heroName').textContent = v.modelo;
-  document.getElementById('heroMeta').textContent = `${v.ano}/${v.anoModelo} · ${km(v.km)} · ${cap(v.cambio)}`;
-  document.getElementById('heroPrice').textContent = fmt(v.preco);
-  heroDots.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === heroIdx));
-}
-
-function heroGo(step) {
-  heroIdx = (heroIdx + step + featured.length) % featured.length;
-  renderHero();
-  clearInterval(heroTimer);
-  if (featured.length > 1) heroTimer = setInterval(() => heroGo(1), 6000);
-}
-
-if (featured.length) {
-  featured.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'dot';
-    dot.setAttribute('aria-label', `Destaque ${i + 1}`);
-    dot.onclick = () => heroGo(i - heroIdx);
-    heroDots.appendChild(dot);
-  });
-  heroSlide.onclick = () => openModal(featured[heroIdx]);
-  document.getElementById('prevBtn').onclick = () => heroGo(-1);
-  document.getElementById('nextBtn').onclick = () => heroGo(1);
-  if (featured.length < 2) document.querySelector('.hero-nav').style.display = 'none';
-  heroGo(0);
-
-  let tx = 0;
-  heroSlide.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-  heroSlide.addEventListener('touchend', e => {
-    const diff = tx - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) heroGo(diff > 0 ? 1 : -1);
-  });
+// ===== NÚMEROS DO HERO (sempre calculados do estoque real) =====
+if (STOCK.length) {
+  const marcas = document.getElementById('dadoMarcas');
+  const menor = document.getElementById('dadoMenor');
+  if (marcas) marcas.textContent = new Set(STOCK.map(v => v.marca).filter(Boolean)).size;
+  if (menor) menor.textContent = fmt(Math.min(...STOCK.map(v => Number(v.preco) || Infinity)));
 } else {
-  document.getElementById('heroFeature').style.display = 'none';
+  const dados = document.getElementById('heroDados');
+  if (dados) dados.style.display = 'none';
 }
 
-// ===== DESTAQUES DO ESTOQUE =====
-function vehicleCard(v) {
-  const nFotos = (v.fotos && v.fotos.length) ? v.fotos.length : (v.img ? 1 : 0);
-  const card = document.createElement('article');
-  card.className = 'vehicle-card';
-  card.innerHTML = `
-    <div class="card-img">
-      <span class="badge badge-${v.uso}">${v.uso}</span>
-      ${nFotos > 1 ? `<span class="gallery-counter"><svg class="ico" width="13" height="13"><use href="#i-camera"/></svg>${nFotos}</span>` : ''}
-    </div>
-    <div class="card-body">
-      <div class="marca">${v.marca}</div>
-      <h3>${v.modelo}</h3>
-      <div class="versao">${v.versao}</div>
-      <div class="specs">
-        <span><svg class="ico"><use href="#i-cal"/></svg>${v.ano}/${v.anoModelo}</span>
-        <span><svg class="ico"><use href="#i-gauge"/></svg>${km(v.km)}</span>
-        <span><svg class="ico"><use href="#i-gear"/></svg>${cap(v.cambio)}</span>
-        <span><svg class="ico"><use href="#i-fuel"/></svg>${v.combustivel}</span>
-      </div>
-      <div class="price">${fmt(v.preco)}</div>
-      <div class="card-actions">
-        <button type="button" class="btn-detail">Ver detalhes</button>
-        <button type="button" class="btn-wpp" aria-label="Chamar no WhatsApp sobre este veículo"><svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>WhatsApp</button>
-      </div>
-    </div>`;
-  const imgBox = card.querySelector('.card-img');
-  imgBox.prepend(makeImg(v.img, `${v.marca} ${v.modelo}`, true));
-  imgBox.style.cursor = 'pointer';
-  imgBox.onclick = () => openModal(v);
-  card.querySelector('.btn-detail').onclick = () => openModal(v);
-  card.querySelector('.btn-wpp').onclick = () =>
-    window.open(wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} que vi no site da BT Veículos.`), '_blank');
-  return card;
+// Faixa: o conteúdo é duplicado para o loop de translateX(-50%) não ter emenda
+const faixa = document.getElementById('faixaTrack');
+if (faixa) faixa.innerHTML = faixa.innerHTML.repeat(4);
+
+// ===== DESTAQUES =====
+// Os marcados como destaque no painel; completa com os que têm mais fotos até fechar 3.
+const nFotos = v => (v.fotos && v.fotos.length) ? v.fotos.length : (v.img ? 1 : 0);
+const marked = STOCK.filter(v => v.destaque);
+const others = STOCK.filter(v => !v.destaque).sort((a, b) => nFotos(b) - nFotos(a));
+const featured = marked.concat(others);
+
+const destGrid = document.getElementById('destaquesGrid');
+if (destGrid) {
+  featured.slice(0, 3).forEach((v, i) => {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'cine-card rv' + (i ? ' d' + i : '');
+    card.setAttribute('aria-label', `Ver detalhes: ${v.marca} ${v.modelo}, ${fmt(v.preco)}`);
+    card.innerHTML = `
+      <div class="tx">
+        <small>${v.ano}/${v.anoModelo} · ${km(v.km)}</small>
+        <h3>${v.marca} ${v.modelo}</h3>
+        <div class="preco"><span>${fmt(v.preco)}</span><svg class="ico"><use href="#i-arrow"/></svg></div>
+      </div>`;
+    card.prepend(makeImg(v.img, `${v.marca} ${v.modelo}`, true));
+    card.onclick = () => openModal(v);
+    destGrid.appendChild(card);
+  });
 }
 
-const homeGrid = document.getElementById('homeGrid');
-if (homeGrid) {
-  // Destaques primeiro; completa com o restante do estoque até fechar 8 cards
-  const marked = STOCK.filter(v => v.destaque);
-  // Do restante, primeiro os que já têm galeria de fotos
-  const nf = v => (v.fotos ? v.fotos.length : 0);
-  const rest = STOCK.filter(v => !v.destaque).sort((a, b) => (nf(b) > 2) - (nf(a) > 2));
-  marked.concat(rest).slice(0, 8).forEach(v => homeGrid.appendChild(vehicleCard(v)));
-  if (!STOCK.length) homeGrid.innerHTML = '<div class="empty-state"><p>Estoque sendo atualizado. Chame no WhatsApp para saber o que está disponível.</p></div>';
+// Lista "modelo · ano ........ preço" da seção revisados: os quatro seguintes
+const lista = document.getElementById('listaPrecos');
+if (lista) {
+  featured.slice(3, 7).forEach(v => {
+    const li = document.createElement('li');
+    li.innerHTML = `<button type="button"><span>${v.marca} ${v.modelo} · ${v.ano}</span><b>${fmt(v.preco)}</b></button>`;
+    li.querySelector('button').onclick = () => openModal(v);
+    lista.appendChild(li);
+  });
+}
+
+// ===== NAVEGAÇÃO, REVELAÇÃO E PARALLAX =====
+const header = document.getElementById('header');
+const heroBg = document.getElementById('heroBg');
+const duoFoto = document.getElementById('duoFoto');
+const calmo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function onScroll() {
+  const y = window.scrollY;
+  header.classList.toggle('rol', y > 60);
+  if (calmo) return;
+  if (heroBg && y < window.innerHeight) heroBg.style.translate = `0 ${y * .22}px`;
+  if (duoFoto) {
+    const r = duoFoto.parentElement.getBoundingClientRect();
+    // p vai de 0 (entrando por baixo) a 1 (saindo por cima); a foto tem 118% de altura e desliza 15%
+    const p = Math.min(1, Math.max(0, (window.innerHeight - r.top) / (window.innerHeight + r.height)));
+    duoFoto.style.translate = `0 ${(-p * 15).toFixed(2)}%`;
+  }
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: .14 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
 }
 
 // ===== DETALHES DO VEÍCULO =====
