@@ -225,7 +225,7 @@ function onScrollCine() {
     if (r.bottom < 0 || r.top > vh) return;
     const centro = r.top + r.height / 2 - vh / 2;
     // Nunca desloca mais que a sobra da foto (inset negativo no CSS), senão aparece borda vazia
-    const sobra = (el.offsetHeight - el.parentElement.offsetHeight) / 2;
+    const sobra = Math.max(0, (el.offsetHeight - el.parentElement.offsetHeight) / 2);
     const d = Math.max(-sobra, Math.min(sobra, -centro * k));
     el.style.translate = `0 ${d.toFixed(1)}px`;
   });
