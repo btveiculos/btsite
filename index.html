@@ -16,13 +16,14 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#1c1d20">
+  <meta name="theme-color" content="#0e0f11">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='72' height='72' rx='6' fill='none' stroke='%23d4202c' stroke-width='10'/><rect x='60' y='60' width='22' height='22' fill='%23070707'/><text x='44' y='56' font-family='Arial' font-size='28' font-weight='bold' font-style='italic' text-anchor='middle' fill='white'>BT</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css?v=20261017b">
-  <link rel="stylesheet" href="css/admin.css?v=20261017b">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="css/site.css?v=20261017c">
+  <link rel="stylesheet" href="css/admin.css?v=20261017c">
 </head>
 <body>
 
@@ -91,38 +92,45 @@
 
   <main>
   <section id="inicio" class="hero">
-    <div class="hero-inner">
-      <div>
-        <p class="hero-local"><svg class="ico"><use href="#i-pin"/></svg>Rua da Saúde, 108 · Vila Vianelo, Jundiaí</p>
-        <h1>Seminovos revisados e com procedência em Jundiaí.</h1>
-        <p class="hero-text">Todos os carros saem com garantia. Aceitamos seu usado na troca e ajudamos com o financiamento.</p>
-        <div class="hero-ctas">
-          <a href="estoque.html" class="btn-primary">Ver estoque</a>
-          <a href="#" class="btn-light" id="heroWhatsapp">
-            <svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>
-            Falar no WhatsApp
-          </a>
-        </div>
-        <form class="busca" id="buscaForm" action="estoque.html">
-          <div>
-            <label for="buscaMarca">Marca</label>
-            <select id="buscaMarca" name="marca"><option value="">Todas</option></select>
-          </div>
-          <div>
-            <label for="buscaPreco">Preço até</label>
-            <select id="buscaPreco" name="preco">
-              <option value="">Sem limite</option>
-              <option value="50000">R$ 50 mil</option>
-              <option value="70000">R$ 70 mil</option>
-              <option value="90000">R$ 90 mil</option>
-            </select>
-          </div>
-          <button type="submit" class="btn-primary">Buscar</button>
-        </form>
+    <div class="hero-bg" id="heroBg" role="img" aria-label="Fachada da BT Veículos na Rua da Saúde, 108, em Jundiaí"></div>
+    <div class="hero-shade"></div>
+    <div class="hero-content">
+      <p class="hero-local"><svg class="ico"><use href="#i-pin"/></svg>Rua da Saúde, 108 · Vila Vianelo, Jundiaí</p>
+      <h1 class="hero-title">
+        <span class="ln"><span>Seu próximo veículo</span></span>
+        <span class="ln"><span>está aqui.</span></span>
+      </h1>
+      <p class="hero-sub">Seminovos revisados, com garantia e procedência. Aceitamos seu usado na troca e ajudamos no financiamento.</p>
+      <div class="hero-ctas">
+        <a href="estoque.html" class="btn-primary">Ver estoque <svg class="ico" width="17" height="17"><use href="#i-arrow"/></svg></a>
+        <a href="#" class="btn-light" id="heroWhatsapp">
+          <svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>
+          Falar no WhatsApp
+        </a>
       </div>
-      <figure class="hero-foto">
-        <img src="img/fachada.jpg" width="1020" height="765" alt="Fachada da BT Veículos na Rua da Saúde, 108, em Jundiaí">
-      </figure>
+      <form class="busca" id="buscaForm" action="estoque.html">
+        <div>
+          <label for="buscaMarca">Marca</label>
+          <select id="buscaMarca" name="marca"><option value="">Todas</option></select>
+        </div>
+        <div>
+          <label for="buscaPreco">Preço até</label>
+          <select id="buscaPreco" name="preco">
+            <option value="">Sem limite</option>
+            <option value="50000">R$ 50 mil</option>
+            <option value="70000">R$ 70 mil</option>
+            <option value="90000">R$ 90 mil</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary">Buscar</button>
+      </form>
+    </div>
+    <div class="selo" aria-hidden="true">
+      <svg class="anel" viewBox="0 0 136 136">
+        <defs><path id="circulo" d="M68,68 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs>
+        <text><textPath href="#circulo" textLength="322" lengthAdjust="spacing">Qualidade e procedência · BT Veículos · Jundiaí · </textPath></text>
+      </svg>
+      <div class="centro"><div class="logo-box">BT</div></div>
     </div>
   </section>
 
@@ -130,36 +138,28 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <h2 class="section-title">Destaques do estoque</h2>
-          <p class="section-sub"><span class="js-count"></span> veículos disponíveis na loja</p>
+          <h2 class="section-title rv">Em destaque</h2>
+          <p class="section-sub rv d1"><span class="js-count"></span> veículos disponíveis na loja</p>
         </div>
-        <a href="estoque.html" class="link">Ver estoque completo <svg class="ico"><use href="#i-arrow"/></svg></a>
+        <a href="estoque.html" class="link rv">Ver estoque completo <svg class="ico"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="cars" id="destaquesGrid"></div>
     </div>
   </section>
 
-  <section class="section section-white">
+  <section class="section section-alt">
     <div class="container">
-      <div class="section-head">
-        <h2 class="section-title">Por que comprar na BT</h2>
-      </div>
-      <div class="motivos">
-        <div class="motivo">
-          <h3>Revisão antes de anunciar</h3>
-          <p>Cada carro passa por revisão completa antes de ser colocado à venda.</p>
-        </div>
-        <div class="motivo">
-          <h3>Procedência conferida</h3>
-          <p>Histórico e documentação verificados antes do anúncio.</p>
-        </div>
-        <div class="motivo">
-          <h3>Garantia em todos</h3>
-          <p>Nenhum carro sai da loja sem garantia. O prazo depende do veículo e é combinado na negociação.</p>
-        </div>
-        <div class="motivo">
-          <h3>Seu usado na troca</h3>
-          <p>Avaliamos o seu carro e o valor entra no pagamento. O financiamento é simulado com as financeiras parceiras.</p>
+      <div class="loja">
+        <div class="loja-foto rv"><div id="lojaFoto"></div></div>
+        <div>
+          <h2 class="section-title rv">Por que comprar na BT</h2>
+          <p class="section-sub rv d1">Uma loja de verdade na Vila Vianelo, com os carros à vista e atendimento direto com quem vende.</p>
+          <ol class="motivos rv d2">
+            <li class="motivo"><b>01</b><h3>Revisão antes de anunciar</h3><p>Cada carro passa por revisão completa antes de ser colocado à venda.</p></li>
+            <li class="motivo"><b>02</b><h3>Procedência conferida</h3><p>Histórico e documentação verificados antes do anúncio.</p></li>
+            <li class="motivo"><b>03</b><h3>Garantia em todos</h3><p>Nenhum carro sai da loja sem garantia. O prazo depende do veículo e é combinado na negociação.</p></li>
+            <li class="motivo"><b>04</b><h3>Seu usado na troca</h3><p>Avaliamos o seu carro e o valor entra no pagamento. O financiamento é simulado com as financeiras parceiras.</p></li>
+          </ol>
         </div>
       </div>
     </div>
@@ -169,8 +169,8 @@
     <div class="container">
       <div class="forms-wrap">
         <div id="venda">
-          <h2 class="section-title">Financiamento e troca</h2>
-          <p class="section-sub">Quer financiar ou usar seu carro na troca? Envie os dados e a equipe da BT continua com você pelo WhatsApp.</p>
+          <h2 class="section-title rv">Financiamento e troca</h2>
+          <p class="section-sub rv d1">Quer financiar ou usar seu carro na troca? Envie os dados e a equipe da BT continua com você pelo WhatsApp.</p>
         </div>
         <div>
           <div class="escolha" role="tablist" aria-label="O que você precisa">
@@ -205,11 +205,11 @@
     </div>
   </section>
 
-  <section id="faq" class="section section-white">
+  <section id="faq" class="section section-alt">
     <div class="container">
       <div class="faq-wrap">
         <div>
-          <h2 class="section-title">Perguntas frequentes</h2>
+          <h2 class="section-title rv">Perguntas frequentes</h2>
           <p class="section-sub">Ficou alguma dúvida? Fale com a gente no WhatsApp.</p>
         </div>
         <div class="faq-list">
@@ -234,26 +234,38 @@
     </div>
   </section>
 
-  <section id="contato" class="section">
-    <div class="container">
-      <div class="chegar">
-        <div class="chegar-info">
-          <h2 class="section-title">Como chegar</h2>
-          <dl>
-            <div><dt>Endereço</dt><dd>Rua da Saúde, 108<br>Vila Vianelo, Jundiaí/SP</dd></div>
-            <div><dt>Horário</dt><dd>Segunda a sexta, das 9h às 18h<br>Sábado, das 9h às 14h</dd></div>
-            <div><dt>WhatsApp</dt><dd data-whats></dd></div>
-            <div><dt>Instagram</dt><dd><a class="link" href="https://www.instagram.com/bt_veiculos_jundiai/" target="_blank" rel="noopener">@bt_veiculos_jundiai</a></dd></div>
-          </dl>
-          <div class="chegar-btns">
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=Rua+da+Sa%C3%BAde%2C+108+-+Vila+Vianelo%2C+Jundia%C3%AD+-+SP" target="_blank" rel="noopener" class="btn-outline">
-              <svg class="ico" width="17" height="17"><use href="#i-pin"/></svg>
-              Abrir no Google Maps
-            </a>
-          </div>
+  <section id="contato">
+    <div class="fecho">
+      <div class="fecho-bg" id="fechoBg"></div>
+      <div class="fecho-inner">
+        <h2 class="rv">Venha ver<br><span>de perto.</span></h2>
+        <div class="fecho-ctas rv d1">
+          <a href="#" class="btn-whatsapp" id="contatoWhatsapp">
+            <svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>
+            Falar no WhatsApp
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Rua+da+Sa%C3%BAde%2C+108+-+Vila+Vianelo%2C+Jundia%C3%AD+-+SP" target="_blank" rel="noopener" class="btn-light">
+            <svg class="ico" width="17" height="17"><use href="#i-pin"/></svg>
+            Abrir no Google Maps
+          </a>
         </div>
-        <div class="chegar-map">
-          <iframe title="Mapa: BT Veículos, Rua da Saúde, 108, Jundiaí" src="https://www.google.com/maps?q=Rua+da+Sa%C3%BAde%2C+108+-+Vila+Vianelo%2C+Jundia%C3%AD+-+SP&amp;z=16&amp;output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="section" style="padding-top:0">
+      <div class="container">
+        <div class="chegar rv">
+          <div class="chegar-info">
+            <h2>Como chegar</h2>
+            <dl>
+              <div><dt>Endereço</dt><dd>Rua da Saúde, 108<br>Vila Vianelo, Jundiaí/SP</dd></div>
+              <div><dt>Horário</dt><dd>Segunda a sexta, das 9h às 18h<br>Sábado, das 9h às 14h</dd></div>
+              <div><dt>WhatsApp</dt><dd data-whats></dd></div>
+              <div><dt>Instagram</dt><dd><a class="link" href="https://www.instagram.com/bt_veiculos_jundiai/" target="_blank" rel="noopener">@bt_veiculos_jundiai</a></dd></div>
+            </dl>
+          </div>
+          <div class="chegar-map">
+            <iframe title="Mapa: BT Veículos, Rua da Saúde, 108, Jundiaí" src="https://www.google.com/maps?q=Rua+da+Sa%C3%BAde%2C+108+-+Vila+Vianelo%2C+Jundia%C3%AD+-+SP&amp;z=16&amp;output=embed" allowfullscreen loading="lazy"></iframe>
+          </div>
         </div>
       </div>
     </div>

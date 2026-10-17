@@ -93,7 +93,12 @@ const destGrid = document.getElementById('destaquesGrid');
 if (destGrid) {
   const marked = STOCK.filter(v => v.destaque);
   const others = STOCK.filter(v => !v.destaque).sort((a, b) => nFotos(b) - nFotos(a));
-  marked.concat(others).slice(0, 6).forEach(v => destGrid.appendChild(carCard(v)));
+  marked.concat(others).slice(0, 6).forEach((v, i) => {
+    const card = carCard(v);
+    card.classList.add('rv');
+    if (i % 3) card.classList.add('d' + (i % 3));
+    destGrid.appendChild(card);
+  });
   if (!STOCK.length) destGrid.innerHTML = '<div class="empty-state"><p>Estoque sendo atualizado. Fale com a gente no WhatsApp para saber o que está disponível.</p></div>';
 }
 
@@ -203,3 +208,36 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     window.scrollTo({ top, behavior: 'smooth' });
   });
 });
+
+// ===== MENU, PARALLAX E REVELAÇÃO =====
+const header = document.getElementById('header');
+const calmo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Fundo desliza mais devagar que a página dentro da própria moldura
+const parallax = [['heroBg', .18], ['lojaFoto', .07], ['fechoBg', .07]]
+  .map(([id, k]) => [document.getElementById(id), k]).filter(([el]) => el);
+
+function onScrollCine() {
+  header.classList.toggle('rol', window.scrollY > 40);
+  if (calmo) return;
+  const vh = window.innerHeight;
+  parallax.forEach(([el, k]) => {
+    const r = el.parentElement.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > vh) return;
+    const centro = r.top + r.height / 2 - vh / 2;
+    // Nunca desloca mais que a sobra da foto (inset negativo no CSS), senão aparece borda vazia
+    const sobra = (el.offsetHeight - el.parentElement.offsetHeight) / 2;
+    const d = Math.max(-sobra, Math.min(sobra, -centro * k));
+    el.style.translate = `0 ${d.toFixed(1)}px`;
+  });
+}
+window.addEventListener('scroll', onScrollCine, { passive: true });
+onScrollCine();
+
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+}
