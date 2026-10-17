@@ -16,14 +16,13 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#08090b">
+  <meta name="theme-color" content="#1c1d20">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='72' height='72' rx='6' fill='none' stroke='%23d4202c' stroke-width='10'/><rect x='60' y='60' width='22' height='22' fill='%23070707'/><text x='44' y='56' font-family='Arial' font-size='28' font-weight='bold' font-style='italic' text-anchor='middle' fill='white'>BT</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,800;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <script>document.documentElement.classList.add('js')</script>
-  <link rel="stylesheet" href="css/site.css?v=20261016">
-  <link rel="stylesheet" href="css/admin.css?v=20261016">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css?v=20261017b">
+  <link rel="stylesheet" href="css/admin.css?v=20261017b">
 </head>
 <body class="estoque-page">
 
@@ -61,18 +60,18 @@
         <div class="logo-box">BT</div>
         <div class="logo-text">
           <span class="logo-name">VEÍCULOS</span>
-          <span class="logo-slogan">Qualidade e Procedência</span>
+          <span class="logo-slogan">Qualidade e procedência</span>
         </div>
       </a>
       <nav class="nav-desktop">
         <a href="estoque.html" class="nav-active">Estoque</a>
         <a href="index.html#financiamento">Financiamento</a>
         <a href="index.html#venda">Troca</a>
-        <a href="index.html#contato">Contato</a>
+        <a href="index.html#contato">Como chegar</a>
       </nav>
       <a href="#" class="header-cta" id="headerWhatsapp">
-        <svg class="ico ico-fill" width="16" height="16"><use href="#i-whats"/></svg>
-        <span data-whats>WhatsApp</span>
+        <svg class="ico ico-fill"><use href="#i-whats"/></svg>
+        Falar no WhatsApp
       </a>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu">
         <span></span><span></span><span></span>
@@ -82,10 +81,10 @@
       <a href="estoque.html">Estoque</a>
       <a href="index.html#financiamento">Financiamento</a>
       <a href="index.html#venda">Troca</a>
-      <a href="index.html#contato">Contato</a>
+      <a href="index.html#contato">Como chegar</a>
       <a href="#" class="btn-primary" id="mobileWhatsapp">
         <svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>
-        Chamar no WhatsApp
+        Falar no WhatsApp
       </a>
     </div>
   </header>
@@ -93,13 +92,8 @@
   <main class="estoque-full">
     <div class="estoque-full-head">
       <div class="container">
-        <nav class="breadcrumb" aria-label="Você está em">
-          <a href="index.html">Início</a>
-          <svg class="ico" width="12" height="12"><use href="#i-chev-r"/></svg>
-          <span>Estoque</span>
-        </nav>
-        <h1 class="estoque-full-title">Nosso <em>estoque</em></h1>
-        <p class="estoque-full-sub"><strong id="totalCount">0</strong> veículos disponíveis na loja</p>
+        <h1 class="estoque-full-title">Estoque</h1>
+        <p class="estoque-full-sub"><span id="totalCount">0</span> veículos disponíveis na loja</p>
       </div>
     </div>
 
@@ -107,39 +101,43 @@
       <div class="container">
         <div class="filters">
           <div class="search-wrap">
-            <svg class="ico search-ico" width="17" height="17"><use href="#i-search"/></svg>
-            <input type="text" id="searchInput" placeholder="Buscar marca, modelo ou versão" aria-label="Buscar marca, modelo ou versão">
+            <svg class="ico search-ico"><use href="#i-search"/></svg>
+            <input type="text" id="searchInput" placeholder="Buscar modelo ou versão" aria-label="Buscar modelo ou versão">
           </div>
           <select id="filterMarca" aria-label="Marca"><option value="">Todas as marcas</option></select>
-          <select id="filterUso" aria-label="Tipo"><option value="">Todos os tipos</option><option value="novo">Novo</option><option value="seminovo">Seminovo</option><option value="usado">Usado</option></select>
+          <select id="filterPreco" aria-label="Preço até"><option value="">Qualquer preço</option><option value="50000">Até R$ 50 mil</option><option value="70000">Até R$ 70 mil</option><option value="90000">Até R$ 90 mil</option></select>
           <select id="filterCambio" aria-label="Câmbio"><option value="">Câmbio</option><option value="manual">Manual</option><option value="automático">Automático</option></select>
-          <select id="filterCombustivel" aria-label="Combustível"><option value="">Combustível</option></select>
-          <select id="filterPreco" aria-label="Preço máximo"><option value="">Preço máximo</option><option value="50000">Até R$ 50 mil</option><option value="70000">Até R$ 70 mil</option><option value="90000">Até R$ 90 mil</option><option value="110000">Até R$ 110 mil</option><option value="150000">Até R$ 150 mil</option></select>
-          <select id="filterOrder" aria-label="Ordenar"><option value="">Ordenar por</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="km">Menor km</option><option value="ano">Mais novo</option></select>
-          <button class="btn-outline estoque-clear-btn" id="clearFiltersBtn">Limpar filtros</button>
+          <select id="filterOrder" aria-label="Ordenar"><option value="">Ordenar</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="km">Menor km</option><option value="ano">Mais novo</option></select>
+          <button type="button" class="estoque-clear-btn" id="clearFiltersBtn">Limpar filtros</button>
         </div>
       </div>
     </div>
 
     <div class="container">
       <div class="results-count" id="resultsCount"></div>
-      <div class="estoque-grid" id="estoqueGrid"></div>
+      <div class="cars" id="estoqueGrid"></div>
     </div>
   </main>
 
   <footer class="footer">
-    <div class="container">
-      <div class="footer-bottom" style="border-top:0">
-        <p>&copy; <span id="year"></span> BT Veículos Jundiaí · Rua da Saúde, 108 · Vila Vianelo, Jundiaí/SP</p>
-        <a href="#" class="back-to-top" id="backToTop">
-          Voltar ao topo
-          <svg class="ico ico-up" width="14" height="14"><use href="#i-arrow"/></svg>
-        </a>
+    <div class="footer-inner">
+      <a href="index.html" class="logo" aria-label="BT Veículos">
+        <div class="logo-box">BT</div>
+        <div class="logo-text"><span class="logo-name">VEÍCULOS</span><span class="logo-slogan">Qualidade e procedência</span></div>
+      </a>
+      <div class="footer-dados">
+        <span>Rua da Saúde, 108 · Vila Vianelo, Jundiaí/SP</span>
+        <span data-whats></span>
+        <a href="https://www.instagram.com/bt_veiculos_jundiai/" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:btveiculosjundiai@gmail.com">btveiculosjundiai@gmail.com</a>
       </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> BT Veículos Jundiaí</p>
     </div>
   </footer>
 
-  <a href="#" class="whatsapp-float" id="whatsappFloat" aria-label="Chamar no WhatsApp">
+  <a href="#" class="whatsapp-float" id="whatsappFloat" aria-label="Falar no WhatsApp">
     <svg class="ico ico-fill"><use href="#i-whats"/></svg>
   </a>
 

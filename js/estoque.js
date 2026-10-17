@@ -9,7 +9,7 @@ const fmtPhone = n => String(n).replace(/^55/, '').replace(/^(\d{2})(\d{4,5})(\d
 const cap = s => { s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); };
 const wpp = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 
-const carSVG = `<svg viewBox="0 0 430 155" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M45 118C45 118 52 88 75 78 95 70 125 60 162 54 190 50 225 48 255 48 285 48 315 52 338 60 355 66 367 76 374 90 380 102 382 114 382 118L45 118Z" fill="#3a3f46"/><circle cx="108" cy="124" r="22" fill="#2a2e34"/><circle cx="318" cy="124" r="22" fill="#2a2e34"/></svg>`;
+const carSVG = `<svg viewBox="0 0 430 155" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M45 118C45 118 52 88 75 78 95 70 125 60 162 54 190 50 225 48 255 48 285 48 315 52 338 60 355 66 367 76 374 90 380 102 382 114 382 118L45 118Z" fill="#b9b9b4"/><circle cx="108" cy="124" r="22" fill="#8f8f8a"/><circle cx="318" cy="124" r="22" fill="#8f8f8a"/></svg>`;
 
 // Imagem segura: sem caminho válido devolve o placeholder direto.
 // src='' faria o browser requisitar a própria página sem disparar onerror.
@@ -53,6 +53,11 @@ const wppMsg = 'Olá! Vi o site da BT Veículos e gostaria de mais informações
 
 document.querySelectorAll('[data-whats]').forEach(el => { el.textContent = fmtPhone(WHATSAPP); });
 
+const floatBtn = document.getElementById('whatsappFloat');
+const onScroll = () => floatBtn && floatBtn.classList.toggle('show', window.scrollY > 400);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -89,6 +94,8 @@ fillSelect(filterMarca, [...new Set(STOCK.map(v => v.marca).filter(Boolean))].so
 fillSelect(filterCombustivel, [...new Set(STOCK.map(v => v.combustivel).filter(Boolean))].sort());
 
 function applyFilters() {
+  const btnLimpar = document.getElementById('clearFiltersBtn');
+  if (btnLimpar) btnLimpar.hidden = ![searchInput, filterMarca, filterUso, filterCambio, filterCombustivel, filterPreco, filterOrder].some(el => el && el.value);
   const search = (searchInput?.value || '').toLowerCase().trim();
   let list = [...STOCK];
 
@@ -115,12 +122,12 @@ function render(list) {
   grid.innerHTML = '';
 
   if (resultsCount) {
-    resultsCount.innerHTML = `<strong>${list.length}</strong> ${list.length === 1 ? 'veículo encontrado' : 'veículos encontrados'}`;
+    resultsCount.innerHTML = `<strong>${list.length}</strong> ${list.length === 1 ? 'veículo' : 'veículos'}`;
   }
 
   if (!list.length) {
     grid.innerHTML = `<div class="empty-state">
-      <p>${STOCK.length ? 'Nenhum veículo encontrado com esses filtros.' : 'Estoque sendo atualizado. Chame no WhatsApp para saber o que está disponível.'}</p>
+      <p>${STOCK.length ? 'Nenhum veículo encontrado com esses filtros.' : 'Estoque sendo atualizado. Fale com a gente no WhatsApp para saber o que está disponível.'}</p>
       ${STOCK.length ? '<button class="btn-outline" id="emptyClearBtn">Limpar filtros</button>' : ''}
     </div>`;
     const b = document.getElementById('emptyClearBtn');
@@ -131,38 +138,19 @@ function render(list) {
   list.forEach(v => {
     const nFotos = (v.fotos && v.fotos.length) ? v.fotos.length : (v.img ? 1 : 0);
     const card = document.createElement('article');
-    card.className = 'vehicle-card';
+    card.className = 'car';
     card.innerHTML = `
-      <div class="card-img">
-        ${v.destaque ? '<span class="tag-destaque">Destaque</span>' : ''}
-        <span class="badge badge-${v.uso}">${v.uso}</span>
-        ${nFotos > 1 ? `<span class="gallery-counter"><svg class="ico" width="13" height="13"><use href="#i-camera"/></svg>${nFotos}</span>` : ''}
-      </div>
-      <div class="card-body">
-        <div class="marca">${v.marca}</div>
-        <h3>${v.modelo}</h3>
-        <div class="versao">${v.versao}</div>
-        <div class="specs">
-          <span><svg class="ico"><use href="#i-cal"/></svg>${v.ano}/${v.anoModelo}</span>
-          <span><svg class="ico"><use href="#i-gauge"/></svg>${km(v.km)}</span>
-          <span><svg class="ico"><use href="#i-gear"/></svg>${cap(v.cambio)}</span>
-          <span><svg class="ico"><use href="#i-fuel"/></svg>${v.combustivel}</span>
+      <button type="button" class="car-link" aria-label="Ver detalhes: ${v.marca} ${v.modelo}, ${fmt(v.preco)}">
+        <div class="car-photo">${nFotos > 1 ? `<span class="car-count">${nFotos} fotos</span>` : ''}</div>
+        <div class="car-info">
+          <h3>${v.marca} ${v.modelo}</h3>
+          <p class="car-versao">${v.versao || ''}</p>
+          <p class="car-meta">${v.ano}/${v.anoModelo} · ${km(v.km)} · ${cap(v.cambio)}</p>
+          <div class="car-bottom"><span class="car-price">${fmt(v.preco)}</span></div>
         </div>
-        <div class="price">${fmt(v.preco)}</div>
-        <div class="card-actions">
-          <button type="button" class="btn-detail">Ver detalhes</button>
-          <button type="button" class="btn-wpp" aria-label="Chamar no WhatsApp sobre este veículo"><svg class="ico ico-fill" width="17" height="17"><use href="#i-whats"/></svg>WhatsApp</button>
-        </div>
-      </div>`;
-
-    const imgBox = card.querySelector('.card-img');
-    imgBox.prepend(makeImg(v.img, `${v.marca} ${v.modelo}`, true));
-    imgBox.style.cursor = 'pointer';
-    imgBox.onclick = () => openModal(v);
-    card.querySelector('.btn-detail').onclick = () => openModal(v);
-    card.querySelector('.btn-wpp').onclick = () =>
-      window.open(wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} que vi no site da BT Veículos.`), '_blank');
-
+      </button>`;
+    card.querySelector('.car-photo').prepend(makeImg(v.img, `${v.marca} ${v.modelo}`, true));
+    card.querySelector('.car-link').onclick = () => openModal(v);
     grid.appendChild(card);
   });
 }
@@ -206,7 +194,7 @@ function openModal(v) {
       modalImg.insertAdjacentHTML('beforeend', `
         <button class="modal-nav modal-nav-left" id="mPrev" aria-label="Foto anterior"><svg class="ico"><use href="#i-chev-l"/></svg></button>
         <button class="modal-nav modal-nav-right" id="mNext" aria-label="Próxima foto"><svg class="ico"><use href="#i-chev-r"/></svg></button>
-        <div class="modal-photo-counter">${current + 1} / ${photos.length}</div>`);
+        <div class="modal-photo-counter">${current + 1} de ${photos.length}</div>`);
       document.getElementById('mPrev').onclick = () => { current = (current - 1 + photos.length) % photos.length; renderPhoto(); };
       document.getElementById('mNext').onclick = () => { current = (current + 1) % photos.length; renderPhoto(); };
     }
@@ -228,19 +216,18 @@ function openModal(v) {
 
   modalBody.innerHTML = `
     <h2>${v.marca} ${v.modelo}</h2>
-    <p style="color:var(--text2);margin-top:4px">${v.versao}</p>
+    <p style="color:var(--text2);margin-top:4px">${v.versao || ''}</p>
     <div class="modal-price">${fmt(v.preco)}</div>
     <div class="modal-specs">
       <div class="spec"><small>Ano</small><strong>${v.ano}/${v.anoModelo}</strong></div>
-      <div class="spec"><small>Km</small><strong>${km(v.km)}</strong></div>
+      <div class="spec"><small>Quilometragem</small><strong>${km(v.km)}</strong></div>
       <div class="spec"><small>Câmbio</small><strong>${cap(v.cambio)}</strong></div>
-      <div class="spec"><small>Combustível</small><strong>${v.combustivel}</strong></div>
+      <div class="spec"><small>Combustível</small><strong>${v.combustivel || '—'}</strong></div>
       <div class="spec"><small>Cor</small><strong>${v.cor || 'Não informada'}</strong></div>
-      <div class="spec"><small>Tipo</small><strong>${cap(v.uso)}</strong></div>
     </div>
     ${v.opcionais && v.opcionais.length ? `<h4 class="modal-subtitle">Opcionais</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>${o}</span>`).join('')}</div>` : ''}
     <div class="modal-desc">${v.desc || ''}</div>
-    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" rel="noopener" class="btn-whatsapp"><svg class="ico ico-fill" width="18" height="18"><use href="#i-whats"/></svg>Tenho interesse neste veículo</a>`;
+    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" rel="noopener" class="btn-whatsapp"><svg class="ico ico-fill" width="18" height="18"><use href="#i-whats"/></svg>Perguntar sobre este carro no WhatsApp</a>`;
 
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -256,6 +243,11 @@ const modalClose = document.getElementById('modalClose');
 if (modalClose) modalClose.onclick = closeModal;
 if (modal) modal.onclick = e => { if (e.target === modal) closeModal(); };
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Busca rápida da página inicial chega como ?marca=...&preco=...
+const params = new URLSearchParams(location.search);
+if (filterMarca && params.get('marca')) filterMarca.value = params.get('marca');
+if (filterPreco && params.get('preco')) filterPreco.value = params.get('preco');
 
 // Primeira renderização
 applyFilters();
