@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self' https://bt-veiculos-api.bt-veiculos-api.workers.dev http://localhost:8787; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; base-uri 'none'; form-action 'none'">
   <meta name="theme-color" content="#0e0f11">
   <title>Painel | BT Veículos</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='72' height='72' rx='6' fill='none' stroke='%23d4202c' stroke-width='10'/><text x='44' y='58' text-anchor='middle' font-family='Arial' font-weight='900' font-style='italic' font-size='32' fill='%23d4202c'>BT</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/painel.css?v=20261020b">
+  <link rel="stylesheet" href="css/painel.css?v=20261020c">
 </head>
 <body>
 
@@ -86,7 +87,7 @@
           <div id="tabBotoes"></div>
         </div>
       </div>
-      <p class="rodape-nota"><strong>Pessoas</strong> conta cada celular ou computador uma vez no período. <strong>Total</strong> soma todos os cliques, inclusive repetidos. Robôs do Google e prévias de link não entram na conta. Os números atualizam sozinhos a cada minuto.</p>
+      <p class="rodape-nota"><strong>Pessoas</strong> conta cada celular ou computador uma vez no período. <strong>Total</strong> soma todos os cliques, inclusive repetidos. Robôs do Google e prévias de link não entram na conta. Com o período de até 30 dias, os números se atualizam sozinhos a cada 2 minutos.</p>
     </section>
 
     <!-- VEÍCULOS -->
@@ -193,7 +194,7 @@
 
   <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
 
-  <script src="js/config.js?v=20261020b"></script>
-  <script src="js/painel.js?v=20261020b"></script>
+  <script src="js/config.js?v=20261020c"></script>
+  <script src="js/painel.js?v=20261020c"></script>
 </body>
 </html>

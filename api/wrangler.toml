@@ -7,12 +7,25 @@ ALLOWED_ORIGINS = "https://btveiculosjundiai.com.br,https://www.btveiculosjundia
 GITHUB_REPO = "btveiculos/btsite"
 GITHUB_BRANCH = "main"
 
-# O database_id é preenchido depois de criar o banco com:
-#   npx wrangler d1 create bt-veiculos
 [[d1_databases]]
 binding = "DB"
 database_name = "bt-veiculos"
 database_id = "08d91d82-1c94-4da6-8f5a-b9d36fa81d82"
+
+# Limpeza diária dos eventos com mais de 400 dias (função scheduled)
+[triggers]
+crons = ["0 9 * * *"]
+
+# Limites por IP: contagem do site e tentativas de senha do painel
+[[ratelimits]]
+name = "LIMITE_EVENTOS"
+namespace_id = "1001"
+simple = { limit = 120, period = 60 }
+
+[[ratelimits]]
+name = "LIMITE_LOGIN"
+namespace_id = "1002"
+simple = { limit = 10, period = 60 }
 
 # Segredos (nunca ficam neste arquivo). Cadastre com:
 #   npx wrangler secret put ADMIN_PASSWORD

@@ -16,3 +16,5 @@ CREATE TABLE IF NOT EXISTS events (
 
 CREATE INDEX IF NOT EXISTS idx_events_type_day ON events (type, day);
 CREATE INDEX IF NOT EXISTS idx_events_type_target ON events (type, target);
+CREATE INDEX IF NOT EXISTS idx_events_day ON events (day);
+CREATE INDEX IF NOT EXISTS idx_events_ts ON events (ts);

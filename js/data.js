@@ -16,7 +16,6 @@ const VEHICLES = [
     "cor": "Preto",
     "preco": 59900,
     "img": "/carros/volkswagen-voyage-2022-1.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -51,7 +50,6 @@ const VEHICLES = [
     "cor": "Prata",
     "preco": 57400,
     "img": "/carros/volkswagen-fox-2016-2.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -82,7 +80,6 @@ const VEHICLES = [
     "cor": "Prata",
     "preco": 39900,
     "img": "/carros/fiat-linea-2010-1.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Bancos em couro",
@@ -110,7 +107,6 @@ const VEHICLES = [
     "cor": "Prata",
     "preco": 59900,
     "img": "/carros/fiat-argo-2018-1.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Bancos em couro",
@@ -145,10 +141,9 @@ const VEHICLES = [
     "uso": "seminovo",
     "cambio": "manual",
     "combustivel": "Flex",
-    "cor": "Branca",
+    "cor": "Branco",
     "preco": 63900,
     "img": "/carros/fiat-cronos-2023-1.jpg",
-    "heroImg": "/carros/cronos-hero.png",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -186,7 +181,6 @@ const VEHICLES = [
     "cor": "Preto",
     "preco": 39900,
     "img": "/carros/ford-fiesta-2011-2.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -207,7 +201,7 @@ const VEHICLES = [
     "destaque": false,
     "marca": "Chevrolet",
     "modelo": "Onix Hatch",
-    "versao": "Hatch Lt 1.0 12V MT6",
+    "versao": "LT 1.0 12V MT6",
     "ano": 2021,
     "anoModelo": 2022,
     "km": 138736,
@@ -217,7 +211,6 @@ const VEHICLES = [
     "cor": "Branco",
     "preco": 63850,
     "img": "/carros/chevrolet-onix-2021-6.jpg",
-    "heroImg": "/carros/onix-hero.png",
     "opcionais": [
       "Ar-condicionado",
       "MyLink",
@@ -242,7 +235,7 @@ const VEHICLES = [
     "destaque": false,
     "marca": "Chevrolet",
     "modelo": "Onix Plus",
-    "versao": "Plus LT 1.0 12V 4P Mec. G",
+    "versao": "LT 1.0 12V 4P Mec. G",
     "ano": 2024,
     "anoModelo": 2024,
     "km": 102000,
@@ -252,7 +245,6 @@ const VEHICLES = [
     "cor": "Branco",
     "preco": 74900,
     "img": "/carros/chevrolet-onix-sedan-2024-1.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "MyLink",
@@ -288,7 +280,6 @@ const VEHICLES = [
     "cor": "Branco",
     "preco": 39900,
     "img": "/carros/chevrolet-classic-2014-1787666498340-4.jpg",
-    "heroImg": "/carros/classic-hero.png",
     "opcionais": [
       "Ar-condicionado",
       "Direção hidráulica",
@@ -320,7 +311,6 @@ const VEHICLES = [
     "cor": "Branco",
     "preco": 59900,
     "img": "/carros/renault-kwid-zen-2023-4.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -356,7 +346,6 @@ const VEHICLES = [
     "cor": "Preto",
     "preco": 67900,
     "img": "/carros/hyundai-hb20-2023-1787341578122-1.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -384,7 +373,6 @@ const VEHICLES = [
     "cor": "Azul",
     "preco": 78900,
     "img": "/carros/hyundai-hb20s-2025-1.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -421,7 +409,6 @@ const VEHICLES = [
     "cor": "Prata",
     "preco": 39900,
     "img": "/carros/hyundai-tucson-2009-2.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção hidráulica",
@@ -456,7 +443,6 @@ const VEHICLES = [
     "cor": "Cinza",
     "preco": 72500,
     "img": "/carros/citroen-c3-2024-9.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -498,7 +484,6 @@ const VEHICLES = [
     "cor": "Prata",
     "preco": 39900,
     "img": "/carros/citroen-c3-aircross-2011-1.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -533,7 +518,6 @@ const VEHICLES = [
     "cor": "Cinza",
     "preco": 89900,
     "img": "/carros/toyota-corolla-2014-1787666212209-7.jpg",
-    "heroImg": "/carros/corolla-hero.png",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -558,7 +542,7 @@ const VEHICLES = [
     "destaque": false,
     "marca": "Chevrolet",
     "modelo": "Onix Plus",
-    "versao": "Lt 1.0 Completo",
+    "versao": "LT 1.0 Completo",
     "ano": 2024,
     "anoModelo": 2024,
     "km": 67348,
@@ -568,7 +552,6 @@ const VEHICLES = [
     "cor": "Preto",
     "preco": 72500,
     "img": "/carros/chevrolet-onix-plus-2024-1788382878311-9.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "MyLink",
@@ -605,7 +588,6 @@ const VEHICLES = [
     "cor": "Preto",
     "preco": 72900,
     "img": "/carros/citroen-c3-2024-1787925161796-3.jpg",
-    "heroImg": "/carros/citroen-c3-2024-hero.png",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -642,7 +624,6 @@ const VEHICLES = [
     "cor": "Branco",
     "preco": 61900,
     "img": "/carros/fiat-cronos-2022-1787341608852-1.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -668,7 +649,6 @@ const VEHICLES = [
     "cor": "Prata",
     "preco": 49900,
     "img": "/carros/fiat-mobi-2019-4.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -705,7 +685,6 @@ const VEHICLES = [
     "cor": "Prata",
     "preco": 49900,
     "img": "/carros/renault-logan-2020-1787341621545-1.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -731,7 +710,6 @@ const VEHICLES = [
     "cor": "Prata",
     "preco": 57900,
     "img": "/carros/renault-kwid-2023-4.jpg",
-    "heroImg": "",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -762,10 +740,9 @@ const VEHICLES = [
     "uso": "usado",
     "cambio": "manual",
     "combustivel": "Gasolina",
-    "cor": "Branca",
+    "cor": "Branco",
     "preco": 39900,
     "img": "/carros/suzuki-gsx-r-750-2010-2.jpg",
-    "heroImg": "",
     "opcionais": [],
     "desc": "GSX-R 750 SRAD. Moto esportiva em excelente estado.",
     "fotos": [
@@ -794,7 +771,6 @@ const VEHICLES = [
     "cor": "Cinza",
     "uso": "seminovo",
     "img": "/carros/volkswagen-polo-2024-1787764180611-8.jpg",
-    "heroImg": "/carros/volkswagen-polo-2024-1787764180611-1.jpg",
     "fotos": [
       "/carros/volkswagen-polo-2024-1787764180611-8.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-7.jpg",
@@ -807,11 +783,11 @@ const VEHICLES = [
       "/carros/volkswagen-polo-2024-1787764180611-9.jpg"
     ],
     "opcionais": [
-      "Vidro elétrico",
+      "Vidros elétricos",
       "Trava elétrica",
       "Ar-condicionado",
       "Alarme",
-      "Multimídia"
+      "Central multimídia"
     ],
     "desc": "Veículo revisado e pronto para venda."
   },
@@ -830,7 +806,6 @@ const VEHICLES = [
     "cor": "Branco",
     "uso": "seminovo",
     "img": "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-9.jpg",
-    "heroImg": "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-1.jpg",
     "fotos": [
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-9.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-1.jpg",
@@ -846,11 +821,11 @@ const VEHICLES = [
     "opcionais": [
       "Ar-condicionado",
       "Câmera de ré",
-      "Pneus Novos",
-      "Vidro elétrico",
+      "Pneus novos",
+      "Vidros elétricos",
       "Trava elétrica",
       "Som",
-      "Bluetooth e multimídia"
+      "Central multimídia com Bluetooth"
     ],
     "desc": "Veículo revisado e pronto para rodar."
   }

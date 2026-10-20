@@ -23,7 +23,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:2px solid var(--acc);outline-offset:3px}
 .container{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
-section[id]{scroll-margin-top:90px}
+section[id],#venda{scroll-margin-top:90px}
 
 .ico{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;display:block}
 .ico-fill{fill:currentColor;stroke:none}
@@ -182,7 +182,6 @@ section[id]{scroll-margin-top:90px}
 .chegar-info dl{display:grid;gap:20px;margin-top:24px}
 .chegar-info dt{font-size:13px;color:var(--text3)}
 .chegar-info dd{font-size:16.5px;margin-top:3px;line-height:1.5}
-.chegar-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .chegar-map{min-height:400px;background:var(--surface2)}
 .chegar-map iframe{display:block;width:100%;height:100%;min-height:400px;border:0;filter:grayscale(.85) invert(.9) hue-rotate(180deg) contrast(.9)}
 
@@ -212,6 +211,8 @@ section[id]{scroll-margin-top:90px}
 .modal-photo-counter{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:3;padding:4px 12px;border-radius:999px;background:rgba(0,0,0,.65);font-size:12.5px}
 .modal-body{flex:1;min-width:0;overflow-y:auto;padding:32px 30px 28px}
 .modal-body h2{font-size:26px;padding-right:46px}
+.modal-versao{color:var(--text2);margin-top:4px}
+.section.section-colada{padding-top:0}
 .modal-body .modal-price{font-size:30px;font-weight:700;letter-spacing:-.02em;margin:14px 0 20px}
 .modal-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 18px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:20px}
 .modal-specs .spec small{display:block;font-size:12.5px;color:var(--text3)}
@@ -297,7 +298,6 @@ section[id]{scroll-margin-top:90px}
   .fecho-inner{padding:120px var(--pad) 48px}
   .fecho-ctas>*{flex:1 1 100%}
   .chegar-info{padding:24px 20px 26px}
-  .chegar-btns>*{flex:1 1 100%}
   .chegar-map,.chegar-map iframe{min-height:300px}
   .footer-bottom{flex-direction:column}
   .whatsapp-float{position:fixed;right:16px;bottom:16px;z-index:90;width:54px;height:54px;border-radius:50%;background:var(--whatsapp);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 6px 18px rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .3s}
@@ -319,3 +319,10 @@ section[id]{scroll-margin-top:90px}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .rv{opacity:1;transform:none}
 }
+
+/* ---------- Página não encontrada (404.html) ---------- */
+.nao-encontrada{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:40px var(--pad);text-align:center}
+.nao-encontrada .logo{margin-bottom:22px}
+.nao-encontrada h1{font-family:var(--display);font-size:clamp(40px,7vw,72px);text-transform:uppercase}
+.nao-encontrada p{color:var(--text2);max-width:420px}
+.nao-encontrada-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:10px}

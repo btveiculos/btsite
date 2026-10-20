@@ -128,11 +128,14 @@ document.querySelectorAll('.periodos button').forEach(b => {
   };
 });
 
+let pedidoNumeros = 0;
 async function carregarNumeros(silencioso) {
   const telas = document.querySelectorAll('.tela-numeros');
+  const meu = ++pedidoNumeros;
   if (!silencioso) telas.forEach(t => t.classList.add('carregando'));
   try {
     const d = await api('/admin/stats?dias=' + dias);
+    if (meu !== pedidoNumeros) return; // chegou depois de outro período ser escolhido
     ultimoNumeros = d;
     desenharNumeros(d);
   } catch (err) {
@@ -142,13 +145,13 @@ async function carregarNumeros(silencioso) {
   }
 }
 
-// Atualiza sozinho enquanto uma aba de números está aberta
+// Atualiza sozinho a cada 2 minutos enquanto uma aba de números está aberta (só períodos curtos)
 setInterval(() => {
-  if (token && !document.hidden && $('telaEstoque').hidden && !$('telaPainel').hidden) carregarNumeros(true);
-}, 60000);
+  if (token && dias <= 30 && !document.hidden && $('telaEstoque').hidden && !$('telaPainel').hidden) carregarNumeros(true);
+}, 120000);
 
-function variacao(atual, antes) {
-  const quando = dias === 1 ? 'ontem' : `os ${dias} dias anteriores`;
+function variacao(atual, antes, dias) {
+  const quando = dias === 1 ? 'ontem até este horário' : `os ${dias} dias anteriores`;
   if (!antes && !atual) return '';
   if (!antes) return `<span class="var var-sobe" title="Comparado com ${quando}">novo</span>`;
   const v = Math.round((atual - antes) / antes * 100);
@@ -157,18 +160,18 @@ function variacao(atual, antes) {
 }
 
 function desenharNumeros(d) {
-  const r = d.resumo, a = d.anterior;
-  const texto = dias === 1 ? 'Hoje · setas comparam com ontem' : `Últimos ${dias} dias (${dataBR(d.desde)} a ${dataBR(hojeSP())}) · setas comparam com os ${dias} dias anteriores`;
+  const r = d.resumo, a = d.anterior, dias = d.dias;
+  const texto = dias === 1 ? 'Hoje · setas comparam com ontem até este horário' : `Últimos ${dias} dias (${dataBR(d.desde)} a ${dataBR(hojeSP())}) · setas comparam com os ${dias} dias anteriores`;
   const curto = dias === 1 ? 'Hoje' : `Últimos ${dias} dias (${dataBR(d.desde)} a ${dataBR(hojeSP())})`;
   document.querySelectorAll('.periodo-texto').forEach(el => { el.textContent = el.closest('#telaVisao') ? texto : curto; });
   $('aoVivo').hidden = !d.agora;
   $('aoVivo').textContent = `${d.agora} ${d.agora === 1 ? 'pessoa' : 'pessoas'} no site agora`;
 
   $('kpis').innerHTML = `
-    <div class="kpi kpi-destaque"><small>Pessoas que entraram</small><strong>${num(r.visitantes)}</strong><p>visitantes únicos ${variacao(r.visitantes, a.visitantes)}</p></div>
-    <div class="kpi"><small>Visitas</small><strong>${num(r.visitas)}</strong><p><b>${num(r.paginas)}</b> páginas vistas ${variacao(r.visitas, a.visitas)}</p></div>
-    <div class="kpi"><small>Cliques em veículos</small><strong>${num(r.cliquesCarros)}</strong><p><b>${num(r.pessoasCarros)}</b> pessoas ${variacao(r.cliquesCarros, a.cliquesCarros)}</p></div>
-    <div class="kpi"><small>Cliques no WhatsApp</small><strong>${num(r.cliquesWhats)}</strong><p><b>${num(r.pessoasWhats)}</b> pessoas ${variacao(r.cliquesWhats, a.cliquesWhats)}</p></div>`;
+    <div class="kpi kpi-destaque"><small>Pessoas que entraram</small><strong>${num(r.visitantes)}</strong><p>visitantes únicos ${variacao(r.visitantes, a.visitantes, dias)}</p></div>
+    <div class="kpi"><small>Visitas</small><strong>${num(r.visitas)}</strong><p><b>${num(r.paginas)}</b> páginas vistas ${variacao(r.visitas, a.visitas, dias)}</p></div>
+    <div class="kpi"><small>Cliques em veículos</small><strong>${num(r.cliquesCarros)}</strong><p><b>${num(r.pessoasCarros)}</b> pessoas ${variacao(r.cliquesCarros, a.cliquesCarros, dias)}</p></div>
+    <div class="kpi"><small>Cliques no WhatsApp</small><strong>${num(r.cliquesWhats)}</strong><p><b>${num(r.pessoasWhats)}</b> pessoas ${variacao(r.cliquesWhats, a.cliquesWhats, dias)}</p></div>`;
 
   // Funil: de quem entrou, quantos abriram um carro e quantos chamaram
   const etapas = [
@@ -359,11 +362,14 @@ window.addEventListener('resize', () => { clearTimeout(redim); redim = setTimeou
 
 let estoque = { sha: null, original: [], vehicles: [] };
 let removidos = new Set();
-let fotosNovas = {}; // 'carros/arquivo.jpg' -> dataURL ainda não publicada
+let fotosNovas = {}; // 'carros/arquivo.jpg' -> dataURL (prévia até o site atualizar)
+const fotosEnviadas = {}; // 'carros/arquivo.jpg' -> sha no GitHub, para não enviar duas vezes
 
 const srcFoto = p => (p && fotosNovas[p.replace(/^\//, '')]) || p;
 
 async function carregarEstoque() {
+  // Sessão expirou no meio da edição: ao entrar de novo, mantém o que não foi publicado
+  if (estoque.sha && alteracoes().total) { desenharLista(); return; }
   $('estoqueTexto').textContent = 'Carregando…';
   try {
     const d = await api('/admin/stock');
@@ -414,7 +420,7 @@ function desenharLista() {
     return `<div class="item ${s}" data-id="${v.id}">
       <div class="item-foto">${foto ? `<img src="${esc(foto)}" alt="" loading="lazy">` : ''}</div>
       <div><div class="item-nome">${esc(v.marca)} ${esc(v.modelo)} ${v.destaque && !s ? '<span class="etq etq-dest">Destaque</span>' : ''}${etq}</div>
-        <div class="item-info">${esc(v.versao || '')} · ${v.ano}/${v.anoModelo || v.ano} · ${num(v.km)} km · ${(v.fotos || []).length} fotos</div></div>
+        <div class="item-info">${esc(v.versao || '')} · ${esc(v.ano)}/${esc(v.anoModelo || v.ano)} · ${num(v.km)} km · ${(v.fotos || []).length} fotos</div></div>
       <div class="item-preco">${reais(v.preco)}</div>
       <div class="item-acoes">${s === 'removido'
         ? `<button class="icone" data-acao="desfazer" title="Desfazer remoção" aria-label="Desfazer remoção">${ICONES.voltar}</button>`
@@ -473,22 +479,32 @@ $('btnPublicar').onclick = async () => {
   btn.textContent = 'Publicando…';
   try {
     const vehicles = estoque.vehicles.filter(v => !removidos.has(v.id));
+    if (!vehicles.length && !confirm('Isso vai deixar o site sem nenhum veículo. Publicar mesmo assim?')) return;
     const usadas = new Set(vehicles.flatMap(v => [v.img, ...(v.fotos || [])]).filter(Boolean).map(p => p.replace(/^\//, '')));
-    const photos = Object.entries(fotosNovas).filter(([p]) => usadas.has(p)).map(([path, url]) => ({ path, data: url.split(',')[1] }));
+    const novas = Object.keys(fotosNovas).filter(p => usadas.has(p));
+    // Cada foto vai num envio separado; o commit leva só as referências
+    const faltam = novas.filter(p => !fotosEnviadas[p]);
+    for (let i = 0; i < faltam.length; i++) {
+      btn.textContent = `Enviando fotos ${i + 1} de ${faltam.length}…`;
+      const f = await api('/admin/photo', { method: 'POST', body: JSON.stringify({ path: faltam[i], data: fotosNovas[faltam[i]].split(',')[1] }) });
+      fotosEnviadas[faltam[i]] = f.sha;
+    }
+    btn.textContent = 'Publicando…';
+    const photos = novas.map(path => ({ path, sha: fotosEnviadas[path] }));
     const partes = [];
     if (c.novo) partes.push(`${c.novo} novo(s)`);
     if (c.mudou) partes.push(`${c.mudou} alterado(s)`);
     if (c.removido) partes.push(`${c.removido} removido(s)`);
     const r = await api('/admin/publish', {
       method: 'POST',
-      body: JSON.stringify({ baseSha: estoque.sha, vehicles, photos, message: 'Estoque pelo painel: ' + (partes.join(', ') || 'nova ordem') }),
+      body: JSON.stringify({ baseSha: estoque.sha, vehicles, photos, confirmarVazio: !vehicles.length, message: 'Estoque pelo painel: ' + (partes.join(', ') || 'nova ordem') }),
     });
-    if (r.simulacao) { aviso(`Simulação ok: ${r.veiculos} veículos e ${r.fotos.length} fotos seriam publicados.`); return; }
-    estoque = { sha: r.sha, original: clone(vehicles), vehicles: clone(vehicles) };
+    if (r.simulacao) { aviso(`Simulação ok: ${r.veiculos} veículos e ${r.fotos} fotos novas seriam publicados.`); return; }
+    // Usa a versão que o servidor gravou (textos já limpos)
+    estoque = { sha: r.sha, original: r.vehicles, vehicles: clone(r.vehicles) };
     removidos = new Set();
-    // As fotos novas continuam em memória até o site terminar de atualizar
     desenharLista();
-    aviso('Publicado! O site mostra as mudanças em cerca de 1 minuto.');
+    aviso('Publicado! O site mostra as mudanças em 1 a 2 minutos.');
   } catch (err) {
     if (err.message !== 'sessão') aviso(err.status === 409 ? err.message : 'Não foi possível publicar: ' + err.message, true);
   } finally {
@@ -576,7 +592,7 @@ form.onsubmit = e => {
     Object.assign(editando, dados);
   } else {
     const id = Math.max(0, ...estoque.vehicles.map(v => Number(v.id) || 0)) + 1;
-    estoque.vehicles.unshift({ id, ...dados, heroImg: '' });
+    estoque.vehicles.unshift({ id, ...dados });
   }
   fecharEditor();
   desenharLista();

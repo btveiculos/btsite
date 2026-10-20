@@ -1,9 +1,11 @@
 // ===== CONTAGEM ANÔNIMA DE VISITAS E CLIQUES =====
 // Cada navegador recebe um código aleatório (sem nome, telefone ou IP).
-// Visita = uma sessão do navegador; página = cada carregamento.
+// Visita = cada vez que o site é aberto numa aba; página = cada carregamento.
 (function () {
   var api = (window.BT_API || '').replace(/\/$/, '');
   var robo = navigator.webdriver || /bot|crawl|spider|headless|lighthouse/i.test(navigator.userAgent);
+  // Testes no computador do desenvolvedor não entram na conta
+  var local = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
 
   function guardado(store, key, criar) {
     try {
@@ -37,7 +39,7 @@
   }
 
   function envia(t, g, l, c) {
-    if (!api || robo) return;
+    if (!api || robo || local) return;
     var dados = JSON.stringify({ t: t, v: vid, p: location.pathname, g: g == null ? null : String(g), l: l || null,
       d: aparelho, r: t === 'visit' ? origem() : null, c: c == null ? null : String(c) });
     try {
