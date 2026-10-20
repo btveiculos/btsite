@@ -7,6 +7,7 @@ const km = n => Number(n || 0).toLocaleString('pt-BR') + ' km';
 // 5511993662724 -> (11) 99366-2724
 const fmtPhone = n => String(n).replace(/^55/, '').replace(/^(\d{2})(\d{4,5})(\d{4})$/, '($1) $2-$3');
 const cap = s => { s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); };
+const nomeCarro = v => `${v.marca} ${v.modelo} ${v.ano || ''}`.replace(/"/g, '').trim();
 const wpp = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 
 const carSVG = `<svg viewBox="0 0 430 155" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M45 118C45 118 52 88 75 78 95 70 125 60 162 54 190 50 225 48 255 48 285 48 315 52 338 60 355 66 367 76 374 90 380 102 382 114 382 118L45 118Z" fill="#b9b9b4"/><circle cx="108" cy="124" r="22" fill="#8f8f8a"/><circle cx="318" cy="124" r="22" fill="#8f8f8a"/></svg>`;
@@ -227,8 +228,9 @@ function openModal(v) {
     </div>
     ${v.opcionais && v.opcionais.length ? `<h4 class="modal-subtitle">Opcionais</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>${o}</span>`).join('')}</div>` : ''}
     <div class="modal-desc">${v.desc || ''}</div>
-    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" rel="noopener" class="btn-whatsapp"><svg class="ico ico-fill" width="18" height="18"><use href="#i-whats"/></svg>Perguntar sobre este carro no WhatsApp</a>`;
+    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" rel="noopener" class="btn-whatsapp" data-track-whats="detalhes-veiculo" data-carro="${nomeCarro(v)}" data-carro-id="${v.id}"><svg class="ico ico-fill" width="18" height="18"><use href="#i-whats"/></svg>Perguntar sobre este carro no WhatsApp</a>`;
 
+  if (window.btTrack) btTrack('car', v.id, nomeCarro(v));
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }

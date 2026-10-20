@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0e0f11">
+  <title>Painel | BT Veículos</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='72' height='72' rx='6' fill='none' stroke='%23d4202c' stroke-width='10'/><text x='44' y='58' text-anchor='middle' font-family='Arial' font-weight='900' font-style='italic' font-size='32' fill='%23d4202c'>BT</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/painel.css?v=20261020b">
+</head>
+<body>
+
+  <!-- ENTRADA -->
+  <main class="login" id="telaLogin" hidden>
+    <form class="login-box" id="formLogin">
+      <div class="logo"><div class="logo-box">BT</div><div class="logo-text"><span class="logo-name">VEÍCULOS</span><span class="logo-slogan">Painel da loja</span></div></div>
+      <label for="senha">Senha do painel</label>
+      <input type="password" id="senha" autocomplete="current-password" required autofocus>
+      <button type="submit" class="btn btn-red" id="btnEntrar">Entrar</button>
+      <p class="login-erro" id="loginErro" role="alert"></p>
+    </form>
+  </main>
+
+  <!-- PAINEL -->
+  <div class="app" id="telaPainel" hidden>
+    <header class="topo">
+      <div class="topo-in">
+        <a href="index.html" class="logo" target="_blank" rel="noopener" title="Abrir o site"><div class="logo-box">BT</div><div class="logo-text"><span class="logo-name">VEÍCULOS</span><span class="logo-slogan">Painel da loja</span></div></a>
+        <nav class="abas" role="tablist">
+          <button role="tab" class="aba" aria-selected="true" data-tela="visao">Visão geral</button>
+          <button role="tab" class="aba" aria-selected="false" data-tela="veiculos">Veículos</button>
+          <button role="tab" class="aba" aria-selected="false" data-tela="estoque">Estoque <span class="pendente" id="contPendente" hidden></span></button>
+        </nav>
+        <button class="btn-link" id="btnSair">Sair</button>
+      </div>
+    </header>
+
+    <!-- VISÃO GERAL -->
+    <section class="tela tela-numeros" id="telaVisao">
+      <div class="tela-cab">
+        <div>
+          <h1>Visão geral</h1>
+          <p class="sub"><span class="ao-vivo" id="aoVivo" hidden></span><span class="periodo-texto">Carregando…</span></p>
+        </div>
+        <div class="periodos" role="group" aria-label="Período">
+          <button data-dias="1">Hoje</button>
+          <button data-dias="7">7 dias</button>
+          <button data-dias="30" class="on">30 dias</button>
+          <button data-dias="90">90 dias</button>
+          <button data-dias="365">1 ano</button>
+        </div>
+      </div>
+
+      <div class="kpis" id="kpis"></div>
+
+      <div class="cartao">
+        <div class="cartao-cab"><h2>Do clique ao contato</h2><span class="dica">quantas pessoas avançaram em cada etapa</span></div>
+        <div class="funil" id="funil"></div>
+      </div>
+
+      <div class="cartao">
+        <div class="cartao-cab">
+          <h2>Visitas por dia</h2>
+          <div class="legenda"><span class="lg lg-total">Visitas</span><span class="lg lg-unico">Pessoas diferentes</span></div>
+        </div>
+        <div class="grafico" id="grafico"></div>
+      </div>
+
+      <div class="tres">
+        <div class="cartao"><div class="cartao-cab"><h2>De onde vieram</h2></div><div id="origens"></div></div>
+        <div class="cartao"><div class="cartao-cab"><h2>Aparelho</h2></div><div id="aparelhos"></div></div>
+        <div class="cartao"><div class="cartao-cab"><h2>Horários de visita</h2></div><div id="horas"></div></div>
+      </div>
+
+      <div class="duas">
+        <div class="cartao">
+          <div class="cartao-cab"><h2>Veículos mais vistos</h2><button class="link-aba" data-ir="veiculos">Ver todos →</button></div>
+          <div id="topCarros"></div>
+        </div>
+        <div class="cartao">
+          <div class="cartao-cab"><h2>Botões de WhatsApp</h2><span class="dica">onde as pessoas clicaram</span></div>
+          <div id="tabBotoes"></div>
+        </div>
+      </div>
+      <p class="rodape-nota"><strong>Pessoas</strong> conta cada celular ou computador uma vez no período. <strong>Total</strong> soma todos os cliques, inclusive repetidos. Robôs do Google e prévias de link não entram na conta. Os números atualizam sozinhos a cada minuto.</p>
+    </section>
+
+    <!-- VEÍCULOS -->
+    <section class="tela tela-numeros" id="telaVeiculos" hidden>
+      <div class="tela-cab">
+        <div>
+          <h1>Veículos</h1>
+          <p class="sub"><span class="periodo-texto">Carregando…</span></p>
+        </div>
+        <div class="periodos" role="group" aria-label="Período">
+          <button data-dias="1">Hoje</button>
+          <button data-dias="7">7 dias</button>
+          <button data-dias="30" class="on">30 dias</button>
+          <button data-dias="90">90 dias</button>
+          <button data-dias="365">1 ano</button>
+        </div>
+      </div>
+      <div class="filtro-veiculos">
+        <input type="search" id="buscaDesempenho" placeholder="Buscar marca ou modelo" aria-label="Buscar veículo">
+        <select id="ordemDesempenho" aria-label="Ordenar">
+          <option value="vistos">Mais vistos</option>
+          <option value="whats">Mais chamadas no WhatsApp</option>
+          <option value="conversao">Maior taxa de contato</option>
+          <option value="menos">Menos vistos</option>
+        </select>
+      </div>
+      <p class="resumo-veiculos" id="resumoVeiculos"></p>
+      <div class="ranking" id="ranking"></div>
+    </section>
+
+    <!-- ESTOQUE -->
+    <section class="tela" id="telaEstoque" hidden>
+      <div class="tela-cab">
+        <div>
+          <h1>Estoque</h1>
+          <p class="sub" id="estoqueTexto">Carregando…</p>
+        </div>
+        <div class="acoes">
+          <input type="search" id="busca" placeholder="Buscar marca ou modelo" aria-label="Buscar">
+          <button class="btn btn-red" id="btnNovo"><span aria-hidden="true">+</span> Adicionar veículo</button>
+        </div>
+      </div>
+      <div class="lista" id="lista"></div>
+    </section>
+
+    <!-- Barra de publicação: aparece quando há alterações -->
+    <div class="publicar" id="barraPublicar" hidden>
+      <div class="publicar-in">
+        <p id="publicarTexto"></p>
+        <div class="publicar-botoes">
+          <button class="btn btn-ghost" id="btnDescartar">Descartar</button>
+          <button class="btn btn-red" id="btnPublicar">Publicar no site</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDITOR DE VEÍCULO -->
+  <div class="editor-fundo" id="editor" hidden>
+    <form class="editor" id="formVeiculo" novalidate>
+      <div class="editor-cab">
+        <h2 id="editorTitulo">Novo veículo</h2>
+        <button type="button" class="fechar" id="btnFecharEditor" aria-label="Fechar">×</button>
+      </div>
+      <div class="editor-corpo">
+        <fieldset>
+          <legend>Fotos</legend>
+          <p class="dica">A primeira foto é a capa. Arraste para mudar a ordem.</p>
+          <div class="fotos" id="fotos"></div>
+          <label class="soltar" id="soltar">
+            <input type="file" id="arquivos" accept="image/*,.heic,.heif" multiple>
+            <strong>Escolher fotos</strong><span>ou arraste aqui (JPG, PNG ou HEIC do iPhone)</span>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Dados do veículo</legend>
+          <div class="campos">
+            <label>Marca<input name="marca" list="listaMarcas" required></label>
+            <label>Modelo<input name="modelo" required></label>
+            <label class="largo">Versão<input name="versao" placeholder="Ex.: 1.6 MSI Comfortline"></label>
+            <label>Ano de fabricação<input name="ano" type="number" inputmode="numeric" min="1950" max="2100" required></label>
+            <label>Ano do modelo<input name="anoModelo" type="number" inputmode="numeric" min="1950" max="2100"></label>
+            <label>Preço (R$)<input name="preco" inputmode="numeric" required placeholder="Ex.: 65.900"></label>
+            <label>Quilometragem<input name="km" inputmode="numeric" placeholder="Ex.: 48.000"></label>
+            <label>Câmbio<select name="cambio"><option value="manual">Manual</option><option value="automático">Automático</option></select></label>
+            <label>Combustível<select name="combustivel"><option>Flex</option><option>Gasolina</option><option>Diesel</option><option>Elétrico</option><option>Híbrido</option></select></label>
+            <label>Cor<input name="cor"></label>
+            <label>Tipo<select name="uso"><option value="seminovo">Seminovo</option><option value="usado">Usado</option><option value="novo">Novo</option></select></label>
+            <label class="largo">Opcionais <small>(separe por vírgula)</small><input name="opcionais" placeholder="Ar-condicionado, Direção elétrica, Multimídia"></label>
+            <label class="largo">Descrição<textarea name="desc" rows="4"></textarea></label>
+            <label class="marcar largo"><input type="checkbox" name="destaque"> Mostrar nos destaques da página inicial</label>
+          </div>
+          <datalist id="listaMarcas"></datalist>
+        </fieldset>
+        <p class="editor-erro" id="editorErro" role="alert"></p>
+      </div>
+      <div class="editor-rodape">
+        <button type="button" class="btn btn-ghost" id="btnCancelar">Cancelar</button>
+        <button type="submit" class="btn btn-red">Salvar veículo</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js?v=20261020b"></script>
+  <script src="js/painel.js?v=20261020b"></script>
+</body>
+</html>

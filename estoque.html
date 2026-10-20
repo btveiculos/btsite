@@ -23,7 +23,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="css/site.css?v=20261017d">
-  <link rel="stylesheet" href="css/admin.css?v=20261017d">
 </head>
 <body class="estoque-page">
 
@@ -135,6 +134,7 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; <span id="year">2026</span> BT Veículos Jundiaí</p>
+      <p class="footer-nota">Contamos visitas de forma anônima, sem dados pessoais.</p>
     </div>
   </footer>
 
@@ -154,10 +154,10 @@
 
   <script>
     // Cache-busting para o estoque nunca ficar desatualizado.
-    // Ordem obrigatória: data.js -> estoque.js -> admin.js
+    // Ordem obrigatória: config.js -> track.js -> data.js -> estoque.js
     (function () {
       var v = Date.now();
-      var files = ['js/data.js', 'js/estoque.js', 'js/admin.js'];
+      var files = ['js/config.js', 'js/track.js', 'js/data.js', 'js/estoque.js'];
 
       function load(i) {
         if (i >= files.length) return;

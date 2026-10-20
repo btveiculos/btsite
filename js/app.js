@@ -4,6 +4,7 @@ const STOCK = (typeof VEHICLES !== 'undefined' && Array.isArray(VEHICLES)) ? VEH
 const fmt = p => 'R$ ' + Number(p || 0).toLocaleString('pt-BR');
 const km = n => Number(n || 0).toLocaleString('pt-BR') + ' km';
 const cap = s => { s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); };
+const nomeCarro = v => `${v.marca} ${v.modelo} ${v.ano || ''}`.replace(/"/g, '').trim();
 const wpp = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 // 5511993662724 -> (11) 99366-2724
 const fmtPhone = n => String(n).replace(/^55/, '').replace(/^(\d{2})(\d{4,5})(\d{4})$/, '($1) $2-$3');
@@ -155,8 +156,9 @@ function openModal(v) {
     </div>
     ${v.opcionais && v.opcionais.length ? `<h4 class="modal-subtitle">Opcionais</h4><div class="modal-opcionais">${v.opcionais.map(o => `<span>${o}</span>`).join('')}</div>` : ''}
     <div class="modal-desc">${v.desc || ''}</div>
-    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" rel="noopener" class="btn-whatsapp"><svg class="ico ico-fill" width="18" height="18"><use href="#i-whats"/></svg>Perguntar sobre este carro no WhatsApp</a>`;
+    <a href="${wpp(`Olá, tenho interesse no ${v.marca} ${v.modelo} ${v.versao} (${v.ano}) - ${fmt(v.preco)} que vi no site da BT Veículos. Pode me passar mais informações?`)}" target="_blank" rel="noopener" class="btn-whatsapp" data-track-whats="detalhes-veiculo" data-carro="${nomeCarro(v)}" data-carro-id="${v.id}"><svg class="ico ico-fill" width="18" height="18"><use href="#i-whats"/></svg>Perguntar sobre este carro no WhatsApp</a>`;
 
+  if (window.btTrack) btTrack('car', v.id, nomeCarro(v));
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }

@@ -1,0 +1,18 @@
+{
+  "name": "bt-veiculos-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local --port 8787",
+    "deploy": "wrangler deploy",
+    "db:local": "wrangler d1 execute bt-veiculos --local --file=schema.sql",
+    "db:remote": "wrangler d1 execute bt-veiculos --remote --file=schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "workerd@1.20261019.1": true
+  }
+}

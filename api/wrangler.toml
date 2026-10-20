@@ -1,0 +1,20 @@
+name = "bt-veiculos-api"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://btveiculosjundiai.com.br,https://www.btveiculosjundiai.com.br,http://localhost:8791"
+GITHUB_REPO = "btveiculos/btsite"
+GITHUB_BRANCH = "main"
+
+# O database_id é preenchido depois de criar o banco com:
+#   npx wrangler d1 create bt-veiculos
+[[d1_databases]]
+binding = "DB"
+database_name = "bt-veiculos"
+database_id = "08d91d82-1c94-4da6-8f5a-b9d36fa81d82"
+
+# Segredos (nunca ficam neste arquivo). Cadastre com:
+#   npx wrangler secret put ADMIN_PASSWORD
+#   npx wrangler secret put SESSION_SECRET
+#   npx wrangler secret put GITHUB_TOKEN
