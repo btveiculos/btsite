@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Consentimento (LGPD): tudo negado até a pessoa aceitar no aviso de cookies -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500 });
+    try {
+      if (localStorage.getItem('bt_cookies') === 'aceito') gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
+    } catch (e) {}
+  </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -10,6 +19,7 @@
   'https://stape.btveiculosjundiai.com.br/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-WPXH76C2');</script>
   <!-- End Google Tag Manager -->
+  <script src="/js/cookies.js?v=20261021a" defer></script>
   <title>Estoque | BT Veículos Jundiaí</title>
   <meta name="description" content="Veja todos os seminovos e usados disponíveis na BT Veículos, em Jundiaí/SP: fotos, quilometragem, opcionais e preço.">
   <link rel="canonical" href="https://btveiculosjundiai.com.br/estoque.html">
@@ -29,7 +39,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('js')</script>
-  <link rel="stylesheet" href="css/site.css?v=20261020a">
+  <link rel="stylesheet" href="css/site.css?v=20261021a">
 </head>
 <body class="estoque-page">
   <!-- Google Tag Manager (noscript) -->
@@ -129,7 +139,7 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; <span id="footerYear">2026</span> BT Veículos Jundiaí</p>
-      <p class="footer-nota">Usamos cookies e ferramentas de medição para entender as visitas e melhorar nossos anúncios.</p>
+      <p class="footer-nota"><a href="privacidade.html">Privacidade</a> · <a href="#" data-abrir-cookies>Preferências de cookies</a></p>
     </div>
   </footer>
 

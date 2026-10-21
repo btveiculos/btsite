@@ -13,13 +13,15 @@ index.html          página inicial
 estoque.html        estoque completo com filtros
 admin.html          painel da loja (não aparece no site; bloqueado no robots.txt)
 404.html            página de endereço inexistente
+privacidade.html    política de privacidade e cookies
 
 css/site.css        visual do site
 css/painel.css      visual do painel
 
 js/data.js          estoque (gerado pelo painel; pode ser editado à mão com cuidado)
 js/config.js        endereço do servidor (BT_API)
-js/track.js         contagem anônima de visitas e cliques
+js/track.js         contagem anônima de visitas e cliques (e eventos do GTM)
+js/cookies.js       aviso de cookies e consentimento
 js/comum.js         cabeçalho, WhatsApp, card do carro e janela de detalhes
 js/app.js           página inicial
 js/estoque.js       filtros do estoque
@@ -75,6 +77,15 @@ para o `dataLayer`:
 
 Valores de `botao`: `detalhes-veiculo`, `topo-do-site`, `menu-topo`, `menu-celular`,
 `botao-flutuante`, `como-chegar`, `form-financiamento`, `form-troca`.
+
+### Consentimento (LGPD)
+
+Modo de Consentimento v2 do Google. No `<head>` de cada página, antes do GTM, tudo começa
+negado (`ad_storage`, `ad_user_data`, `ad_personalization`, `analytics_storage`). O
+`js/cookies.js` mostra o aviso "Aceitar / Recusar", envia `gtag('consent', 'update', ...)`
+e o evento `consentimento_atualizado`, e guarda a escolha em `localStorage` (`bt_cookies`).
+Tags que não são do Google (Meta etc.) precisam ser configuradas no GTM para disparar só
+com consentimento. O texto da política está em `privacidade.html`.
 
 ## Rodar no computador
 

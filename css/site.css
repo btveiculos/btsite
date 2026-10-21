@@ -326,3 +326,27 @@ section[id],#venda{scroll-margin-top:90px}
 .nao-encontrada h1{font-family:var(--display);font-size:clamp(40px,7vw,72px);text-transform:uppercase}
 .nao-encontrada p{color:var(--text2);max-width:420px}
 .nao-encontrada-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:10px}
+
+/* ---------- Aviso de cookies ---------- */
+.aviso-cookies{position:fixed;left:16px;right:16px;bottom:16px;z-index:150;max-width:560px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:16px 16px 16px 20px;background:rgba(26,28,32,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line-strong);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.5);animation:aparece .4s var(--ease)}
+.aviso-cookies p{flex:1;font-size:14px;line-height:1.5;color:var(--text2)}
+.aviso-cookies a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.aviso-cookies-botoes{display:flex;gap:8px;flex-shrink:0}
+.aviso-cookies-botoes button{min-height:42px;padding:0 18px;font-size:14px}
+.footer-nota a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.footer-nota a:hover{color:#fff}
+
+/* ---------- Privacidade ---------- */
+.texto-legal{max-width:720px;margin:0 auto;padding:48px var(--pad) 120px}
+.texto-legal .logo{margin-bottom:48px}
+.texto-legal h1{font-family:var(--display);font-size:clamp(38px,6vw,56px);text-transform:uppercase}
+.texto-legal-data{margin-top:8px;font-size:14px;color:var(--text3)}
+.texto-legal h2{margin:40px 0 12px;font-size:20px}
+.texto-legal p{color:var(--text2);margin-bottom:12px}
+.texto-legal p a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.texto-legal-voltar{margin-top:44px}
+.texto-legal-voltar a.btn-light{text-decoration:none}
+@media (max-width:640px){
+  .aviso-cookies{flex-direction:column;align-items:stretch;gap:12px;left:12px;right:12px;bottom:12px;padding:16px}
+  .aviso-cookies-botoes button{flex:1}
+}
