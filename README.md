@@ -62,6 +62,20 @@ Formato de cada veículo em `js/data.js`:
 `img` é a capa (a primeira foto). O número do WhatsApp fica na primeira linha do `data.js`
 (`const WHATSAPP = '5511993662724'`) e é usado em todos os botões do site.
 
+## Google Tag Manager
+
+Contêiner `GTM-WPXH76C2`, carregado pelo domínio do Stape (`stape.btveiculosjundiai.com.br`)
+em `index.html`, `estoque.html` e `404.html` (o painel fica de fora). O `js/track.js` envia
+para o `dataLayer`:
+
+| Evento | Quando | Campos |
+| --- | --- | --- |
+| `ver_veiculo` | abriu os detalhes de um carro | `veiculo_id`, `veiculo_nome` |
+| `clique_whatsapp` | clicou em qualquer botão de WhatsApp ou enviou os formulários | `botao`, `veiculo_id`, `veiculo_nome` |
+
+Valores de `botao`: `detalhes-veiculo`, `topo-do-site`, `menu-topo`, `menu-celular`,
+`botao-flutuante`, `como-chegar`, `form-financiamento`, `form-troca`.
+
 ## Rodar no computador
 
 ```bash
@@ -118,7 +132,7 @@ npx wrangler deploy                         # publicar mudanças em api/src/inde
 npx wrangler d1 execute bt-veiculos --remote --command "SELECT COUNT(*) FROM events"
 ```
 
-A contagem não guarda nome, telefone nem IP: cada navegador recebe um código aleatório
+A contagem própria não guarda nome, telefone nem IP: cada navegador recebe um código aleatório
 (`localStorage`) e o servidor ignora robôs e prévias de link.
 
 ## Publicar mudanças no site

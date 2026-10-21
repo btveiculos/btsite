@@ -38,7 +38,17 @@
     return host;
   }
 
+  // Os mesmos cliques vão para o Google Tag Manager (dataLayer):
+  //   ver_veiculo     veiculo_id, veiculo_nome
+  //   clique_whatsapp botao, veiculo_id, veiculo_nome (só no botão dos detalhes)
+  function avisaGtm(t, g, l, c) {
+    var dl = window.dataLayer = window.dataLayer || [];
+    if (t === 'car') dl.push({ event: 'ver_veiculo', veiculo_id: String(g), veiculo_nome: l || '' });
+    if (t === 'whats') dl.push({ event: 'clique_whatsapp', botao: g, veiculo_id: c == null ? '' : String(c), veiculo_nome: l || '' });
+  }
+
   function envia(t, g, l, c) {
+    avisaGtm(t, g, l, c);
     if (!api || robo || local) return;
     var dados = JSON.stringify({ t: t, v: vid, p: location.pathname, g: g == null ? null : String(g), l: l || null,
       d: aparelho, r: t === 'visit' ? origem() : null, c: c == null ? null : String(c) });
