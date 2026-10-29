@@ -38,7 +38,8 @@ preso no cache.
 
 ## Estoque
 
-O dia a dia é pelo painel: `https://btveiculosjundiai.com.br/admin.html`.
+O dia a dia é pelo painel: `https://btveiculosjundiai.com.br/admin.html` (ou clique duplo no
+logo do topo do site). A senha é conferida no servidor; nada dela fica no código.
 
 - **Visão geral**: visitas, pessoas diferentes, cliques em veículos e no WhatsApp, origem
   das visitas, aparelho e horários.

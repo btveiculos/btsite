@@ -37,6 +37,28 @@ function makeImg(src, alt, lazy) {
 const header = document.getElementById('header');
 const mobileMenu = document.getElementById('mobileMenu');
 const mobileToggle = document.getElementById('mobileToggle');
+
+// Clique duplo no logo do topo abre o painel da loja (a senha é conferida no servidor).
+// O clique simples espera um instante para saber se vem um segundo clique.
+const logoTopo = header.querySelector('.logo');
+let esperaLogo = null;
+logoTopo.addEventListener('click', e => {
+  if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+  e.preventDefault();
+  if (e.detail > 1) return;
+  clearTimeout(esperaLogo);
+  esperaLogo = setTimeout(() => {
+    const destino = logoTopo.getAttribute('href');
+    if (destino.startsWith('#')) window.scrollTo({ top: 0, behavior: 'smooth' });
+    else location.href = destino;
+  }, 300);
+});
+logoTopo.addEventListener('dblclick', e => {
+  e.preventDefault();
+  clearTimeout(esperaLogo);
+  location.href = '/admin.html';
+});
+
 function menuMobile(abrir) {
   mobileMenu.classList.toggle('open', abrir);
   mobileToggle.setAttribute('aria-expanded', String(abrir));
