@@ -2,6 +2,60 @@ const WHATSAPP = '5511993662724';
 
 const VEHICLES = [
   {
+    "id": 1789063195672,
+    "destaque": false,
+    "marca": "BYD",
+    "modelo": "MINI DOLPHIN",
+    "versao": "MINI DOLPHIN EV 2027 ZERO KM DOCUMENTADO",
+    "ano": 2026,
+    "anoModelo": 2027,
+    "km": 0,
+    "uso": "novo",
+    "cambio": "automático",
+    "combustivel": "Elétrico",
+    "cor": "CINZA LANÇAMENTO",
+    "preco": 123900000,
+    "img": "/carros/veiculo-1793296169298-5.jpg",
+    "opcionais": [
+      "Ar-condicionado com controle digital",
+      "Direção elétrica",
+      "Câmbio automático de relação única",
+      "Chave presencial",
+      "Freio de estacionamento eletrônico",
+      "Sistema Auto Hold",
+      "Controle de velocidade de cruzeiro",
+      "Vidros elétricos",
+      "Retrovisores com regulagem elétrica e aquecimento",
+      "Banco traseiro reclinável",
+      "Apoio de braço central dianteiro",
+      "Tomada 12V",
+      "Volante com regulagem de altura e profundidade"
+    ],
+    "desc": "# BYD DOLPHIN MINI EV 2027 — ZERO KM **100% ELÉTRICO | ZERO KM DOCUMENTADO | R$ 123.900,00** Conheça o BYD Dolphin Mini 2027, um veículo 100% elétrico que combina tecnologia, economia, conforto e modernidade. Ideal para quem busca mobilidade inteligente, praticidade no dia a dia e uma experiência de condução silenciosa. **PRINCIPAIS EQUIPAMENTOS E ACESSÓRIOS** **Tecnologia e conectividade** - Central multimídia touchscreen de 10,1 polegadas com rotação elétrica - Painel de instrumentos digital de 7 polegadas - Apple CarPlay e Android Auto - Conectividade Bluetooth - Comandos de voz inteligentes - Sistema de som com 4 alto-falantes - Entradas USB tipo A e tipo C - Conectividade 4G - Atualizações remotas de software (OTA) - Volante multifuncional - Aplicativo BYD para acompanhamento de funções do veículo **Conforto e praticidade** - Ar-condicionado com controle digital - Direção elétrica - Câmbio automático de relação única - Chave presencial - Freio de estacionamento eletrônico - Sistem",
+    "fotos": [
+      "/carros/veiculo-1793296169298-5.jpg",
+      "/carros/veiculo-1793296169298-1.jpg",
+      "/carros/veiculo-1793296169298-4.jpg",
+      "/carros/veiculo-1793296169298-3.jpg",
+      "/carros/veiculo-1793296169298-7.jpg",
+      "/carros/veiculo-1793296169298-11.jpg",
+      "/carros/veiculo-1793296169298-20.jpg",
+      "/carros/veiculo-1793296169298-8.jpg",
+      "/carros/veiculo-1793296169298-10.jpg",
+      "/carros/veiculo-1793296169298-18.jpg",
+      "/carros/veiculo-1793296169298-6.jpg",
+      "/carros/veiculo-1793296169298-2.jpg",
+      "/carros/veiculo-1793296169298-13.jpg",
+      "/carros/veiculo-1793296169298-16.jpg",
+      "/carros/veiculo-1793296169298-17.jpg",
+      "/carros/veiculo-1793296169298-9.jpg",
+      "/carros/veiculo-1793296169298-12.jpg",
+      "/carros/veiculo-1793296169298-19.jpg",
+      "/carros/veiculo-1793296169298-25.jpg",
+      "/carros/veiculo-1793296169298-21.jpg"
+    ]
+  },
+  {
     "id": 1,
     "destaque": false,
     "marca": "Volkswagen",
@@ -765,12 +819,20 @@ const VEHICLES = [
     "ano": 2024,
     "anoModelo": 2025,
     "km": 71200,
-    "preco": 76900,
+    "uso": "seminovo",
     "cambio": "manual",
     "combustivel": "Flex",
     "cor": "Cinza",
-    "uso": "seminovo",
+    "preco": 76900,
     "img": "/carros/volkswagen-polo-2024-1787764180611-8.jpg",
+    "opcionais": [
+      "Vidros elétricos",
+      "Trava elétrica",
+      "Ar-condicionado",
+      "Alarme",
+      "Central multimídia"
+    ],
+    "desc": "Veículo revisado e pronto para venda.",
     "fotos": [
       "/carros/volkswagen-polo-2024-1787764180611-8.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-7.jpg",
@@ -781,15 +843,7 @@ const VEHICLES = [
       "/carros/volkswagen-polo-2024-1787764180611-5.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-6.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-9.jpg"
-    ],
-    "opcionais": [
-      "Vidros elétricos",
-      "Trava elétrica",
-      "Ar-condicionado",
-      "Alarme",
-      "Central multimídia"
-    ],
-    "desc": "Veículo revisado e pronto para venda."
+    ]
   },
   {
     "id": 1789063195671,
@@ -800,12 +854,22 @@ const VEHICLES = [
     "ano": 2017,
     "anoModelo": 2018,
     "km": 74700,
-    "preco": 59900,
+    "uso": "seminovo",
     "cambio": "manual",
     "combustivel": "Flex",
     "cor": "Branco",
-    "uso": "seminovo",
+    "preco": 59900,
     "img": "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-9.jpg",
+    "opcionais": [
+      "Ar-condicionado",
+      "Câmera de ré",
+      "Pneus novos",
+      "Vidros elétricos",
+      "Trava elétrica",
+      "Som",
+      "Central multimídia com Bluetooth"
+    ],
+    "desc": "Veículo revisado e pronto para rodar.",
     "fotos": [
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-9.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-1.jpg",
@@ -817,16 +881,6 @@ const VEHICLES = [
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-7.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-8.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-10.jpg"
-    ],
-    "opcionais": [
-      "Ar-condicionado",
-      "Câmera de ré",
-      "Pneus novos",
-      "Vidros elétricos",
-      "Trava elétrica",
-      "Som",
-      "Central multimídia com Bluetooth"
-    ],
-    "desc": "Veículo revisado e pronto para rodar."
+    ]
   }
 ];
