@@ -214,40 +214,6 @@ const VEHICLES = [
     ]
   },
   {
-    "id": 10,
-    "destaque": false,
-    "marca": "Chevrolet",
-    "modelo": "Onix Hatch",
-    "versao": "LT 1.0 12V MT6",
-    "ano": 2021,
-    "anoModelo": 2022,
-    "km": 138736,
-    "uso": "seminovo",
-    "cambio": "manual",
-    "combustivel": "Flex",
-    "cor": "Branco",
-    "preco": 63850,
-    "img": "/carros/chevrolet-onix-2021-6.jpg",
-    "opcionais": [
-      "Ar-condicionado",
-      "MyLink",
-      "Câmera de ré",
-      "Direção elétrica"
-    ],
-    "desc": "Onix Hatch LT 1.0. Moderno e econômico.",
-    "fotos": [
-      "/carros/chevrolet-onix-2021-6.jpg",
-      "/carros/chevrolet-onix-2021-1.jpg",
-      "/carros/chevrolet-onix-2021-2.jpg",
-      "/carros/chevrolet-onix-2021-3.jpg",
-      "/carros/chevrolet-onix-2021-4.jpg",
-      "/carros/chevrolet-onix-2021-5.jpg",
-      "/carros/chevrolet-onix-2021-7.jpg",
-      "/carros/chevrolet-onix-2021-8.jpg",
-      "/carros/chevrolet-onix-2021-9.jpg"
-    ]
-  },
-  {
     "id": 11,
     "destaque": false,
     "marca": "Chevrolet",
