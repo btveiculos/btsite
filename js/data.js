@@ -2,6 +2,42 @@ const WHATSAPP = '5511993662724';
 
 const VEHICLES = [
   {
+    "id": 1789063195673,
+    "destaque": false,
+    "marca": "Fiat",
+    "modelo": "Fiat Idea 1.4",
+    "versao": "Idea 1.4 ELX FLEX",
+    "ano": 2006,
+    "anoModelo": 2007,
+    "km": 215921,
+    "uso": "seminovo",
+    "cambio": "manual",
+    "combustivel": "Flex",
+    "cor": "Preto",
+    "preco": 29900,
+    "img": "/carros/veiculo-1794319996153-1.jpg",
+    "opcionais": [
+      "Ar-condicionado",
+      "Direção Hidráulica",
+      "Central multimídia"
+    ],
+    "desc": "Completo (com todos os itens de série) Mecânica em ordem (revisado e funcionando perfeitamente) Pneus bons (prontos para rodar muito tempo) Pintura e funilaria OK (carro muito bonito e bem cuidado) Documentação em dia (pronto para transferir na hora) Ótima oportunidade para quem quer um carro de procedência para o dia a dia ou viagens",
+    "fotos": [
+      "/carros/veiculo-1794319996153-1.jpg",
+      "/carros/veiculo-1794320010485-1.jpg",
+      "/carros/veiculo-1794320010485-2.jpg",
+      "/carros/veiculo-1794320010485-3.jpg",
+      "/carros/veiculo-1794320010485-4.jpg",
+      "/carros/veiculo-1794320010485-5.jpg",
+      "/carros/veiculo-1794320010485-6.jpg",
+      "/carros/veiculo-1794320010485-7.jpg",
+      "/carros/veiculo-1794320010485-8.jpg",
+      "/carros/veiculo-1794320010485-9.jpg",
+      "/carros/veiculo-1794320010485-10.jpg",
+      "/carros/veiculo-1794320010485-11.jpg"
+    ]
+  },
+  {
     "id": 1789063195672,
     "destaque": true,
     "marca": "BYD",
