@@ -315,33 +315,6 @@ const VEHICLES = [
     ]
   },
   {
-    "id": 16,
-    "destaque": false,
-    "marca": "Hyundai",
-    "modelo": "HB20",
-    "versao": "Confort 1.0 Flex 12V MEC. G Completo",
-    "ano": 2023,
-    "anoModelo": 2024,
-    "km": 119000,
-    "uso": "seminovo",
-    "cambio": "manual",
-    "combustivel": "Flex",
-    "cor": "Preto",
-    "preco": 67900,
-    "img": "/carros/hyundai-hb20-2023-1787341578122-1.jpg",
-    "opcionais": [
-      "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos",
-      "Central multimídia",
-      "Câmera de ré"
-    ],
-    "desc": "HB20 Confort 1.0 completo. Modelo atualizado.",
-    "fotos": [
-      "/carros/hyundai-hb20-2023-1787341578122-1.jpg"
-    ]
-  },
-  {
     "id": 17,
     "destaque": true,
     "marca": "Hyundai",
