@@ -566,31 +566,6 @@ const VEHICLES = [
     ]
   },
   {
-    "id": 25,
-    "destaque": false,
-    "marca": "Fiat",
-    "modelo": "Cronos",
-    "versao": "1.0 Completo",
-    "ano": 2022,
-    "anoModelo": 2023,
-    "km": 85835,
-    "uso": "seminovo",
-    "cambio": "manual",
-    "combustivel": "Flex",
-    "cor": "Branco",
-    "preco": 61900,
-    "img": "/carros/fiat-cronos-2022-1787341608852-1.jpg",
-    "opcionais": [
-      "Ar-condicionado",
-      "Direção elétrica",
-      "Central multimídia"
-    ],
-    "desc": "Cronos 1.0 completo. Revisado.",
-    "fotos": [
-      "/carros/fiat-cronos-2022-1787341608852-1.jpg"
-    ]
-  },
-  {
     "id": 26,
     "destaque": false,
     "marca": "Fiat",
