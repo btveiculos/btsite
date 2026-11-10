@@ -200,6 +200,7 @@ button{cursor:pointer;background:none;border:0}
 .item:hover{border-color:var(--line2)}
 .item.novo{border-color:rgba(31,170,84,.55)}
 .item.mudou{border-color:rgba(255,190,60,.5)}
+.lista.ocupado{opacity:.55;pointer-events:none;transition:opacity .2s}
 .item.removido{opacity:.45}
 .item.removido .item-nome{text-decoration:line-through}
 .item-foto{width:96px;height:66px;border-radius:8px;background:var(--card2) center/cover;overflow:hidden}

@@ -362,6 +362,7 @@ window.addEventListener('resize', () => { clearTimeout(redim); redim = setTimeou
 
 let estoque = { sha: null, original: [], vehicles: [] };
 let removidos = new Set();
+let publicando = false;
 let fotosNovas = {}; // 'carros/arquivo.jpg' -> dataURL (prévia até o site atualizar)
 const fotosEnviadas = {}; // 'carros/arquivo.jpg' -> sha no GitHub, para não enviar duas vezes
 
@@ -369,7 +370,7 @@ const srcFoto = p => (p && fotosNovas[p.replace(/^\//, '')]) || p;
 
 async function carregarEstoque() {
   // Sessão expirou no meio da edição: ao entrar de novo, mantém o que não foi publicado
-  if (estoque.sha && alteracoes().total) { desenharLista(); return; }
+  if (estoque.sha && alteracoes().total) { desenharLista(); publicar(); return; }
   $('estoqueTexto').textContent = 'Carregando…';
   try {
     const d = await api('/admin/stock');
@@ -434,84 +435,133 @@ function desenharLista() {
 
 $('busca').oninput = desenharLista;
 
+// Cada ação (tirar, colocar, editar, destaque) já publica no site na mesma hora.
+// A barra de baixo só aparece se uma publicação falhar, para tentar de novo.
+const nomeVeiculo = v => `${v.marca} ${v.modelo}${v.ano ? ' ' + v.ano : ''}`;
+
 $('lista').onclick = e => {
   const btn = e.target.closest('[data-acao]');
-  if (!btn) return;
+  if (!btn || publicando) return;
   const id = Number(btn.closest('.item').dataset.id);
   const v = estoque.vehicles.find(x => x.id === id);
+  if (!v) return;
   const acao = btn.dataset.acao;
-  if (acao === 'destaque') v.destaque = !v.destaque;
   if (acao === 'editar') return abrirEditor(v);
+  if (acao === 'destaque') {
+    v.destaque = !v.destaque;
+    publicar(v.destaque ? `${nomeVeiculo(v)} está nos destaques.` : `${nomeVeiculo(v)} saiu dos destaques.`);
+  }
   if (acao === 'remover') {
+    if (!confirm(`Tirar o ${nomeVeiculo(v)} do site?`)) return;
     if (situacao(v) === 'novo') estoque.vehicles = estoque.vehicles.filter(x => x !== v);
     else removidos.add(id);
+    publicar(`${nomeVeiculo(v)} saiu do site.`);
   }
-  if (acao === 'desfazer') removidos.delete(id);
-  desenharLista();
+  if (acao === 'desfazer') { removidos.delete(id); desenharLista(); }
 };
 
 function atualizarBarra() {
   const c = alteracoes();
-  $('contPendente').hidden = !c.total;
+  const mostrar = !!c.total && !publicando;
+  $('contPendente').hidden = !mostrar;
   $('contPendente').textContent = c.total;
-  $('barraPublicar').hidden = !c.total || $('telaEstoque').hidden;
+  $('barraPublicar').hidden = !mostrar || $('telaEstoque').hidden;
   const partes = [];
   if (c.novo) partes.push(`${c.novo} ${c.novo === 1 ? 'novo' : 'novos'}`);
   if (c.mudou) partes.push(`${c.mudou} ${c.mudou === 1 ? 'alterado' : 'alterados'}`);
-  if (c.removido) partes.push(`${c.removido} para remover`);
-  $('publicarTexto').textContent = 'Alterações ainda não publicadas' + (partes.length ? ': ' + partes.join(', ') : '');
+  if (c.removido) partes.push(`${c.removido} para tirar`);
+  $('publicarTexto').textContent = 'Ainda não foi para o site' + (partes.length ? ': ' + partes.join(', ') : '') + '.';
 }
 
-window.addEventListener('beforeunload', e => { if (alteracoes().total) { e.preventDefault(); e.returnValue = ''; } });
+window.addEventListener('beforeunload', e => { if (publicando || alteracoes().total) { e.preventDefault(); e.returnValue = ''; } });
 
 $('btnDescartar').onclick = () => {
-  if (!confirm('Descartar todas as alterações que ainda não foram publicadas?')) return;
+  if (!confirm('Desfazer o que ainda não foi para o site?')) return;
   estoque.vehicles = clone(estoque.original);
   removidos = new Set();
-  fotosNovas = {};
   desenharLista();
 };
 
-$('btnPublicar').onclick = async () => {
-  const btn = $('btnPublicar');
+$('btnPublicar').onclick = () => publicar();
+
+
+const esperar = ms => new Promise(r => setTimeout(r, ms));
+
+function travar(sim) {
+  publicando = sim;
+  $('lista').classList.toggle('ocupado', sim);
+  $('btnNovo').disabled = sim;
+  if (sim) $('estoqueTexto').textContent = 'Publicando no site…';
+  else desenharLista();
+  atualizarBarra();
+}
+
+// O estoque mudou em outro lugar (outro aparelho, outra pessoa): busca o atual
+// e refaz em cima dele só o que foi mexido aqui.
+async function refazerSobreAtual() {
+  const d = await api('/admin/stock');
+  const sit = new Map(estoque.vehicles.map(v => [v.id, situacao(v)]));
+  const editados = new Map(estoque.vehicles.filter(v => sit.get(v.id) === 'mudou').map(v => [v.id, v]));
+  let maior = Math.max(0, ...d.vehicles.map(v => Number(v.id) || 0));
+  const novos = estoque.vehicles.filter(v => sit.get(v.id) === 'novo')
+    .map(v => d.vehicles.some(x => x.id === v.id) ? { ...v, id: ++maior } : v);
+  estoque = { sha: d.sha, original: d.vehicles, vehicles: [...novos, ...d.vehicles.map(v => editados.get(v.id) || clone(v))] };
+  removidos = new Set([...removidos].filter(id => d.vehicles.some(v => v.id === id)));
+}
+
+async function enviar() {
   const c = alteracoes();
-  btn.disabled = true;
-  btn.textContent = 'Publicando…';
-  try {
-    const vehicles = estoque.vehicles.filter(v => !removidos.has(v.id));
-    if (!vehicles.length && !confirm('Isso vai deixar o site sem nenhum veículo. Publicar mesmo assim?')) return;
-    const usadas = new Set(vehicles.flatMap(v => [v.img, ...(v.fotos || [])]).filter(Boolean).map(p => p.replace(/^\//, '')));
-    const novas = Object.keys(fotosNovas).filter(p => usadas.has(p));
-    // Cada foto vai num envio separado; o commit leva só as referências
-    const faltam = novas.filter(p => !fotosEnviadas[p]);
-    for (let i = 0; i < faltam.length; i++) {
-      btn.textContent = `Enviando fotos ${i + 1} de ${faltam.length}…`;
-      const f = await api('/admin/photo', { method: 'POST', body: JSON.stringify({ path: faltam[i], data: fotosNovas[faltam[i]].split(',')[1] }) });
-      fotosEnviadas[faltam[i]] = f.sha;
-    }
-    btn.textContent = 'Publicando…';
-    const photos = novas.map(path => ({ path, sha: fotosEnviadas[path] }));
-    const partes = [];
-    if (c.novo) partes.push(`${c.novo} novo(s)`);
-    if (c.mudou) partes.push(`${c.mudou} alterado(s)`);
-    if (c.removido) partes.push(`${c.removido} removido(s)`);
-    const r = await api('/admin/publish', {
-      method: 'POST',
-      body: JSON.stringify({ baseSha: estoque.sha, vehicles, photos, confirmarVazio: !vehicles.length, message: 'Estoque pelo painel: ' + (partes.join(', ') || 'nova ordem') }),
-    });
-    if (r.simulacao) { aviso(`Simulação ok: ${r.veiculos} veículos e ${r.fotos} fotos novas seriam publicados.`); return; }
-    // Usa a versão que o servidor gravou (textos já limpos)
-    estoque = { sha: r.sha, original: r.vehicles, vehicles: clone(r.vehicles) };
-    removidos = new Set();
-    desenharLista();
-    aviso('Publicado! O site mostra as mudanças em 1 a 2 minutos.');
-  } catch (err) {
-    if (err.message !== 'sessão') aviso(err.status === 409 ? err.message : 'Não foi possível publicar: ' + err.message, true);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Publicar no site';
+  const vehicles = estoque.vehicles.filter(v => !removidos.has(v.id));
+  const usadas = new Set(vehicles.flatMap(v => [v.img, ...(v.fotos || [])]).filter(Boolean).map(p => p.replace(/^\//, '')));
+  const novas = Object.keys(fotosNovas).filter(p => usadas.has(p));
+  // Cada foto vai num envio separado; o commit leva só as referências
+  const faltam = novas.filter(p => !fotosEnviadas[p]);
+  for (let i = 0; i < faltam.length; i++) {
+    $('estoqueTexto').textContent = `Enviando fotos ${i + 1} de ${faltam.length}…`;
+    const f = await api('/admin/photo', { method: 'POST', body: JSON.stringify({ path: faltam[i], data: fotosNovas[faltam[i]].split(',')[1] }) });
+    fotosEnviadas[faltam[i]] = f.sha;
   }
-};
+  $('estoqueTexto').textContent = 'Publicando no site…';
+  const partes = [];
+  if (c.novo) partes.push(`${c.novo} novo(s)`);
+  if (c.mudou) partes.push(`${c.mudou} alterado(s)`);
+  if (c.removido) partes.push(`${c.removido} removido(s)`);
+  return api('/admin/publish', {
+    method: 'POST',
+    body: JSON.stringify({
+      baseSha: estoque.sha, vehicles, photos: novas.map(path => ({ path, sha: fotosEnviadas[path] })),
+      confirmarVazio: !vehicles.length, message: 'Estoque pelo painel: ' + (partes.join(', ') || 'nova ordem'),
+    }),
+  });
+}
+
+async function publicar(mensagemOk) {
+  if (publicando || !alteracoes().total) return;
+  if (!estoque.vehicles.some(v => !removidos.has(v.id)) && !confirm('Isso vai deixar o site sem nenhum veículo. Continuar?')) {
+    $('btnDescartar').click();
+    return;
+  }
+  travar(true);
+  try {
+    let r;
+    for (let tentativa = 1; ; tentativa++) {
+      try { r = await enviar(); break; } catch (err) {
+        if (err.status !== 409 || tentativa >= 4) throw err;
+        await esperar(1500 * tentativa); // o GitHub leva alguns segundos para entregar a versão nova
+        await refazerSobreAtual();
+        if (!alteracoes().total) { r = null; break; } // já estava assim no site
+      }
+    }
+    if (r && r.simulacao) { aviso(`Simulação ok: ${r.veiculos} veículos e ${r.fotos} fotos novas seriam publicados.`); return; }
+    if (r) estoque = { sha: r.sha, original: r.vehicles, vehicles: clone(r.vehicles) };
+    removidos = new Set();
+    aviso((mensagemOk || 'Publicado no site.') + ' O site mostra em 1 a 2 minutos.');
+  } catch (err) {
+    if (err.message !== 'sessão') aviso('Não foi para o site: ' + (err.message === 'Failed to fetch' ? 'sem internet ou servidor fora do ar' : err.message) + '. Clique em "Tentar de novo".', true);
+  } finally {
+    travar(false);
+  }
+}
 
 // ---------------------------------------------------------------- editor
 
@@ -596,7 +646,9 @@ form.onsubmit = e => {
   }
   fecharEditor();
   desenharLista();
-  aviso(editando ? 'Alterações salvas. Clique em "Publicar no site" quando terminar.' : 'Veículo adicionado. Clique em "Publicar no site" quando terminar.');
+  const nome = nomeVeiculo(dados);
+  if (!alteracoes().total) return aviso('Nada mudou.');
+  publicar(editando ? `${nome} atualizado no site.` : `${nome} entrou no site.`);
 };
 
 // ---------------------------------------------------------------- fotos

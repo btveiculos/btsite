@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/painel.css?v=20261020c">
+  <link rel="stylesheet" href="css/painel.css?v=20261110a">
 </head>
 <body>
 
@@ -133,13 +133,13 @@
       <div class="lista" id="lista"></div>
     </section>
 
-    <!-- Barra de publicação: aparece quando há alterações -->
+    <!-- Barra de publicação: só aparece se uma publicação falhar -->
     <div class="publicar" id="barraPublicar" hidden>
       <div class="publicar-in">
         <p id="publicarTexto"></p>
         <div class="publicar-botoes">
-          <button class="btn btn-ghost" id="btnDescartar">Descartar</button>
-          <button class="btn btn-red" id="btnPublicar">Publicar no site</button>
+          <button class="btn btn-ghost" id="btnDescartar">Desfazer</button>
+          <button class="btn btn-red" id="btnPublicar">Tentar de novo</button>
         </div>
       </div>
     </div>
@@ -187,7 +187,7 @@
       </div>
       <div class="editor-rodape">
         <button type="button" class="btn btn-ghost" id="btnCancelar">Cancelar</button>
-        <button type="submit" class="btn btn-red">Salvar veículo</button>
+        <button type="submit" class="btn btn-red">Salvar e publicar</button>
       </div>
     </form>
   </div>
@@ -195,6 +195,6 @@
   <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
 
   <script src="js/config.js?v=20261020c"></script>
-  <script src="js/painel.js?v=20261020c"></script>
+  <script src="js/painel.js?v=20261110a"></script>
 </body>
 </html>
