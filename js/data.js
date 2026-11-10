@@ -3,7 +3,7 @@ const WHATSAPP = '5511993662724';
 const VEHICLES = [
   {
     "id": 1789063195672,
-    "destaque": false,
+    "destaque": true,
     "marca": "BYD",
     "modelo": "MINI DOLPHIN",
     "versao": "MINI DOLPHIN EV 2027 ZERO KM DOCUMENTADO",
