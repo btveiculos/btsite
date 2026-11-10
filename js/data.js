@@ -725,31 +725,6 @@ const VEHICLES = [
     ]
   },
   {
-    "id": 27,
-    "destaque": false,
-    "marca": "Renault",
-    "modelo": "Logan",
-    "versao": "Zen 1.0 Completo",
-    "ano": 2020,
-    "anoModelo": 2021,
-    "km": 275262,
-    "uso": "usado",
-    "cambio": "manual",
-    "combustivel": "Flex",
-    "cor": "Prata",
-    "preco": 49900,
-    "img": "/carros/renault-logan-2020-1787341621545-1.jpg",
-    "opcionais": [
-      "Ar-condicionado",
-      "Direção elétrica",
-      "Central multimídia"
-    ],
-    "desc": "Logan Zen 1.0 completo. Sedan espaçoso.",
-    "fotos": [
-      "/carros/renault-logan-2020-1787341621545-1.jpg"
-    ]
-  },
-  {
     "id": 28,
     "destaque": false,
     "marca": "Renault",
