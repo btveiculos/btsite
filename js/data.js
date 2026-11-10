@@ -226,7 +226,7 @@ const VEHICLES = [
     "cambio": "manual",
     "combustivel": "Flex",
     "cor": "Branco",
-    "preco": 74900,
+    "preco": 71900,
     "img": "/carros/chevrolet-onix-sedan-2024-1.jpg",
     "opcionais": [
       "Ar-condicionado",
