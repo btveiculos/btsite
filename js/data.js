@@ -184,43 +184,6 @@ const VEHICLES = [
     ]
   },
   {
-    "id": 7,
-    "destaque": false,
-    "marca": "Fiat",
-    "modelo": "Cronos",
-    "versao": "1.0 6V Flex Completo",
-    "ano": 2023,
-    "anoModelo": 2023,
-    "km": 85900,
-    "uso": "seminovo",
-    "cambio": "manual",
-    "combustivel": "Flex",
-    "cor": "Branco",
-    "preco": 63900,
-    "img": "/carros/fiat-cronos-2023-1.jpg",
-    "opcionais": [
-      "Ar-condicionado",
-      "Direção elétrica",
-      "Vidros elétricos",
-      "Central multimídia",
-      "Sensor de estacionamento"
-    ],
-    "desc": "Cronos 1.0 Flex completo. Sedan compacto moderno.",
-    "fotos": [
-      "/carros/fiat-cronos-2023-1.jpg",
-      "/carros/fiat-cronos-2023-2.jpg",
-      "/carros/fiat-cronos-2023-3.jpg",
-      "/carros/fiat-cronos-2023-4.jpg",
-      "/carros/fiat-cronos-2023-5.jpg",
-      "/carros/fiat-cronos-2023-6.jpg",
-      "/carros/fiat-cronos-2023-7.jpg",
-      "/carros/fiat-cronos-2023-8.jpg",
-      "/carros/fiat-cronos-2023-9.jpg",
-      "/carros/fiat-cronos-2023-10.jpg",
-      "/carros/fiat-cronos-2023-11.jpg"
-    ]
-  },
-  {
     "id": 8,
     "destaque": false,
     "marca": "Ford",
