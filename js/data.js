@@ -506,7 +506,7 @@ const VEHICLES = [
     "cambio": "manual",
     "combustivel": "Flex",
     "cor": "Preto",
-    "preco": 72500,
+    "preco": 71900,
     "img": "/carros/chevrolet-onix-plus-2024-1788382878311-9.jpg",
     "opcionais": [
       "Ar-condicionado",
