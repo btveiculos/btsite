@@ -14,7 +14,7 @@ const VEHICLES = [
     "cambio": "automático",
     "combustivel": "Elétrico",
     "cor": "CINZA LANÇAMENTO",
-    "preco": 123900000,
+    "preco": 123900,
     "img": "/carros/veiculo-1793296169298-5.jpg",
     "opcionais": [
       "Ar-condicionado com controle digital",
