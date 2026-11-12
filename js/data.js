@@ -2,6 +2,41 @@ const WHATSAPP = '5511993662724';
 
 const VEHICLES = [
   {
+    "id": 1789063195677,
+    "destaque": false,
+    "marca": "Fiat",
+    "modelo": "Toro",
+    "versao": "TORO RANCH 2.0 TURBO DIESEL 4WD AT9",
+    "ano": 2023,
+    "anoModelo": 2023,
+    "km": 38000,
+    "uso": "seminovo",
+    "cambio": "automático",
+    "combustivel": "Diesel",
+    "cor": "Branco",
+    "preco": 138900,
+    "img": "/carros/veiculo-1794492793139-1.jpg",
+    "opcionais": [
+      "Ar-condicionado",
+      "Direção Hidráulica",
+      "Central multimídia"
+    ],
+    "desc": "Se você procura uma picape robusta, confortável, potente e muito bem conservada, essa é uma excelente oportunidade! ✅ Cor branca ✅ 38.000 km ✅ Único dono ✅ Motor 2.0 Turbo Diesel ✅ Tração 4WD (4x4) ✅ Câmbio automático de 9 marchas ✅ Versão Ranch – topo de linha ✅ Todas as revisões realizadas em concessionária ✅ Veículo quitado ✅ Utilizada exclusivamente para passeios ✅ Muito bem cuidada e conservada ⭐ ROBUSTEZ, CONFORTO E EXCLUSIVIDADE! A Fiat Toro Ranch reúne a força do motor 2.0 Turbo Diesel com a versatilidade da tração 4x4 e o conforto do câmbio automático de 9 marchas. Um veículo diferenciado, com baixa quilometragem, histórico de manutenção em concessionária e procedência de único dono. ✨ Excelente oportunidade para quem procura uma Toro Ranch com procedência e histórico de manutenção!",
+    "fotos": [
+      "/carros/veiculo-1794492793139-1.jpg",
+      "/carros/veiculo-1794492871470-3.jpg",
+      "/carros/veiculo-1794492871470-5.jpg",
+      "/carros/veiculo-1794492871470-6.jpg",
+      "/carros/veiculo-1794492871470-7.jpg",
+      "/carros/veiculo-1794492871470-4.jpg",
+      "/carros/veiculo-1794492871470-1.jpg",
+      "/carros/veiculo-1794492871470-2.jpg",
+      "/carros/veiculo-1794492871470-8.jpg",
+      "/carros/veiculo-1794492871470-9.jpg",
+      "/carros/veiculo-1794492871470-10.jpg"
+    ]
+  },
+  {
     "id": 1789063195676,
     "destaque": false,
     "marca": "CAOA CHERY",
