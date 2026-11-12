@@ -66,7 +66,7 @@ section[id],#venda{scroll-margin-top:90px}
 
 /* ---------- Topo cinematográfico ---------- */
 .hero{position:relative;min-height:max(640px,min(100svh,1080px));display:flex;align-items:center;overflow:hidden;background:#090a0c;isolation:isolate}
-.hero-bg{position:absolute;inset:-4% 0;z-index:-2;background:url(../img/loja.jpg?v=2) 100% 30%/cover no-repeat;will-change:transform}
+.hero-bg{position:absolute;inset:-4% 0;z-index:-2;background:url(../img/loja.jpg?v=3) 0% 55%/cover no-repeat;will-change:transform}
 .hero-shade{position:absolute;inset:0;z-index:-1;background:
   linear-gradient(90deg,rgba(9,10,12,.92) 0%,rgba(9,10,12,.72) 32%,rgba(9,10,12,.18) 62%,rgba(9,10,12,0) 80%),
   linear-gradient(180deg,rgba(9,10,12,.55) 0%,rgba(9,10,12,0) 22%,rgba(9,10,12,0) 70%,var(--bg) 100%)}
@@ -170,7 +170,7 @@ section[id],#venda{scroll-margin-top:90px}
 
 /* ---------- Fechamento com foto + como chegar ---------- */
 .fecho{position:relative;min-height:520px;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
-.fecho-bg{position:absolute;inset:-18% 0;z-index:-2;background:url(../img/loja.jpg?v=2) 85% 60%/cover no-repeat;will-change:transform}
+.fecho-bg{position:absolute;inset:-18% 0;z-index:-2;background:url(../img/loja.jpg?v=3) 50% 60%/cover no-repeat;will-change:transform}
 .fecho::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--bg) 0%,rgba(14,15,17,.35) 35%,rgba(14,15,17,.55) 65%,rgba(14,15,17,.95) 100%)}
 .fecho-inner{width:100%;max-width:1240px;margin:0 auto;padding:160px var(--pad) 72px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .fecho h2{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(48px,7vw,104px);line-height:.88}
@@ -226,7 +226,7 @@ section[id],#venda{scroll-margin-top:90px}
 
 /* ---------- Página de estoque ---------- */
 .estoque-page .estoque-full{min-height:70vh;padding-bottom:100px}
-.estoque-full-head{position:relative;padding:150px 0 46px;background:linear-gradient(180deg,rgba(14,15,17,.6),var(--bg)),url(../img/loja.jpg?v=2) 85% 35%/cover no-repeat}
+.estoque-full-head{position:relative;padding:150px 0 46px;background:linear-gradient(180deg,rgba(14,15,17,.6),var(--bg)),url(../img/loja.jpg?v=3) 50% 40%/cover no-repeat}
 .estoque-full-title{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(52px,7vw,96px);line-height:.9}
 .estoque-full-sub{color:var(--text2);font-size:17px;margin-top:10px}
 .estoque-filters-bar{padding:26px 0 0}
@@ -277,7 +277,7 @@ section[id],#venda{scroll-margin-top:90px}
   .logo-slogan{display:none}
   .hero{align-items:flex-end}
   /* Foto inteira da loja numa faixa no alto; o texto entra logo abaixo, sem cobrir o letreiro */
-  .hero-bg{inset:64px 0 auto 0;height:calc(54svh - 64px);background-image:url(../img/loja-angulo.jpg?v=2);background-position:22% 50%}
+  .hero-bg{inset:0 0 auto 0;height:54svh;background-position:70% 40%}
   .hero-shade{background:linear-gradient(180deg,rgba(9,10,12,.45) 0,rgba(9,10,12,0) 12svh,rgba(9,10,12,0) 34svh,var(--bg) 54svh)}
   .hero-content{padding:47svh var(--pad) 44px}
   .hero-title{font-size:clamp(50px,15vw,72px);line-height:.94}
