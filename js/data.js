@@ -517,40 +517,6 @@ const VEHICLES = [
     ]
   },
   {
-    "id": 18,
-    "destaque": false,
-    "marca": "Hyundai",
-    "modelo": "Tucson",
-    "versao": "2.0 16V Mecânica",
-    "ano": 2009,
-    "anoModelo": 2010,
-    "km": 269710,
-    "uso": "usado",
-    "cambio": "manual",
-    "combustivel": "Gasolina",
-    "cor": "Prata",
-    "preco": 39900,
-    "img": "/carros/hyundai-tucson-2009-2.jpg",
-    "opcionais": [
-      "Ar-condicionado",
-      "Direção hidráulica",
-      "Vidros elétricos"
-    ],
-    "desc": "Tucson 2.0 mecânica. SUV espaçosa.",
-    "fotos": [
-      "/carros/hyundai-tucson-2009-2.jpg",
-      "/carros/hyundai-tucson-2009-1.jpg",
-      "/carros/hyundai-tucson-2009-3.jpg",
-      "/carros/hyundai-tucson-2009-4.jpg",
-      "/carros/hyundai-tucson-2009-5.jpg",
-      "/carros/hyundai-tucson-2009-6.jpg",
-      "/carros/hyundai-tucson-2009-7.jpg",
-      "/carros/hyundai-tucson-2009-8.jpg",
-      "/carros/hyundai-tucson-2009-9.jpg",
-      "/carros/hyundai-tucson-2009-10.jpg"
-    ]
-  },
-  {
     "id": 19,
     "destaque": false,
     "marca": "Citroën",
