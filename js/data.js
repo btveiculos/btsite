@@ -2,6 +2,38 @@ const WHATSAPP = '5511993662724';
 
 const VEHICLES = [
   {
+    "id": 1789063195674,
+    "destaque": false,
+    "marca": "Volkswagen",
+    "modelo": "Saveiro",
+    "versao": "Saveiro Trendline CS 1.6 MSI 16V",
+    "ano": 2024,
+    "anoModelo": 2025,
+    "km": 29000,
+    "uso": "seminovo",
+    "cambio": "manual",
+    "combustivel": "Flex",
+    "cor": "Cinza",
+    "preco": 94900,
+    "img": "/carros/veiculo-1794488972539-4.jpg",
+    "opcionais": [
+      "Ar-condicionado",
+      "Direção Hidráulica",
+      "Central multimídia"
+    ],
+    "desc": "Se você procura uma picape praticamente nova, muito bem cuidada e pronta para uso, essa é uma excelente oportunidade! ✅ 29.000 km ✅ Segundo dono ✅ Garantia de fábrica ✅ Revisões em dia ✅ Cristalização da pintura realizada ✅ Para-choque traseiro personalizado ✅ Utilizada exclusivamente para uso pessoal Veículo extremamente conservado, sem histórico de uso severo, ideal para quem busca economia, confiabilidade e excelente custo-benefício. 📍 Agende sua visita e venha conferir de perto. 📲 Entre em contato para mais informações, fotos ou agendar uma avaliação.",
+    "fotos": [
+      "/carros/veiculo-1794488972539-4.jpg",
+      "/carros/veiculo-1794488972539-1.jpg",
+      "/carros/veiculo-1794488972539-2.jpg",
+      "/carros/veiculo-1794488972539-3.jpg",
+      "/carros/veiculo-1794488972539-5.jpg",
+      "/carros/veiculo-1794488972539-6.jpg",
+      "/carros/veiculo-1794490986928-1.jpg",
+      "/carros/veiculo-1794490986928-2.jpg"
+    ]
+  },
+  {
     "id": 1789063195673,
     "destaque": false,
     "marca": "Fiat",
