@@ -2,6 +2,37 @@ const WHATSAPP = '5511993662724';
 
 const VEHICLES = [
   {
+    "id": 1789063195678,
+    "destaque": false,
+    "marca": "Chevrolet",
+    "modelo": "Agile 1.4",
+    "versao": "Agile 1.4 LTZ",
+    "ano": 2010,
+    "anoModelo": 2011,
+    "km": 156000,
+    "uso": "seminovo",
+    "cambio": "manual",
+    "combustivel": "Flex",
+    "cor": "Preto",
+    "preco": 39900,
+    "img": "/carros/veiculo-1794582698667-2.jpg",
+    "opcionais": [
+      "Ar-condicionado",
+      "Direção Hidráulica"
+    ],
+    "desc": "Agile 1.4 LTZ Completo",
+    "fotos": [
+      "/carros/veiculo-1794582698667-2.jpg",
+      "/carros/veiculo-1794582698667-3.jpg",
+      "/carros/veiculo-1794582698667-5.jpg",
+      "/carros/veiculo-1794582698667-6.jpg",
+      "/carros/veiculo-1794582698667-7.jpg",
+      "/carros/veiculo-1794582698667-8.jpg",
+      "/carros/veiculo-1794582698667-1.jpg",
+      "/carros/veiculo-1794582698667-4.jpg"
+    ]
+  },
+  {
     "id": 1789063195677,
     "destaque": false,
     "marca": "Fiat",
