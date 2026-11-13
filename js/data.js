@@ -797,7 +797,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 57900,
-    "img": "/carros/renault-kwid-2023-4.jpg",
+    "img": "/carros/renault-kwid-2023-1794602555662-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -805,6 +805,7 @@ const VEHICLES = [
     ],
     "desc": "Kwid Zen 1.0 completo. Baixa km.",
     "fotos": [
+      "/carros/renault-kwid-2023-1794602555662-1.jpg",
       "/carros/renault-kwid-2023-4.jpg",
       "/carros/renault-kwid-2023-1.jpg",
       "/carros/renault-kwid-2023-2.jpg",
