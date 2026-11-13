@@ -115,7 +115,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Preto",
     "preco": 95900,
-    "img": "/carros/veiculo-1794491620512-6.jpg",
+    "img": "/carros/volkswagen-t-cross-2021-1794597117173-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção Hidráulica",
@@ -123,6 +123,7 @@ const VEHICLES = [
     ],
     "desc": "Se você está procurando um SUV confiável, econômico, confortável e com excelente custo x benefício, vale a pena conhecer esse T-Cross! ✅ 65.222 km ✅ Segundo dono ✅ Motor 1.0 200 TSI Turbo ✅ Câmbio automático ✅ Todas as revisões realizadas em concessionária ✅ Pneus trocados recentemente ✅ Polimento da pintura realizado recentemente ✅ Quilometragem predominantemente de estrada ✅ Trajeto habitual Jundiaí ↔️ São Paulo, pela Rodovia dos Bandeirantes ✅ Veículo muito bem cuidado ⭐ CUSTO X BENEFÍCIO MUITO BOM! Quem já teve a oportunidade de dirigir essa motorização 1.0 TSI Turbo sabe exatamente do que estou falando: excelente desempenho, economia e muito prazer ao dirigir. O carro foi utilizado principalmente em trajetos rodoviários, o que explica boa parte da quilometragem e contribui para um veículo bem conservado.",
     "fotos": [
+      "/carros/volkswagen-t-cross-2021-1794597117173-1.jpg",
       "/carros/veiculo-1794491620512-6.jpg",
       "/carros/veiculo-1794491620512-5.jpg",
       "/carros/veiculo-1794491620512-1.jpg",
