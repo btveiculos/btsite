@@ -618,7 +618,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 39900,
-    "img": "/carros/citroen-c3-aircross-2011-1.jpg",
+    "img": "/carros/citroen-c3-aircross-2011-1794601443406-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -626,6 +626,7 @@ const VEHICLES = [
     ],
     "desc": "C3 Aircross GLX 1.6 completo. Versátil.",
     "fotos": [
+      "/carros/citroen-c3-aircross-2011-1794601443406-1.jpg",
       "/carros/citroen-c3-aircross-2011-1.jpg",
       "/carros/citroen-c3-aircross-2011-2.jpg",
       "/carros/citroen-c3-aircross-2011-3.jpg",
