@@ -83,10 +83,11 @@ const VEHICLES = [
     "combustivel": "Gasolina",
     "cor": "Azul",
     "preco": 129500,
-    "img": "/carros/veiculo-1794492163481-6.jpg",
+    "img": "/carros/caoa-chery-tiggo-8-2022-1794597094089-1.jpg",
     "opcionais": [],
     "desc": "Impecável, Único Dono e 7 Lugares! Procurando um SUV espaçoso, tecnológico, potente e com procedência impecável? Este Caoa Chery Tiggo 8 TXS é a escolha definitiva para você e sua família. Procedência: Único dono Histórico de Manutenção: Todas as revisões realizadas na concessionária (cartilha de revisões carimbada, garantindo total procedência) Pneus: Novos, rodagem garantida por muito tempo sem gastos extras Capacidade: 7 lugares, perfeito para famílias grandes ou quem preza por versatilidade e porta-malas espaçoso Estética e Cuidado: Recentemente polido e com higienização interna completa realizada, com aspecto de carro novo Principais Equipamentos da Versão TXS: Motorização 1.6 TGDI de alta performance aliado ao câmbio automático DCT Teto solar panorâmico Bancos em couro com ajuste elétrico Central multimídia completa com conectividade para smartphones Câmera 360° e assistentes avançados de condução Acabamento interno de alto padrão Veículo de garagem, extremamente bem cuidado, pro",
     "fotos": [
+      "/carros/caoa-chery-tiggo-8-2022-1794597094089-1.jpg",
       "/carros/veiculo-1794492163481-6.jpg",
       "/carros/veiculo-1794492163481-1.jpg",
       "/carros/veiculo-1794492163481-2.jpg",
