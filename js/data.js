@@ -867,7 +867,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Branco",
     "preco": 59900,
-    "img": "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-9.jpg",
+    "img": "/carros/chevrolet-onix-2017-1794602726535-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Câmera de ré",
@@ -879,6 +879,7 @@ const VEHICLES = [
     ],
     "desc": "Veículo revisado e pronto para rodar.",
     "fotos": [
+      "/carros/chevrolet-onix-2017-1794602726535-1.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-9.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-1.jpg",
       "/carros/chevrolet-onix-lt-1-0-2017-1789063150724-2.jpg",
