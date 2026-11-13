@@ -217,7 +217,7 @@ const VEHICLES = [
     "combustivel": "Elétrico",
     "cor": "CINZA LANÇAMENTO",
     "preco": 123900,
-    "img": "/carros/veiculo-1793296169298-5.jpg",
+    "img": "/carros/byd-mini-dolphin-2026-1794598103858-1.jpg",
     "opcionais": [
       "Ar-condicionado com controle digital",
       "Direção elétrica",
@@ -235,6 +235,7 @@ const VEHICLES = [
     ],
     "desc": "# BYD DOLPHIN MINI EV 2027 — ZERO KM **100% ELÉTRICO | ZERO KM DOCUMENTADO | R$ 123.900,00** Conheça o BYD Dolphin Mini 2027, um veículo 100% elétrico que combina tecnologia, economia, conforto e modernidade. Ideal para quem busca mobilidade inteligente, praticidade no dia a dia e uma experiência de condução silenciosa. **PRINCIPAIS EQUIPAMENTOS E ACESSÓRIOS** **Tecnologia e conectividade** - Central multimídia touchscreen de 10,1 polegadas com rotação elétrica - Painel de instrumentos digital de 7 polegadas - Apple CarPlay e Android Auto - Conectividade Bluetooth - Comandos de voz inteligentes - Sistema de som com 4 alto-falantes - Entradas USB tipo A e tipo C - Conectividade 4G - Atualizações remotas de software (OTA) - Volante multifuncional - Aplicativo BYD para acompanhamento de funções do veículo **Conforto e praticidade** - Ar-condicionado com controle digital - Direção elétrica - Câmbio automático de relação única - Chave presencial - Freio de estacionamento eletrônico - Sistem",
     "fotos": [
+      "/carros/byd-mini-dolphin-2026-1794598103858-1.jpg",
       "/carros/veiculo-1793296169298-5.jpg",
       "/carros/veiculo-1793296169298-1.jpg",
       "/carros/veiculo-1793296169298-4.jpg",
