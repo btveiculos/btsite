@@ -767,34 +767,6 @@ const VEHICLES = [
     ]
   },
   {
-    "id": 29,
-    "destaque": false,
-    "marca": "Suzuki",
-    "modelo": "GSX-R 750",
-    "versao": "SRAD",
-    "ano": 2010,
-    "anoModelo": 2011,
-    "km": 47111,
-    "uso": "usado",
-    "cambio": "manual",
-    "combustivel": "Gasolina",
-    "cor": "Branco",
-    "preco": 39900,
-    "img": "/carros/suzuki-gsx-r-750-2010-2.jpg",
-    "opcionais": [],
-    "desc": "GSX-R 750 SRAD. Moto esportiva em excelente estado.",
-    "fotos": [
-      "/carros/suzuki-gsx-r-750-2010-2.jpg",
-      "/carros/suzuki-gsx-r-750-2010-1.jpg",
-      "/carros/suzuki-gsx-r-750-2010-3.jpg",
-      "/carros/suzuki-gsx-r-750-2010-4.jpg",
-      "/carros/suzuki-gsx-r-750-2010-5.jpg",
-      "/carros/suzuki-gsx-r-750-2010-6.jpg",
-      "/carros/suzuki-gsx-r-750-2010-7.jpg",
-      "/carros/suzuki-gsx-r-750-2010-8.jpg"
-    ]
-  },
-  {
     "id": 1787764216421,
     "destaque": false,
     "marca": "Volkswagen",
