@@ -366,7 +366,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 59900,
-    "img": "/carros/fiat-argo-2018-1.jpg",
+    "img": "/carros/fiat-argo-2018-1794599071761-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Bancos em couro",
@@ -376,6 +376,7 @@ const VEHICLES = [
     ],
     "desc": "Argo Drive 1.3 automático com banco de couro. Completo.",
     "fotos": [
+      "/carros/fiat-argo-2018-1794599071761-1.jpg",
       "/carros/fiat-argo-2018-1.jpg",
       "/carros/fiat-argo-2018-2.jpg",
       "/carros/fiat-argo-2018-3.jpg",
