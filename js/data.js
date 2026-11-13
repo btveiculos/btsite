@@ -831,7 +831,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Cinza",
     "preco": 76900,
-    "img": "/carros/volkswagen-polo-2024-1787764180611-8.jpg",
+    "img": "/carros/volkswagen-polo-2024-1794602647665-1.jpg",
     "opcionais": [
       "Vidros elétricos",
       "Trava elétrica",
@@ -841,6 +841,7 @@ const VEHICLES = [
     ],
     "desc": "Veículo revisado e pronto para venda.",
     "fotos": [
+      "/carros/volkswagen-polo-2024-1794602647665-1.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-8.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-7.jpg",
       "/carros/volkswagen-polo-2024-1787764180611-1.jpg",
