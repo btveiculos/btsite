@@ -760,7 +760,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 49900,
-    "img": "/carros/fiat-mobi-2019-4.jpg",
+    "img": "/carros/fiat-mobi-2019-1794602412115-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -768,6 +768,7 @@ const VEHICLES = [
     ],
     "desc": "Mobi Like 1.0 completo. Compacto e econômico.",
     "fotos": [
+      "/carros/fiat-mobi-2019-1794602412115-1.jpg",
       "/carros/fiat-mobi-2019-4.jpg",
       "/carros/fiat-mobi-2019-1.jpg",
       "/carros/fiat-mobi-2019-2.jpg",
