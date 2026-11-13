@@ -539,7 +539,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Azul",
     "preco": 78900,
-    "img": "/carros/hyundai-hb20s-2025-1.jpg",
+    "img": "/carros/hyundai-hb20s-2025-1794600999693-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -549,6 +549,7 @@ const VEHICLES = [
     ],
     "desc": "HB20S Confort Sedan completo. Modelo 2025.",
     "fotos": [
+      "/carros/hyundai-hb20s-2025-1794600999693-1.jpg",
       "/carros/hyundai-hb20s-2025-1.jpg",
       "/carros/hyundai-hb20s-2025-2.jpg",
       "/carros/hyundai-hb20s-2025-3.jpg",
