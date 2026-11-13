@@ -435,7 +435,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Branco",
     "preco": 71900,
-    "img": "/carros/chevrolet-onix-sedan-2024-1.jpg",
+    "img": "/carros/chevrolet-onix-plus-2024-1794600245780-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "MyLink",
@@ -444,6 +444,7 @@ const VEHICLES = [
     ],
     "desc": "Onix Sedan Plus LT completo. Espaçoso.",
     "fotos": [
+      "/carros/chevrolet-onix-plus-2024-1794600245780-1.jpg",
       "/carros/chevrolet-onix-sedan-2024-1.jpg",
       "/carros/chevrolet-onix-sedan-2024-2.jpg",
       "/carros/chevrolet-onix-sedan-2024-3.jpg",
