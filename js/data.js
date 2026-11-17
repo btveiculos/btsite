@@ -9,7 +9,7 @@ const VEHICLES = [
     "versao": "Fox 1.0 8V G2",
     "ano": 2013,
     "anoModelo": 2014,
-    "km": 147000,
+    "km": 147700,
     "uso": "seminovo",
     "cambio": "manual",
     "combustivel": "Flex",
