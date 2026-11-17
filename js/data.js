@@ -2,6 +2,41 @@ const WHATSAPP = '5511993662724';
 
 const VEHICLES = [
   {
+    "id": 1789063195679,
+    "destaque": false,
+    "marca": "Volkswagen",
+    "modelo": "Fox 1.0 8V G2",
+    "versao": "Fox 1.0 8V G2",
+    "ano": 2013,
+    "anoModelo": 2014,
+    "km": 147000,
+    "uso": "seminovo",
+    "cambio": "manual",
+    "combustivel": "Flex",
+    "cor": "Branco",
+    "preco": 44900,
+    "img": "/carros/veiculo-1794923304082-6.jpg",
+    "opcionais": [
+      "Ar-condicionado",
+      "Direção Hidráulica",
+      "Controle de Som no Volante",
+      "Rádio Original"
+    ],
+    "desc": "Fox 1.0 8V G2 - Completo",
+    "fotos": [
+      "/carros/veiculo-1794923304082-6.jpg",
+      "/carros/veiculo-1794923304082-1.jpg",
+      "/carros/veiculo-1794923304082-2.jpg",
+      "/carros/veiculo-1794923304082-7.jpg",
+      "/carros/veiculo-1794923304082-8.jpg",
+      "/carros/veiculo-1794923304082-9.jpg",
+      "/carros/veiculo-1794923304082-3.jpg",
+      "/carros/veiculo-1794923304082-4.jpg",
+      "/carros/veiculo-1794923304082-5.jpg",
+      "/carros/veiculo-1794923304082-10.jpg"
+    ]
+  },
+  {
     "id": 1789063195678,
     "destaque": false,
     "marca": "Chevrolet",
