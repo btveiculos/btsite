@@ -366,7 +366,7 @@ const VEHICLES = [
     "destaque": false,
     "marca": "Fiat",
     "modelo": "Linea",
-    "versao": "HLX 1.8 16V Banco de Couro Completo MT",
+    "versao": "HLX 1.8 16V Completo MT",
     "ano": 2010,
     "anoModelo": 2011,
     "km": 142500,
@@ -378,11 +378,11 @@ const VEHICLES = [
     "img": "/carros/fiat-linea-2010-1795445273209-1.jpg",
     "opcionais": [
       "Ar-condicionado",
-      "Bancos em couro",
-      "Direção elétrica",
-      "Vidros elétricos"
+      "Direção Hidráulica",
+      "Vidros",
+      "travas e retrovisor elétricos ."
     ],
-    "desc": "Linea HLX 1.8 completo com banco de couro.",
+    "desc": "Linea HLX 1.8 completo",
     "fotos": [
       "/carros/fiat-linea-2010-1795445273209-1.jpg",
       "/carros/fiat-linea-2010-1795445273209-2.jpg",
