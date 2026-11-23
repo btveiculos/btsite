@@ -375,7 +375,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 39900,
-    "img": "/carros/fiat-linea-2010-1.jpg",
+    "img": "/carros/fiat-linea-2010-1795445273209-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Bancos em couro",
@@ -384,8 +384,15 @@ const VEHICLES = [
     ],
     "desc": "Linea HLX 1.8 completo com banco de couro.",
     "fotos": [
-      "/carros/fiat-linea-2010-1.jpg",
-      "/carros/fiat-linea-2010-2.jpg"
+      "/carros/fiat-linea-2010-1795445273209-1.jpg",
+      "/carros/fiat-linea-2010-1795445273209-2.jpg",
+      "/carros/fiat-linea-2010-1795445273209-6.jpg",
+      "/carros/fiat-linea-2010-1795445273209-7.jpg",
+      "/carros/fiat-linea-2010-1795445273209-8.jpg",
+      "/carros/fiat-linea-2010-1795445273209-9.jpg",
+      "/carros/fiat-linea-2010-1795445273209-5.jpg",
+      "/carros/fiat-linea-2010-1795445273209-3.jpg",
+      "/carros/fiat-linea-2010-1795445273209-4.jpg"
     ]
   },
   {
