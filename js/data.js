@@ -529,7 +529,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Branco",
     "preco": 39900,
-    "img": "/carros/chevrolet-classic-2014-1794600587631-1.jpg",
+    "img": "/carros/chevrolet-classic-2014-1795791678040-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção hidráulica",
@@ -538,6 +538,7 @@ const VEHICLES = [
     ],
     "desc": "Classic LS 1.0 completo. Econômico e confiável.",
     "fotos": [
+      "/carros/chevrolet-classic-2014-1795791678040-1.jpg",
       "/carros/chevrolet-classic-2014-1794600587631-1.jpg",
       "/carros/chevrolet-classic-2014-1787666498340-4.jpg",
       "/carros/chevrolet-classic-2014-1787666498340-1.jpg",
