@@ -223,7 +223,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Preto",
     "preco": 29900,
-    "img": "/carros/fiat-fiat-idea-1-4-2006-1794598501868-1.jpg",
+    "img": "/carros/fiat-fiat-idea-1-4-2006-1795791071918-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção Hidráulica",
@@ -231,6 +231,7 @@ const VEHICLES = [
     ],
     "desc": "Completo (com todos os itens de série) Mecânica em ordem (revisado e funcionando perfeitamente) Pneus bons (prontos para rodar muito tempo) Pintura e funilaria OK (carro muito bonito e bem cuidado) Documentação em dia (pronto para transferir na hora) Ótima oportunidade para quem quer um carro de procedência para o dia a dia ou viagens",
     "fotos": [
+      "/carros/fiat-fiat-idea-1-4-2006-1795791071918-1.jpg",
       "/carros/fiat-fiat-idea-1-4-2006-1794598501868-1.jpg",
       "/carros/veiculo-1794319996153-1.jpg",
       "/carros/veiculo-1794320010485-1.jpg",
