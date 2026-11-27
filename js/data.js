@@ -385,7 +385,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 39900,
-    "img": "/carros/fiat-linea-2010-1795542817847-1.jpg",
+    "img": "/carros/fiat-linea-2010-1795791280113-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção Hidráulica",
@@ -394,6 +394,7 @@ const VEHICLES = [
     ],
     "desc": "Linea HLX 1.8 completo",
     "fotos": [
+      "/carros/fiat-linea-2010-1795791280113-1.jpg",
       "/carros/fiat-linea-2010-1795542817847-1.jpg",
       "/carros/fiat-linea-2010-1795445273209-1.jpg",
       "/carros/fiat-linea-2010-1795445273209-2.jpg",
