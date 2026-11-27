@@ -15,7 +15,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Branco",
     "preco": 44900,
-    "img": "/carros/volkswagen-fox-1-0-8v-g2-2013-1794945702175-1.jpg",
+    "img": "/carros/volkswagen-fox-1-0-8v-g2-2013-1795790415532-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção Hidráulica",
@@ -24,6 +24,7 @@ const VEHICLES = [
     ],
     "desc": "Fox 1.0 8V G2 - Completo",
     "fotos": [
+      "/carros/volkswagen-fox-1-0-8v-g2-2013-1795790415532-1.jpg",
       "/carros/volkswagen-fox-1-0-8v-g2-2013-1794945702175-1.jpg",
       "/carros/veiculo-1794923304082-6.jpg",
       "/carros/veiculo-1794923304082-1.jpg",
