@@ -52,13 +52,14 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Preto",
     "preco": 39900,
-    "img": "/carros/chevrolet-agile-1-4-2010-1794597043977-1.jpg",
+    "img": "/carros/chevrolet-agile-1-4-2010-1795790453060-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção Hidráulica"
     ],
     "desc": "Agile 1.4 LTZ Completo",
     "fotos": [
+      "/carros/chevrolet-agile-1-4-2010-1795790453060-1.jpg",
       "/carros/chevrolet-agile-1-4-2010-1794597043977-1.jpg",
       "/carros/veiculo-1794582698667-2.jpg",
       "/carros/veiculo-1794582698667-3.jpg",
