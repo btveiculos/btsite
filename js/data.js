@@ -352,7 +352,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Prata",
     "preco": 57400,
-    "img": "/carros/volkswagen-fox-2016-1794598949889-1.jpg",
+    "img": "/carros/volkswagen-fox-2016-1795790720104-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -360,6 +360,7 @@ const VEHICLES = [
     ],
     "desc": "Fox 1.6 Run completo. Versátil e econômico.",
     "fotos": [
+      "/carros/volkswagen-fox-2016-1795790720104-1.jpg",
       "/carros/volkswagen-fox-2016-1794598949889-1.jpg",
       "/carros/volkswagen-fox-2016-2.jpg",
       "/carros/volkswagen-fox-2016-1.jpg",
