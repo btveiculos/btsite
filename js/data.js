@@ -189,7 +189,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Cinza",
     "preco": 94900,
-    "img": "/carros/volkswagen-saveiro-2024-1794597133060-1.jpg",
+    "img": "/carros/volkswagen-saveiro-2024-1795790614453-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção Hidráulica",
@@ -197,6 +197,7 @@ const VEHICLES = [
     ],
     "desc": "Se você procura uma picape praticamente nova, muito bem cuidada e pronta para uso, essa é uma excelente oportunidade! ✅ 29.000 km ✅ Segundo dono ✅ Garantia de fábrica ✅ Revisões em dia ✅ Cristalização da pintura realizada ✅ Para-choque traseiro personalizado ✅ Utilizada exclusivamente para uso pessoal Veículo extremamente conservado, sem histórico de uso severo, ideal para quem busca economia, confiabilidade e excelente custo-benefício. 📍 Agende sua visita e venha conferir de perto. 📲 Entre em contato para mais informações, fotos ou agendar uma avaliação.",
     "fotos": [
+      "/carros/volkswagen-saveiro-2024-1795790614453-1.jpg",
       "/carros/volkswagen-saveiro-2024-1794597133060-1.jpg",
       "/carros/veiculo-1794488972539-4.jpg",
       "/carros/veiculo-1794488972539-1.jpg",
