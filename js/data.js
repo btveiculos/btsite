@@ -672,7 +672,7 @@ const VEHICLES = [
     "combustivel": "Flex",
     "cor": "Cinza",
     "preco": 89900,
-    "img": "/carros/toyota-corolla-2014-1794601932879-1.jpg",
+    "img": "/carros/toyota-corolla-2014-1795790921268-1.jpg",
     "opcionais": [
       "Ar-condicionado",
       "Direção elétrica",
@@ -682,6 +682,7 @@ const VEHICLES = [
     ],
     "desc": "Corolla XEi 2.0 Flex automático completo. Revisado.",
     "fotos": [
+      "/carros/toyota-corolla-2014-1795790921268-1.jpg",
       "/carros/toyota-corolla-2014-1794601932879-1.jpg",
       "/carros/toyota-corolla-2014-1787666212209-7.jpg",
       "/carros/toyota-corolla-2014-1787666212209-1.jpg",
